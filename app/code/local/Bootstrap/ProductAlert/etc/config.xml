@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Bootstrap_ProductAlert>
+            <version>0.1.0</version>
+        </Bootstrap_ProductAlert>
+    </modules>
+    <frontend>
+        <routers>
+            <productalert>
+                <args>
+                    <modules>
+                        <Bootstrap_ProductAlert before="Mage_ProductAlert">Bootstrap_ProductAlert</Bootstrap_ProductAlert>
+                    </modules>
+                </args>
+            </productalert>
+        </routers>
+    </frontend>    
+</config> 

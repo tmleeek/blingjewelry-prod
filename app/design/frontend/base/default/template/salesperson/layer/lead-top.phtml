@@ -1,0 +1,115 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2009 Irubin Consulting Inc. DBA Varien (http://www.varien.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Category layered navigation
+ *
+ * @see Mage_Catalog_Block_Layer_View
+ */
+?>
+
+<?php if($this->canShowLeadQuestion()):?>
+  <?php $moreAnswers=array();?>
+<?php $_filters = $this->getFilters() ?>
+<?php if(!empty($_filters)):?>
+<div class="block block-layered-nav block-salesperson-lead-top">
+    <div class="block-content salesperson-content-lead-top">
+            <?php $_filter = $_filters[0]?>
+        <?php  ?>
+			<div class="block-title">
+			<strong>
+				<span><?php echo $this->__($this->getFilterText($_filter, "lead")); ?></span>
+			</strong>
+			</div>
+            <dl id="narrow-by-list">
+                <?php if((int)$_filter->Answers->Count > 0||(int)$_filter->ExtraAnswers->Count > 0): ?>
+                    	<dd>
+                            <ol class="salesperson-top-lead">
+                    		<?php $a = 0;?>
+				<?php if((int)$_filter->Answers->Count > 0):?>
+				<?php foreach ($_filter->Answers->Items as $answer): ?>
+                                    <?php if ($this->getMaxLeadAnswers() > $a):?>
+					<li>
+                                            <a href="<?php echo $this->answerQuestionUrl($answer->Id) ?>">
+						<?php if($this->getDisplayImageInLeadQuestion()):?>
+							<img src="<?php echo $this->helper('catalog/image')->init(new Mage_Catalog_Model_Product(), 'small_image', $answer->ImageUrl)->resize(80); ?>" width="80" height="80" alt="<?php echo $this->htmlEscape($answer->Text) ?>" />
+							<br/><?php echo $answer->Text ?>
+						<?php else:?>
+							<span class="lead-answer-text"><?php echo $this->htmlEscape($answer->Text) ?></span>
+						<?php endif;?>
+                                            </a>
+                                            <?php if ($this->showProductCountInLeadAnswers()): echo '('.$answer->ProductCount.')'; endif; ?>
+					</li>
+					<?php $a++;?>
+                                        <?php else: $moreAnswers[]=$answer;//תוספת?>
+                                    <?php endif;?>
+				<?php endforeach ?>
+				<?php endif;?>
+				<?php if((int)$_filter->ExtraAnswers->Count > 0): ?>
+                                <?php foreach ($_filter->ExtraAnswers->Items as $answer): ?>
+                                    <?php if ($this->getMaxLeadAnswers() > $a):?>
+					<li>
+                                            <a href="<?php echo $this->answerQuestionUrl($answer->Id) ?>">
+						<?php if($this->getDisplayImageInLeadQuestion()):?>
+							<img src="<?php echo $this->helper('catalog/image')->init(new Mage_Catalog_Model_Product(), 'small_image', $answer->ImageUrl)->resize(80); ?>" width="80" height="80" alt="<?php echo $this->htmlEscape($answer->Text) ?>" />
+							<br/><?php echo $answer->Text ?>
+						<?php else:?>
+							<span class="lead-answer-text"><?php echo $this->htmlEscape($answer->Text) ?></span>
+						<?php endif;?>
+                                            </a>
+                                            <?php if ($this->showProductCountInLeadAnswers()): echo '('.$answer->ProductCount.')'; endif; ?>
+					</li>
+					<?php $a++;?>
+                                      <?php else: $moreAnswers[]=$answer;//תוספת?>
+                                    <?php endif;?>
+				<?php endforeach ?>
+				<?php endif;?>
+			  </ol>
+                               <?php if(((int)$_filter->Answers->Count+(int)$_filter->ExtraAnswers->Count)>$this->getMaxNonLeadAnswers()):?>
+                                    <select id="answersList" onchange="setFirstAnswer(this.value)">
+                                        <option>More Answers</option>
+                                        <?php foreach ($moreAnswers as $answer):?>
+                                        <option value=<?php echo $this->answerQuestionUrl($answer->Id) ?>>
+                                           <?php echo $answer->Text;?>
+                                        </option>
+                                        <?php endforeach;?>
+                                    </select>
+                            <script type="text/javascript">
+                                function setFirstAnswer(value){
+                                             setLocation(value)
+                                }
+                            </script>
+                            <?php endif;?>
+                    </dd>
+               <?php endif;?>
+            </dl>
+            <script type="text/javascript">decorateDataList('narrow-by-list')</script>
+            
+    </div>
+</div>
+<?php  endif;?>
+<?php endif;?>

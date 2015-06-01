@@ -1,0 +1,867 @@
+
+/* ================================================= *
+ * General Product List Styles (not module-specific)
+ * ================================================= */
+
+/* -------------------------------------------- *
+ * Product List General
+ */
+
+.category-title h1,
+body.catalogsearch-result-index .page-title h1 {
+    border-bottom: none;
+}
+
+/* -------------------------------------------- *
+ * Product Name
+ */
+
+/*
+h2.product-name,
+h3.product-name,
+h4.product-name,
+h5.product-name,
+p.product-name {
+    //@include h2;
+    font-size: $f-size-s;
+    font-family: $f-stack-sans;
+    font-weight: normal;
+    line-height: 1.4;
+
+    a {
+        color: $c-text;
+        &:hover {
+            color: $c-action;
+            text-decoration: none;
+        }
+    }
+}
+*/
+
+.products-grid .product-name,
+.products-list .product-name {
+    margin-bottom: 5px;
+    font-size: $f-size-s;
+    font-family: $f-stack-sans;
+    text-align:left;
+    font-weight:700;
+}
+
+/* ============================================ *
+ * Product Grid
+ * ============================================ */
+
+$product-column-spacing: 20px;
+
+.products-grid {
+    position: relative;
+}
+
+.products-grid:after {
+    @include clearfix;
+}
+
+.products-grid > li{
+    position: relative;
+    //margin-bottom: $product-column-spacing;
+    text-align: center;
+
+    &:after {
+        @include clearfix;
+    }
+}
+
+.products-grid .product-image {
+    width: 100%;
+}
+
+.products-grid .product-image img {
+    width: 100%;
+    height: auto;
+
+    &:hidden {
+        display: none;
+    }
+}
+
+// If the height of the .product-info element changes, this value should be adjusted
+//$productsGridActionHeight: 85px;
+
+.products-grid .product-info {
+    position: relative;
+    //padding-bottom: $productsGridActionHeight + 10px;
+    height:90px; // turned off js height script in app.js
+    text-align:left;
+    padding-left:20px
+}
+
+// actions aren't in use currently
+.products-grid .actions {
+    padding-top: $box-spacing;
+    position: absolute;
+    bottom: 0px;
+    //min-height: $productsGridActionHeight;
+    width: 100%;
+}
+
+.products-grid .ratings .rating-box {
+    margin: 0 auto;
+}
+
+.products-grid .ratings .amount {
+    display: none;
+}
+
+.products-grid .price-box {
+    //color: $c-text-gray;
+    font-size: $f-size-s;
+    margin: 0 0 0 0;
+    text-align:left;
+    clear:both;
+    .price-from,.price-to{
+        display:inline-block;
+    }
+    .price-to{
+        margin-left:10px;
+    }
+    .minimal-price-link{
+        display:inline-block;
+    }
+}
+
+.products-grid .add-to-links {
+    margin-bottom: 0;
+}
+
+//mmc added
+.products-grid{
+    .ajax-wishlist-button {
+        position:absolute;
+        top:0;
+        left:0;
+        font-size:11px;
+        //@include image-replacement;
+        a{
+            color:lighten($c-gray,20%);
+            &:hover{
+                color:$c-action;
+                &:before{
+                    content: 'Add to Favs';
+                    position: absolute;
+                    top: 3px;
+                    left:0;
+                    background: $c-module-background;
+                    color:$c-text-gray;
+                    padding: 1px 0;
+                    border-radius: 3px;
+                    margin-top: -23px;
+                    text-align: center;
+                    width: 71px;
+                    z-index:1;
+                    font-size:10px;
+                }
+            }
+        }
+    }
+    .ajax-wishlist-button.wishlist-active{
+        a{
+            color:darken($c-gray,10%);          
+        }
+    }
+    .ajax-wishlist-loader{
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: #fff;
+        z-index: 1;
+    }
+    .availability {
+        font-size: $f-size-xs;
+        font-family: $f-stack-serif;
+        font-style:italic;
+        text-align:left;
+        display:inline-block;
+    }
+    .availability.available-soon,
+    .availability.out-of-stock,
+    .availability-only {
+        color: $c-text-gray;
+    }
+    .badge.new{
+        color:$c-action;
+        text-transform:uppercase;
+        font-size:$f-size-xs;
+        font-weight: 700;
+        display:inline-block;
+        padding-right:5px;
+    }
+}
+
+
+
+/* ============================================ *
+ * Simpler Grid - default 2 col, then 3, then 4
+ * ============================================ */
+
+$grid-gutter:10px;
+.products-grid{
+    margin-left:-$grid-gutter;
+    margin-right:-$grid-gutter;
+    > li, 
+    > div.item{
+        float:left;
+        width:50%;
+        padding-left:$grid-gutter;
+        padding-right:$grid-gutter;
+    }
+    @include bp(min-width, $bp-small + 1) {
+        > li, 
+        > div.item{
+            width:33.3333%;
+        }
+    }
+    @include bp(min-width, $bp-large + 1) {
+        > li, 
+        > div.item{
+            width:25%;
+        }
+    }
+}
+
+.cols2 .products-grid{
+    > li, 
+    > div.item{
+        width:50%;
+    }
+}
+.cols3 .products-grid{
+    > li, 
+    > div.item{
+        width:50%;
+    }
+    @include bp(min-width, $bp-small + 1) {
+        > li, 
+        > div.item{
+            width:33.3333%;
+        }
+    }
+    /*
+    @include bp(min-width, $bp-large + 1) {
+        > li, 
+        > div.item{
+            width:33.3333%;
+        }
+    }
+    */
+}
+
+
+/* ============================================ *
+ * Product List
+ * ============================================ */
+
+.products-list {
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    & > li {
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+        border-bottom: 1px solid $c-module-border-light;
+
+        &:after {
+            @include clearfix;
+        }
+        .product-image {
+            float: left;
+            width: percentage(1/3);
+
+            img {
+                width: 100%;
+                max-width: 100%;
+            }
+        }
+    }
+    & > li:last-child {
+        padding-bottom: 0;
+        border-bottom: none;
+    }
+}
+
+.products-list .product-shop {
+    float: right;
+    width: percentage(2/3);
+    padding-left: ($box-spacing * 2);
+
+    .product-name {
+        margin-bottom: 0;
+    }
+    .ratings {
+        margin: 0;
+
+        .rating-box,
+        .rating-links {
+            float: left;
+            margin-right: $element-spacing;
+        }
+        .rating-links {
+            margin-top: 4px;
+        }
+    }
+    .price-box {
+        margin-top: 0;
+    }
+    .price-box .price {
+        //font-size: $f-size-xxl;
+    }
+    .action {
+        margin: $element-spacing 0;
+    }
+    .desc {
+        margin-top: $element-spacing;
+    }
+
+    .product-primary,
+    .desc {
+        float: left;
+        width: 75%;
+        overflow: hidden;
+    }
+    .product-secondary {
+        float: right;
+        width: 25%;
+        text-align: right;
+        clear: right;
+    }
+}
+
+@include bp(min-width, $bp-xsmall + 1) {
+    .products-list .product-name a {
+        font-size: $f-size-xxl;
+    }
+}
+
+@include bp(max-width, 1279px) {
+    .products-list .product-shop {
+        .product-primary,
+        .desc {
+            float: left;
+            width: 60%;
+            padding-right: 20px;
+        }
+        .product-secondary {
+            float: right;
+            width: 40%;
+        }
+    }
+}
+
+@include bp(max-width, 600px) {
+    .products-list .product-shop .price-box .special-price {
+        padding-left: 0;
+    }
+    .products-list .product-shop {
+        .product-primary,
+        .product-secondary,
+        .desc {
+            float: none;
+            width: 100%;
+            padding-right: 0;
+            text-align: left;
+        }
+    }
+}
+
+/* ============================================ *
+ * Mini Product List
+ * ============================================ */
+// this governs the mini-cart too
+.mini-products-list {
+
+    .product-image {
+        float: left;
+        min-width: 50px;
+    }
+    .product-details {
+        margin-left: 60px;
+    }
+
+    // Vertically center product name
+    .product-details .product-name {
+       //padding-top: 10px;
+    }
+
+    li {
+        margin-bottom: $gap;
+        clear: both;
+
+        &:after {
+            @include clearfix();
+        }
+    }
+}
+
+
+.mini-products-images-list {
+
+    &:after {
+        @include clearfix;
+    }
+
+    li.item {
+        float: left;
+        width: 50%;
+        margin: 0;
+        padding: 0 5px 10px 0;
+
+        &:nth-child(even) {
+            padding-right: 0;
+            padding-left: 5px;
+        }
+
+        .product-image {
+            display: block;
+
+            img {
+                width: 100%;
+                max-width: 100%;
+            }
+        }
+    }
+
+}
+
+
+
+/* ============================================ *
+ * Catalog - List
+ * ============================================ */
+
+.category-image {
+    img {
+        width: 100%;
+        max-width: 100%;
+
+        &:hidden {
+            display: none;
+        }
+    }
+}
+@include bp(max-width, $bp-small) {
+    .category-image{
+        display:none;
+    }
+}
+/* ============================================ *
+ * Category - Hero
+ * ============================================ */
+
+.category-hero{
+    position:relative;
+    img{
+        width:100%;
+        height:auto;
+        z-index:0;
+        position:relative;
+    }
+    .category-description{
+        position:absolute;
+        width:500px;
+        top:0;
+        left:50%;
+        margin-left:-250px;
+        z-index:1;
+    }
+    .description{
+
+    }
+}
+@include bp(max-width, $bp-medium) {
+    .category-hero{
+        position:relative;
+        img{
+            display:none;
+        }
+        .category-description{
+            position:static;
+            width:auto;
+            margin-left:0;
+        }
+    }
+}       
+.category-description{
+    margin-bottom:$box-spacing-large;
+    &:after{
+        @include clearfix;
+    }
+}    
+
+/* ============================================ *
+ * Layered Navigation
+ * ============================================ */
+
+.block-layered-nav .block-subtitle--filter {
+    // Will be shown at smaller viewports
+    display: none;
+    @include accordionDtBase;
+    cursor: pointer;
+}
+
+// mmc wrap in media query
+@include bp(max-width, $bp-medium) {
+    .block-layered-nav .block-content {
+        // Accordions are fully expanded until a smaller resolution.
+        @include accordion;
+    }
+}
+
+// normal vertical presentation
+.block-layered-nav dl dd {
+    margin-bottom: $box-spacing;
+    margin-top: $box-spacing;
+
+    ol > li > span, ol > li > a {
+        //padding: 5px 15px;
+        //display: block;
+    }
+    ol > li > a .count {
+        color: $c-text-gray;
+    }
+}
+// regular category nav
+.block-layered-nav--no-filters dl dd {
+    ol > li > span, ol > li > a {
+        padding: 3px 15px;
+        display: block;
+    }
+    ol > li > a .count {
+        color: $c-text-gray;
+    }
+}
+
+// mmc 
+@include bp(min-width, $bp-medium+1) {
+    .col-left-first .block-layered-nav{
+        padding-bottom:4px;
+         background: 
+           url(../images/bg-rough-line.png) left top repeat-x,  /* On top,    like z-index: 4; */
+           url(../images/bg-rough-line-vertical.png) left top repeat-y,   /*            like z-index: 3; */
+           url(../images/bg-rough-line.png) right bottom repeat-x,
+           url(../images/bg-rough-line-vertical.png) right center repeat-y;                    /* On bottom, like z-index: 1; */
+       
+    }
+    .block-layered-nav .block-content > dl > dt {
+        //padding-left: 10px; // for space for the triangle
+
+        // mmc layered top
+        //display:inline-block;
+
+        &:after {
+            display: none;
+        }
+    }
+    .col-left-first .block-content dt{
+        background: url(../images/bg-rough-line.png) right bottom repeat-x;
+        padding:10px 15px;
+        color:$c-black;
+        font-size:$f-size-l;
+        font-weight:700;
+    }
+}
+
+
+// mmc top presentation
+.col-main{
+    .block-layered-nav .block-title{
+        display:none;
+    }
+
+    @include bp(min-width, $bp-medium+1) {
+
+        .block-layered-nav dl dd {
+            margin-bottom: $box-spacing;
+            margin-top: $box-spacing;
+            display:none;
+
+            ol > li > span, ol > li > a {
+                //padding: 5px 15px;
+                //display: block;
+            }
+            ol > li > a .count {
+                color: $c-text-gray;
+            }
+        }
+
+        .block-layered-nav .block-content {
+            padding-top: 0;
+            margin-top: 0;
+            //@include accordionCollapse;
+            &:after{
+                @include clearfix;
+            }
+        }
+
+        .block-layered-nav .block-content > dl > dt {
+            display: inline-block;
+            float:left;
+            background:darken($c-module-background,10%);
+            color:$c-black;
+            padding:8px 0;
+            text-transform:uppercase;
+            font-family: $f-stack-sans;
+            font-weight:400;
+            font-size:$f-size-xxs;
+            cursor: pointer;
+            line-height: normal;
+            text-align:center;
+            &:hover{
+                background:#6E6F73;
+                color:#fff;
+            }
+            border-right:solid 1px #fff;
+        }
+        .block-layered-nav .block-content > dl > dt:last-child{
+            border-right:0;
+        } 
+        .block-layered-nav .block-content.accordion-open > dl > dt.current{
+            background:#6E6F73; 
+            color:#fff;
+        } 
+        dl.layered-columns-2 > dt{
+            width:50%;
+        }
+        dl.layered-columns-3 > dt{
+            width:33.3333%;
+        }
+        dl.layered-columns-4 > dt{
+            width:25%;
+        }
+        dl.layered-columns-5 > dt{
+            width:20%;
+        }
+        dl.layered-columns-6 > dt{
+            width:16.6666%;
+        }
+        dl.layered-columns-7 > dt{
+            width:14.28%;
+        }
+        dl.layered-columns-8 > dt{
+            width:12.5%;
+        }
+        dl.layered-columns-9 > dt{
+            width:11.11%;
+        }
+        dl.layered-columns-10 > dt{
+            width:10%;
+        }
+    }
+    // mmc added this panel where the options will display
+    .layered-options{
+        background:$c-module-background;
+        clear:both;
+        overflow:hidden;
+        margin-top:1px;
+        padding:0 0 15px 0;
+        height:0;
+        //display:none;
+        visibility: hidden;
+        opacity:0;
+        ol{
+            margin:15px 5px;
+        }
+        li{
+            width:25%;
+            float:left;
+            padding:2px 10px;
+            font-size: $f-size-xs;
+        }
+    }
+    .accordion-open .layered-options{
+        //display:block;
+        visibility:visible;
+        opacity:1;
+        min-height:120px;
+        height:auto !important;
+        height:120px;
+    }
+
+    .block-layered-nav .currently {
+        background:$c-module-background;
+        padding:15px;
+        clear:both;
+        overflow:hidden;
+        .block-subtitle {
+            display: block;
+            @include h6;
+            margin-bottom:15px;
+        }
+
+        ol {
+            padding:0;
+            margin:0;
+        }
+        ol li {
+            margin: 0 5px 5px 0;
+            float:left;
+            display:inline-block;
+            font-size: $f-size-xs;
+            background:#fff;
+            padding:0 0 0 8px;
+            line-height:20px;
+            .label {
+                text-transform:uppercase;
+                font-weight:normal;
+            }
+        }
+    }
+
+    @include bp(max-width, $bp-medium) {
+        // hide the layered-options on small screens
+        .accordion-open .layered-options{
+            visibility: hidden;
+            opacity:0;
+            min-height:0;
+            height:0 !important;
+            height:0;
+        }
+
+    }
+
+}
+
+
+@include bp(max-width, $bp-large) {
+    .col-main .layered-options li{
+        width:33.333%;
+    }
+}
+
+@include bp(max-width, $bp-medium) {
+
+
+    // mmc fix for celebros bling, removed .salesperson_main not needed
+    .col-main{
+        .block-layered-nav--no-filters dl dd {
+            ol > li > span, ol > li > a {
+                padding: 3px 5px;
+                display: inline;
+            }
+        } 
+    }
+
+    .sidebar .block.block-layered-nav {
+        border-bottom: none;
+    }
+
+    // We don't want "Shop By" to show when there are no filters applied, as the "Filter" link will suffice
+    .block-layered-nav--no-filters .block-title {
+        display: none;
+    }
+
+    // Remove the top padding and re-add it as margin-top so that the margin will collapse with elements above it
+    .block-layered-nav .block-content {
+        padding-top: 0;
+        margin-top: 15px;
+        @include accordionCollapse;
+    }
+
+    .block-layered-nav .block-subtitle--filter {
+        background-color: $c-module-background;
+        border: 0;
+        margin-bottom: 0;
+        display: block;
+        color: $c-black;
+
+        &:after {
+           @include triangle(right, 4px, $c-gray);
+            right: 10px;
+            top: 50%;
+            margin-top: -5px;
+        }
+
+        &:hover {
+            background-color: darken($c-module-background,5%);
+        }
+        &.active{
+             background-color: darken($c-module-background,5%);           
+        }
+        &.active:after {
+            @include triangle(down, 4px, $c-action);
+            right: 10px;
+            top: 50%;
+            margin-top: -3px;
+        }
+    }
+
+    #narrow-by-list,
+    #narrow-by-list2 {
+        //padding: $box-spacing;
+        border: 1px solid $c-module-border;
+        border-top: 0;
+        // mmc half width filters on mobile
+        li{
+            padding:0 10px;
+            margin-bottom:5px;            
+        }
+        @include bp(min-width, $bp-small) {
+            li{
+                width:50%;
+                float:left;
+                padding:0 10px;
+                margin-bottom:5px;
+            }
+        }
+    }
+
+    .block-layered-nav dl ol > li > a,
+    .block-layered-nav dl ol > li > span {
+        //padding: 7px;
+        //margin: 5px;
+    }
+
+    .block-layered-nav dl ol > li > a {
+        //@include touch-button;
+        padding: 5px;
+        &:hover {
+            text-decoration: none;
+            background: shade($c-module-background, 5%);
+        }
+    }
+}
+
+.block-layered-nav .currently {
+    .block-subtitle {
+        display: block;
+        @include h4;
+    }
+
+    ol {
+        padding-left: $box-spacing;
+        margin-bottom: $box-spacing;
+    }
+    ol li {
+        margin-bottom: 5px;
+
+        .label {
+            font-weight: bold;
+        }
+
+        &:after {
+            @include clearfix;
+        }
+    }
+}
+
+.block-layered-nav .actions {
+    text-align: right;
+    margin-bottom: $element-spacing;
+    font-size:$f-size-xs;
+    font-family: $f-stack-serif;
+    font-style:italic;
+    a{
+        color:$c-text-gray;
+        &:hover{
+            color:$c-action;
+        }
+    }
+}

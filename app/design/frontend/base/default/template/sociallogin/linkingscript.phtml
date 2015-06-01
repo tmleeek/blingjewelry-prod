@@ -1,0 +1,9 @@
+<?php
+if ( $this->loginEnable() == "1" ) {
+    $loc = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_LINK)."sociallogin/";
+    ?>
+    <script src="http://hub.loginradius.com/include/js/LoginRadius.js" ></script>
+    <script type="text/javascript"> var options={}; options.login=true; LoginRadius_SocialLogin.util.ready(function () { $ui = LoginRadius_SocialLogin.lr_login_settings;$ui.interfacesize = "small";$ui.apikey = "<?php echo trim($this->getApikey()) ?>";$ui.callback = "<?php echo $loc ?>"; $ui.lrinterfacecontainer ="interfacecontainerdiv"; LoginRadius_SocialLogin.init(options); });
+    </script>
+    <?php
+}

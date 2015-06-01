@@ -1,0 +1,49 @@
+LicenseAgreement: http://ixcba.com/license-guide/
+LicenseType: Single Domain
+ProductName: Advanced IXCBA
+ProductOwner: Mageix LLC
+ProductVersion: v.11.0.0
+SerialNumber: 76a9bc07e68f798f
+WARNING: DO NOT EDIT ANYTHING IN THIS FILE! THIS WOULD CORRUPT YOUR LICENSE
+Server restriction: blingjewelry.com
+Server restriction: www.blingjewelry.com
+
+------ LICENSE FILE DATA -------
+717TXX00yW3IPxmkTO4p1LSTY86eB8Yh
+eNQaPQzLbSlnCqhKraGI6GQmWzs1XMRk
+lwq1xMa7s20rs80WDvSHRSzIfnkQz0Ri
+U4iJxugLNZCzx+s6QbUaf0fl/Q/MCpD5
+1poBWimqzQtg97djntdQSMpyIfat7984
+MjopEwPzI+2u0mAbLz3htDtC2/zNttUR
+ClRIQWynDE+KmAeZMBaocHGuoIgbspo1
+5Ap+GUA35LzIoJr3SiQfF1FYrgjpg1eI
+tNwDMNSk3p2fSlV3diuzje0O/3hOvum8
+j9zHr7TY0E8uoaV2ik/n1ftwUFTUlRym
+Iwj8eZcLr/yk9X8Ig7zCdafo55HMkmrh
+iwVa2o35gZx/+X64VdM/G1chx2clEXmC
+uz8qTL58E+FEDCNhaDa9e5PmOqnsdsJP
+uOmJotLyRUPBvAyk9X2/VAhwdixIPk7S
+fcptBuQ9gymxBS3bQm4nTXgp5HS8oCfp
+jkQZQVlHGnCN8RZkR4/UvJwLrAAvrEDI
+tryCyxU0143Txgfyu4q/oLUxQMi0B5Kb
+/O0kbbeGNXWYVhShuquaNHJwEbgSHTO7
+HGsiXA6Bv/jXPgqB2XSxgo5dym8oRiz9
+/wbGTmrBEYyGC+BM6Edi5RynzwJ01xpq
+vilUhPmLuQkoBBxAFahkDVzB1V9NBpp4
+6PCrBrSiAMcmijCQL3NXT9+RtYuWTe3F
+B/YBlq+WylDd76PiBDkmdvMSNP7SNfgO
+yN4AmYVnCMXuEyToLJ2+9Iom2eOUoqVe
+GkKENlhWQVk05nqLOYSbjOIup7zV3aS4
+LmjLiphjrXRnPZSXc+i2MnwaA3BnJn1T
+K5Bd4fkClLa+84tc8/ZRToclNMJnyMkd
+3FMaOBhqPCIStChl6xQqcHeYeRiVXjky
+bD2L2Xicgh1USMdPE/FMfABwyHzbXB/l
+wNdhuvxovksGwXvt0hgaayBUmFk2VZEx
+n/4lpaxSUfVUMiz8fwH8t1z4RBrjxSCR
+KnKCCLzrKBPPPn9saYqZs4QWUthqvLsr
+346hY3FZXIB+c2OekOVm+/kZOmXPaF36
+zBjCsnPG7OwUdD2RODNtGKlZL89gWjY+
+HmZ/7H4XfUgXPBk3TQxTAStnpJ0NKQ1L
+8CJMsy1yDZDN9s1p3lb/RaTGRq0cCe/L
+O+QRYEDzrF3q
+--------------------------------

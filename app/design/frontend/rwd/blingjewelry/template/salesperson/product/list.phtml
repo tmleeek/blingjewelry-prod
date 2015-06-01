@@ -1,0 +1,185 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2009 Irubin Consulting Inc. DBA Varien (http://www.varien.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Product list template
+ *אחי 
+ * @see Mage_Catalog_Block_Product_List
+ */
+?>
+<script type="text/javascript">
+	function productClick(productId) {
+
+		var anlxClickActionUrl = '<?php echo Mage::getUrl('*/*/anlxClick', array()); ?>';
+		
+		new Ajax.Request(anlxClickActionUrl, {
+			method: 'get',
+			parameters: {
+				product_id: productId
+			}
+		});
+	}
+	
+</script>
+<div id='clickPixelPlaceHolder'></div> 
+<?php $_productCollection=$this->getLoadedProductCollection(); $now = date("Y-m-d H:m:s");  ?>
+<?php if(!$this->getResultCount()): ?>
+<p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
+<?php else: ?>
+
+
+<?php // echo $this->getChildHtml('catalog.leftnav'); /* mmc add layered nav */ ?>
+
+
+<div class="salesperson-category-products category-products">
+    <?php echo $this->getToolbarHtml() ?>
+
+    <?php if(isset($_productCollection)&&is_array($_productCollection)): ?>
+
+    <?php // Grid Mode ?>
+    <?php $_collectionSize = count($_productCollection) /*$this->getResultCount()*/ ?>
+    <?php $_columnCount = $this->getColumnCount(); ?>
+    <ul class="products-grid products-grid--max-<?php echo $_columnCount; ?>-col lazyload">
+    <?php $i=0; foreach ($_productCollection as $_product): ?>
+            <li class="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>">
+ 	       		<a href="<?php echo $this->getProductUrl($_product) ?>" onclick="productClick(<?php echo $_product->Field[$this->getMapping('id')]?>);" title="<?php echo $this->htmlEscape( $_product->Field[$this->getMapping('title')]) ?>" class="product-image">
+                    <?php $_imgSize = 285; ?>
+                    <img
+                        src=data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==  
+                        data-src="<?php $img = $_product->Field[$this->getMapping('image_link')]; if(strpos($img,'//')===false) $img = "//$img"; echo $img; ?>" width="<?php echo $_imgSize;?>" height="<?php echo $_imgSize;?>" alt="<?php echo $this->htmlEscape($_product->Field[$this->getMapping('title')]) ?>" />
+
+                        <?php /* hide quickview
+                        <!-- ADD -->
+                        <a href='<?php echo $this->getUrl('ajax/index/quickview',array('product_id'=>$_product->getId()));?>' id='quickview<?php echo $_product->getId()?>' class="button js-btn-quickview" data-pid="<?php echo $_product->getId()?>">Quickview</a> 
+                        <!-- END ADD -->
+                        */?>
+				</a>
+                <div class="product-info">
+                    <h2 class="product-name"><a href="<?php echo $this->getProductUrl($_product) ?>" onclick="productClick(<?php echo $_product->Field[$this->getMapping('id')]?>);" title="<?php echo $this->htmlEscape( $_product->Field[$this->getMapping('title')]) ?>"><?php echo $this->htmlEscape($_product->Field[$this->getMapping('title')]) ?></a></h2>
+
+                   <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                    <!-- ADD -->
+                     <span class="ajax-wishlist-button">
+                        <a href="<?php echo $this->helper('salesperson/wishlist_data')->getAddUrlWithParams($_product) ?>" class="link-wishlist"><i class="icon-heart"></i>
+                        <span id='ajax_wishlist_loader<?php echo $_product->getId()?>' style='display:none' class="ajax-wishlist-loader"><img src='<?php echo $this->getSkinUrl('images/ajax/ajax-loader.gif')?>'/></span>
+                        </a>
+                     </span>
+                    <!-- END ADD -->
+                    <?php endif; ?>
+                    <?php
+                    /*
+                        $_nameAfterChildren = $this->getChild('name.after')->getSortedChildren();
+                        foreach($_nameAfterChildren as $_nameAfterChildName):
+                            $_nameAfterChild = $this->getChild('name.after')->getChild($_nameAfterChildName);
+                            $_nameAfterChild->setProduct($_product);
+                    ?>
+                        <?php echo $_nameAfterChild->toHtml(); ?>
+                    <?php endforeach; */?>
+
+                    <?php echo $this->getPriceHtml($_product, true) ?>
+
+                    <?php 
+                    /* remove ratings
+                    // native ratings
+                    if($_product->getRatingSummary()): ?>
+                        <?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
+                    <?php endif; 
+
+                    // celebros ratings
+                    <?php if(key_exists($this->getMapping('rating_summary'), $_product->Field)): ?>
+                        <?php echo $this->getReviewsSummaryHtml($_product) ?>
+                    <?php endif; ?>
+                    */?>
+                        <span class="badge new">
+                            <?php
+                            $newFromDate = $this->htmlEscape($_product->Field[$this->getMapping('news_from_date')]);
+                            $newToDate = $this->htmlEscape($_product->Field[$this->getMapping('news_to_date')]);
+                            $specialui =  $this->htmlEscape($_product->Field[$this->getMapping('specialui')]);
+                            $specialprice = $this->htmlEscape($_product->Field[$this->getMapping('special_price')]);
+
+                            $now = Mage::app()->getLocale()->date()->toString(Varien_Date::DATETIME_INTERNAL_FORMAT);
+                            if(($newFromDate < $now && $newFromDate != NULL) && ($newToDate > $now || $newToDate == "") || (strpos($specialui,'New Products')!== false && (!$specialprice)) ){
+                                echo "New!";
+                            }
+                            ?>
+                        </span>
+                    <?php 
+                    // celebros template uses $_product->getInStock()
+                    if(!$_product->isSaleable()): ?>
+                        <p class="availability out-of-stock"><span><?php echo $this->__('Waitlist') ?></span></p>
+                    <?php endif; ?>
+                </div>
+
+<?php /* not needed
+
+                <?php if ($specialprice): ?>
+                    <div class="sticker-wrapper top-right">    <div class="sticker sale"><?php echo $this->__('Sale') ?></div></div>
+                <?php endif; ?>
+
+                <?php if (is_array($_product->getAvailableInCategories())):?>
+                    <li>
+                        <ul class="salesperson-found-in">
+                            <li><?php echo $this->__('Found In:')?></li>
+                        <?php foreach ($foundIn = $_product->getAvailableInCategories() as $cat=>$link):?>
+                            <li><span class="separator">|</span> <a href="<?php echo $link ?>" class="link-compare"><?php echo $cat ?></a></li>
+                        <?php endforeach;?>
+                        </ul>
+                    </li>
+                <?php endif;?>
+                <div class="actions clearer" >
+                    <?php if($_product->getInStock()):?>
+                            <button  type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" style="display:none;" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+                        <?php else:?>
+                            <p class="availability out-of-stock" style="display:block !important;clear: left; color: #FF2970; float: left; font-size: 0.9em; font-weight: bold;"><span><?php echo $this->__('Out of stock') ?></span></p>
+                        <?php endif; ?>
+                </div>
+*/?>
+
+
+        	</li>
+    <?php endforeach ?>
+	</ul>
+    <?php endif; ?>
+
+    <div class="toolbar-bottom">
+        <?php echo $this->getToolbarHtml() ?>
+    </div>
+</div>
+<?php endif; ?>
+
+<?php
+    // mmc no idea what this is
+    //set product collection on after blocks
+/*
+    $_afterChildren = $this->getChild('after')->getSortedChildren();
+    foreach($_afterChildren as $_afterChildName):
+        $_afterChild = $this->getChild('after')->getChild($_afterChildName);
+        $_afterChild->setProductCollection($_productCollection);
+    ?>
+    <?php echo $_afterChild->toHtml(); ?>
+<?php endforeach; */ ?>
+

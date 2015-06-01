@@ -1,0 +1,27 @@
+<?php 
+if( $this->loginEnable() == "1" ){
+    $showdefault = $this->getShowDefault();
+    $ApiKey = trim($this->getApikey());
+    $ApiSecrete = trim($this->getApiSecret());
+    $loginRadiusTitle = trim( $this->getLoginRadiusTitle() );
+    $UserAuth = $this->getApiResult($ApiKey, $ApiSecrete);
+    if ($showdefault == 1) {
+        echo '<div class="block"><div class="block-title"><strong><span>'.__('Social Login').'</span></strong></div><div class="block-content"><p class="empty">';
+        if ($this->user_is_already_login()) {
+            $userName = Mage::getSingleton('customer/session')->getCustomer()->getName();
+            if( $loginRadiusAvatar = trim( $this->getAvatar( Mage::getSingleton('customer/session')->getCustomer()->getId() ) ) ){
+                echo "<img style='float:left' width='50' height='50' src='".$loginRadiusAvatar."' />";
+            }
+            echo "<span style='clear:both; float:left'>".__("Welcome")."!  $userName </span>";
+        } else {
+            if ($ApiKey == "" && $ApiSecrete == "") {
+                echo '<p style ="color:red;">To activate your plugin, please log in to LoginRadius and get API Key & Secret. Web: <b><a href ="http://www.loginradius.com" target = "_blank">www.LoginRadius.com</a></b></p>';
+            } elseif ($UserAuth == false) {
+                echo '<p style ="color:red;">Your LoginRadius API Key and Secret is not valid, please correct it or contact LoginRadius support at <b><a href ="http://www.loginradius.com" target = "_blank">www.LoginRadius.com</a></b></p>';
+            } else {
+                echo __($loginRadiusTitle).'<div class="interfacecontainerdiv" style="margin-left:10px"></div>';
+            }
+        }
+        echo '</p></div></div>';
+    }
+}

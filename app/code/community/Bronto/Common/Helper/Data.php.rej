@@ -1,0 +1,17 @@
+***************
+*** 317,323 ****
+          } else {
+              $coreConfig->saveConfig($path, 0, $scope, $scopeId);
+  
+-             if (!$this->isVersionMatch(Mage::getVersionInfo(), 1, array(4, 5, array('edition' => 'Enterprise', 'major' => 9), 10))) {
+                  list($module) = explode('/', $path);
+  
+                  $coreConfigData->setScope($scope)
+--- 317,323 ----
+          } else {
+              $coreConfig->saveConfig($path, 0, $scope, $scopeId);
+  
++             if (!$this->isVersionMatch(Mage::getVersionInfo(), 1, array(4, 5, array('edition' => 'Professional', 'major' => 9), 10))) {
+                  list($module) = explode('/', $path);
+  
+                  $coreConfigData->setScope($scope)

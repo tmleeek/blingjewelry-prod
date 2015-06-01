@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modeules>
+        <Interactone_CoreMods>
+            <version>0.1.0</version>
+        </Interactone_CoreMods>
+    </modeules>
+    <global>
+        <models>
+            <interactone_coremods>
+                <class>Interactone_CoreMods_Model</class>
+            </interactone_coremods>
+            <shipping>
+                <rewrite>
+                    <carrier_freeshipping>Interactone_CoreMods_Model_Shipping_Carrier_Freeshipping</carrier_freeshipping>
+                    <carrier_tablerate>Interactone_CoreMods_Model_Shipping_Carrier_Tablerate</carrier_tablerate>
+                </rewrite>
+            </shipping>
+            <review_resource>
+                <rewrite>
+                    <review_summary>Interactone_CoreMods_Model_Resource_Review_Summary</review_summary>
+                </rewrite>
+            </review_resource>
+        </models>
+        <blocks>
+            <interactone_coremods>
+                <class>Interactone_CoreMods_Block</class>
+            </interactone_coremods>
+            <adminhtml>
+                <rewrite>
+                    <report_product_sold_grid>Interactone_CoreMods_Block_Adminhtml_Report_Product_Sold_Grid</report_product_sold_grid>
+                </rewrite>
+            </adminhtml>
+        </blocks>
+    </global>
+    <crontab>
+        <jobs>
+            <catalog_product_alert>
+                <schedule>
+                    <cron_expr>*/5 * * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>productalert/observer::process</model>
+                </run>
+            </catalog_product_alert>
+        </jobs>
+    </crontab>
+</config>

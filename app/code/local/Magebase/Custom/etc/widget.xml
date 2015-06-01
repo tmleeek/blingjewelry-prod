@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widgets>
+    <new_products>
+        <parameters>
+			<products_sku translate="label">
+                <required>0</required>
+                <visible>1</visible>
+                <value></value>
+                <label>SKU Display</label>
+                <type>text</type>
+            </products_sku>
+            <template>
+                <values>
+                    <home_grid translate="label">
+                        <value>magebase/widget/custom_list.phtml</value>
+                        <label>Custom List</label>
+                    </home_grid>
+                </values>
+            </template>
+        </parameters>
+    </new_products>
+</widgets>

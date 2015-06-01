@@ -1,0 +1,446 @@
+$grid-padding: 6px; // must be even
+$grid-padding-large: 20px;
+
+// grid
+ul.row{
+	list-style:none;
+	margin-bottom:0;
+}
+.row, ul.row{
+	&:after {
+		@include clearfix;
+	}
+	padding:0;
+	margin-left: -($grid-padding/2);
+	margin-right:-($grid-padding/2);
+
+	> li,.col{
+		float:left;
+		padding: 0 $grid-padding/2 $grid-padding $grid-padding/2;
+		margin:0;
+		//line-height:normal;
+		list-style:none;
+
+		//background:#ccc;
+		//border:solid 1px red;
+
+		img{
+			width:100%;
+			height:auto;
+		}
+	}
+}
+// for non grid thumbs
+.row.list, ul.row.list{
+	> li{
+		float:none;
+	}
+}
+
+// no pad grid
+.row.no-pad, ul.row.no-pad{
+	margin-left: 0;
+	margin-right:0;
+
+	> li,.col{
+		padding: 0;
+	}
+}
+// landing only
+.landing{
+	.row, ul.row{
+		> li,.col{
+			line-height:normal;
+			img{
+				width:100%;
+				height:auto;
+			}
+		}
+	}
+	.view-all{
+		.button{
+			width:100%;
+			padding:8px;
+			font-size:13px; 
+		}
+	}	
+	.product-info{
+		height:80px !important;
+	}
+	.products-grid{
+		padding-top:30px;
+	}
+}
+
+// landing moments override 
+.landing.moments{
+	.row, ul.row{
+		margin-bottom:30px;
+		margin-left: -($grid-padding-large/2);
+		margin-right:-($grid-padding-large/2);
+		> li,.col{
+			padding: 0 $grid-padding-large/2;
+		}
+	}
+}
+
+
+
+//.col1-layout
+//.col2-left-layout
+
+//unsets double bottom padding
+.col .row{
+	margin-bottom: -$grid-padding;
+}
+
+// adds bottom margin for certain large grid images
+.landing-hero.with-margin{
+	margin-bottom: $grid-padding;
+}
+.landing-hero{
+	&:after {
+		@include clearfix;
+	}
+	img{
+		clear:both;	
+	}
+}
+//simple grid
+.row.grid > li,
+.row.grid > .col{
+	width:25%;	
+}
+
+// new names
+.cols2 > li,
+.cols2 > .col{
+	width:50%;
+}
+.cols3 > .col, 
+.cols3 > li,{
+	width:33.3333%;
+}
+.cols4 > .col, 
+.cols4 > li{
+	width:25%;	
+}
+.cols5 > .col, 
+.cols5 > li{
+	width:20%;
+}
+
+// spans
+.cols3 > .colspan2{
+	width:66.6666%;
+}
+.cols4 > .colspan3{
+	width:75%;	
+}
+.cols4 > .colspan2{
+	width:50%;
+}
+.cols5 > .colspan3{
+	width:60%;
+}
+.cols5 > .colspan2{
+	width:40%;
+}
+
+ /* ============================================ *
+ * Treatments
+ * ============================================ */
+.rough-wrap{
+	margin: 0 0 30px 0;
+    background: url('../images/bg-rough-inspiration.png');
+    padding:6px;
+        background: 
+           url(../images/bg-rough-inspiration.png) left top repeat-x,  /* On top,    like z-index: 4; */
+           url(../images/bg-rough-inspiration-vertical.png) left top repeat-y,   /*            like z-index: 3; */
+           url(../images/bg-rough-inspiration.png) right bottom repeat-x,
+           url(../images/bg-rough-inspiration-vertical.png) right center repeat-y;                    /* On bottom, like z-index: 1; */
+    &:after{
+    	@include clearfix();
+    }
+}
+
+.rough{
+    background-color:#fff;
+    padding:4px;
+    .products-grid{
+    	padding:10px 0 0 10px;
+    }
+}
+
+.box-wrap{
+	border:solid 1px $c-module-border;
+	padding:6px;
+	margin: 0 0 30px 0;
+    &:after{
+    	@include clearfix();
+    }
+}
+.landing{
+    .section{
+      clear:both;
+      overflow:hidden;
+      position:relative;
+     // border-top:solid 1px $c-module-border;
+      background: url('../images/bg-dashed.png') no-repeat center top;
+      padding:30px 0 0 0;
+      margin-top:0;
+      margin-bottom:30px;
+  }
+}
+
+.landing{
+	.rough,.box-wrap,.section{
+		.row, ul.row{
+			margin-bottom:0;
+		}
+	}
+}
+
+
+
+@include bp(max-width, $bp-large) { 
+
+    // simple grid
+	.row.grid > li,
+	.row.grid > .col{
+		width:33.3333%;	
+	}
+	.col2-left-layout{
+	    .cols5 > .colspan2, .cols5 > li.colspan2,
+	    .cols5 > .colspan3, .cols5 > li.colspan3{
+	    	width:100%;
+	 		float:none;
+	 		clear:both; 	
+	    }
+	}
+	// for non grid thumbs
+	.row.list, ul.row.list{
+		> li{
+			float:left;
+			width:50%;
+		}
+	}
+}
+
+
+@media (min-width: $bp-medium + 1) and (max-width: $bp-large){
+	// open up the spans when sidebar for a small range
+
+	.col2-left-layout{
+
+		.cols4 > .col, .cols4 > li{
+			width:50%;
+		}
+		.cols3 > .colspan2, .cols3 > li.colspan2,
+		.cols4 > .colspan2, .cols4 > li.colspan2{
+	    // moved outside col2 .cols5 > .colspan2, .cols5 > li.colspan2,
+	    //.cols5 > .colspan3, .cols5 > li.colspan3{
+	    	width:100%;
+	 		float:none;
+	 		clear:both; 	
+	    }
+	}
+}
+@include bp(max-width, $bp-medium) { 
+
+
+	.cols5 > .colspan2,
+	.cols5 > .colspan3{
+    	width:100%;
+ 		float:none;
+ 		clear:both; 
+	}
+}
+
+@include bp(max-width, $bp-small) {
+    // new
+	.col2-left-layout {
+		.cols4 > .col, .cols4 > li{
+	    	width:100%;
+	 		float:none;
+	 		clear:both; 
+ 		}
+	}
+	.cols2 > .col, .cols2 > li,
+    .cols3 > .col, .cols3 > li,
+	.cols3 > .colspan2, .cols3 > li.colspan2,
+	.cols4 > .col, .cols4 > li,
+	.cols4 > .colspan2, .cols4 > li.colspan2,
+    .cols5 > .col, .cols5 > li,
+    .cols5 > .colspan2, .cols5 > li.colspan2,
+    .cols5 > .colspan3, .cols5 > li.colspan3{
+    	width:100%;
+ 		float:none;
+ 		clear:both; 	
+    }
+
+    // set up the nested columns
+    .cols2 .row > .col, .cols2 .row > li,
+    .cols4 .row > .col, .cols4 .row > li{
+    	width:50%;
+ 		float:left;
+ 		clear:none; 	
+    }  
+
+    // simple grid
+	.row.grid > li,
+	.row.grid > .col{
+		width:50%;	
+	}
+}
+@include bp(max-width, $bp-xsmall) {
+    // set up the nested columns
+    .cols2 .row > .col, .cols2 .row > li,
+    .cols4 .row > .col, .cols4 .row > li,
+    // simple grid
+	.row.grid > li,
+	.row.grid > .col,
+	// for non grid thumbs
+	.row.list > li, 
+	ul.row.list > li{
+    	width:100%;
+ 		float:none;
+ 		clear:both; 	
+    }  
+}
+
+
+// landing category titles
+.cms-page-view .std .landing li,
+.cms-page-view .std .grid li,
+.cms-page-view .std .col li{
+	line-height:normal;
+}
+
+
+
+// source ordering
+.landing-wrap,
+.category-wrap{ 
+	display: table; 
+	table-layout: fixed;
+	width:100%;
+}
+.landing-header,
+.category-image{
+	display: table-caption;
+	padding-bottom:20px;
+}
+.landing-content,
+.category-content{
+	display: table-footer-group; 
+	padding-top:20px;
+	color:$c-gray;
+	font-size:$f-size-xs;
+	h1{
+		font-family: $f-stack-special;
+		text-transform:uppercase;
+		font-size:14px;
+		color:$c-gray;	
+		margin:0px 0 10px 0;
+		padding-top:20px;
+		border-top:solid 1px $c-module-border;
+	}
+}
+.landing{ display: table-header-group; }
+.category-products{
+	display:table-row-group;
+}
+.category-wrap .block-layered-nav{
+	display: table-header-group; 
+}
+
+// landing page styles
+.landing{
+	li > a,
+	.col > a,
+	.landing-hero a{
+		display:block;
+		position:relative;
+		.category-title{
+			position:absolute;
+			bottom:0;
+			left:0;
+			width:100%;
+			font-family: $f-stack-special;
+			text-transform:uppercase;
+			text-align:center;
+			font-size:14px;
+			background: #fff;
+			background: white(0.8);
+			padding:3px 5px;
+			margin:0;
+			display:block;
+	  		-webkit-transition: background .25s ease-out;
+			  -moz-transition: background .25s ease-out;
+			  -o-transition: background .25s ease-out;
+			  transition: background .25s ease-out;
+		}
+		&:hover{
+			.category-title{
+				background: white(0.9);
+				color:$c-action;
+			}
+		}
+	}
+}
+
+.landing.white{
+
+	img{
+		border:solid 1px darken($c-module-border,5%);;
+	}
+	.landing-hero img{
+		border:none;
+	}
+
+	li > a,
+	.col > a,
+	.landing-hero a{
+		.category-title{
+			background: transparent;
+		}
+		&:hover{
+			.category-title{
+				background: transparent;
+				color:$c-action;
+			}
+		}
+	}
+}
+
+@include bp(max-width, $bp-xsmall) {
+	// hide images on small screens
+	.landing{
+		display:none;
+	}
+	.landing-page .block-layered-nav .block-content>dl>dd{
+		display:block;
+	}
+}
+
+
+/* ============================================ *
+ * image placeholders
+ * ============================================ */
+ /*
+
+.landing li > a, .landing .col > a, .landing .landing-hero a{
+    position: relative;
+    padding-bottom: percentage(590px/492px);
+    height: 0;
+    //overflow: hidden;
+    img{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }	
+}
+*/

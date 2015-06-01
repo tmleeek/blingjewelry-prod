@@ -1,0 +1,140 @@
+diff --git a/app/code/community/Bronto/Common/Helper/Data.php b/app/code/community/Bronto/Common/Helper/Data.php
+index 1717382..58071ea 100644
+--- a/app/code/community/Bronto/Common/Helper/Data.php
++++ b/app/code/community/Bronto/Common/Helper/Data.php
+@@ -317,7 +317,7 @@ class Bronto_Common_Helper_Data
+         } else {
+             $coreConfig->saveConfig($path, 0, $scope, $scopeId);
+ 
+-            if (!$this->isVersionMatch(Mage::getVersionInfo(), 1, array(4, 5, array('edition' => 'Enterprise', 'major' => 9), 10))) {
++            if (!$this->isVersionMatch(Mage::getVersionInfo(), 1, array(4, 5, array('edition' => 'Professional', 'major' => 9), 10))) {
+                 list($module) = explode('/', $path);
+ 
+                 $coreConfigData->setScope($scope)
+@@ -1050,7 +1050,7 @@ class Bronto_Common_Helper_Data
+             $minor = $versionInfo['minor'];
+ 
+             if (1 == $major) {
+-                if ($minor < 9) {
++                if ($minor < 9 || ($minor == 9 && method_exists('Mage', 'getEdition'))) {
+                     return 'Community';
+                 } else if ($minor >= 9 && $minor < 11) {
+                     return 'Professional';
+diff --git a/app/code/community/Bronto/Common/Model/Observer.php b/app/code/community/Bronto/Common/Model/Observer.php
+index 324535e..216ca5b 100644
+--- a/app/code/community/Bronto/Common/Model/Observer.php
++++ b/app/code/community/Bronto/Common/Model/Observer.php
+@@ -42,7 +42,7 @@ class Bronto_Common_Model_Observer
+         $sentry->disableModules($scope, $scopeId, true);
+ 
+         // Unlink all Emails
+-        if (!Mage::helper('bronto_common')->isVersionMatch(Mage::getVersionInfo(), 1, array(array('edition' => 'Enterprise', 'major' => 9)))) {
++        if (!Mage::helper('bronto_common')->isVersionMatch(Mage::getVersionInfo(), 1, array(array('edition' => 'Professional', 'major' => 9)))) {
+             $sentry->unlinkEmails(
+                 Mage::getModel('bronto_email/message')->getCollection(),
+                 $scope,
+diff --git a/app/code/community/Bronto/Common/Model/System/Config/Backend/Token.php b/app/code/community/Bronto/Common/Model/System/Config/Backend/Token.php
+index 7a9d35f..24bda1c 100644
+--- a/app/code/community/Bronto/Common/Model/System/Config/Backend/Token.php
++++ b/app/code/community/Bronto/Common/Model/System/Config/Backend/Token.php
+@@ -85,7 +85,7 @@ class Bronto_Common_Model_System_Config_Backend_Token extends Mage_Core_Model_Co
+         $sentry = Mage::getModel('bronto_common/keysentry');
+         $sentry->disableModules($this->getScope(), $this->getScopeId(), $includeCommon);
+ 
+-        if (!Mage::helper('bronto_common')->isVersionMatch(Mage::getVersionInfo(), 1, array(array('edition' => 'Enterprise', 'major' => 9)))) {
++        if (!Mage::helper('bronto_common')->isVersionMatch(Mage::getVersionInfo(), 1, array(array('edition' => 'Professional', 'major' => 9)))) {
+             $sentry->unlinkEmails(
+                 Mage::getModel('bronto_email/message')->getCollection(),
+                 $this->getScope(),
+diff --git a/app/code/community/Bronto/Email/Block/Adminhtml/System/Email/Import/Grid.php b/app/code/community/Bronto/Email/Block/Adminhtml/System/Email/Import/Grid.php
+index 12205cf..14cb8ff 100644
+--- a/app/code/community/Bronto/Email/Block/Adminhtml/System/Email/Import/Grid.php
++++ b/app/code/community/Bronto/Email/Block/Adminhtml/System/Email/Import/Grid.php
+@@ -26,7 +26,7 @@ class Bronto_Email_Block_Adminhtml_System_Email_Import_Grid extends Mage_Adminht
+         $brontoTable   = Mage::getSingleton('core/resource')->getTableName('bronto_email/message');
+ 
+         // Apply conditional logic to handle 1.9 overriding collection _construct
+-        if (Mage::helper('bronto_common')->isVersionMatch(Mage::getVersionInfo(), 1, array(4, 5, array('edition' => 'Enterprise', 'major' => 9), 10))) {
++        if (Mage::helper('bronto_common')->isVersionMatch(Mage::getVersionInfo(), 1, array(4, 5, array('edition' => 'Professional', 'major' => 9), 10))) {
+             $collection->getSelect()->joinLeft(
+                 $brontoTable,
+                 "`{$templateTable}`.`template_id` = `{$brontoTable}`.`core_template_id`"
+diff --git a/app/code/community/Bronto/Email/Block/Adminhtml/System/Email/Template/Grid.php b/app/code/community/Bronto/Email/Block/Adminhtml/System/Email/Template/Grid.php
+index 8fd7354..da2aabc 100644
+--- a/app/code/community/Bronto/Email/Block/Adminhtml/System/Email/Template/Grid.php
++++ b/app/code/community/Bronto/Email/Block/Adminhtml/System/Email/Template/Grid.php
+@@ -22,7 +22,7 @@ class Bronto_Email_Block_Adminhtml_System_Email_Template_Grid extends Mage_Admin
+         $brontoTable   = Mage::getSingleton('core/resource')->getTableName('bronto_email/message');
+ 
+         // Apply conditional logic to handle 1.9 overriding collection _construct
+-        if (Mage::helper('bronto_common')->isVersionMatch(Mage::getVersionInfo(), 1, array(4, 5, array('edition' => 'Enterprise', 'major' => 9), 10))) {
++        if (Mage::helper('bronto_common')->isVersionMatch(Mage::getVersionInfo(), 1, array(4, 5, array('edition' => 'Professional', 'major' => 9), 10))) {
+             $collection->getSelect()->joinLeft(
+                 $brontoTable,
+                 "`{$templateTable}`.`template_id` = `{$brontoTable}`.`core_template_id`"
+diff --git a/app/code/community/Bronto/Email/Helper/Data.php b/app/code/community/Bronto/Email/Helper/Data.php
+index d7c304c..277d1a2 100644
+--- a/app/code/community/Bronto/Email/Helper/Data.php
++++ b/app/code/community/Bronto/Email/Helper/Data.php
+@@ -240,7 +240,7 @@ class Bronto_Email_Helper_Data
+         $emails    = array();
+         $templates = Mage::getModel('bronto_email/template')->getCollection();
+ 
+-        if ($this->isVersionMatch(Mage::getVersionInfo(), 1, array(4, 5, array('edition' => 'Enterprise', 'major' => 9), 10))) {
++        if ($this->isVersionMatch(Mage::getVersionInfo(), 1, array(4, 5, array('edition' => 'Professional', 'major' => 9), 10))) {
+             $templateTable = Mage::getSingleton('core/resource')->getTableName('bronto_email/template');
+             $brontoTable   = Mage::getSingleton('core/resource')->getTableName('bronto_email/message');
+             $templates->getSelect()->joinLeft(
+diff --git a/app/code/community/Bronto/Email/Model/Mysql4/Template/Collection.php b/app/code/community/Bronto/Email/Model/Mysql4/Template/Collection.php
+index a388be7..3dcc83b 100644
+--- a/app/code/community/Bronto/Email/Model/Mysql4/Template/Collection.php
++++ b/app/code/community/Bronto/Email/Model/Mysql4/Template/Collection.php
+@@ -13,7 +13,7 @@ class Bronto_Email_Model_Mysql4_Template_Collection extends Mage_Core_Model_Mysq
+         parent::_construct();
+         $this->_templateTable = $this->getResource()->getTable('bronto_email/template');
+         $this->_brontoTable   = $this->getResource()->getTable('bronto_email/message');
+-        if (Mage::helper('bronto_common')->isVersionMatch(Mage::getVersionInfo(), 1, array(4, array('edition' => 'Enterprise', 'major' => 9)))) {
++        if (Mage::helper('bronto_common')->isVersionMatch(Mage::getVersionInfo(), 1, array(4, array('edition' => 'Professional', 'major' => 9)))) {
+             $this->_select->joinLeft(
+                 array($this->_brontoTable),
+                 "`{$this->_templateTable}`.`template_id` = `{$this->_brontoTable}`.`core_template_id`"
+diff --git a/app/code/community/Bronto/Email/Model/System/Config/Source/Email/Template.php b/app/code/community/Bronto/Email/Model/System/Config/Source/Email/Template.php
+index 0d48659..36e0c4c 100644
+--- a/app/code/community/Bronto/Email/Model/System/Config/Source/Email/Template.php
++++ b/app/code/community/Bronto/Email/Model/System/Config/Source/Email/Template.php
+@@ -20,7 +20,7 @@ class Bronto_Email_Model_System_Config_Source_Email_Template extends Mage_Adminh
+             $collection = Mage::getModel('bronto_email/template')->getCollection();
+ 
+             // Apply conditional logic to handle 1.9 overriding collection _construct
+-            if (Mage::helper('bronto_common')->isVersionMatch(Mage::getVersionInfo(), 1, array(4, 5, array('edition' => 'Enterprise', 'major' => 9), 10))) {
++            if (Mage::helper('bronto_common')->isVersionMatch(Mage::getVersionInfo(), 1, array(4, 5, array('edition' => 'Professional', 'major' => 9), 10))) {
+                 $collection->getSelect()->joinLeft(
+                     $brontoTable,
+                     "`{$templateTable}`.`template_id` = `{$brontoTable}`.`core_template_id`"
+diff --git a/app/code/community/Bronto/Product/controllers/Adminhtml/RecommendationsController.php b/app/code/community/Bronto/Product/controllers/Adminhtml/RecommendationsController.php
+index ee7c4a3..5a66257 100644
+--- a/app/code/community/Bronto/Product/controllers/Adminhtml/RecommendationsController.php
++++ b/app/code/community/Bronto/Product/controllers/Adminhtml/RecommendationsController.php
+@@ -56,7 +56,7 @@ class Bronto_Product_Adminhtml_RecommendationsController extends Mage_Adminhtml_
+         $head = $this->getLayout()->getBlock('head');
+         $head->addItem('js_css', 'prototype/windows/themes/default.css');
+         $enabled = Mage::getSingleton('cms/wysiwyg_config')->isEnabled();
+-        if (Mage::helper('bronto_common')->isVersionMatch(Mage::getVersionInfo(), '1', array('6', array('edition' => 'Enterprise', 'major' => '9'), '10', '11'))) {
++        if (Mage::helper('bronto_common')->isVersionMatch(Mage::getVersionInfo(), '1', array('6', array('edition' => 'Professional', 'major' => '9'), '10', '11'))) {
+             $head->addItem('js_css', 'prototype/windows/themes/magento.css');
+             if ($enabled) {
+                 $head->addItem('js_css', 'mage/adminhtml/wysiwyg/tiny_mce/setup.js');
+diff --git a/app/code/community/Bronto/Reminder/Model/Rule.php b/app/code/community/Bronto/Reminder/Model/Rule.php
+index 8c16165..2213a9b 100644
+--- a/app/code/community/Bronto/Reminder/Model/Rule.php
++++ b/app/code/community/Bronto/Reminder/Model/Rule.php
+@@ -34,8 +34,7 @@ class Bronto_Reminder_Model_Rule
+         if (Mage::helper('bronto_verify')->isVersionMatch(
+             Mage::getVersionInfo(),
+             1,
+-            array(array('<=', 6), array('edition' => 'Enterprise', 'major' => 9), 10, 11)
+-        )
++            array(array('<=', 6), array('edition' => 'Professional', 'major' => 9), 10, 11))
+         ) {
+             $conditionsArr = unserialize($this->getConditionsSerialized());
+             if (!empty($conditionsArr) && is_array($conditionsArr)) {

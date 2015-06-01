@@ -1,0 +1,227 @@
+
+.modal .close{
+	position:absolute;
+	top:0;
+	right:10px;
+	z-index:1;
+	font-size:40px;
+	font-weight:300;
+}
+.modal-content{
+    padding:30px;
+    background: #fff url('../images/logo-ghost.png') no-repeat 140px 0;
+}
+#modal-login{
+
+	.modal-dialog{
+		padding:8px;
+		background: 
+		   url(../images/bg-rough-line-white.png) left top repeat-x,  /* On top,    like z-index: 4; */
+		   url(../images/bg-rough-line-white-vertical.png) left top repeat-y,   /*            like z-index: 3; */
+		   url(../images/bg-rough-line-white.png) left bottom repeat-x,
+		   url(../images/bg-rough-line-white-vertical.png) right top repeat-y;                    /* On bottom, like z-index: 1; */
+	}
+	
+	.button{
+		margin-top:7px;
+		min-width:150px;
+	}
+	.modal-header{
+		//padding:30px 30px 15px 30px;
+		padding:0;
+		h3{
+			float:left;
+			text-transform:uppercase;
+			font-family:$f-stack-special;
+		}
+	}
+	.modal-footer{
+		//padding:15px 30px 30px 30px;	
+		padding:15px 0 0 0;
+		text-transform: uppercase;
+		font-size:$f-size-xs;
+		font-family:$f-stack-special;
+		text-align:center;
+	}
+	.modal-body{
+		padding:30px 0;
+	}
+	p{
+		margin-bottom:15px;
+	}
+	.input-box.login-submit{
+		float:left;
+	}
+	.login-submit-wrap{
+		clear:both;
+		overflow:hidden;
+	}
+}
+#lb-forgot-pass{
+	font-family:$f-stack-serif;
+	font-style:italic;
+	padding-top:7px;
+	font-size:$f-size-xs;
+	a{
+		color:$c-text-gray;
+	}
+	float:right;
+	padding-top:13px;
+}
+.reg2{
+	.input-text{
+		margin-top:3px;
+	}
+}
+
+// subscribe modal
+#modal-subscribe{
+
+	.modal-dialog{
+		padding:8px;
+		background: 
+		   url(../images/bg-rough-line-white.png) left top repeat-x,  /* On top,    like z-index: 4; */
+		   url(../images/bg-rough-line-white-vertical.png) left top repeat-y,   /*            like z-index: 3; */
+		   url(../images/bg-rough-line-white.png) left bottom repeat-x,
+		   url(../images/bg-rough-line-white-vertical.png) right top repeat-y;                    /* On bottom, like z-index: 1; */
+	}
+
+	.modal-content{
+		padding:60px 75px 75px 75px;
+		background-position:240px 0;
+	}
+	.modal-body{
+		///background:url('../images/heading-bling-is-on.png') no-repeat center top;
+		//padding-top:26px;
+	}
+    .block-title{
+        font-size: 28px;
+        text-align:center;
+        color:$c-black;
+        strong{
+            font-size: $f-size-xl;
+            text-transform:uppercase;
+            margin-right:10px;
+        }
+        span.serif{
+            font-family: $f-stack-serif-special;
+            font-style:italic;
+        }
+        .pink{
+            color:$c-action;
+        }
+        h1{
+        	margin:0;
+        	padding:0;
+        	font-size:30px;
+        	font-weight:300;
+        	font-family: $f-stack-special;
+        }
+    }
+    .block-subscribe{ 
+    	margin-top:15px;
+        .input-box {
+            float: left;
+            width: percentage(280px/360px);
+            //width:80%;
+            padding-top: 0;
+        }
+
+
+        .input-text {
+            width: 100%;
+            border-right: 0;
+            @include border-radius(0);
+            background:$c-bg-gray;
+        }
+
+        .block-content {
+            padding-top: 7px;
+
+            &:after {
+                @include clearfix;
+            }
+        }
+        .actions {
+            float: left;
+            width: percentage(80px/360px);
+            //width:20%;
+            margin: 0;
+
+            .button {
+                height: 30px;
+                line-height: 17px;
+                float: left;
+                width:100%;
+                background:$c-black;
+            }
+        }
+
+        label{
+            text-transform:uppercase;
+            color:$c-text-gray;
+            font-size:10px;
+            letter-spacing:1px;
+            margin-right:-80px;
+            text-align:center;
+        }
+    }
+    .block-footer{
+    	padding-top:15px;
+    }
+}
+
+
+@include bp(max-width, $bp-medium) {
+	#modal-subscribe{
+	    .block-title{
+	        font-size: 24px;
+	        h1{
+	        	font-size:30px;
+	        }
+	    }
+	}
+}
+@include bp(max-width, $bp-small) {
+	#modal-subscribe{
+	    .block-title{
+	        font-size: 18px;
+	        h1{
+	        	font-size:24px;
+	        }
+	    }
+	}
+}
+
+
+@media (max-width: 600px) {
+	#modal-subscribe{
+		.modal-content{
+			padding:60px;
+		}
+	}
+}
+@media (max-width: 500px) {
+	#modal-subscribe{
+		.modal-content{
+			padding:45px 15px;
+		}
+	}
+}
+
+@media (min-width: 460px) {
+	#modal-login{
+		.modal-dialog{
+			width:400px;
+    		margin: 30px auto;
+		}
+	}
+}
+@media (min-width: 600px) {
+	#modal-subscribe{
+		.modal-dialog{
+			width:540px;
+	    	margin: 30px auto;
+		}
+	}
+}

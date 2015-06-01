@@ -1,0 +1,654 @@
+
+/* ============================================ *
+ * Nav - Skip Link
+ * ============================================ */
+
+/*
+.skip-nav {
+    //width: 40%;
+    &:not(.skip-active):hover {
+        text-decoration: none;
+
+        .icon {
+            //background-position: -50px+4px ($toolbar-icon-padding-offset/2);
+            //background: url('../images/icon-menu.png') no-repeat center;
+            opacity:0.6;
+        }
+}
+
+.skip-nav .label {
+   // display: inline;
+}
+*/
+
+// bling added for mobile help
+@include bp(min-width, $bp-medium + 1) {
+    .nav-primary li.level0.last {
+        display:none;
+    }
+}
+
+
+.skip-link.skip-nav .icon{
+    margin-right:6px;
+}
+.skip-nav .icon {
+    //@extend .icon-sprite;
+    //background-position: 0+4px ($toolbar-icon-padding-offset/2);
+    //background: url('../images/icon-menu-gray.png') no-repeat center;
+    height:18px;
+    position:relative;
+    &:before { 
+        font-size:18px;
+        position:absolute;
+        top:0;
+        left:0;
+        content: '\e805'; 
+        @include iconfont;
+    } /* '' */
+}
+.skip-nav.skip-active{
+    .icon {
+        //background: url('../images/icon-menu-dark.png') no-repeat center;
+        opacity:0.4;
+    } 
+}
+
+// ---------------------------------------------
+
+@include bp(min-width, 500px) {
+    .skip-nav {
+        width: 25%;
+    }
+}
+
+// ---------------------------------------------
+
+@include bp(min-width, $bp-medium + 1) {
+
+    .skip-nav {
+        display: none;
+    }
+
+}
+
+/* ============================================ *
+ * Nav - Skip Content
+ * ============================================ */
+/*
+@include bp(max-width, $bp-medium) {
+
+    #header-nav {
+        padding: 5px 0;
+    }
+
+}
+*/
+// ---------------------------------------------
+
+@include bp(min-width, $bp-medium + 1) {
+
+    //#header-nav changed selector so can override on affix
+    .js-header-nav{
+        display: block; /* Force visibility */
+        background: url('../images/bg-rough-line.png') no-repeat center top;
+        #nav{
+            background: url('../images/bg-rough-line.png') repeat-x center bottom          
+        }
+    }
+
+}
+
+/* ============================================ *
+ * Nav Primary
+ * ============================================ */
+
+@include bp(min-width, $bp-medium + 1) {
+    .nav-primary {
+        display: block;
+    }
+
+}
+
+/* ============================================ *
+ * General Navigation Styles
+ * ============================================ */
+
+$nav-primary-height: 40px;
+
+.nav-primary {
+    a {
+        text-decoration: none;
+        position: relative;
+        display: block;
+        color: $c-black;
+        font-family: $f-stack-special;
+        font-style:normal;
+        font-weight:400;
+        font-size:$f-size-xs;
+    }
+
+    li {
+        position: relative;
+        text-align:left;
+    }
+
+    li.level0 > a{
+        line-height: $nav-primary-height;
+    }
+
+    li.level1 a {
+        font-weight:400;
+        font-family:$f-stack-sans;
+        padding:2px 25px;
+        font-size:$f-size-s;
+        color:$c-text;
+    }
+}
+
+.nav-primary li.level0 > a {
+    text-transform: uppercase;
+}
+
+// mmc using display:none/block on mobile, using visibility/opacity on desktop
+// Show sub-menus when JS adds the appropriate classes
+.nav-primary .menu-active > ul.level0,
+.nav-primary li.level0 li.sub-menu-active > ul,
+.nav-primary .menu-active > ul.megamenu {
+    display: block;
+}
+
+/* ============================================ *
+ * Small Viewports - Accordion Style Menu
+ * ============================================ */
+
+@include bp(max-width, $bp-medium) {
+
+    .menu-active{
+        background:$c-module-background;
+    }
+    .nav-primary {
+
+        // Increase clickable area of anchors for small viewports
+        a{
+            line-height: $nav-primary-height + 5px;
+        }
+
+        .level0 a{
+            line-height: 30px;
+        }
+
+        // Hide all sub-menus
+        li.level0 ul {
+            display: none;
+        }
+
+        // Indent sub-menus
+        li.level0 li {
+            padding: 0;
+        }
+
+        li.level1 a {
+            padding: 0 15px 0 25px;
+        }
+
+        li.parent > a:after {
+            @include triangle(right, 5px, #ccc);
+            top: 50%;
+            left: 10px;
+            right: auto;
+            margin-top: -5px;
+        }
+
+        // Menu active states
+        li.parent.sub-menu-active > a:after,
+        li.parent.menu-active > a:after {
+            @include triangle(down, 5px, #ccc);
+            top: 50%;
+            left: 10px;
+            right: auto;
+            margin-top: -5px;
+        }
+
+        li.menu-active > a,
+        li.sub-menu-active > a {
+            color: $c-action;
+        }
+    }
+}
+
+/* ============================================ *
+ * Large Viewports - Dropdown Menu
+ * ============================================ */
+
+@include bp(min-width, $bp-medium + 1) {
+
+    .nav-primary {
+
+        a.level0 {
+            padding: 0 20px;
+        }
+
+        // underline
+        a.level0:hover span{
+            padding:2px 0;
+            border-bottom: solid 2px $c-action;
+        }
+        // underline
+        .active a.level0 span{
+            //padding:2px 0;
+           // border-bottom: solid 2px $c-text-gray;
+
+        }
+        .active a.level0{
+            color:$c-action;
+        }
+
+        li.level0,
+        a.level0 {
+            display: inline-block;
+        }
+
+        li:last-child > a {
+            border-bottom: none;
+        }
+
+        a:hover,
+        li:hover > a {
+            color: $c-action;
+        }
+
+        .menu-active,
+        li.level0:hover {
+            z-index: 200;
+        }
+
+        /* Default styles for 1+ drop-down menus */
+        // mmc add > to prevent hiding megamenu lists
+        li.level0 > ul {
+            @include menu;
+            position: absolute;
+            left: 0;
+            top: $nav-primary-height - 2; /* Height of ".nav-primary a.level0" */
+            z-index: 10;
+            width: 250px;
+            padding:12px 0;
+            display: none; /* Hide until displayed. */
+            // mmc changing for transitions
+            //opacity:0;
+            //visibility:hidden;
+        }
+
+        /* Level 2+ */
+        li.level1 ul {
+            left: 60px;
+            top: 15px;
+        }
+
+        /* Class for js to add briefly to evaluate element positioning. */
+        li.level0 ul.level0.position-test {
+            display: block;
+        }
+
+        /* Correct menus that will hang off the page (class added by js) */
+        li.level0 ul.level0.spill {
+            right: 0;
+            left: auto;
+
+            // Sub-menu drop down to the left
+            li.level1 ul {
+                left: auto;
+                right: 50px;
+                top: 20px;
+            }
+        }
+
+        /* Level 1+ */
+        li.level0 li.parent > a {
+            position: relative;
+
+            &:after {
+                @include triangle(right, 4px, #ccc);
+                right: 5px;
+                top: 50%;
+                margin-top: -3px;
+            }
+        }
+    }
+
+    .no-touch li:hover > ul {
+        display: block; /* Force display */
+        // mmc transitions
+        //visibility:visible;
+        //opacity:1;
+        //-webkit-transition: all .25s ease-out;
+        //-moz-transition: all .25s ease-out;
+        //-o-transition: all .25s ease-out;
+        //transition: all .25s ease-out;
+    }
+}
+
+// adjust main menu padding based on screen width
+@include bp(min-width, $bp-large + 1) {
+    .nav-primary {
+
+        a.level0 {
+            padding: 0 40px;
+        }
+    }
+}
+@include bp(min-width, $bp-xlarge + 1) {
+    .nav-primary {
+
+        a.level0 {
+            padding: 0 55px;
+        }
+    }
+}
+
+/* ============================================ *
+ * Megamenu
+ * ============================================ */
+$mm-col:180px;
+$mm-pad:20px;
+$mm-img:250px; 
+
+.nav-primary li.level0 ul.megamenu{
+    padding:$mm-pad 25px $mm-pad 0;
+
+    @include bp(min-width, $bp-medium + 1) {
+        @include boxshadow(2px, 2px, 2px, 0, rgba(0,0,0,0.2));
+    }
+
+    h3, h3 a{
+        @include h6;
+        font-weight:700;
+    }
+    .links{
+        width:$mm-col;
+        float:left;
+        padding:0 0 0 25px;
+        h3{
+            font-family: $f-stack-special;
+            text-transform:uppercase;
+            font-weight: 700;
+        }
+        ul{
+            padding:0;
+        }
+        li{
+
+        }
+        a{
+
+        }
+    }
+    .links:not(:first-child){
+        border-left:solid 1px $c-module-border-light;
+    }
+    .block-promo{
+        width:$mm-img;
+        float:right;
+        img{
+            width:100%;
+            height:auto;
+        }
+    }
+    a [class^="icon-"]{
+        color: #bbb; 
+        font-size:11px;
+        margin-right:6px;
+    }
+    a:hover [class^="icon-"]{
+        color: $c-action; 
+        font-size:13px;
+    }
+ }
+
+////////////
+
+// to allow large menu to be positioned relative to menu bar instead of item
+/*
+.nav-primary li.first{
+    position:static;
+}
+ol.nav-primary{
+    position:relative;
+}
+*/
+// end
+/*
+.affix{
+    .nav-primary li.level0 > ul.mega > li{
+        max-width:1200px;
+        margin:0 auto;
+        padding:0 30px;
+    }
+}
+*/
+.nav-primary li.level0 > ul.mega{
+    width:900px;
+    padding-right:0;
+    h3{
+        font-family: $f-stack-special;
+        text-transform:uppercase;
+        font-weight:700;
+    }
+    .mainlinks{
+        width:75%;
+        float:left;
+        border-left:solid 1px $c-module-border-light;
+        li.col{
+            width:25%;
+            float:left;
+            padding: 0 25px 20px 0;
+        }
+
+        li.col:nth-child(4n+1){
+            clear:left !important;
+        }
+        padding-left:25px;
+    }
+    .sidelinks{
+        width:25%;
+        float:left;
+        padding-left:25px;
+        padding-right:25px;
+        .block-promo{
+            margin-top:15px;
+            width:100%;
+            img{
+                width:100%;
+                height:auto;
+            }
+        }
+    }
+
+}
+@include bp(max-width, $bp-large) {
+    .nav-primary li.level0 > ul.mega{
+        .mainlinks{
+            li.col{
+                padding: 0 15px 20px 0;
+            }
+            padding-left:15px;
+        }
+        .sidelinks{
+            padding-left:15px;
+            padding-right:15px;
+        }
+
+    }
+}
+
+@include bp(max-width, $bp-large) {
+    .nav-primary li.first{
+        position:static;
+    }
+    ol.nav-primary{
+        position:relative;
+    }
+   .nav-primary li.level0 > ul.mega{ 
+        width:100%;
+    }
+}
+
+@include bp(max-width, $bp-medium) {
+    .nav-primary li.level0 > ul.mega{
+        .mainlinks{
+            margin-left:0;
+            margin-right:0;
+            padding:0;
+            h3{
+                font-family: $f-stack-sans;
+                text-transform:none;
+                margin:0;
+                padding:0;
+            }
+            width:50%;
+            li.col{
+                float:none;
+                display:block;
+                width:100%;
+                padding:0;
+                h3 a{
+                    line-height:30px;
+                    padding: 0 25px;
+                    font-size:13px;
+                    font-weight:400;
+                }
+                ul{
+                    display:none;
+                }
+            }
+        }
+        .sidelinks{
+            width:50%;
+        }
+    }   
+}
+
+@include bp(max-width, $bp-small) {
+
+}
+////////////
+
+ .nav-primary .megamenu a{
+    font-weight:400;
+    font-family:$f-stack-sans;
+    padding:1px 0;
+    font-size: $f-size-s;
+    color:$c-text;
+ }
+.nav-primary .megamenu li.hilight a{
+    color:$c-action;
+    font-family:$f-stack-special;
+    font-weight:700;    
+ }
+ .nav-primary li.level0 ul{
+
+    ul{
+        // this is for the .links ul
+        padding: 0 0;
+        display: block;
+        position:static;
+        width:auto;
+        border:none;
+    }
+
+ }
+
+$mm-pad-tot:2*$mm-pad;
+
+$mm-w-1: $mm-col + $mm-pad-tot;
+$mm-w-2: 2*$mm-col + $mm-pad-tot;
+$mm-w-3: 3*$mm-col + $mm-pad-tot;
+$mm-w-4: 4*$mm-col + $mm-pad-tot;
+
+$mm-w-1-p: $mm-w-1 + $mm-img;
+$mm-w-2-p: $mm-w-2 + $mm-img;
+$mm-w-3-p: $mm-w-3 + $mm-img;
+$mm-w-4-p: $mm-w-4 + $mm-img;
+
+ .nav-primary li.level0{
+
+    ul.megamenu-1col{
+        width:$mm-w-1;
+    }
+    ul.megamenu-2col{
+        width:$mm-w-2;
+    }
+    ul.megamenu-3col{
+        width:$mm-w-3;
+    }
+    ul.megamenu-4col{
+        width:$mm-w-4;
+    }
+
+    ul.megamenu-1col.megamenu-withpromo{
+        width:$mm-w-1-p;
+    }
+    ul.megamenu-2col.megamenu-withpromo{
+        width:$mm-w-2-p;
+    }
+    ul.megamenu-3col.megamenu-withpromo{
+        width:$mm-w-3-p;
+    }
+    ul.megamenu-4col.megamenu-withpromo{
+        width:$mm-w-4-p;
+    }
+}
+
+@include bp(max-width, $bp-medium) {
+    .nav-primary li.level0{
+        ul.megamenu,
+        ul.megamenu-1col,
+        ul.megamenu-2col,
+        ul.megamenu-3col,
+        ul.megamenu-4col,
+        ul.megamenu-1col.megamenu-withpromo,
+        ul.megamenu-2col.megamenu-withpromo,
+        ul.megamenu-3col.megamenu-withpromo,
+        ul.megamenu-4col.megamenu-withpromo{
+            width:100%;
+            clear:both;
+            overflow:hidden;
+        }
+        .block-promo{
+            display:none;
+        }
+        ul.megamenu .links{
+            margin:0;
+            padding:0;
+            h3{
+                padding:0 25px;            
+            }
+            a{
+                padding:0 25px;
+            }
+        }
+        ul.megamenu-1col .links{
+            width:100%;
+        }
+        ul.megamenu-2col .links{
+            width:50%;
+        }
+        ul.megamenu-3col .links{
+            width:33.33%;
+        }
+        ul.megamenu-4col .links{
+            width:25%;
+        }
+    }
+}
+
+/* styles for fixed state */
+.js-header-nav.affix{
+    position:fixed;
+    top:28px;
+    left:0;
+    right:0;
+    background:#fff;
+    z-index:100;  
+}
+

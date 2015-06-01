@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <grep_bracelet>
+            <label>Bracelet Chooser</label>
+            <tab>catalog</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>100</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <settings>
+                    <label>Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <bracelet_category translate="label">
+                            <label>Bracelet Category Id</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </bracelet_category>
+                        <pendant_category translate="label">
+                            <label>Pendant Category Id</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </pendant_category>
+                        <filter_attribute_code translate="label">
+                            <label>Filter Attribute Code</label>
+                            <comment>e.g. charm_type</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </filter_attribute_code>
+                        <charms_per_page translate="label">
+                            <label>Maximum number of charms per page</label>
+                            <comment>e.g. 32</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </charms_per_page>
+                        <default_bracelet_id translate="label">
+                            <label>Default Bracelet Id</label>
+                            <comment>To be shown when the customer doesn't select a bracelet before selecting pendants</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </default_bracelet_id>
+                    </fields>
+                </settings>
+            </groups>
+        </grep_bracelet>
+    </sections>
+</config>

@@ -1,0 +1,173 @@
+.ixcba .lightface { margin: 0; padding: 0; border-collapse: collapse; }
+.ixcba .lightface td { padding: 0; margin: 0; background-color: transparent; vertical-align: top; font-family: 'Verdana'; font-size: 11px; }
+.ixcba .lightface th { padding: 0; margin: 0; background-color: transparent; vertical-align: top; font-family: 'Verdana'; font-size: 11px; }
+.ixcba .lightface .centerLeft, .ixcba .lightface .centerRight { width: 10px; height: auto; background-image: url(b.png); background-repeat: repeat-y; }
+.ixcba .lightface .topLeft, .ixcba .lightface .topRight, .ixcba .lightface .bottomLeft, .ixcba .lightface .bottomRight { width: 10px; height: 10px; background-repeat: no-repeat; }
+.ixcba .lightface .topLeft { background-image: url(tl.png); background-position: top left; }
+.ixcba .lightface .topRight { background-image: url(tr.png); background-position: top right; }
+.ixcba .lightface .bottomLeft { background-image: url(bl.png); background-position: bottom left; }
+.ixcba .lightface .bottomRight { background-image: url(br.png); background-position: bottom right; }
+.ixcba .lightface .topCenter, .ixcba .lightface .bottomCenter { width: auto; height: 10px; background-image: url(b.png); background-repeat: repeat-x; }
+.ixcba .lightface .lightfaceContent { background-color: #fff; border: 1px solid #555; position: relative; }
+.ixcba .lightface .loading { display: block; margin: 10px auto; }
+.ixcba .lightface .lightfaceContent .lightfaceTitle { font-size: 14px; color: #fff; background-color: #e6ad32; border: 1px solid #3b5998; font-weight: bold; margin: -1px; margin-bottom: 0; padding: 5px 10px; }
+.ixcba .lightface .lightfaceContent .lightfaceDraggable { cursor:move; }
+.ixcba .lightface .lightfaceContent .lightfaceMessage { overflow: auto; margin: 0; position: relative; padding: 5px 10px; border: 1px solid #fff; }
+.ixcba .lightface .lightfaceContent .lightfaceMessage h3, .ixcba .lightface .lightfaceContent .lightfaceMessage h4, .ixcba .lightface .lightfaceContent .lightfaceMessage h5, .ixcba .lightface .lightfaceContent .lightfaceMessage h6 { margin-top: 6px; }
+.ixcba .lightface .lightfaceContent .lightfaceFooter { background-color: #f2f2f2; border-top: 1px solid #ccc; padding: 6px 10px; text-align: right; }
+ 
+.ixcba .lightface .lightfaceFooter label { font-size: 13px; border-style: solid; background-image:url(button.png); cursor:pointer; font-weight:bold; padding:2px 6px 2px 6px; text-align:center; vertical-align:top; white-space:nowrap; border-width:1px; margin-left:3px; background-position:0 0; border-color:#999; line-height:normal !important; display:inline-block; }
+.ixcba .lightface .lightfaceFooter label input { background:none; border:0 !important; cursor:pointer; font-family: 'Lucida Grande', Tahoma, Verdana, Arial, sans-serif; font-weight:bold; margin:0; padding:1px 0 2px; white-space:nowrap; text-align:center; color:#fff; font-size:13px; border: 2px outset buttonface; text-indent:0; text-shadow:none; display:inline-block; color:#444; font-size:13px; }
+/* ie6 hacks */
+* html .ixcba .lightface .lightfaceFooter label input { border:0; }
+.ixcba .lightface .lightfaceFooter label.lightfaceblue { border-color: #29447E #29447E #1A356E; background-position:0 -48px; }
+.ixcba .lightface .lightfaceFooter label.lightfaceblue.lightfacefocusblue { background-color: #5b74a8; background-image:none; }
+.ixcba .lightface .lightfaceFooter label.lightfacegreen { border-color: #3B6E22 #3B6E22 #2C5115; background-position:0 -96px; }
+.ixcba .lightface .lightfaceFooter label.lightfacegreen.lightfacefocusgreen { background-color: #69A74E; background-image:none; }
+.ixcba .lightface .lightfaceFooter label.lightfaceblue input, .ixcba .lightface .lightfaceFooter label.lightfacegreen input { color:#fff; }
+.ixcba .lightface .hiddenButton { visibility: hidden; }
+.ixcba .lightface .lightfaceOverlay { position: absolute; left: 0; top: 0; bottom: 0; right: 0; background:url(fbloader.gif) center center no-repeat #fff; }
+.ixcba .lightface .lightfaceMessageBox { overflow: auto; padding: 10px 10px; min-height: 20px; position:relative; }
+.ixcba .lightface .lightFaceMessageBoxImage { overflow: hidden; padding: 0; background:url(fbloader.gif) center center no-repeat #fff; }
+.ixcba .lightface .lightFaceMessageBoxImage img { display: block; }
+.lightface .lightfaceMessageBox  ul { padding:0; margin:0; }
+
+
+
+.ixcba .lightface .fl{float:left;}
+.ixcba .lightface .cl{clear:both;}
+.ixcba .lightface {font-family:Verdana, Geneva, sans-serif; float:left;margin: 0; padding: 0; border-collapse: collapse;padding:10px;background:url(images/b.png); border-radius:10px; behavior: url(PIE.htc); }
+
+.ixcba .lightface .centerLeft, .ixcba .lightface .centerRight { width: 10px;  background-image: url(images/b.png); background-repeat: repeat-y; } 
+.ixcba .lightface .lightfaceContent { width:460px;background-color: #fff; border: 1px solid #555;  }
+.lightfaceTitle {font-family: 'Verdana'; font-size: 11px;}
+ 
+.ixcba .lightface .lightfaceContent .lightfaceTitle { font-size: 14px; color: #fff; background-color: #e6ad32; border: 1px solid #3b5998; font-weight: bold; margin: -1px; margin-bottom: 0; padding: 5px 10px; text-align:left; }
+ 
+.ixcba .lightface .lightfaceContent .lightfaceMessage { overflow: auto; margin: 0;  padding: 5px 10px; border: 1px solid #fff; }
+.ixcba .lightface .lightfaceContent .lightfaceMessage h3, .ixcba .lightface .lightfaceContent .lightfaceMessage h4, .ixcba .lightface .lightfaceContent .lightfaceMessage h5, .ixcba .lightface .lightfaceContent .lightfaceMessage h6 { margin-top: 6px; }
+.ixcba .lightface .lightfaceContent .lightfaceFooter { background-color: #f2f2f2; border-top: 1px solid #ccc; padding: 6px 10px; text-align: right; }
+ 
+.ixcba .lightface .lightfaceFooter label { background:#dcdcdc;font-size: 13px; border-style: solid; /* background-image:url(images/button.png);  */cursor:pointer; font-weight:bold; padding:2px 6px 2px 6px; text-align:center; vertical-align:top; white-space:nowrap; border-width:1px; margin-left:3px; background-position:0 0; border-color:#999; line-height:normal !important; display:inline-block; }
+.ixcba .lightface .lightfaceFooter label input { background:none; border:0 !important; cursor:pointer; font-family: 'Lucida Grande', Tahoma, Verdana, Arial, sans-serif; font-weight:bold; margin:0; padding:1px 0 2px; white-space:nowrap; text-align:center; color:#fff; font-size:13px; border: 2px outset buttonface; text-indent:0; text-shadow:none; display:inline-block; color:#444; font-size:13px; }
+/* ie6 hacks */
+* html .ixcba .lightface .lightfaceFooter label input { border:0; }
+.ixcba .lightface .lightfaceFooter label.lightfaceblue { border-color: #29447E #29447E #1A356E; background-position:0 -48px; background:#5b74a8;}
+.ixcba .lightface .lightfaceFooter label.lightfaceblue.lightfacefocusblue { background-color: #5b74a8; background-image:none; }
+.ixcba .lightface .lightfaceFooter label.lightfacegreen { border-color: #3B6E22 #3B6E22 #2C5115; background-position:0 -96px; background:#72ac58; }
+.ixcba .lightface .lightfaceFooter label.lightfacegreen.lightfacefocusgreen { background-color: #69A74E; background-image:none; }
+.ixcba .lightface .lightfaceFooter label.lightfaceblue input, .ixcba .lightface .lightfaceFooter label.lightfacegreen input { color:#fff; }
+ 
+.ixcba .lightface .lightfaceOverlay {  left: 0; top: 0; bottom: 0; right: 0; background:url(images/fbloader.gif) center center no-repeat #fff; }
+.ixcba .lightface .lightfaceMessageBox { overflow: auto; padding: 10px 10px; min-height: 20px; text-align:left; }
+.lightface .lightfaceMessageBox  ul { padding:0; margin:0; }
+.ixcba .lightface .lightFaceMessageBoxImage { overflow: hidden; padding: 0; background:url(images/fbloader.gif) center center no-repeat #fff; }
+.ixcba .lightface .lightFaceMessageBoxImage img { display: block; }
+.ixcba .lightface .stp{font:11px Verdana, Geneva, sans-serif; height:38px; overflow:hidden; background:none repeat scroll 0 0 #CCCCCC; }
+.ixcba .lightface .stp div {background:#ccc;color:#fff;float:left;}
+.ixcba .lightface .stp span{display:block;padding:4px 28px 6px 10px;float:left;width:50px;background:url(images/stp-bg2.png) right top no-repeat;font-weight:bold;}
+.ixcba .lightface .stp div.active, .ixcba .lightface .stp div.active2{background:#e6ad32;}
+.ixcba .lightface .stp div.active span{  background:url(images/stp-bg.png) right top no-repeat; }
+.ixcba .lightface .stp div.active2 span{background:url(images/stp-bg3.png);}
+.ixcba .lightface .stp div.last {}
+.ixcba .lightface .stp div.last span{background:none;}
+.ixcba .lightface .raw{border-bottom:1px solid #ccc;font:11px Verdana, Geneva, sans-serif;color:#e6ad32;padding:10px;}
+.ixcba .lightface .raw strong{font-size:12px;display:block;}
+.ixcba .lightface .raw-txt{ float:left;padding:0 10px;width:180px;}
+.ixcba .lightface .qty{color:#000;font-weight:bold;padding:8px ;float:left;width:90px;}
+.ixcba .lightface .stp div.active_paypal span{  background:url(images/amazon2.png) right top no-repeat; }
+.ixcba .lightface .paypal span{background:url(images/amazon.png) top right   no-repeat;}
+.ixcba .lightface .qty input{width:30px;}
+.ixcba .lightface div.price{float:right;padding:8px 0;color:#390;}
+.ixcba .lightface del{color:#555;display:block;padding-right:15px;background:url(images/del-icon.png) top right no-repeat;}
+.ixcba .lightface .total, .coupon{padding:8px ;text-align:center;float:left;font:bold 12px Verdana, Geneva, sans-serif;width:424px; color:#6d84b4;}
+.ixcba .lightface .total{ background:#ccc;color:#000; float:right; margin-top:5px; text-align:right; }
+.ixcba .lightface .coupon { background: none repeat scroll 0 0 #6D84B4; border: 1px solid #6D84B4; cursor: pointer; height: 23px; margin: 7px 0 0 7px; padding: 0; width: 100px; padding-bottom:3px; color:#fff; }
+.ixcba .lightface .setting{font:12px Verdana, Geneva, sans-serif;padding:0px;text-align:center;color:#F90;font-weight:bold;}
+.ixcba .lightface .w-30 { width:50px; float:left; margin-top:7px; height:22px; }
+.ixcba .lightface #advice-required-entry-coupon_code { margin-top:32px; position:absolute; }
+.ixcba .lightface .raw-txt span{ color:#000; }
+
+
+.ixcba .lightface .note{background:#f8f8d8;border:1px solid #ffd235;padding:8px;font-size:12px;margin:5px 0 0 0;}
+.ixcba .lightface .form{padding:10px 0; padding-left:35px;}
+.ixcba .lightface .fild{clear:both;height:24px;padding-top:10px;}
+
+.ixcba .lightface .fild span{ display:block;width:110px;font-size:12px;float:left;padding:5px;}
+.ixcba .lightface .txt{float:left;width:205px;}
+.ixcba .lightface .caption{padding-left:120px;font-size:11px;}
+.ixcba .lightface .hadding{font-size:18px; padding:10px 0 20px;}
+.ixcba .lightface .hadding2{font-size:12px;font-weight:bold;}
+.ixcba .lightface .radio2{font-size:12px;float:left;margin-right:30px;margin-bottom:20px;}
+
+#checkout-step-orderitems, #checkout-step-billing, #checkout-step-shipping_method, #checkout-step-payment {width:93.2%; float:left;}
+.ixcba { width: 100% !important; }
+.ixcba .billing_shipping_ixcba { width:640px !important; }
+.ixcba .lightface .raw .popup_img {max-width:50px; max-height:50px;}
+.ixcba .lightface .form .field {clear:both;height:24px;padding-top:10px;width:407px;}
+.ixcba .lightface .form .field label { display:inline;width:110px;font-size:12px;float:left;padding:5px;font-weight:normal;color:#000; }
+.ixcba .lightface .form .field label em { position:relative; float:left; right:2px; }
+.ixcba .lightface .form .field .input-box {  clear: none; display: inline; float: left; width: 205px; }
+.ixcba .lightface .form .field input.input-text { width: 205px; }
+.ixcba .lightface .form .field select { width: 211px !important; }
+
+.ixcba .lightface .form .wide {clear:both;height:24px;padding-top:10px;width:407px;}
+.ixcba .lightface .form .wide label { display:inline;width:110px;font-size:12px;float:left;padding:5px;font-weight:normal;color:#000; }
+.ixcba .lightface .form .wide label em { position:relative; float:left; right:2px; }
+.ixcba .lightface .form .wide .input-box {  clear: none; display: inline; float: left; width: 205px; }
+.ixcba .lightface .form .wide input.input-text { width: 205px; }
+.ixcba .lightface .form .wide select { width: 211px !important; }
+
+#billing-buttons-container-bk, #shipping-method-buttons-container-bk, #payment-buttons-container-bk { visibility:hidden; width:0; height:0; padding:0; margin:0; line-height:0; position:fixed; }
+#ixcba-shipping { visibility:hidden; width:0; height:0; position:absolute; }
+
+.lightfacegreen .disabled { display:none !important; }
+.lightfacegreen .please-wait { color:#fff; }
+.lightfaceMessageBox label {font-weight:normal; text-align:left;}
+.lightfaceMessageBox label .price {font-weight:normal;}
+
+.form-list li { float: left !important; height: auto !important; width:100% !important; }
+.form-list input.input-text { width: 195px; }
+
+.ixcba .lightface label.lightfacegreen_login { background: none repeat scroll 0 0 #72AC58; border-color: #3B6E22 #3B6E22 #2C5115; height: 15px; line-height: 14px; padding: 2px 5px 4px 5px; float:left; }
+.ixcba .lightface label.lightfacegreen_login.lightfacefocusgreen { background-color: #69A74E; background-image:none; }
+.ixcba .lightface label.lightfacegreen_login input { background:none; border:0 !important; cursor:pointer; font-family: 'Lucida Grande', Tahoma, Verdana, Arial, sans-serif; font-weight:bold; margin:0; padding:1px 0 2px; white-space:nowrap; text-align:center; color:#fff; font-size:13px; border: 2px outset buttonface; text-indent:0; text-shadow:none; display:inline-block; font-size:13px; }
+.ixcba .lightface label.lightfacegreen_login span { background:none; border:0 !important; cursor:pointer; font-family: 'Lucida Grande', Tahoma, Verdana, Arial, sans-serif; font-weight:bold; margin:0; padding:1px 0 2px; white-space:nowrap; text-align:center; color:#fff; font-size:13px; border: 2px outset buttonface; text-indent:0; text-shadow:none; display:inline-block; font-size:13px; }
+.ixcba .lightface label.lightfacegreen_login input { color:#fff; }
+a.bottom_line_mageix { font-size:10px; text-decoration:none; }
+a.bottom_line_mageix:hover { text-decoration:underline; }
+.ixcba .lightface .msg_ixcba { font-size: 10px; font-weight: bold; margin: -1px; margin-bottom: 0; padding: 1px 6px; text-align:left; }
+.ixcba .lightface .success_ixcba { color:green; border:1px solid green; }
+.ixcba .lightface .error_ixcba { color:#ff0000; border:1px solid #ff0000; }
+.ixcba .lightface .hid_submit_ixcba { visibility:hidden; position:absolute; height:0px; width:0px; }
+.ixcba .lightface p.discount_amount { font-weight:normal; margin:0; padding:0; }
+
+
+.ixcba .lightface .payment_method_loading { text-align:center; height:100px; width:100%; background:#fff url(images/loading.gif) no-repeat center center; }
+.ixcba .lightface .loading_next_step { text-align:center; height:50px; width:194px; background:url(images/loading.gif) no-repeat center center; }
+.ixcba .lightface .before_selection_message_loading { border:1px solid #F0C36D; width:200px; padding:6px; color:#66666E; font-size:12px; text-align:justify; margin-top:6px; }
+
+
+.ixcba .lightface .block_wrapper { margin-bottom: 20px; }
+.ixcba .lightface .block_wrapper-right { width:34%; float:right; }
+.ixcba .lightface .block_wrapper-left { width:65%; float:left; }
+.ixcba .lightface .block_wrapper-full { width:100%; float:left; }
+.ixcba .lightface .block-head { height : 30px; background-color:#e8e3c7; width:100%; float:left; }
+.ixcba .lightface .block-head h2 { font-size : 15px!important; padding:5px; text-transform:uppercase; }
+.ixcba .lightface .totals-board { float: left; min-height:147px; padding: 3%; width: 94%; padding-bottom:0; }
+.ixcba .lightface .ixcba_total_minheight { min-height:147px; }
+.ixcba .lightface .totals-table { width:100%; }
+.ixcba .lightface .footer_grand_total tbody { height:10px; }
+.ixcba .lightface .totals-table td { width:50%; }
+.ixcba .lightface .place-order { float:right; padding: 3%; padding-top:0; }
+.ixcba .lightface .insruction-text { font-size:13px; margin-top:5px; }
+.ixcba .lightface #confirmAction { display:none; background-color: #0088FF; border: 1px solid gray; color: white; width:174px; text-transform:uppercase; font-weight:bold; font-size:15px; cursor:pointer; }
+.ixcba .lightface .additionalfooter { float:left; width:97%; }
+.ixcba .lightface .footer_grand_total { background-color:#e8e3c7; float:right; height:30px; padding:6px; }
+.ixcba .lightface .before_selection_message { background-color:#F7EBBE; border:1px solid #F0C36D; width:200px; padding:6px; color:#66666E; font-size:12px; text-align:justify; margin-top:6px; }
+.ixcba .lightface .big_center { margin:0 auto; margin-top:6px; width:290px; }
+.ixcba .lightface .small_center { margin:0 auto; width:160px !important; }
+.ixcba .lightface .success_selection_message { display:none; font-size:12px; padding:2px 6px 2px 0; }
+.ixcba .lightface .before_selection_message h1 { text-transform:uppercase; font-size:14px; clear:both; margin-bottom:5px; color:#66666E; text-align:center; font-weight:bold; }
+.ixcba .lightface .height_big { margin:0 auto; width:154px !important; margin-bottom:59px; }
+.lightfaceFooter a { color: #1E7EC8 !important; }

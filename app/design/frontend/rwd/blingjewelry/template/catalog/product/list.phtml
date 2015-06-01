@@ -1,0 +1,130 @@
+<?php
+    $_productCollection=$this->getLoadedProductCollection();
+    $_helper = $this->helper('catalog/output');
+?>
+<?php if(!$_productCollection->count()): ?>
+<p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
+<?php else: ?>
+
+<?php //echo $this->getChildHtml('catalog.leftnav'); /* mmc add layered nav */ ?>
+<?php // mmc bling added for celebros ?>
+<?php echo $this->getChildHtml('leadquestion_top') ?>
+<?php echo $this->getChildHtml('nonleadquestions_top') ?>
+
+<div class="category-products">
+    <?php echo $this->getToolbarHtml() ?>
+    <?php // mmc removed List mode ?>
+    <?php //if($this->getMode()!='grid'): ?>
+
+    <?php //else: ?>
+
+    <?php // Grid Mode ?>
+
+    <?php $_collectionSize = $_productCollection->count() ?>
+    <?php $_columnCount = $this->getColumnCount(); ?>
+    <ul class="products-grid products-grid--max-<?php echo $_columnCount; ?>-col lazyload">
+        <?php $i=0; foreach ($_productCollection as $_product): ?>
+            <?php /*if ($i++%$_columnCount==0): ?>
+            <?php endif*/ ?>
+            <li class="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>">
+                <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image lazyloading">
+                    <?php $_imgSize = 285; ?>
+                    <?php 
+                    $ls_image = $_product->getLifestyleImage();
+                    $ls_image = str_replace("no_selection", "", $ls_image);
+                    if(!empty($ls_image)){
+                    ?>
+                    <img 
+                         src="<?php echo $this->helper('catalog/image')->init($_product, 'lifestyle_image')->resize($_imgSize); ?>"
+                         alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" width="<?php echo $_imgSize;?>" height="<?php echo $_imgSize;?>" class="hover-image" />
+                    <?php
+                    } 
+                    ?>
+                    <img id="product-collection-image-<?php echo $_product->getId(); ?>"
+                         src=data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw== 
+                         data-src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize($_imgSize); ?>"
+                         alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" width="<?php echo $_imgSize;?>" height="<?php echo $_imgSize;?>" />
+
+                        <?php /* hide quickview
+                        <!-- ADD -->
+                        <a href='<?php echo $this->getUrl('ajax/index/quickview',array('product_id'=>$_product->getId()));?>' id='quickview<?php echo $_product->getId()?>' class="button js-btn-quickview" data-pid="<?php echo $_product->getId()?>">Quickview</a> 
+                        <!-- END ADD -->
+                        */?>
+                </a>
+
+                <?php
+                // bling added short title logic
+                $shortTitle = $_product->getShortTitle();
+                if(!empty($shortTitle)){
+                    $_productName = $this->escapeHtml($shortTitle);
+                }else{
+                    $_productName = $_helper->productAttribute($_product, $_product->getName(), 'name');
+                }
+                ?>
+                <div class="product-info">
+                    <h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productName;?>"><?php echo $_productName;?></a></h2>
+
+                   <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                    <!-- ADD -->
+                     <span class="ajax-wishlist-button">
+                        <a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" class="link-wishlist"><i class="icon-heart"></i>
+                        <span id='ajax_wishlist_loader<?php echo $_product->getId()?>' style='display:none' class="ajax-wishlist-loader"><img src='<?php echo $this->getSkinUrl('images/ajax/ajax-loader.gif')?>'/></span>
+                        </a>
+                     </span>
+                    <!-- END ADD -->
+                    <?php endif; ?>
+
+                    <?php if (is_object($this->getChild('name.after'))): ?>
+                    <?php
+                        $_nameAfterChildren = $this->getChild('name.after')->getSortedChildren();
+                        foreach($_nameAfterChildren as $_nameAfterChildName):
+                            $_nameAfterChild = $this->getChild('name.after')->getChild($_nameAfterChildName);
+                            $_nameAfterChild->setProduct($_product);
+                    ?>
+                        <?php echo $_nameAfterChild->toHtml(); ?>
+                    <?php endforeach; ?>
+                    <?php endif;?>
+
+                    <?php echo $this->getPriceHtml($_product, true) ?>
+                    <?php /* remove ratings
+                     if($_product->getRatingSummary()): ?>
+                    <?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
+                    <?php endif; 
+                    */?>
+                    <?php
+                    $newFromDate = $_product->getNewsFromDate();
+                    $newToDate = $_product->getNewsToDate();
+                    $now = Mage::app()->getLocale()->date()->toString(Varien_Date::DATETIME_INTERNAL_FORMAT);
+                    if(($newFromDate < $now && $newFromDate != NULL) && ($newToDate > $now || $newToDate == "")){
+                        echo '<span class="badge new">New</span>';
+                    }
+                    ?>
+                    <?php if(!$_product->isSaleable()): ?>
+                    <span class="availability out-of-stock"><span><?php echo $this->__('Waitlist') ?></span></span>
+                    <?php endif; ?>
+                </div>
+            </li>
+            <?php /*if ($i%$_columnCount==0 || $i==$_collectionSize): ?>
+            <?php endif*/ ?>
+        <?php endforeach ?>
+    </ul>
+    <?php /*<script type="text/javascript">decorateGeneric($$('ul.products-grid'), ['odd','even','first','last'])</script> */?>
+    <?php // closing grid/list mode endif; ?>
+
+    <div class="toolbar-bottom">
+        <?php echo $this->getToolbarHtml() ?>
+    </div>
+</div>
+<?php endif; ?>
+
+<?php if (is_object($this->getChild('after'))): ?>
+<?php 
+    //set product collection on after blocks
+    $_afterChildren = $this->getChild('after')->getSortedChildren();
+    foreach($_afterChildren as $_afterChildName):
+        $_afterChild = $this->getChild('after')->getChild($_afterChildName);
+        $_afterChild->setProductCollection($_productCollection);
+    ?>
+    <?php echo $_afterChild->toHtml(); ?>
+<?php endforeach; ?>
+<?php endif;?>

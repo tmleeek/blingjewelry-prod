@@ -1,0 +1,387 @@
+/* line 2, ../scss/bracelet.scss */
+#bracelet_chooser .head {
+  font-variant: small-caps;
+}
+/* line 6, ../scss/bracelet.scss */
+#bracelet_chooser .selected {
+  width: 200px;
+  border: 1px solid #DDD;
+  float: right;
+}
+/* line 11, ../scss/bracelet.scss */
+#bracelet_chooser .selected h3 {
+  line-height: 40px;
+  padding-left: 10px;
+  font-size: 16px;
+  background-color: #ddd;
+  margin-bottom: 10px;
+}
+/* line 19, ../scss/bracelet.scss */
+#bracelet_chooser .selected ul li {
+  height: 50px;
+  background-repeat: no-repeat;
+  background-position: left;
+  position: relative;
+}
+/* line 25, ../scss/bracelet.scss */
+#bracelet_chooser .selected ul li .price {
+  position: absolute;
+  right: 0px;
+  bottom: 18px;
+  font-weight: bold;
+}
+/* line 32, ../scss/bracelet.scss */
+#bracelet_chooser .selected ul li .buttons {
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  height: 15px;
+}
+/* line 38, ../scss/bracelet.scss */
+#bracelet_chooser .selected ul li .buttons span {
+  cursor: pointer;
+  border: 1px solid #ddd;
+  padding: 2px;
+  width: 25px;
+  color: #069;
+}
+/* line 48, ../scss/bracelet.scss */
+#bracelet_chooser .selected .section {
+  font-variant: small-caps;
+  background-color: #DEDEDE;
+  line-height: 20px;
+  padding-left: 10px;
+  margin-top: 10px;
+}
+/* line 56, ../scss/bracelet.scss */
+#bracelet_chooser .selected .filler {
+  height: 60px;
+}
+/* line 60, ../scss/bracelet.scss */
+#bracelet_chooser .selected .addtocart {
+  margin: auto;
+  background-image: url(../images/add-to-cart.jpg);
+  width: 129px;
+  height: 41px;
+  margin-bottom: 10px;
+}
+/* line 67, ../scss/bracelet.scss */
+#bracelet_chooser .selected .addtocart .text {
+  display: none;
+}
+/* line 72, ../scss/bracelet.scss */
+#bracelet_chooser .selected .subtotal {
+  font-size: 13px;
+  margin-top: 15px;
+  border-top: 1px solid #EEE;
+  padding-top: 5px;
+  margin-bottom: 15px;
+  padding-right: 5px;
+  text-align: right;
+}
+/* line 80, ../scss/bracelet.scss */
+#bracelet_chooser .selected .subtotal .text {
+  text-transform: uppercase;
+}
+/* line 84, ../scss/bracelet.scss */
+#bracelet_chooser .selected .subtotal .price {
+  font-weight: bold;
+}
+/* line 92, ../scss/bracelet.scss */
+#bracelet_chooser .top, #bracelet_chooser .active_bracelet, #bracelet_chooser .main_section, #bracelet_chooser .bracelets {
+  width: 690px;
+}
+/* line 96, ../scss/bracelet.scss */
+#bracelet_chooser .top {
+  background-color: #fff;
+  border: 1px solid #DDD;
+  border-bottom: none;
+}
+/* line 102, ../scss/bracelet.scss */
+#bracelet_chooser .selected_bracelet {
+  padding: 5px;
+  font-size: 18px;
+  font-variant: small-caps;
+}
+/* line 107, ../scss/bracelet.scss */
+#bracelet_chooser .selected_bracelet .action, #bracelet_chooser .selected_bracelet .clear {
+  font-size: 12px;
+  color: #333;
+  padding-left: 15px;
+  font-variant: normal;
+  cursor: pointer;
+}
+/* line 115, ../scss/bracelet.scss */
+#bracelet_chooser .selected_bracelet .clear {
+  padding-left: 450px;
+}
+/* line 120, ../scss/bracelet.scss */
+#bracelet_chooser .main_section {
+  float: left;
+  position: relative;
+}
+/* line 125, ../scss/bracelet.scss */
+#bracelet_chooser .active_bracelet {
+  height: 100px;
+  background-color: #fff;
+  border: 1px solid #DDD;
+  border-top: none;
+  text-align: center;
+  position: relative;
+  padding-top: 30px;
+}
+/* line 134, ../scss/bracelet.scss */
+#bracelet_chooser .active_bracelet .filler {
+  padding: 35px;
+}
+/* line 138, ../scss/bracelet.scss */
+#bracelet_chooser .active_bracelet .bracelet_view {
+  height: 50px;
+}
+/* line 142, ../scss/bracelet.scss */
+#bracelet_chooser .active_bracelet .pendant {
+  position: absolute;
+  background-repeat: no-repeat;
+  width: 150px;
+  height: 150px;
+}
+/* line 149, ../scss/bracelet.scss */
+#bracelet_chooser .active_bracelet .too_many {
+  position: absolute;
+  width: 200px;
+  height: 85px;
+  left: 245px;
+  top: 100px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  z-index: 20;
+}
+/* line 159, ../scss/bracelet.scss */
+#bracelet_chooser .active_bracelet .too_many .head {
+  display: block;
+  font-size: 18px;
+  border-bottom: 1px solid #ddd;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+/* line 166, ../scss/bracelet.scss */
+#bracelet_chooser .active_bracelet .too_many .head .title {
+  display: inline;
+  float: left;
+  font-weight: bold;
+}
+/* line 172, ../scss/bracelet.scss */
+#bracelet_chooser .active_bracelet .too_many .head .close {
+  display: inline;
+  float: right;
+  cursor: pointer;
+}
+/* line 179, ../scss/bracelet.scss */
+#bracelet_chooser .active_bracelet .too_many .message {
+  display: block;
+  clear: left;
+  font-size: 15px;
+}
+/* line 187, ../scss/bracelet.scss */
+#bracelet_chooser .filters {
+  width: 685px;
+  padding-left: 5px;
+  background-color: #ECEDEF;
+  border: 1px solid #ECEDEF;
+  border-bottom: 1px solid #ddd;
+  clear: left;
+}
+/* line 194, ../scss/bracelet.scss */
+#bracelet_chooser .filters .title {
+  font-variant: small-caps;
+}
+/* line 198, ../scss/bracelet.scss */
+#bracelet_chooser .filters ul li {
+  width: 165px;
+  display: inline;
+  float: left;
+  padding-bottom: 5px;
+}
+/* line 205, ../scss/bracelet.scss */
+#bracelet_chooser .filters .clearer {
+  clear: left;
+}
+/* line 210, ../scss/bracelet.scss */
+#bracelet_chooser .bracelets {
+  position: absolute;
+  z-index: 100;
+  background-color: #fff;
+  border: 1px solid #DDD;
+  top: 35px;
+  height: auto;
+}
+/* line 218, ../scss/bracelet.scss */
+#bracelet_chooser .bracelets .bracelet {
+  width: 340px;
+  background-repeat: no-repeat;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-right: 2px;
+  cursor: pointer;
+}
+/* line 228, ../scss/bracelet.scss */
+#bracelet_chooser .bracelets .bracelet .description {
+  font-size: 18px;
+  padding-top: 22px;
+  text-align: center;
+  cursor: pointer;
+}
+/* line 235, ../scss/bracelet.scss */
+#bracelet_chooser .bracelets .bracelet .description .price {
+  font-weight: bold;
+  padding-left: 15px;
+  cursor: pointer;
+}
+/* line 242, ../scss/bracelet.scss */
+#bracelet_chooser .charms {
+  padding-top: 10px;
+}
+/* line 244, ../scss/bracelet.scss */
+#bracelet_chooser .charms .title h3 {
+  font-weight: normal;
+  float: left;
+}
+/* line 249, ../scss/bracelet.scss */
+#bracelet_chooser .charms .title .pages {
+  float: right;
+}
+/* line 252, ../scss/bracelet.scss */
+#bracelet_chooser .charms .title .pages .next, #bracelet_chooser .charms .title .pages .previous {
+  border: 1px solid #ddd;
+  color: #069;
+  cursor: pointer;
+  padding: 3px;
+}
+/* line 260, ../scss/bracelet.scss */
+#bracelet_chooser .charms .charm-list {
+  clear: left;
+}
+/* line 264, ../scss/bracelet.scss */
+#bracelet_chooser .charms .charm {
+  position: relative;
+  display: inline;
+  float: left;
+  width: 85px;
+  margin-left: 1px;
+  margin-bottom: 1px;
+  height: 85px;
+  background-repeat: no-repeat;
+}
+/* line 274, ../scss/bracelet.scss */
+#bracelet_chooser .charms .charm .description {
+  display: none;
+  position: absolute;
+  right: -84px;
+  z-index: 100;
+  top: -1px;
+  width: 84px;
+  height: 83px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-left: none;
+  overflow: hidden;
+  font-size: 12px;
+}
+/* line 288, ../scss/bracelet.scss */
+#bracelet_chooser .charms .charm .description .name {
+  display: block;
+  height: 33px;
+  overflow: hidden;
+}
+/* line 294, ../scss/bracelet.scss */
+#bracelet_chooser .charms .charm .description .bottom {
+  font-size: 10px;
+  .padding-bottom: 2px;
+  height: 22px;
+  display: block;
+  margin-top:3px;
+}
+/* line 299, ../scss/bracelet.scss */
+#bracelet_chooser .charms .charm .description .bottom .price {
+  font-weight: bold;
+  display: block;
+}
+/* line 304, ../scss/bracelet.scss */
+#bracelet_chooser .charms .charm .description .bottom .add, #bracelet_chooser .charms .charm .description .bottom .view {
+  clear: left;
+  color: #069;
+  text-align: right;
+  cursor: pointer;
+  padding-left: 2px;
+  padding-right: 2px;
+  margin-right: 8px;
+  border: 1px solid #ddd;
+}
+/* line 320, ../scss/bracelet.scss */
+#bracelet_chooser .charms li.active {
+  border: 1px solid #ddd;
+  height: 83px;
+  width: 84px;
+  border-right: none;
+}
+/* line 328, ../scss/bracelet.scss */
+#bracelet_chooser .shadow {
+  background-color: #000;
+  opacity: 0.3;
+}
+
+/* line 334, ../scss/bracelet.scss */
+.charm_left {
+  width: 520px;
+  padding: 20px;
+  float: left;
+}
+
+/* line 340, ../scss/bracelet.scss */
+.charm_right {
+  padding: 20px;
+  width: 300px;
+  float: right;
+  font-size: 16px;
+  text-align: left;
+}
+/* line 347, ../scss/bracelet.scss */
+.charm_right .charm_title {
+  padding-top: 50px;
+  font-variant: small-caps;
+  font-weight: bold;
+  font-size: 20px;
+  text-align: left;
+}
+/* line 355, ../scss/bracelet.scss */
+.charm_right .price {
+  padding-top: 20px;
+  text-transform: uppercase;
+}
+/* line 359, ../scss/bracelet.scss */
+.charm_right .price .value {
+  font-weight: bold;
+}
+/* line 364, ../scss/bracelet.scss */
+.charm_right .description {
+  padding-top: 20px;
+}
+/* line 368, ../scss/bracelet.scss */
+.charm_right .action {
+  padding-top: 20px;
+  color: #1E7EC8;
+}
+/* line 372, ../scss/bracelet.scss */
+.charm_right .action .add {
+  text-decoration: underline;
+  cursor: pointer;
+  margin-right: 15px;
+}
+/* line 378, ../scss/bracelet.scss */
+.charm_right .action .add:hover {
+  text-decoration: none;
+}
+#bracelet_chooser .selected_bracelet .action {
+	clear: left;
+       color: #FF0000; 
+}

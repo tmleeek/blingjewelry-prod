@@ -1,0 +1,129 @@
+/* ============================================ *
+ * Homepage
+ * ============================================ */
+
+/* -------------------------------------------- *
+ * Primary Banner
+ */
+
+
+
+.hero,
+ul.row.home-featured,
+.home-inspirations{
+    margin-bottom:30px;
+}
+
+ul.row.home-featured,
+.home-inspirations, 
+.home-inspirations-wrap,
+.home-hotlist{
+    &:after{
+        @include clearfix();
+    }
+}
+
+.cms-page-view .std h2.product-name,
+.cms-page-view .std h3.product-name,
+.cms-page-view .std h2.product-name,
+.cms-no-route .std h3.product-name{
+    padding:0;
+}
+
+/* -------------------------------------------- *
+ * Featured Banner Section
+ */
+ .cms-page-view .home-featured,
+.home-featured{
+    li, .col{
+        text-align:center;
+    }
+    a{
+        display:block;
+        color:$c-action;
+
+        &:hover{
+            color:darken($c-action,10%);
+        }
+    }
+    h3{
+        font-family:$f-stack-special;
+        text-transform:uppercase;
+        text-align:center;
+        letter-spacing:1px;
+        font-size:16px;
+        margin:6px 0 2px 0;
+        padding:0;
+    }
+    .serif{
+        font-family:$f-stack-serif;
+        font-style: italic;
+        font-size:$f-size-l;
+    }
+}
+.home-inspirations{
+    background: url('../images/bg-rough-inspiration.png');
+    padding:6px;
+        background: 
+           url(../images/bg-rough-inspiration.png) left top repeat-x,  /* On top,    like z-index: 4; */
+           url(../images/bg-rough-inspiration-vertical.png) left top repeat-y,   /*            like z-index: 3; */
+           url(../images/bg-rough-inspiration.png) right bottom repeat-x,
+           url(../images/bg-rough-inspiration-vertical.png) right center repeat-y;                    /* On bottom, like z-index: 1; */
+}
+
+.home-inspirations-wrap{
+    padding:4px 2px;
+    background-color:#fff;
+    ul.row li{
+        padding: 0 4px;
+        position:relative;
+        /*
+        .box{
+            position:absolute;
+            top:50%;
+            left:50%;
+            width:300px;
+            height:300px;
+            margin-left:-150px;
+            margin-top:-150px;
+            opacity:.7;
+
+        }
+        */
+    } 
+}
+
+@include bp(max-width, $bp-small) {
+    .home-inspirations-wrap{
+        ul.row li:first-child{
+            margin-bottom:8px;
+        }
+    }
+}
+.cms-page-view .home-hotlist,
+.home-hotlist{
+    h2{
+        padding:0;
+        font-family: $f-stack-serif-special;
+        text-align:center;
+        font-style:italic;
+        font-size:32px;
+        a{
+            color:$c-action;
+        }
+    }
+
+}
+
+/* -------------------------------------------- *
+ * New Products Section
+ */
+
+/* Hiding the reviews content via CSS because we can't modify the template, */
+/* since it may be used in other places where those elements are needed */
+.cms-index-index .products-grid .ratings,
+.cms-index-index .products-grid .actions,
+.cms-index-noroute .products-grid .ratings,
+.cms-index-noroute .products-grid .actions {
+    display: none;
+}

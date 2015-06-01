@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+
+<layout version="0.1.0">
+    <grep_bracelet_index_index>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+        <reference name="head">
+            <action method="addItem"><type>skin_js</type><name>js/bracelet/jquery-1.8.2.min.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/bracelet/jquery-ui-1.9.1.custom.min.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/fancybox/jquery.fancybox-1.3.4.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/bracelet/spin.min.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/bracelet/bracelet.js</name></action>
+            <action method="addItem"><type>skin_css</type><name>css/bracelet.css</name></action>
+            <action method="addItem"><type>skin_css</type><name>js/fancybox/jquery.fancybox-1.3.4.css</name></action>
+            <action method="addItem"><type>skin_css</type><name>css/jquery-ui-1.9.1.custom.min.css</name></action>
+        </reference>
+        <reference name="content">
+            <block type="grep_bracelet/content" name="bracelet" as="bracelet" template="bracelet/content.phtml">
+                <block type="grep_bracelet/bracelets" name="bracelets" as="bracelets" template="bracelet/bracelets.phtml" />
+                <block type="grep_bracelet/filters" name="filters" as="filters" template="bracelet/filters.phtml" />
+                <block type="grep_bracelet/charms" name="charms" as="charms" template="bracelet/charms.phtml" />
+                <block type="grep_bracelet/charms" name="charm_list" as="charm_list" template="bracelet/list.phtml" />
+            </block>
+        </reference>
+    </grep_bracelet_index_index>
+</layout>

@@ -1,0 +1,50 @@
+LicenseAgreement: http://ixcba.com/license-guide/
+LicenseType: Single Domain
+ProductName: Inline IXCBA
+ProductOwner: Mageix LLC
+ProductVersion: v.2.0.0
+SerialNumber: e6605ec88c915055
+WARNING: DO NOT EDIT ANYTHING IN THIS FILE! THIS WOULD CORRUPT YOUR LICENSE
+Server restriction: blingjewelry.com
+Server restriction: www.blingjewelry.com
+
+------ LICENSE FILE DATA -------
+283X174Xbr6hKld7kkOUls6qIdoy32cN
+UXvbqr3KbPXMORa3zUv59CaUIc26DJc4
+zXtsr0ce3nY3CX5NSLJVVmWi6+gnnvVF
+NaM1HEdwNJu/kW/ttJuYSBxgYobZlH2E
+lQfgNexvlZ3UU9D4+JDTjzxSBMGvOkCN
+Q6yhWyYijCGIVY6zO9HPEBjRj/uKeB12
+M/N53+qh/Lrb6iD6KFMHSNDuL7vx40bP
+qnaaPho/cUQ6DqqBHOHNJ9T3INR0Muo8
+bk3RUN6MXNQCoLz0qrPJETM14j2+UGZx
+gfSvQlIuyEwnmlbdQdZ/cgwzlX9s/OH1
+szdl6rYzafR3ISOMJZOF9xG5tYuiwqmD
+IogG50yfgaR70zbZWjQjAY3JC6f4IR25
+p7m91M0gwViEttkM0FAQcih+KEkFmGPq
+mkU2eAaFrju+vWSxFz4xzeEik7EpXfT0
+HJK0JVQeKWXUwZsRKwo7GttNw3i9p33e
+kiUfM/KvfFEaeLwNoiCPfqCe3xLbNIy0
+QgWWIjEYbB/5XBd43yHwGfgChi4y2KbP
+RVWOCt/RHyIn4AuKyLRVIxLh30jjtsbw
+qlsz5NcY1+BHQW9vhIvUq0/hPSHZl/Al
+N08Oei1RsEwoqnMZ0M4QqDHg3OPShBtC
+0G0yghNr9U+/o7jLNMTh4QRrRIyQl+TJ
+WDkAsinOm28aNH5roXmWT4gSLm0/VHM5
+9IqgX4M49xyqopC/cB2krNH5LzobxDrm
+j+s8ZzFNqsK5yCrH6hWyweH9U46eSSFj
+B9WU+6Ct/2JCktIC1+ys7TjWkmWRwmS0
+3VfZwdkMtfIr7kRILJ+hB5/Ty7MSzrR1
+33M3F4ouiQ2uDfDXroJKnbcQICgCGSla
+aiQP0NarEk9Sl0/UvS9j94PrSApWH9Of
+YnqZsksJp1n+B5aBWJyumZNtxh+QlQDI
+y1tuf+H/ukZjm2PUkPjNQUZ3Mb1pS5WH
+9MyUNqQsvbboL0ElefZe85/JIeL6KBGv
+AF7gaP8r4y0SDZYt3Zq+xsuDE3KPA33L
+b2xZVaWNvEZeOe1DvlYGgnElvu0mWY07
+gfABIegQ/Y81+OHjTd+Q3UAthsoeG7w0
+LP8GQUr5cyqukDLQVzp8hUqWYrfCOlV4
+H5VumUt+B079pGRHgAlcG4QNwobFM0uB
+g2jc7qVmJgqcGYX7WEKLo3YnhFKHp/9K
+2/EuRSe4wFojh2iA39==
+--------------------------------

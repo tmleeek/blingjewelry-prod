@@ -1,0 +1,29 @@
+
+/* ============================================ *
+ * Contacts
+ * ============================================ */
+
+.contacts-index-index {
+    .buttons-set {
+        margin-left: $trim;
+        max-width: 435px;
+
+        p.required {
+            float: left;
+        }
+
+        @include bp(max-width, $bp-small) {
+            max-width: 330px;
+            margin-left: 0;
+
+            button {
+                float: left;
+                margin-left: 0px;
+            }
+
+            p.required {
+                float: right;
+            }
+        }
+    }
+}

@@ -1,0 +1,17 @@
+***************
+*** 240,246 ****
+          $emails    = array();
+          $templates = Mage::getModel('bronto_email/template')->getCollection();
+  
+-         if ($this->isVersionMatch(Mage::getVersionInfo(), 1, array(4, 5, array('edition' => 'Enterprise', 'major' => 9), 10))) {
+              $templateTable = Mage::getSingleton('core/resource')->getTableName('bronto_email/template');
+              $brontoTable   = Mage::getSingleton('core/resource')->getTableName('bronto_email/message');
+              $templates->getSelect()->joinLeft(
+--- 240,246 ----
+          $emails    = array();
+          $templates = Mage::getModel('bronto_email/template')->getCollection();
+  
++         if ($this->isVersionMatch(Mage::getVersionInfo(), 1, array(4, 5, array('edition' => 'Professional', 'major' => 9), 10))) {
+              $templateTable = Mage::getSingleton('core/resource')->getTableName('bronto_email/template');
+              $brontoTable   = Mage::getSingleton('core/resource')->getTableName('bronto_email/message');
+              $templates->getSelect()->joinLeft(

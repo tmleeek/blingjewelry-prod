@@ -1,0 +1,233 @@
+<?php
+$messages = Mage::getSingleton('adminhtml/session')->getMessages(true);
+foreach($messages->getItems() as $message) :
+   $message->getText();
+endforeach;
+?>
+<div class="content-header">
+    <table cellspacing="0">
+        <tr>
+            <td>
+                <h3 class="icon-head head-cms-page">Configuration</h3>
+            </td>
+            <td class="form-buttons"><?php /* <button  id="id_<?php echo Mage::getSingleton('core/session')->getFormKey() ?>" type="submit" class="scalable save" onclick="configurationForm.submit()"><span>Save</span></button>*/ ?></td>
+         </tr>
+    </table>
+</div>
+<form id="configurationForm" name="configurationForm" action="<?php echo Mage::helper("adminhtml")->getUrl("video/adminhtml_configuration/save/") ?>" method="post">
+	<div><input name="form_key" type="hidden" value="<?php echo Mage::getSingleton('core/session')->getFormKey() ?>" /></div>
+    <div class="entry-edit">
+    	<div  class="entry-edit-head collapseable" ><a id="video_general-head" href="#" onclick="Fieldset.toggleCollapse('video_general', '<?php echo Mage::helper("adminhtml")->getUrl("video/adminhtml_configuration/index/key/".Mage::getSingleton('core/session')->getFormKey()) ?>'); return false;">General</a></div>
+        <input id="video_general-state" name="video_general-state" type="hidden" value="1" />
+        <fieldset class="config collapseable" id="video_general"><legend>General</legend>
+            <table cellspacing="0" class="form-list">
+                <colgroup class="label" />
+                <colgroup class="value" />
+                <colgroup class="scope-label" />
+                <colgroup class="" />
+                <tbody>
+                    <tr>
+                        <td class="label"><label for="video_general_kind">Kind of display video</label></td>
+                        <td class="value">
+                            <?php echo $this->getVideoGeneralKindHtml(); ?>
+                            <p class="note"><span>The video is embedded into the product page or is shown inside a modal ajax dialog.</span></p>
+                        </td>
+                    </tr>
+                    <tr id="row_video_general_dialog_button_url">
+                        <td class="label"><label for="video_general_dialog_button_url">Dialog Button Image Url</label></td>
+                        <td class="value">
+                            <?php echo $this->getDialogButtonUrlHtml(); ?>
+                            <br/>
+                            <p class="note"><span>Set the dialog button image url.</span></p>
+                        </td>
+                    </tr>
+                    <tr id="row_video_general_dialog_style_color">
+                        <td class="label"><label for="video_general_dialog_style_color">Dialog Style</label></td>
+                        <td class="value">
+                            <?php echo $this->getDialogStyleColorHtml(); ?>
+                            <br/>
+                            <p class="note"><span>Choose color of dialog.</span></p>
+                        </td>
+                    </tr>
+                    <tr id="row_video_general_dialog_style_include_border">
+                        <td class="label"></td>
+                        <td class="value">
+                            <?php echo $this->getDialogStyleIncludeBorderHtml(); ?>
+                            <br/>
+                            <p class="note"><span>Set include border in dialog.</span></p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </fieldset>
+        <script type="text/javascript">Fieldset.applyCollapse('video_general');</script>
+    </div>
+    <div class="entry-edit">
+    	<div  class="entry-edit-head collapseable" ><a id="video_appearance-head" href="#" onclick="Fieldset.toggleCollapse('video_appearance', '<?php echo Mage::helper("adminhtml")->getUrl("video/adminhtml_configuration/index/key/".Mage::getSingleton('core/session')->getFormKey()) ?>'); return false;">Apperance</a></div>
+        <input id="video_appearance-state" name="video_appearance-state" type="hidden" value="1" />
+        <fieldset class="config collapseable" id="video_appearance"><legend>Apperance</legend>
+            <table cellspacing="0" class="form-list">
+                <colgroup class="label" />
+                <colgroup class="value" />
+                <colgroup class="scope-label" />
+                <colgroup class="" />
+                <tbody>
+                    <tr>
+                        <td class="label"><label for="video_appearance_player_style">Player Style</label></td>
+                        <td class="value">
+                            <?php echo $this->getPlayerStyleHtml(); ?>
+                            <br/>
+                            <p class="note"><span>Choose the video player style.</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label"><label for="video_appearance_player_skin">Player Skin</label></td>
+                        <td class="value">
+                            <?php echo $this->getPlayerSkinHtml(); ?>
+                            <br/>
+                            <p class="note"><span>Choose the video player skin.</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label"><label for="video_apperance_allow_full_screen">Allow Full Screen</label></td>
+                        <td class="value">
+                            <?php echo $this->getAllowFullScreenHtml(); ?>
+                            <p class="note"><span>Enable / Disable the "Full Screen" button.</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label"><label for="video_apperance_show_play_button">Show Play Button</label></td>
+                        <td class="value">
+                            <?php echo $this->getShowPlayButtonHtml(); ?>
+                            <p class="note"><span>Enable / Disable the "Play" button on screen.</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label"><label for="video_apperance_player_width">Player Width</label></td>
+                        <td class="value">
+                            <?php echo $this->getPlayerWidthHtml(); ?>
+                            <p class="note"><span>Sets the width (pixel) of the player. By default, the width of the player is determined by the width of the video displayed.</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label"><label for="video_apperance_player_height">Player Height</label></td>
+                        <td class="value">
+                            <?php echo $this->getPlayerHeightHtml(); ?>
+                            <p class="note"><span>Sets the height (pixel) of the player. By default, the height of the player is determined by the height of the video displayed.</span></p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+		</fieldset>
+		<script type="text/javascript">Fieldset.applyCollapse('video_appearance');</script>
+    </div>
+    <div class="entry-edit">
+    	<div  class="entry-edit-head collapseable" ><a id="video_playback-head" href="#" onclick="Fieldset.toggleCollapse('video_playback', '<?php echo Mage::helper("adminhtml")->getUrl("video/adminhtml_configuration/index/key/".Mage::getSingleton('core/session')->getFormKey()) ?>'); return false;">Playback</a></div>
+        <input id="video_playback-state" name="video_playback-state" type="hidden" value="1" />
+        <fieldset class="config collapseable" id="video_playback"><legend>Playback</legend>
+            <table cellspacing="0" class="form-list">
+                <colgroup class="label" />
+                <colgroup class="value" />
+                <colgroup class="scope-label" />
+                <colgroup class="" />
+                <tbody>
+                    <tr>
+                        <td class="label"><label for="video_playback_auto_play">Auto Play</label></td>
+                        <td class="value">
+                            <?php echo $this->getAutoPlayHtml(); ?>
+                            <p class="note"><span>Sets the autoplay behavior to be used.</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label"><label for="video_playback_loop_play">Loop Play</label></td>
+                        <td class="value">
+                            <?php echo $this->getLoopPlayHtml(); ?>
+                            <p class="note"><span>Sets the loop play behavior to be used.</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label"><label for="video_playback_play_on_click">Play on Click</label></td>
+                        <td class="value">
+                            <?php echo $this->getPlayOnClickHtml(); ?>
+                            <p class="note"><span>Sets the player play/pause on mouse click.</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label"><label for="video_playback_mute">Mute</label></td>
+                        <td class="value">
+                            <?php echo $this->getMuteHtml(); ?>
+                            <p class="note"><span>Sets mute attribute in the video.</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label"><label for="video_playback_initial_volume">Initial Volume</label></td>
+                        <td class="value">
+                            <?php echo $this->getInitialVolumeHtml(); ?>
+                            <p class="note"><span>Sets initial volume. Any number from 0 - 100 (%)</span></p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </fieldset>
+        <script type="text/javascript">Fieldset.applyCollapse('video_playback');</script>
+    </div>
+    <div class="entry-edit">
+    	<div  class="entry-edit-head collapseable" ><a id="video_social-head" href="#" onclick="Fieldset.toggleCollapse('video_social', '<?php echo Mage::helper("adminhtml")->getUrl("video/adminhtml_configuration/index/key/".Mage::getSingleton('core/session')->getFormKey()) ?>'); return false;">Social</a></div>
+    	<input id="video_social-state" name="video_social-state" type="hidden" value="1" />
+        <fieldset class="config collapseable" id="video_social"><legend>Social</legend>
+            <table cellspacing="0" class="form-list">
+                <colgroup class="label" />
+                <colgroup class="value" />
+                <colgroup class="scope-label" />
+                <colgroup class="" />
+                <tbody>
+                    <tr>
+                        <td class="label"><label for="video_social_share_item">Share Item</label></td>
+                        <td class="value">
+                            <?php echo $this->getShareItemHtml(); ?>
+                            <p class="note"><span>Add the networks to allow sharing.</span></p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </fieldset>
+        <script type="text/javascript">Fieldset.applyCollapse('video_social');</script>
+    </div>
+    <div class="entry-edit">
+    	<div  class="entry-edit-head collapseable" ><a id="video_advance-head" href="#" onclick="Fieldset.toggleCollapse('video_advance', '<?php echo Mage::helper("adminhtml")->getUrl("video/adminhtml_configuration/index/key/".Mage::getSingleton('core/session')->getFormKey()) ?>'); return false;">Advance</a></div>
+        <input id="video_advance-state" name="video_advance-state" type="hidden" value="1" />
+        <fieldset class="config collapseable" id="video_advance"><legend>Advance</legend>
+            <table cellspacing="0" class="form-list">
+                <colgroup class="label" />
+                <colgroup class="value" />
+                <colgroup class="scope-label" />
+                <colgroup class="" />
+                <tbody>
+                    <tr>
+                        <td class="label"><label for="video_advance_atc_enable">Add To Cart Button</label></td>
+                        <td class="value">
+                            <?php echo $this->getATCButtonEnableHtml(); ?>
+                            <p class="note"><span>Adds an "Add To Cart" action button to the player.</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label"><label for="video_advance_atc_label">Label</label></td>
+                        <td class="value">
+                            <?php echo $this->getATCLabelHtml(); ?>
+                            <p class="note"><span>Label of the button.</span></p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </fieldset>
+        <script type="text/javascript">Fieldset.applyCollapse('video_advance');</script>
+    </div>
+	<button type="submit" class="save"><span>Save</span></button>	
+</form>
+<script type="text/javascript">
+    var configForm = new varienForm('configurationForm');
+	var $j = jQuery.noConflict(); 
+	jQuery(document).ready( function() {
+		jQuery('#video_general_dialog_style_color').miniColors({prefix: ''});
+	});
+</script>

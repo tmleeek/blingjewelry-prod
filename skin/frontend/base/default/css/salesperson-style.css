@@ -1,0 +1,4 @@
+@CHARSET "UTF-8";
+
+.product-name { max-height: 1.2em; overflow: hidden; }
+.itemgrid-3cols .item { max-width: 214px; }

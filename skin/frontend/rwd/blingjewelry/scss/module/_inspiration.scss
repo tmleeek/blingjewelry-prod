@@ -1,0 +1,28 @@
+.inspiration-header{
+  text-align: center;
+  margin-bottom:20px;
+  img{
+      max-width:100%;
+      height:auto;
+      margin:0 auto;
+  }
+}
+
+.inspiration li{
+	width:33.3333%;
+}
+
+@include bp(max-width, $bp-medium) { 
+
+	.inspiration li{
+		width:50%;
+	}
+}
+
+@include bp(max-width, $bp-small) {
+    // new
+
+	.inspiration li{
+		width:100%;	
+	}
+}

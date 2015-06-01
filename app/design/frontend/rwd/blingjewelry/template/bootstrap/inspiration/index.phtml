@@ -1,0 +1,122 @@
+
+
+<?php if(Mage::getModel('cms/block')->load('inspiration_header')->getIsActive()){ ?>
+<div class="inspiration-header">
+<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('inspiration_header')->toHtml();?>
+</div>
+<?php } ?>
+
+
+<div>
+<ul class="inspiration row">
+<?php echo $this->_listInspiration();?>
+</ul>
+</div>
+<!--
+<a href="#" id="prev" class="inspiration-nav">prev</a>
+<a href="#" id="next" class="inspiration-nav">next</a>
+-->
+
+
+<?php /*
+<script>
+
+// cache container
+
+var $container = jQuery('.iso');
+
+// initialize isotope
+$container.isotope({
+  itemSelector : '.iso-item',
+  layoutMode : 'masonry',
+  filter: '.editorial'
+});
+
+// filter items when filter link is clicked
+jQuery('.nav-horiz a').click(function(){
+  var selector = jQuery(this).attr('data-filter');
+  if(jQuery(window).width()>979){
+  if(selector == '.video'){
+  	jQuery('.iso-wrap').width(840);
+  }else{
+  	jQuery('.iso-wrap').width(724);	
+  }
+  }
+  $container.isotope({ filter: selector });
+  return false;
+});
+
+
+
+jQuery(document).ready(function(){
+	jQuery('.inspiration-item a.image').click(function(e){
+		e.preventDefault();
+	
+		var cl = jQuery(this).attr('class');
+		
+		var item = jQuery(this).closest('li');
+		prev = jQuery(item).prev('li');
+		next = jQuery(item).next('li');	
+		
+		if(prev.length == 0){
+			jQuery('#prev').hide();
+		}else{
+			jQuery('#prev').show();			
+		}
+		if(next.length == 0){
+			jQuery('#next').hide();
+		}else{
+			jQuery('#next').show();		
+		}
+		
+		var img 		= jQuery(this).attr('href');
+		var title 		= jQuery(this).closest('.image-wrap').next('.title-wrap').find('h3 > a').text();
+		var date 		= jQuery(this).closest('.image-wrap').next('.title-wrap').find('.date').text();
+		var vid			= jQuery(this).closest('.image-wrap').next('.title-wrap').find('.vid').html();
+
+		if(cl=='image'){
+			jQuery('body').append('<div class="inspiration-detail"><div><img src="'+ img +'"><div class="clearfix"></div></div></div>');
+		}
+		if(cl=='video'){
+			jQuery('body').append('<div class="inspiration-detail"><div>'+vid+'</div></div>');
+		}
+		
+		if(document.getElementById("modalBackdrop")){
+			jQuery('.inspiration-detail').fadeIn();
+			jQuery('#title').text(title);
+			jQuery('#date').text(date);	
+		}else{
+			var header = '<div class="inspiration-header" id="inspirationHeader">';
+			header += '<span id="title">'+ title +'</span>';
+			header += '<span id="date">'+ date +'</span>';
+			header += '<span id="close"><button type="button" class="close" data-dismiss="modal" aria-hidden="true" autocomplete="off">×</button></span>';	
+			header += '</div>';
+			jQuery('body').append(header);
+			jQuery('body').append('<div class="modal-backdrop" id="modalBackdrop"></div>');
+			jQuery('.modal-backdrop').addClass('in');	
+			jQuery('.inspiration-detail').fadeIn();
+		}
+	});
+	jQuery(document).on('click','.inspiration-detail,.close',function(){
+		jQuery('.modal-backdrop,.inspiration-header,.inspiration-detail,.inspiration-nav').fadeOut('normal', function(){
+			jQuery('.modal-backdrop,.inspiration-header,.inspiration-detail').remove();
+		});	
+	});
+	jQuery(document).on('click','#next',function(){
+		jQuery('.inspiration-detail').fadeOut('fast', function(){
+			jQuery(this).remove();
+			jQuery(next).find('.image-wrap a').trigger('click');
+		});
+		
+	});	
+	jQuery(document).on('click','#prev',function(){
+		jQuery('.inspiration-detail').fadeOut('fast', function(){
+			jQuery(this).remove();
+			jQuery(prev).find('.image-wrap a').trigger('click');
+		});
+	});
+});
+
+</script>
+*/
+?>

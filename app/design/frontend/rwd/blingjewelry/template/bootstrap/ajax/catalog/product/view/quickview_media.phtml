@@ -1,0 +1,152 @@
+<?php
+/**
+ * Star Plugins Cloud Zoom - Magento Extension
+ * @package     StarPlugins_CloudZoom
+ * @category    StarPlugins
+ * @copyright   Copyright 2013 Star Plugins. (http://www.starplugins.com)
+ * @version:    1.0
+ */
+
+$product      = $this->getProduct();
+$helper       = Mage::helper('starplugins_cloudzoom');
+$outputHelper = $this->helper('catalog/output');
+
+function under2camel($str) {
+    $regexp = '#_(.)#e';
+    return preg_replace($regexp, "strtoupper('\\1')", $str);
+}
+
+$configVariables = array(
+    "tint_color",
+    "tint_opacity",
+    "animation_time",
+    "zoom_position",
+    "zoom_offset_x",
+    "zoom_offset_y",
+    "zoom_fly_out",
+    "zoom_size_mode",
+    "caption_position",
+    "variable_magnification",
+    "start_magnification",
+    "min_magnification",
+    "max_magnification",
+    "easing",
+    "auto_inside"
+    
+);
+
+// mmc adding values to config
+$addConfig = 'captionSource: "none",';
+$addConfig .= 'disableOnScreenWidth:"600",';
+$addConfig .= 'mouseTriggerEvent: "mousemove",';
+$addConfig .= 'disableZoom: "auto",';
+$addConfig .= 'hoverIntentDelay: "100",';
+$addConfig .= 'touchStartDelay: "250",';
+
+
+// Convert config to a JS object.
+$jsData = "{";
+foreach($configVariables as $var) {
+    $value = $helper->getConfigData($var);
+    if(!is_numeric($value)) $value = "\"".$value."\"";
+    $jsData.= under2camel($var).": $value, ";
+}
+
+//mmc adding config
+$jsData .= $addConfig;
+
+$jsData = rtrim($jsData, ', ')."}";
+?>
+
+<?php
+    // Include Fancy Box files if required.
+    if ($helper->getConfigData("use_fancybox")) {
+        echo '<link rel="stylesheet" type="text/css" href="/fancybox/jquery.fancybox.css"/>';
+        echo '<script type="text/javascript" src="/fancybox/jquery.fancybox.pack.js"></script>';
+    }
+?>
+
+
+<script type="text/javascript">
+     //<![CDATA[
+    // Setup Fancy Box click detection if required.
+    jQuery(function(){
+        if (jQuery.fancybox != undefined) {
+            jQuery('.cloudzoom').bind('click',function(){
+                var cloudZoom = sp_jQuery(this).data('CloudZoom');   // On click, get the Cloud Zoom object,
+                cloudZoom.closeZoom();                       // Close the zoom window (from 2.1 rev 1211291557)
+                jQuery.fancybox.open(cloudZoom.getGalleryList()); // and pass Cloud Zoom's image list to Fancy Box.
+                return false;
+            });
+        }
+    }); 
+    sp_jQuery.extend(sp_jQuery.fn.CloudZoom.defaults,<?php echo $jsData;?>);
+    CloudZoom.quickStart();
+    
+    //]]>
+</script>
+
+
+<?php 
+$bigImageWidth = $helper->getConfigData("big_image_width");
+$bigImageHeight = $helper->getConfigData("big_image_height");
+$smallImageWidth = $helper->getConfigData("small_image_width");
+$smallImageHeight = $helper->getConfigData("small_image_height");
+$zoomWidth = $helper->getConfigData("zoom_width");
+$zoomHeight = $helper->getConfigData("zoom_height");
+
+echo "<style type='text/css'>.cloudzoom-zoom {width:{$zoomWidth}px; height: {$zoomHeight}px;}</style>";
+
+if ($product->getImage() != 'no_selection' && $product->getImage()): ?>
+<p class="product-image">
+    <?php $zPath = $this->helper('catalog/image')->init($product, 'image')->resize($bigImageWidth, $bigImageHeight);?>
+    <a href='<?php echo $zPath; ?>' id='zoom1' >
+        <img class="cloudzoom" src="<?php echo $this->helper('catalog/image')->init($product, 'image')->resize($smallImageWidth, $smallImageHeight);?>" 
+             alt='' data-cloudzoom ="" 
+             title="<?php echo $this->htmlEscape($this->getImageLabel());?>" />
+    </a>
+</p>
+<?php else: ?>
+<p class="product-image">
+    <?php
+        $_img = '<img src="'.$this->helper('catalog/image')->init($product, 'image')->resize($smallImageWidth).'" 
+            alt="'.$this->htmlEscape($this->getImageLabel()).'" 
+                title="'.$this->htmlEscape($this->getImageLabel()).'" />';
+        echo $outputHelper->productAttribute($product, $_img, 'image');
+    ?>
+</p>
+<?php endif; ?>
+<?php if (count($this->getGalleryImages()) > 1): ?>
+<div class="more-views">
+    <div class="carousel owl-carousel">
+    
+        <?php /*
+        <?php $zPath = $this->helper('catalog/image')->init($product, 'image')->resize($bigImageWidth, $bigImageHeight);?>
+         <li>
+            <a href='<?php echo $zPath; ?>' title='<?php echo $this->htmlEscape($this->getImageLabel()) ?>' >
+            <img class='cloudzoom-gallery'
+                data-cloudzoom="useZoom: '.cloudzoom', image: '<?php echo $this->helper('catalog/image')->init($product, 'image')->resize($smallImageWidth, $smallImageHeight);?>' "
+                src="<?php echo $this->helper('catalog/image')->init($product, 'thumbnail')->resize(80, 80);?>" alt="<?php echo $this->htmlEscape($this->getImageLabel()) ?>"
+                title='<?php echo $this->htmlEscape($this->getImageLabel()) ?>'
+                />
+            </a>
+        </li>
+         Additional thumb copy of main image */ ?>
+        
+    <?php foreach ($this->getGalleryImages() as $_image): ?>
+    <?php $zoomPath = $this->helper('catalog/image')->init($product, 'image', $_image->getFile())->resize($bigImageWidth, $bigImageHeight);?>
+        <div class="item">
+            <a href='<?php echo $zoomPath; ?>' title='<?php echo $this->htmlEscape($_image->getLabel()) ?>'>
+            <img class='cloudzoom-gallery' 
+                 data-cloudzoom="useZoom: '.cloudzoom', image: '<?php echo $this->helper('catalog/image')->init($product, 'image', $_image->getFile())->resize($smallImageWidth, $smallImageHeight);?>' "
+
+                 src="<?php echo $this->helper('catalog/image')->init($product, 'thumbnail', $_image->getFile())->resize(80, 80);?>" 
+                 alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>"
+                 title="<?php echo $this->htmlEscape($_image->getImageLabel()) ?>"
+                 />
+            </a>
+        </div>
+    <?php endforeach; ?>
+    </div>
+</div>
+<?php endif; ?>

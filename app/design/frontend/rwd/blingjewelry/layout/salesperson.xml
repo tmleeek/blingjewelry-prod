@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Celebros Qwiser - Magento Extension
+ *
+ * @category    Celebros
+ * @package     Celebros_Qwiser
+ * @author      Omniscience Co. - Dan Aharon-Shalom (email: dan@omniscience.co.il)
+ *
+ */
+-->
+<layout version="0.1.0">
+
+    <default>   
+        <reference name="head">
+            <!--
+            <action method="addCss">
+                <stylesheet>css/AutoComplete.css</stylesheet>
+            </action>
+        -->
+        </reference>
+        <reference name="header">
+            <!-- mmc adding celebros mini search to top of site -->
+            <remove name="top.search" />
+            <block type="core/template" name="salesperson.top.search" as="topSearch" template="salesperson/form.mini.phtml"/>
+        </reference>
+    </default>
+    <salesperson_result_index>
+        <label>Qwiser Search Form</label>
+        <reference name="head">
+            <action method="setCanonical" />
+        </reference>
+        <reference name="root">
+            <block type="salesperson/layer_view" name="salesperson.nonleadquestions.top" as="nonleadquestions_top">
+                <action method="setTemplate" iftop="salesperson/display_settings/display_non_lead">
+                    <template>salesperson/layer/non-lead-top.phtml</template> 
+                </action>
+            </block>
+        </reference>
+        <reference name="content">
+            <block type="salesperson/result" name="salesperson.result" as="result" template="salesperson/result.phtml">
+                <action method="setCanonical" />
+                <block type="salesperson/product_list" name="search_result_list" template="salesperson/product/list.phtml">
+                    <block type="salesperson/product_list_toolbar" name="product_list_toolbar" template="salesperson/product/list/toolbar.phtml">
+                        <block type="page/html_pager" name="product_list_toolbar_pager"/>
+                    </block>
+                    <action method="addColumnCountLayoutDepend"><layout>empty</layout><count>6</count></action>
+                    <action method="addColumnCountLayoutDepend"><layout>one_column</layout><count>5</count></action>
+                    <action method="addColumnCountLayoutDepend"><layout>two_columns_left</layout><count>4</count></action>
+                    <action method="addColumnCountLayoutDepend"><layout>two_columns_right</layout><count>4</count></action>
+                    <action method="addColumnCountLayoutDepend"><layout>three_columns</layout><count>3</count></action>
+                    <action method="setToolbarBlockName"><name>product_list_toolbar</name></action>
+                </block>
+                <action method="setListOrders"/>
+                <action method="setListModes"/>
+                <action method="setListCollection"/>
+            </block>
+        </reference>
+
+        <reference name="right">
+        </reference>
+    </salesperson_result_index>
+    
+    <salesperson_result_change>
+        <label>Qwiser Search Form</label>
+        <reference name="head">
+            <action method="setCanonical" />
+        </reference>
+        <reference name="root">
+            <block type="salesperson/layer_view" name="salesperson.nonleadquestions.top" as="nonleadquestions_top">
+                <action method="setTemplate" iftop="salesperson/display_settings/display_non_lead">
+                    <template>salesperson/layer/non-lead-top.phtml</template> 
+                </action>
+            </block>
+        </reference>
+        <reference name="content">
+            <block type="salesperson/result" name="salesperson.result" as="result" template="salesperson/result.phtml">
+                <block type="salesperson/product_list" name="search_result_list" template="salesperson/product/list.phtml">                    
+                    <block type="salesperson/product_list_toolbar" name="product_list_toolbar" template="salesperson/product/list/toolbar.phtml">
+                        <block type="page/html_pager" name="product_list_toolbar_pager"/>
+                    </block>
+                    <action method="addColumnCountLayoutDepend"><layout>empty</layout><count>6</count></action>
+                    <action method="addColumnCountLayoutDepend"><layout>one_column</layout><count>5</count></action>
+                    <action method="addColumnCountLayoutDepend"><layout>two_columns_left</layout><count>4</count></action>
+                    <action method="addColumnCountLayoutDepend"><layout>two_columns_right</layout><count>4</count></action>
+                    <action method="addColumnCountLayoutDepend"><layout>three_columns</layout><count>3</count></action>
+                    <action method="setToolbarBlockName"><name>product_list_toolbar</name></action>
+                </block>
+                <action method="setListOrders"/>
+                <action method="setListModes"/>
+                <action method="setListCollection"/>
+            </block>
+        </reference>
+    </salesperson_result_change>
+</layout>

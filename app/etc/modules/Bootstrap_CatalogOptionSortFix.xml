@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Bootstrap_CatalogOptionSortFix>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Mage_Catalog />
+            </depends>
+        </Bootstrap_CatalogOptionSortFix>
+    </modules>
+</config>
+
+

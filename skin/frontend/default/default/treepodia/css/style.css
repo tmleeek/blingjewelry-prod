@@ -1,0 +1,20 @@
+/* ----- Under Product Image ----- */
+.play-video {
+	display:block;
+	width:100%;
+	position:relative;
+	z-index:100;
+	margin-bottom:10px;
+}
+/* ----- Overlay Product Image ----- */
+.product-image .play-video {
+	position:absolute;
+	bottom:9%;
+	left:5px;
+	margin-bottom: 0;
+}
+/* ----- Under Product Image ----- */
+.play-video img { width: 100%; }
+/* ----- Overlay Product Image ----- */
+.product-view .product-img-box .product-image-zoom .play-video img { cursor: pointer; }
+.product-image .play-video img { width: 96%; }

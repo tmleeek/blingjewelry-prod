@@ -1,0 +1,152 @@
+
+/* ============================================ *
+ * Search - Skip Link
+ * ============================================ */
+
+.skip-search {
+
+/*
+    &:not(.skip-active):hover {
+        .icon {
+            //background-position: -50+4px (-150px + ($toolbar-icon-padding-offset/2));
+            //background: url('../images/icon-search.png') no-repeat center;
+            opacity:0.6;
+        }
+    }
+*/
+
+    
+    .icon {
+        //@extend .icon-sprite;
+        //background-position: 0+4px (-150px + ($toolbar-icon-padding-offset/2));
+        //background: url('../images/icon-search-gray.png') no-repeat center;
+        position:relative;
+        &:before { 
+            font-size:16px;
+            position:absolute;
+            top:0;
+            left:0;
+            content: '\e811'; 
+            @include iconfont;
+        } /* '' */
+    }
+}
+.skip-search.skip-active{
+    .icon {
+        //background: url('../images/icon-search-dark.png') no-repeat center;
+        opacity:0.4;
+    } 
+}
+
+// ---------------------------------------------
+
+@include bp(min-width, $bp-medium + 1) {
+
+    .skip-search {
+        display: none;
+    }
+
+}
+
+/* ============================================ *
+ * Search - Skip Content
+ * ============================================ */
+
+#header-search {
+    padding: 20px;
+}
+
+// ---------------------------------------------
+
+@include bp(min-width, $bp-medium + 1) {
+
+    #header-search {
+        display: block; // Force visibility
+        position: absolute;
+        top: 50%;
+        right: 0;
+        width: 180px;
+        height: 30px;
+        padding: 0;
+        margin-top:-35px; // height of element plus height of main nav, offsets to center vertically
+    }
+}
+@include bp(min-width, $bp-large + 1) {
+    #header-search {
+        width: 220px;
+    }
+}
+@include bp(min-width, $bp-xlarge + 1) {
+    #header-search {
+        width: 260px;
+    }
+}
+
+/* ============================================ *
+ * Search Input
+ * ============================================ */
+
+#search_mini_form .input-box {
+    position: relative;
+    padding-top: 0;
+}
+
+#search_mini_form label {
+    display: none;
+}
+
+#search {
+    width: 100%;
+    height: 30px;
+    padding-right: 30px;
+    font-family: $f-stack-serif;
+    font-style: italic;
+    font-size:12px;
+    border-color: $c-module-border;
+}
+
+#search_mini_form .search-button {
+
+    //@include image-replacement;
+    span{
+      display:block;
+      @include image-replacement;  
+    }
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    border: 0;
+    background: none;
+
+}
+
+#search_mini_form .search-button:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 30px;
+    height: 30px;
+    //margin-top: -15px;
+    //margin-left: -15px;
+
+    //@extend .icon-sprite;
+    //background-position: 0+4px (-150px + ($toolbar-icon-padding-offset/2));
+    //background: url('../images/icon-search.png') no-repeat center;
+
+    color:$c-action;
+    font-size:18px;
+    position:absolute;
+    padding-top:6px;
+    top:0;
+    left:0;
+    content: '\e811'; 
+    @include iconfont;
+        
+} /* '' */
+
+#search_mini_form .search-button:hover:before {
+    color:darken($c-action,10%);
+}

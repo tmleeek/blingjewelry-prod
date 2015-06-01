@@ -1,0 +1,17 @@
+***************
+*** 42,48 ****
+          $sentry->disableModules($scope, $scopeId, true);
+  
+          // Unlink all Emails
+-         if (!Mage::helper('bronto_common')->isVersionMatch(Mage::getVersionInfo(), 1, array(array('edition' => 'Enterprise', 'major' => 9)))) {
+              $sentry->unlinkEmails(
+                  Mage::getModel('bronto_email/message')->getCollection(),
+                  $scope,
+--- 42,48 ----
+          $sentry->disableModules($scope, $scopeId, true);
+  
+          // Unlink all Emails
++         if (!Mage::helper('bronto_common')->isVersionMatch(Mage::getVersionInfo(), 1, array(array('edition' => 'Professional', 'major' => 9)))) {
+              $sentry->unlinkEmails(
+                  Mage::getModel('bronto_email/message')->getCollection(),
+                  $scope,

@@ -1,0 +1,329 @@
+############################################
+## uncomment these lines for CGI mode
+## make sure to specify the correct cgi php binary file name
+## it might be /cgi-bin/php-cgi
+
+#    Action php5-cgi /cgi-bin/php5-cgi
+#    AddHandler php5-cgi .php
+############################################
+## GoDaddy specific options
+#   Options -MultiViews
+## you might also need to add this line to php.ini
+##     cgi.fix_pathinfo = 1
+## if it still doesn't work, rename php.ini to php5.ini
+############################################
+## this line is specific for 1and1 hosting
+    #AddType x-mapp-php5 .php
+    #AddHandler x-mapp-php5 .php
+############################################
+## default index file
+    DirectoryIndex index.php
+<IfModule mod_php5.c>
+############################################
+## adjust memory limit
+#    php_value memory_limit 64M
+    php_value memory_limit 2048M
+    php_value max_execution_time 36000
+############################################
+## disable magic quotes for php request vars
+#    php_flag magic_quotes_gpc off
+############################################
+## disable automatic session start
+## before autoload was initialized
+#    php_flag session.auto_start off
+############################################
+## enable resulting html compression
+#   php_flag zlib.output_compression on
+###########################################
+# disable user agent verification to not break multiple image upload
+#    php_flag suhosin.session.cryptua off
+###########################################
+# turn off compatibility with PHP4 when dealing with objects
+#    php_flag zend.ze1_compatibility_mode Off
+###########################################
+# to take care of the category having more than 1000 items
+    php_value max_input_vars 8000
+</IfModule>
+<IfModule mod_security.c>
+###########################################
+# disable POST processing to not break multiple image upload
+    SecFilterEngine Off
+    SecFilterScanPOST Off
+</IfModule>
+<IfModule mod_deflate.c>
+############################################
+## enable apache served files compression
+## http://developer.yahoo.com/performance/rules.html#gzip
+    # Insert filter on all content
+     # #SetOutputFilter DEFLATE
+    # Insert filter on selected content types only
+    #AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript
+
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css image/x-icon text/javascript
+    AddOutputFilterByType DEFLATE image/gif image/jpeg image/png
+    AddOutputFilterByType DEFLATE application/x-javascript
+    # Netscape 4.x has some problems...
+     BrowserMatch ^Mozilla/4 gzip-only-text/html
+    # Netscape 4.06-4.08 have some more problems
+     BrowserMatch ^Mozilla/4\.0[678] no-gzip
+    # MSIE masquerades as Netscape, but it is fine
+     BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+
+    # Don't compress images
+     SetEnvIfNoCase Request_URI \.(?:gif|jpe?g|png)$ no-gzip dont-vary
+
+    # Make sure proxies don't deliver the wrong content
+     Header append Vary User-Agent env=!dont-vary
+
+</IfModule>
+
+<ifModule mod_headers.c>
+    Header set Connection keep-alive
+</ifModule>
+
+
+
+<IfModule mod_ssl.c>
+############################################
+## make HTTPS env vars available for CGI mode
+
+    SSLOptions StdEnvVars
+
+</IfModule>
+<IfModule mod_rewrite.c>
+############################################
+## enable rewrites
+
+    Options +FollowSymLinks
+    RewriteEngine on
+
+##RewriteCond %{HTTP_HOST} ^blingjewelry.com$ [NC]
+##RewriteRule ^(.*)$ http://www.blingjewelry.com/$1 [R=301,L]
+
+redirectMatch 301 /videositemap.xml(.*)$ http://api.treepodia.com/sitemap/UA-BLINGJEWELRY1/sitemap.xml
+
+##send mobile users to native magento checkout ONEPAGECHECKOUT
+#RewriteCond %{HTTP_USER_AGENT} ^.*(iPhone|iPod|BlackBerry|Palm|Googlebot\-Mobile|Mobile|mobile|mobi|Windows\ Mobile|Safari\ Mobile|Android|Opera\ Mini).*$ [NC]
+#RewriteCond %{REQUEST_URI} ^.*(onestepcheckout)
+#RewriteRule .* /checkout/onepage/ [R,L]
+############################################
+## you can put here your magento root folder
+## path relative to web root
+    #RewriteBase /magento/
+	
+    RewriteRule ^api/([a-z][0-9a-z_]+)/?$ api.php?type=$1 [QSA,L]	
+    RewriteRule ^api/rest api.php?type=rest [QSA,L]
+############################################
+
+
+
+Redirect 301 /best-selling-rings.html http://www.blingjewelry.com/view-all-rings/best-selling-rings.html
+Redirect 301 /cocktail-rings.html http://www.blingjewelry.com/view-all-rings/cocktail-rings.html
+Redirect 301 /engagement-rings.html http://www.blingjewelry.com/view-all-rings/engagement-rings.html
+Redirect 301 /eternity-rings.html http://www.blingjewelry.com/view-all-rings/eternity-rings.html
+Redirect 301 /bridal-engagement-rings-sets.html http://www.blingjewelry.com/view-all-rings/bridal-engagement-rings-sets.html
+Redirect 301 /pearl-rings.html http://www.blingjewelry.com/view-all-rings/pearl-rings.html
+Redirect 301 /mens-rings-wedding-bands.html http://www.blingjewelry.com/view-all-rings/mens-rings-wedding-bands.html
+Redirect 301 /wedding-bands.html http://www.blingjewelry.com/view-all-rings/wedding-bands.html
+Redirect 301 /classic-silver-ring.html http://www.blingjewelry.com/view-all-rings/classic-silver-ring.html
+Redirect 301 /tungsten-rings.html http://www.blingjewelry.com/view-all-rings/tungsten-rings.html
+Redirect 301 /fashion-earrings.html http://www.blingjewelry.com/view-all-earrings/fashion-earrings.html
+Redirect 301 /hoop-earrings.html http://www.blingjewelry.com/view-all-earrings/hoop-earrings.html
+Redirect 301 /chandelier-earrings.html http://www.blingjewelry.com/view-all-earrings/chandelier-earrings.html
+Redirect 301 /pearl-earrings.html http://www.blingjewelry.com/view-all-earrings/pearl-earrings.html
+Redirect 301 /wedding-bridal-party-zirconia-earrings.html http://www.blingjewelry.com/view-all-earrings/wedding-bridal-party-zirconia-earrings.html
+Redirect 301 /stud-earrings.html http://www.blingjewelry.com/view-all-earrings/stud-earrings.html
+Redirect 301 /sterling-silver-mens-earrings-html http://www.blingjewelry.com/view-all-earrings/sterling-silver-mens-earrings-html
+Redirect 301 /clip-on-earrings.html http://www.blingjewelry.com/view-all-earrings/clip-on-earrings.html
+Redirect 301 /leverback-earrings.html http://www.blingjewelry.com/view-all-earrings/leverback-earrings.html
+Redirect 301 /omega-clip-earrings.html http://www.blingjewelry.com/view-all-earrings/omega-clip-earrings.html
+Redirect 301 /ear-cuffs.html http://www.blingjewelry.com/view-all-earrings/ear-cuffs.html
+Redirect 301 /cubic-zirconium-tennis-bracelets.html http://www.blingjewelry.com/view-all-bracelets/cubic-zirconium-tennis-bracelets.html
+Redirect 301 /best-selling-bracelets.html http://www.blingjewelry.com/view-all-bracelets/best-selling-bracelets.html
+Redirect 301 /cuff-bracelets.html http://www.blingjewelry.com/view-all-bracelets/cuff-bracelets.html
+Redirect 301 /bridal-wedding-bracelets.html http://www.blingjewelry.com/view-all-bracelets/bridal-wedding-bracelets.html
+Redirect 301 /pearl-bracelets.html http://www.blingjewelry.com/view-all-bracelets/pearl-bracelets.html
+Redirect 301 /ankle-bracelets.html http://www.blingjewelry.com/view-all-bracelets/ankle-bracelets.html
+Redirect 301 /mens-bracelets-bangles.html http://www.blingjewelry.com/view-all-bracelets/mens-bracelets-bangles.html
+Redirect 301 /fashion-bracelets.html http://www.blingjewelry.com/view-all-bracelets/fashion-bracelets.html
+Redirect 301 /charm-bracelets.html http://www.blingjewelry.com/view-all-bracelets/charm-bracelets.html
+Redirect 301 /shamballa-bracelets.html http://www.blingjewelry.com/view-all-bracelets/shamballa-bracelets.html
+Redirect 301 /evil-eye-bracelets.html http://www.blingjewelry.com/view-all-bracelets/evil-eye-bracelets.html
+Redirect 301 /leather-bracelets.html http://www.blingjewelry.com/view-all-bracelets/leather-bracelets.html
+Redirect 301 /sterling-silver-pendants.html http://www.blingjewelry.com/view-all-necklaces-pendants/sterling-silver-pendants.html
+Redirect 301 /cz-diamonds-tennis-necklaces.html http://www.blingjewelry.com/view-all-necklaces-pendants/cz-diamonds-tennis-necklaces.html
+Redirect 301 /chain-necklace.html http://www.blingjewelry.com/view-all-necklaces-pendants/chain-necklace.html
+Redirect 301 /best-sellers-necklaces.html http://www.blingjewelry.com/view-all-necklaces-pendants/best-sellers-necklaces.html
+Redirect 301 /pearl-necklace.html http://www.blingjewelry.com/view-all-necklaces-pendants/pearl-necklace.html
+Redirect 301 /baby-shoe-charms.html http://www.blingjewelry.com/view-all-necklaces-pendants/baby-shoe-charms.html
+Redirect 301 /religious-pendants.html http://www.blingjewelry.com/view-all-necklaces-pendants/religious-pendants.html
+Redirect 301 /mens-necklaces.html http://www.blingjewelry.com/view-all-necklaces-pendants/mens-necklaces.html
+Redirect 301 /lockets.html http://www.blingjewelry.com/view-all-necklaces-pendants/lockets.html
+Redirect 301 /dog-tags-necklace.html http://www.blingjewelry.com/view-all-necklaces-pendants/dog-tags-necklace.html
+Redirect 301 /sterling-silver-holiday-beads.html http://www.blingjewelry.com/all-fits-pandora-beads-c-354/sterling-silver-holiday-beads.html
+Redirect 301 /sterling-silver-unique-charm-beads.html http://www.blingjewelry.com/all-fits-pandora-beads-c-354/sterling-silver-unique-charm-beads.html
+Redirect 301 /pandora-style-bead-bracelets.html http://www.blingjewelry.com/all-fits-pandora-beads-c-354/pandora-style-bead-bracelets.html
+Redirect 301 /compatible-pandora-bead-accessories.html http://www.blingjewelry.com/all-fits-pandora-beads-c-354/compatible-pandora-bead-accessories.html
+Redirect 301 /sterling-silver-clasp-spacer-beads.html http://www.blingjewelry.com/all-fits-pandora-beads-c-354/sterling-silver-clasp-spacer-beads.html
+Redirect 301 /sterling-silver-bead-sets.html http://www.blingjewelry.com/all-fits-pandora-beads-c-354/sterling-silver-bead-sets.html
+Redirect 301 /sterling-silver-zodiac-beads.html http://www.blingjewelry.com/all-fits-pandora-beads-c-354/sterling-silver-zodiac-beads.html
+Redirect 301 /sterling-silver-enamel-beads.html http://www.blingjewelry.com/all-fits-pandora-beads-c-354/sterling-silver-enamel-beads.html
+Redirect 301 /sterling-silver-flower-beads.html http://www.blingjewelry.com/all-fits-pandora-beads-c-354/sterling-silver-flower-beads.html
+Redirect 301 /sterling-silver-sports-beads.html http://www.blingjewelry.com/all-fits-pandora-beads-c-354/sterling-silver-sports-beads.html
+Redirect 301 /sterling-silver-dangle-beads.html http://www.blingjewelry.com/all-fits-pandora-beads-c-354/sterling-silver-dangle-beads.html
+Redirect 301 /sterling-silver-animal-beads.html http://www.blingjewelry.com/all-fits-pandora-beads-c-354/sterling-silver-animal-beads.html
+Redirect 301 /sterling-silver-heart-beads.html http://www.blingjewelry.com/all-fits-pandora-beads-c-354/sterling-silver-heart-beads.html
+Redirect 301 /sterling-silver-religious-beads.html http://www.blingjewelry.com/all-fits-pandora-beads-c-354/sterling-silver-religious-beads.html
+Redirect 301 /sterling-silver-crystal-beads.html http://www.blingjewelry.com/all-fits-pandora-beads-c-354/sterling-silver-crystal-beads.html
+Redirect 301 /sterling-silver-alphabet-beads.html http://www.blingjewelry.com/all-fits-pandora-beads-c-354/sterling-silver-alphabet-beads.html
+Redirect 301 /sterling-silver-birthstone-beads.html http://www.blingjewelry.com/all-fits-pandora-beads-c-354/sterling-silver-birthstone-beads.html
+Redirect 301 /sterling-silver-glass-beads.html http://www.blingjewelry.com/all-fits-pandora-beads-c-354/sterling-silver-glass-beads.html
+Redirect 301 /sterling-silver-message-beads.html http://www.blingjewelry.com/all-fits-pandora-beads-c-354/sterling-silver-message-beads.html
+Redirect 301 /belly-rings.html http://www.blingjewelry.com/body-jewelry/belly-rings.html
+Redirect 301 /womens-watches.html http://www.blingjewelry.com/view-all-mens-womens-kids-watches/womens-watches.html
+Redirect 301 /mens-watches.html http://www.blingjewelry.com/view-all-mens-womens-kids-watches/mens-watches.html
+Redirect 301 /kids-watches.html http://www.blingjewelry.com/view-all-mens-womens-kids-watches/kids-watches.html
+Redirect 301 /novelty-watches.html http://www.blingjewelry.com/view-all-mens-womens-kids-watches/novelty-watches.html
+Redirect 301 /crystal-evening-bags.html http://www.blingjewelry.com/view-all-sterling-silver-accessories-evening-bags/crystal-evening-bags.html
+Redirect 301 /cufflinks.html http://www.blingjewelry.com/view-all-sterling-silver-accessories-evening-bags/cufflinks.html
+Redirect 301 /hair-accessories-wedding-tiaras.html http://www.blingjewelry.com/view-all-sterling-silver-accessories-evening-bags/hair-accessories-wedding-tiaras.html
+Redirect 301 /money-clips-key-rings.html http://www.blingjewelry.com/view-all-sterling-silver-accessories-evening-bags/money-clips-key-rings.html
+Redirect 301 /celtic-jewelry.html http://www.blingjewelry.com/view-all-theme-jewelry/celtic-jewelry.html
+Redirect 301 /evil-eye-jewelry.html http://www.blingjewelry.com/view-all-theme-jewelry/evil-eye-jewelry.html
+Redirect 301 /heart-shaped-jewelry.html http://www.blingjewelry.com/view-all-theme-jewelry/heart-shaped-jewelry.html
+Redirect 301 /love-knot-jewelry.html http://www.blingjewelry.com/view-all-theme-jewelry/love-knot-jewelry.html
+Redirect 301 /key-jewelry.html http://www.blingjewelry.com/view-all-theme-jewelry/key-jewelry.html
+Redirect 301 /dogtag-jewelry.html http://www.blingjewelry.com/view-all-theme-jewelry/dogtag-jewelry.html
+Redirect 301 /peace-sign-jewelry.html http://www.blingjewelry.com/view-all-theme-jewelry/peace-sign-jewelry.html
+Redirect 301 /religious-spiritual-jewelry.html http://www.blingjewelry.com/view-all-theme-jewelry/religious-spiritual-jewelry.html
+Redirect 301 /clover-jewelry.html http://www.blingjewelry.com/view-all-theme-jewelry/clover-jewelry.html
+Redirect 301 /leaf-jewelry.html http://www.blingjewelry.com/view-all-theme-jewelry/leaf-jewelry.html
+Redirect 301 /fleur-de-lis-jewelry.html http://www.blingjewelry.com/view-all-theme-jewelry/fleur-de-lis-jewelry.html
+Redirect 301 /spring-theme-jewelry.html http://www.blingjewelry.com/view-all-theme-jewelry/spring-theme-jewelry.html
+Redirect 301 /butterfly-jewelry.html http://www.blingjewelry.com/view-all-theme-jewelry/butterfly-jewelry.html
+Redirect 301 /dragonfly-jewelry.html http://www.blingjewelry.com/view-all-theme-jewelry/dragonfly-jewelry.html
+Redirect 301 /animal-theme-jewelry.html http://www.blingjewelry.com/view-all-theme-jewelry/animal-theme-jewelry.html
+Redirect 301 /starfish-jewelry.html http://www.blingjewelry.com/view-all-theme-jewelry/starfish-jewelry.html
+Redirect 301 /anchor-jewelry.html http://www.blingjewelry.com/view-all-theme-jewelry/anchor-jewelry.html
+Redirect 301 /star-jewelry.html http://www.blingjewelry.com/view-all-theme-jewelry/star-jewelry.html
+Redirect 301 /breast-cancer-awareness-jewelry.html http://www.blingjewelry.com/view-all-theme-jewelry/breast-cancer-awareness-jewelry.html
+Redirect 301 /hiphop-jewelry.html http://www.blingjewelry.com/view-all-theme-jewelry/hiphop-jewelry.html
+Redirect 301 /sport-theme-jewelry.html http://www.blingjewelry.com/view-all-theme-jewelry/sport-theme-jewelry.html
+Redirect 301 /goth-jewelry.html http://www.blingjewelry.com/view-all-theme-jewelry/goth-jewelry.html
+Redirect 301 /equestrian-jewelry.html http://www.blingjewelry.com/view-all-theme-jewelry/equestrian-jewelry.html
+Redirect 301 /snake-jewelry.html http://www.blingjewelry.com/view-all-theme-jewelry/snake-jewelry.html
+Redirect 301 /cable-style-jewelry.html http://www.blingjewelry.com/view-all-theme-jewelry/cable-style-jewelry.html
+Redirect 301 /flower-jewelry.html http://www.blingjewelry.com/view-all-theme-jewelry/flower-jewelry.html
+Redirect 301 /engraved-necklaces-pendants.html http://www.blingjewelry.com/view-all-engravable-jewelry/engraved-necklaces-pendants.html
+Redirect 301 /engraved-rings-bands.html http://www.blingjewelry.com/view-all-engravable-jewelry/engraved-rings-bands.html
+Redirect 301 /engraved-id-charm-bracelets.html http://www.blingjewelry.com/view-all-engravable-jewelry/engraved-id-charm-bracelets.html
+Redirect 301 /engraved-cufflinks.html http://www.blingjewelry.com/view-all-engravable-jewelry/engraved-cufflinks.html
+Redirect 301 /engraved-charm-accessories.html http://www.blingjewelry.com/view-all-engravable-jewelry/engraved-charm-accessories.html
+Redirect 301 /party-jewelry.html http://www.blingjewelry.com/gifts-for-special-occasions/party-jewelry.html
+Redirect 301 /valentines-jewelry.html http://www.blingjewelry.com/gifts-for-special-occasions/valentines-jewelry.html
+Redirect 301 /st-patricks-day-jewelry.html http://www.blingjewelry.com/gifts-for-special-occasions/st-patricks-day-jewelry.html
+Redirect 301 /easter-gifts.html http://www.blingjewelry.com/gifts-for-special-occasions/easter-gifts.html
+Redirect 301 /mothers-day-jewelry.html http://www.blingjewelry.com/gifts-for-special-occasions/mothers-day-jewelry.html
+Redirect 301 /fathers-day-jewelry.html http://www.blingjewelry.com/gifts-for-special-occasions/fathers-day-jewelry.html
+Redirect 301 /graduation-jewelry.html http://www.blingjewelry.com/gifts-for-special-occasions/graduation-jewelry.html
+Redirect 301 /anniversary-jewelry.html http://www.blingjewelry.com/gifts-for-special-occasions/anniversary-jewelry.html
+Redirect 301 /patriotic-jewelry.html http://www.blingjewelry.com/gifts-for-special-occasions/patriotic-jewelry.html
+Redirect 301 /view-all-christmas-jewelry.html http://www.blingjewelry.com/gifts-for-special-occasions/view-all-christmas-jewelry.html
+Redirect 301 /hanukkah-passover-jewelry.html http://www.blingjewelry.com/gifts-for-special-occasions/hanukkah-passover-jewelry.html
+Redirect 301 /halloween-jewelry.html http://www.blingjewelry.com/gifts-for-special-occasions/halloween-jewelry.html
+Redirect 301 /january-birthstone-garnet.html http://www.blingjewelry.com/view-all-birthstone-jewelry/january-birthstone-garnet.html
+Redirect 301 /february-birthstone-amethyst.html http://www.blingjewelry.com/view-all-birthstone-jewelry/february-birthstone-amethyst.html
+Redirect 301 /march-birthstone-aquamarine-blue-topaz.html http://www.blingjewelry.com/view-all-birthstone-jewelry/march-birthstone-aquamarine-blue-topaz.html
+Redirect 301 /april-birthstone-cz-diamond.html http://www.blingjewelry.com/view-all-birthstone-jewelry/april-birthstone-cz-diamond.html
+Redirect 301 /may-birthstone-emerald.html http://www.blingjewelry.com/view-all-birthstone-jewelry/may-birthstone-emerald.html
+Redirect 301 /june-birthstone-pearl.html http://www.blingjewelry.com/view-all-birthstone-jewelry/june-birthstone-pearl.html
+Redirect 301 /july-birthstone-ruby.html http://www.blingjewelry.com/view-all-birthstone-jewelry/july-birthstone-ruby.html
+Redirect 301 /august-birthstone-peridot.html http://www.blingjewelry.com/view-all-birthstone-jewelry/august-birthstone-peridot.html
+Redirect 301 /september-birthstone-sapphire.html http://www.blingjewelry.com/view-all-birthstone-jewelry/september-birthstone-sapphire.html
+Redirect 301 /october-birthstone-opal.html http://www.blingjewelry.com/view-all-birthstone-jewelry/october-birthstone-opal.html
+Redirect 301 /november-birthstone-yellow-topaz-citrine.html http://www.blingjewelry.com/view-all-birthstone-jewelry/november-birthstone-yellow-topaz-citrine.html
+Redirect 301 /december-birthstone-blue-topaz-turquoise.html http://www.blingjewelry.com/view-all-birthstone-jewelry/december-birthstone-blue-topaz-turquoise.html
+Redirect 301 /ringsizer.html http://www.blingjewelry.com/ring-size-charts-i-5.html
+Redirect 301 /sizing-info.html http://www.blingjewelry.com/ring-size-charts-i-5.html
+
+
+
+
+
+
+
+
+## workaround for HTTP authorization
+## in CGI environment
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+############################################
+## always send 404 on missing files in these folders
+    RewriteCond %{REQUEST_URI} !^/(media|skin|js)/
+############################################
+## never rewrite for existing files, directories and links
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-l
+############################################
+## rewrite everything else to index.php
+    RewriteRule .* index.php [L]
+
+
+
+</IfModule>
+############################################
+## Prevent character encoding issues from server overrides
+## If you still have problems, use the second line instead
+    AddDefaultCharset Off
+    #AddDefaultCharset UTF-8
+
+############################################
+## Prevent Hotlinking of images
+RewriteEngine on
+RewriteCond %{HTTP_REFERER} !^$
+RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?blingjewelry.com [NC]
+RewriteRule \.(jpg|jpeg|png|gif)$ - [NC,F,L]
+
+
+
+<IfModule mod_expires.c>
+ ExpiresActive On
+ ExpiresDefault "access plus 1 month"
+  # IMAGES
+ ExpiresByType image/jpg "access plus 1 year"
+ ExpiresByType image/jpeg "access plus 1 year"
+ ExpiresByType image/png "access plus 1 year"
+ ExpiresByType image/gif "access plus 1 year"
+ AddType image/x-icon .ico 
+ ExpiresByType image/ico "access plus 1 year"
+ ExpiresByType image/icon "access plus 1 year"
+ ExpiresByType image/x-icon "access plus 1 year"
+  # FAVICON
+ ExpiresByType image/vnd.microsoft.icon "access plus 1 year"
+  # CSS
+ ExpiresByType text/css "access plus 1 year"
+  # HTML
+ ExpiresByType text/html "access plus 0 seconds"
+ ExpiresByType application/xhtml+xml "access plus 0 seconds"
+  # JAVASCRIPTS
+ ExpiresByType application/javascript "access plus 1 year"
+ ExpiresByType text/javascript "access plus 1 year"
+ ExpiresByType application/x-javascript "access plus 1 year"
+  # FLASH
+ ExpiresByType application/x-shockwave-flash "access plus 1 year"
+</IfModule>
+
+
+
+############################################
+## By default allow all access
+    Order allow,deny
+    Allow from all
+############################################
+## If running in cluster environment, uncomment this
+## http://developer.yahoo.com/performance/rules.html#etags
+    FileETag none
+BrowserMatch MSIE best-standards-support
+#Header set X-UA-Compatible IE=9 env=best-standards-support
+#php_flag suhosin.session.encrypt Off
+#php_flag suhosin.session.cryptdocroot Off

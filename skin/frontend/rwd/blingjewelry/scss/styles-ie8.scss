@@ -1,0 +1,10 @@
+
+// ==============================================
+// Application Core / No MQ for Lte-IE8 Use
+// ==============================================
+
+$mq-support: false;
+$mq-fixed-value: 1024px;
+
+@import "framework";
+@import "core";

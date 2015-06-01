@@ -1,0 +1,140 @@
+.loginRadiusFieldset{
+	position: relative;
+	border: #d7d7d7 1px solid;
+	border-radius: 4px;
+	width: 490px;
+	float: left;
+	padding: 3px 10px 0 10px;
+	margin-bottom: 10px;
+	background-color: #FFFFE0;
+	border: 1px solid #E6DB55;
+}
+.loginRadiusHelpDiv {
+	width: 65%;
+	float: left;
+	border-radius: 4px;
+	margin-right: 10px;
+	background-color: #FFFFE0 !important;
+	border: 1px solid #E6DB55 !important;
+	padding-bottom:5px !important;
+}
+.loginRadiusFieldset a, .loginRadiusHelpDiv ul li a{
+	color: #00ccff;
+	text-decoration: none;
+}
+.loginRadiusFieldset a:hover, .loginRadiusHelpDiv ul li a:hover{
+	text-decoration:underline !important
+}
+.loginRadiusHelpDiv ul li{
+	list-style-type: disc;
+}
+.loginRadiusHelpDiv ul{
+	margin: 0 15px;
+}
+loginradius_radio{
+	vertical-align:top;
+	margin-left:7px
+}
+#row_sociallogin_options_horizontalSharing_horizontalSharingProviders ul li{
+	width:149px;
+	float:left
+}
+#row_sociallogin_options_messages_redirect td input{
+	margin-right:2px
+}
+#row_sociallogin_options_verticalSharing_verticalSharingProviders ul li{
+	width:149px;
+	float:left
+}
+#row_sociallogin_options_verticalSharing_verticalCounterProviders ul li{
+	width:149px;
+	float:left
+}
+#row_sociallogin_options_horizontalSharing_horizontalCounterProviders ul li{
+	width:149px;
+	float:left
+}
+#row_sociallogin_options_horizontalSharing_horizontalSharingTheme td[class=value]{
+	width: 400px !important
+}
+#row_sociallogin_options_horizontalSharing_horizontalSharingTheme td[class=value] input{
+	margin-right: 3px !important
+}
+#loginRadiushorizontalRearrangeSharing li, #loginRadiusverticalRearrangeSharing li{
+	float:left
+}
+#sociallogin_advanced_sendMessage_twitterRecipientsselected, #sociallogin_advanced_sendMessage_linkedinRecipientsselected, #sociallogin_advanced_sendMessage_gmailRecipientsselected, #sociallogin_advanced_sendMessage_yahooRecipientsselected{
+	margin-left: 5px
+}
+#row_sociallogin_options_verticalSharing_verticalSharingTheme td label{
+	float:left !important
+}
+#row_sociallogin_options_messages_iconSize td input{
+	margin-right:2px
+}
+#row_sociallogin_options_verticalSharing_verticalSharingTheme td input{
+	float:left !important;
+	margin-left:4px
+}
+#row_sociallogin_options_horizontalSharing_horizontalSharingTheme td input{
+	vertical-align:top
+}
+#row_sociallogin_options_verticalSharing_verticalSharingTheme td.value{
+	width:400px !important;
+}
+#row_sociallogin_options_sharing_verticalSharing td input{
+	vertical-align:top !important;
+	float:left !important;
+	margin-right:2px
+}
+#row_sociallogin_options_sharing_verticalSharing td label, #row_sociallogin_options_counter_verticalCounter td label{
+	float:left !important
+}
+#row_sociallogin_options_sharing_horizontalSharing td input{
+	vertical-align:top !important;
+	margin-right:2px
+}
+#row_sociallogin_options_counter_horizontalCounter td input{
+	vertical-align:top !important;
+	margin-right:2px
+}
+#row_sociallogin_options_counter_verticalCounter td input{
+	vertical-align:top !important;
+	margin-right:2px;
+	float:left !important
+}
+#row_sociallogin_advanced_socialProfileData_profileDataCheckboxes td[class=value] input{
+	margin-right: 2px
+}
+.lrshare_iconsprite32{
+	cursor: pointer !important;
+	height: 32px;
+	margin: 4px !important;
+	width: 32px;
+	padding: 0px !important;
+	border: none !important;
+	background: url("lrshare_iconsprite32.png") no-repeat scroll left top transparent;
+	list-style-type: none !important;
+}
+.lrshare_iconsprite32.lrshare_delicious { background-position: 0px 0px; width: 32px; height: 32px;  } 
+.lrshare_iconsprite32.lrshare_digg { background-position: -34px 0px; width: 32px; height: 32px;  } 
+.lrshare_iconsprite32.lrshare_dotnetkicks { background-position: -68px 0px; width: 32px; height: 32px;  } 
+.lrshare_iconsprite32.lrshare_email { background-position: -102px 0px; width: 32px; height: 32px;  } 
+.lrshare_iconsprite32.lrshare_evenmore32 { background-position: -138px 0px; width: 32px; height: 32px;  } 
+.lrshare_iconsprite32.lrshare_facebook { background-position: -174px 0px; width: 32px; height: 32px;  } 
+.lrshare_iconsprite32.lrshare_google { background-position: -208px 0px; width: 32px; height: 32px;  } 
+.lrshare_iconsprite32.lrshare_googleplus { background-position: -242px 0px; width: 32px; height: 32px;  } 
+.lrshare_iconsprite32.lrshare_hyves { background-position: -276px 0px; width: 32px; height: 32px;  } 
+.lrshare_iconsprite32.lrshare_linkedin { background-position: -310px 0px; width: 32px; height: 32px;  } 
+.lrshare_iconsprite32.lrshare_live { background-position: -344px 0px; width: 32px; height: 32px;  } 
+.lrshare_iconsprite32.lrshare_myspace { background-position: -378px 0px; width: 32px; height: 32px;  } 
+.lrshare_iconsprite32.lrshare_pinterest { background-position: -412px 0px; width: 32px; height: 32px;  } 
+.lrshare_iconsprite32.lrshare_print { background-position: -446px 0px; width: 32px; height: 32px;  } 
+.lrshare_iconsprite32.lrshare_reddit { background-position: -480px 0px; width: 32px; height: 32px;  } 
+.lrshare_iconsprite32.lrshare_sharingcounter32 { background-position: -514px 0px; width: 50px; height: 32px; padding-top:4px !important; font-size:18px; } 
+.lrshare_iconsprite32.lrshare_tumblr { background-position: -576px 0px; width: 32px; height: 32px;  } 
+.lrshare_iconsprite32.lrshare_twitter { background-position: -610px 0px; width: 32px; height: 32px;  } 
+.lrshare_iconsprite32.lrshare_viadeo { background-position: -644px 0px; width: 32px; height: 32px;  } 
+.lrshare_iconsprite32.lrshare_vkontakte { background-position: -678px 0px; width: 32px; height: 32px;  } 
+.lrshare_iconsprite32.lrshare_wordpress { background-position: -712px 0px; width: 32px; height: 32px;  } 
+.lrshare_iconsprite32.lrshare_yahoo { background-position: -746px 0px; width: 32px; height: 32px;  }

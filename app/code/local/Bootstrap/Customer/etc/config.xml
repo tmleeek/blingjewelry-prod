@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Bootstrap_Customer>
+            <version>1.1.0</version>
+        </Bootstrap_Customer>
+    </modules>
+    <frontend>
+        <routers>
+            <customer>
+                <args>
+                    <modules>
+                        <Bootstrap_Customer before="Mage_Customer">Bootstrap_Customer</Bootstrap_Customer>
+                    </modules>
+                </args>
+            </customer>
+        </routers>
+    </frontend>    
+</config> 

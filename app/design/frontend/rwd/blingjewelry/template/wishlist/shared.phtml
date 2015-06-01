@@ -1,0 +1,95 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     rwd_default
+ * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+/* @var $this Mage_Wishlist_Block_Share_Wishlist */
+?>
+<div class="my-wishlist">
+    <div class="page-title">
+        <h1>Favorites</h1>
+        <?php 
+            $page_title = $this->escapeHtml($this->getHeader());
+            $fav_title = str_replace(' Wishlist', 'Favorites List',$page_title);
+        ?>
+        <h3><?php echo $fav_title;?></h3>
+    </div>
+    <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+    <?php if ($this->hasWishlistItems()): ?>
+            <ul class="products-grid">
+            <?php foreach($this->getWishlistItems() as $item): ?>
+                <?php
+                    $product = $item->getProduct();
+                    $isVisibleProduct = $product->isVisibleInSiteVisibility();
+                ?>
+                <li class="item">
+                        <a class="product-image" href="<?php echo $this->getProductUrl($item) ?>" title="<?php echo $this->escapeHtml($product->getName()) ?>">
+                            <img src="<?php echo $this->helper('catalog/image')->init($product, 'small_image')->resize(210, 210); ?>" width="210" height="210" alt="<?php echo $this->escapeHtml($product->getName()) ?>" />
+                            <span class="badge new">
+                                <?php
+                                $newFromDate = $product->getNewsFromDate();
+                                $newToDate = $product->getNewsToDate();
+                                $now = Mage::app()->getLocale()->date()->toString(Varien_Date::DATETIME_INTERNAL_FORMAT);
+                                if(($newFromDate < $now && $newFromDate != NULL) && ($newToDate > $now || $newToDate == "")){
+                                    echo "New!";
+                                }
+                                ?>
+                            </span>
+                        </a>
+                        <?php
+                        // bling added short title logic
+                        $shortTitle = $product->getShortTitle();
+                        if(!empty($shortTitle)){
+                            $_productName = $this->escapeHtml($shortTitle);
+                        }else{
+                            $_productName = $this->escapeHtml($product->getName());
+                        }
+                        ?>
+                        <div class="product-info">
+                            <h2 class="product-name"><a href="<?php echo $this->getProductUrl($item) ?>"><?php echo $_productName; ?></a></h2>
+                               <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                                <!-- ADD -->
+                                 <span class="ajax-wishlist-button">
+                                    <a href="<?php echo $this->helper('wishlist')->getAddUrl($product) ?>" class="link-wishlist"><i class="icon-heart"></i>
+                                    <span id='ajax_wishlist_loader<?php echo $product->getId()?>' style='display:none' class="ajax-wishlist-loader"><img src='<?php echo $this->getSkinUrl('images/ajax/ajax-loader.gif')?>'/></span>
+                                    </a>
+                                 </span>
+                                <!-- END ADD -->
+                                <?php endif; ?>
+<!--
+                       <p><a href="<?php echo $this->getAddToWishlistUrl($item) ?>" onclick="setLocation(this.href); return false;" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a></p>-->
+
+                            <?php echo $this->getPriceHtml($product) ?>
+                            <?php if(!$product->isSaleable()): ?>
+                            <p class="availability out-of-stock"><span><?php echo $this->__('Waitlist') ?></span></p>
+                            <?php endif; ?>
+                        </div>
+ 
+                </li>
+            <?php endforeach ?>
+            </ul>
+        </div>
+    <?php else: ?>
+        <p><?php echo $this->__('No favorites.') ?></p>
+    <?php endif ?>
+</div>

@@ -1,0 +1,58 @@
+<?xml version="1.0"?>   
+<layout version="0.1.0"> 
+  <cms_index_index>
+  <!--
+	<reference name="head">-->
+
+         <!-- 
+          only needed for owl version 2
+        <action method="addItem">
+            <type>skin_css</type>
+            <name>js/lib/animation/animate.css</name>
+         </action>
+
+         integrated in theme css
+        <action method="addItem">
+            <type>skin_css</type>
+            <name>js/lib/owl.carousel2/owl.carousel.css</name>
+         </action>
+        <action method="addItem">
+            <type>skin_css</type>
+            <name>js/lib/owl.carousel2/owl.theme.default.min.css</name>
+         </action>
+       -->
+       <!-- moved to local.xml to include on all pages
+        <action method="addItem">
+			     <type>skin_js</type>
+			     <name>js/lib/owl.carousel2/owl.carousel.js</name>
+		    </action>	
+        -->	
+        <!-- moved to app.js
+        <block type="core/text" name="owl">
+          <action method="setText">			
+					<text><![CDATA[
+					<script type="text/javascript">
+					$j(document).ready(function(){
+
+              $j(".hero").owlCarousel({
+                //animateOut: 'fadeOut',
+                //animateIn: 'fadeIn',
+                items:1,
+                smartSpeed:450,
+                loop:true,
+                autoplay: true,
+                autoplayTimeout: 4000
+              });
+						
+					});
+					</script>
+					]]></text>
+          </action>
+        </block> 
+        -->
+    <!-- </reference>  -->
+    <reference name="content">
+      <block type="hero/featured" name="hero_featured" template="bootstrap/hero/featured.phtml" before="-"/>
+    </reference>
+  </cms_index_index>   
+</layout>   

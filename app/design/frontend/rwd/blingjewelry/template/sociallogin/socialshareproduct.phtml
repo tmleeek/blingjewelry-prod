@@ -1,0 +1,12 @@
+<?php
+if ( $this->horizontalShareEnable() == "1" && $this->horizontalShareProduct() == "1") {
+	echo '<div class="loginRadiusWrap">';
+    if (trim($this->sharingTitle()) != "") {
+        echo '<div class="loginRadiusLabel">'.__(trim($this->sharingTitle())).'</div>';
+    }
+    echo '<div class="loginRadiusHorizontalSharing"></div>';
+    echo '</div>';
+}
+if ($this->verticalShareEnable() == "1" && $this->verticalShareProduct() == "1") {
+    echo '<div class="loginRadiusVerticalSharing"></div>';
+}

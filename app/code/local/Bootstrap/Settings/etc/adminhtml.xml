@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<config>
+		<acl>
+			<resources>
+				<all>
+					<title>Allow Everything</title>
+				</all>
+				<admin>
+					<children>
+						<Bootstrap_Settings>
+							<title>Skinit Settings</title>
+							<sort_order>10</sort_order>
+						</Bootstrap_Settings>
+						<system>
+							<children>
+								<config>
+									<children>
+										<bootstrapsettings translate="title" module="settings"> 
+											<title>Skinit Settings</title>
+											<sort_order>50</sort_order>
+										</bootstrapsettings>
+									</children>							
+								</config>
+							</children>
+						</system>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+</config>

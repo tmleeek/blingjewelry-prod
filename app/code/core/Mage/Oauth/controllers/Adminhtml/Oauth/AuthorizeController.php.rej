@@ -1,0 +1,11 @@
+--- app/code/core/Mage/Oauth/controllers/Adminhtml/Oauth/AuthorizeController.php
++++ app/code/core/Mage/Oauth/controllers/Adminhtml/Oauth/AuthorizeController.php
+@@ -55,7 +55,7 @@
+      */
+     public function preDispatch()
+     {
+-        $this->getRequest()->setParam('forwarded', true);
++        Mage::app()->getRequest()->setInternallyForwarded();
+ 
+         // check login data before it set null in Mage_Admin_Model_Observer::actionPreDispatchAdmin
+         $loginError = $this->_checkLoginIsEmpty();

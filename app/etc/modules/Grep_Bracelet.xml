@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Grep_Bracelet>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Grep_Bracelet>
+    </modules>
+</config>

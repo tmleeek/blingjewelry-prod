@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+
+<layout version="0.1.0">
+    <default>
+        <reference name="head">
+            <action method="addItem"><type>skin_js</type><name>js/jquery.qtip-1.0.0-rc3.min.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/minicart.js</name></action>
+            <action method="addItem"><type>skin_css</type><name>css/minicart.css</name></action>
+            <block type="core/template" name="minicart" template="grep/minicart.phtml" />
+        </reference>
+        <remove name="cart_sidebar" />
+    </default>
+    <grep_minicart_index_index>
+        <reference name="root">
+            <action method="setTemplate"><template>page/popup.phtml</template></action>
+        </reference>
+        <reference name="content">
+            <block type="checkout/cart_sidebar" name="minicart_sidebar" template="grep/sidebar.phtml" before="-">
+                <action method="addItemRender"><type>simple</type><block>checkout/cart_item_renderer</block><template>grep/sidebar/default.phtml</template></action>
+                <action method="addItemRender"><type>grouped</type><block>checkout/cart_item_renderer_grouped</block><template>grep/sidebar/default.phtml</template></action>
+                <action method="addItemRender"><type>configurable</type><block>checkout/cart_item_renderer_configurable</block><template>grep/sidebar/default.phtml</template></action>
+                <block type="core/text_list" name="cart_sidebar.extra_actions" as="extra_actions" translate="label" module="checkout">
+                    <label>Shopping Cart Sidebar Extra Actions</label>
+                </block>
+            </block>
+        </reference>
+    </grep_minicart_index_index>
+    <grep_minicart_index_add>
+        <update handle="grep_minicart_index_index" />
+    </grep_minicart_index_add>
+</layout>

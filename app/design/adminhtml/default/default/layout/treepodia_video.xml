@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+<layout version="1.1.0">
+	<video_adminhtml_export_index>
+		<reference name="content">
+			<block type="video/export"  name="video_export" template="treepodia/video/export.phtml" />
+		</reference>
+	</video_adminhtml_export_index>
+	<video_adminhtml_export_export>
+		<reference name="content">
+			<block type="video/export"  name="video_export" template="treepodia/video/export.phtml" />
+		</reference>
+	</video_adminhtml_export_export>
+	<video_adminhtml_configuration_index>
+		<reference name="head">
+			<action method="addItem"><type>skin_css</type><name>treepodia/css/jquery.miniColors.css</name></action>
+			<action method="addItem"><type>skin_js</type><name>treepodia/js/jquery-1.8.3.min.js</name></action>
+			<action method="addItem"><type>skin_js</type><name>treepodia/js/jquery.miniColors.min.js</name></action>
+		</reference>
+		<reference name="content">
+			<block type="video/configuration"  name="video_configuration" template="treepodia/video/configuration.phtml" />
+		</reference>
+	</video_adminhtml_configuration_index>
+	<video_adminhtml_configuration_save>
+		<reference name="content">
+			<block type="video/configuration"  name="video_configuration" template="treepodia/video/configuration.phtml" />
+		</reference>
+	</video_adminhtml_configuration_save>
+</layout>

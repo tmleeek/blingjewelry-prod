@@ -1,0 +1,42 @@
+<?php
+/**
+ * Mageix LLC
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to Mageix LLC's  End User License Agreement
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://ixcba.com/index.php/license-guide/
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to webmaster@ixcba.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+
+ *
+ * @category	Mageix
+ * @package 	Mageix_Ixcba
+ * @copyright   Copyright (c) 2011 Mageix LLC (http://ixcba.com)
+ * @license	http://ixcba.com/index.php/license-guide/  End User License Agreement
+ */
+
+/*
+ * Magento Mageix IXCBA速 Module
+ *
+ * @category   Checkout & Payments
+ * @package	Mageix_Ixcba
+ * @copyright  Copyright (c) 2011 Mageix LLC (http://ixcba.com)
+ * @developer  Brian Graham
+  *@licence 	http://ixcba.com/index.php/license-guide/ 
+ */
+
+
+?>
+<?php if (!$this->getQuote()->isVirtual()): ?>
+    <?php echo $this->helper('giftmessage/message')->getInline('onepage_checkout', $this->getQuote(), $this->getDontDisplayContainer()) ?>
+<?php endif; ?>
+
+<?php
+ //}
+?>

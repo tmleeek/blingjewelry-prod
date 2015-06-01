@@ -1,0 +1,20 @@
+
+/* ============================================ *
+ * Pricing Conditions
+ * ============================================ */
+
+.price-box {
+    &.map-info {
+        .old-price {
+            display: none;
+        }
+    }
+
+    .minimal-price-link {
+        .label {
+            font-family: $f-stack-serif;
+            font-size: $f-size-xs;
+            font-style:italic;
+        }
+    }
+}

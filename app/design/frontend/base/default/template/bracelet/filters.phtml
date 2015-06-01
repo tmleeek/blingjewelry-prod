@@ -1,0 +1,14 @@
+<?php $values = Mage::helper('grep_bracelet')->getFilterValues(); ?>
+
+<div class="title">Charm Types</div>
+<ul>
+<?php foreach ($values as $code => $value): ?>
+    <li>
+        <span class="checkbox">
+            <input type="checkbox" name="filters" id="filter-<?php echo $code; ?>" value="<?php echo $code; ?>" <?php if ($value->getChecked()): ?> checked="checked" <?php endif; ?> />
+        </span>
+        <span class="description"><?php echo $value->getName(); ?> (<?php echo $value->getCount(); ?>)</span>
+    </li>
+<?php endforeach; ?>
+</ul>
+<br class="clearer" />

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<config>
+	<global>
+		<models>
+			<catalog>
+				<rewrite>
+					<product_api>ElevenMain_Catalog_Model_Product_Api</product_api>
+				</rewrite>
+			</catalog>
+			<core>
+				<rewrite>
+					<magento_api>ElevenMain_Core_Model_Magento_Api</magento_api>
+				</rewrite>
+			</core>
+		</models>
+	</global>
+</config>

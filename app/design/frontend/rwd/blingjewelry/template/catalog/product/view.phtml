@@ -1,0 +1,421 @@
+<?php $_helper = $this->helper('catalog/output'); ?>
+<?php $_product = $this->getProduct(); ?>
+<?php
+// bling added short title logic
+$shortTitle = $_product->getShortTitle();
+if(!empty($shortTitle)){
+    $mainTitle = $this->escapeHtml($shortTitle);
+    $subTitle = $_helper->productAttribute($_product, $_product->getName(), 'name');
+}else{
+    $mainTitle = $_helper->productAttribute($_product, $_product->getName(), 'name');
+    $subTitle = $mainTitle;
+}
+?>
+<script type="text/javascript">
+    var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
+</script>
+<div id="messages_product_view"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
+<div class="product-view has-related<?php if($this->getChildHtml('related_products')){ ?> has-related<?php } ?>">
+    <div class="product-essential">
+        <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+            <div class="no-display">
+                <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
+                <input type="hidden" name="related_product" id="related-products-field" value="" />
+            </div>
+
+            <div class="product-top-wrap">
+            <div class="product-img-box">
+                <div class="product-name">
+                    <h1><?php echo $mainTitle ?></h1>
+                </div>
+                <?php echo $this->getChildHtml('media') ?>
+            </div>
+
+            <div class="product-shop">
+                <div class="product-name">
+                    <?php // bling added;?>
+                    <span class="h1"><?php echo $mainTitle ?></span>
+                    <div class="pinit"><a href="//www.pinterest.com/pin/create/button/?url=<?php echo Mage::helper('core/url')->getCurrentUrl() ?>&media=<?php echo $this->helper('catalog/image')->init($_product, 'image') ?>&description=<?php echo $mainTitle ?>" data-pin-do="buttonPin" data-pin-shape="round">Pin It!</a></div>
+                </div>
+                <!-- Please call pinit.js only once per page -->
+                <script type="text/javascript" async defer src="//assets.pinterest.com/js/pinit.js"></script>
+
+                <div class="extra-info">
+                    <?php // true shows when no result, default/short is other option
+                    echo $this->getReviewsSummaryHtml($_product, 'default', true)?>
+                </div>
+
+                <?php /* if ($_product->getShortDescription()):?>
+                    <div class="short-description">
+                        <div class="std"><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></div>
+                    </div>
+                <?php endif; */ ?>
+
+                <?php  
+                // bling added
+                $_useMsrp = false;
+                $_regularPrice = $this->helper('tax')->getPrice($_product, $_product->getPrice());
+                $_msrp = $this->helper('tax')->getPrice($_product,$_product->getMsrp());
+                $_finalPrice = $this->helper('tax')->getPrice($_product, $_product->getFinalPrice());
+
+                // first determine if a sale
+                if($_finalPrice < $_regularPrice){
+                    // sale
+                    $disc = $_regularPrice - $_finalPrice;
+                    $basis = $_regularPrice;
+                }
+                if(($_msrp > $_regularPrice) && ($_msrp > $_finalPrice)){
+                    // msrp situation
+                    $disc = $_msrp - $_finalPrice;
+                    $basis = $_msrp;
+                    $_useMsrp = true;
+                }
+                $_freeShipping = false;
+                if($_finalPrice >= 19.99){
+                    $_freeShipping = true;
+                }
+                if(!empty($basis)){
+                    $getpercentage = number_format(($disc/$basis)*100, 2);
+                }
+                ?>
+                <div class="price-wrap">
+                    <div class="price-info <?php if($_useMsrp){ ?>with-msrp<?php } ?>">
+
+                        <?php echo $this->getPriceHtml($_product); ?>
+
+                        <?php // bling add msrp
+                        if(($_msrp > $_regularPrice) && ($_msrp > $_finalPrice)){ ?>
+                            <div class="msrp"><div class="price"><?php echo Mage::helper('core')->currency($_product->getMsrp(),true,false); ?></div></div>
+                        <?php } ?>
+
+                        <?php echo $this->getChildHtml('bundle_prices') ?>
+                        <?php echo $this->getTierPriceHtml() ?>
+                    </div>
+                    <?php /*
+                    if(isset($getpercentage) && !empty($getpercentage)){
+                        echo '<div class="savingbox">'.number_format($getpercentage, 0).'% Savings</div>' ;
+                    }*/
+                    ?>
+                    <?php echo $this->getChildHtml('product_type_availability'); ?>
+                </div>
+
+                <?php echo $this->getChildHtml('alert_urls') ?>
+
+                <?php echo $this->getChildHtml('other');?>
+
+                <?php if ($_product->isSaleable() && $this->hasOptions()):?>
+                    <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
+                <?php endif;?>
+
+
+                <div class="add-to-cart-wrapper">
+                    <?php echo $this->getChildHtml('product_type_data') ?>
+                    <?php echo $this->getChildHtml('extrahint') ?>
+
+                    <?php if (!$this->hasOptions()):?>
+                        <div class="add-to-box">
+                            <?php if($_product->isSaleable()): ?>
+                                <?php echo $this->getChildHtml('addtocart') ?>
+                                <?php if( $this->helper('wishlist')->isAllow() || $_compareUrl=$this->helper('catalog/product_compare')->getAddUrl($_product)): ?>
+                                    <span class="or"><?php echo $this->__('OR') ?></span>
+                                <?php endif; ?>
+                            <?php endif; ?>
+                            <?php //echo $this->getChildHtml('addto') ?>
+                            <?php //$this->getChildHtml('sharing') ?>
+                        </div>
+                        <?php echo $this->getChildHtml('extra_buttons') ?>
+                    <?php elseif (!$_product->isSaleable()): ?>
+                        <div class="add-to-box">
+                            <?php //echo $this->getChildHtml('addto') ?>
+                            <?php //echo $this->getChildHtml('sharing') ?>
+                        </div>
+                    <?php endif; ?>
+                </div>
+
+                <?php // mmc bling info boxes below add to cart 
+                if ($_product->isSaleable()){
+                ?>
+                <div class="item-info">
+                        <?php // bling added;
+
+                            if ($_product->isSaleable()){
+                                date_default_timezone_set('America/New_York');
+                                $resttimeto = 'noon';
+                                $resttimefrom = 'midnight';
+                                $cur_time = strtotime("now");
+                                $today1 = strtotime('now'); 
+                                $tomorrow = strtotime('+1 day', $today1);
+                                
+                                $st_time    =   strtotime($resttimeto);
+                                $end_time   =   strtotime($resttimefrom);
+
+                                $day = date("l", $tomorrow);
+                                if($day == 'Saturday' && $cur_time < $st_time){
+                                    echo 'Ships Today'; 
+                                }
+                                else if ($day == 'Sunday' || $day == 'Monday' || $day == 'Saturday'){
+                                    $day = 'Monday';
+                                    echo 'Ships  '. $day;
+                                }
+                                else if ($cur_time < $st_time)
+                                {
+                                    echo 'Ships Today'; 
+                                }
+                                else{
+                                    echo 'Ships  '. $day;
+                                }
+                            }
+                        ?>
+                        <span class="sep">|</span>
+                        <span class="shipping"><a href="javascript:void(0)">
+                    <?php 
+                    //mmc  todo make sure works with cache and options
+                    if($_freeShipping){ ?>
+                        Ships Free!
+                    <?php }else{ ?>
+                        <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('pdp_shipping')->toHtml() ?>
+                    <?php } ?>
+                    </a></span>
+                    <span class="sep">|</span>
+                    <span class="returns"><a href="javascript:void(0)">
+                        <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('pdp_returns')->toHtml() ?>
+                    </a></span>
+                </div>
+                <?php } ?>
+                <?php if(Mage::getModel('cms/block')->load('pdp_promo')->getIsActive()){ ?>
+                <div class="item-promo">
+                    <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('pdp_promo')->toHtml() ?>
+                </div>
+                <?php } ?>
+
+
+                <?php // mmc bling added loginradius manually ?>
+                <div class="share-wrap">
+                    <?php echo $this->getChildHtml('socialshareproduct') ?>
+                    <?php
+                    //if(!$this->hasOptions()){
+                    if(stristr($subTitle,'necklace') || stristr($subTitle,'bracelet') || stristr($subTitle,'cz')){ 
+                    ?>
+                    <span class="sizing"><a href="javascript:void(0);"><?php echo $this->__('Size Guide');?></a></span>
+                    <?php } //} 
+                    ?>
+                    <?php echo $this->getChildHtml('addto') ?>
+                </div>
+
+                <div class="product-sub-name-wrap">
+                    <?php if(!empty($subTitle)){?>
+                        <h1 class="product-sub-name"><?php echo $subTitle;?></h1>
+                    <?php } ?>
+                    <div class="sku"><?php echo $_product->getSku() ;?></div>
+                </div>
+
+                <div class="product-collateral toggle-content tabs">
+                    <?php if ($detailedInfoGroup = $this->getChildGroup('detailed_info', 'getChildHtml')):?>
+                        <dl id="collateral-tabs" class="collateral-tabs">
+                            <?php foreach ($detailedInfoGroup as $alias => $html):?>
+                                <dt class="tab"><span><?php echo $this->escapeHtml($this->getChildData($alias, 'title')) ?></span></dt>
+                                <dd class="tab-container">
+                                    <div class="tab-content"><?php echo $html ?></div>
+                                </dd>
+                            <?php endforeach;?>
+                        </dl>
+                    <?php endif; ?>
+                </div>
+            </div>
+            </div> <!-- close product top wrap -->
+            <div class="block block-related">
+                <?php echo $this->getChildHtml('mybuys_recomendationzone') ?>
+            </div>
+            <?php //echo $this->getChildHtml('related_products') ?>
+
+            <div class="clearer"></div>
+            <?php if ($_product->isSaleable() && $this->hasOptions()):?>
+                <?php echo $this->getChildChildHtml('container2', '', true, true) ?>
+            <?php endif;?>
+        </form>
+        <script type="text/javascript">
+        //<![CDATA[
+            var productAddToCartForm = new VarienForm('product_addtocart_form');
+            productAddToCartForm.submit = function(button, url) {
+                if (this.validator.validate()) {
+                    var form = this.form;
+                    var oldUrl = form.action;
+
+                    if (url) {
+                       form.action = url;
+                    }
+                    var e = null;
+                    try {
+                        this.form.submit();
+                    } catch (e) {
+                    }
+                    this.form.action = oldUrl;
+                    if (e) {
+                        throw e;
+                    }
+
+                    if (button && button != 'undefined') {
+                        button.disabled = true;
+                    }
+                }
+            }.bind(productAddToCartForm);
+
+            productAddToCartForm.submitLight = function(button, url){
+                if(this.validator) {
+                    var nv = Validation.methods;
+                    delete Validation.methods['required-entry'];
+                    delete Validation.methods['validate-one-required'];
+                    delete Validation.methods['validate-one-required-by-name'];
+                    // Remove custom datetime validators
+                    for (var methodName in Validation.methods) {
+                        if (methodName.match(/^validate-datetime-.*/i)) {
+                            delete Validation.methods[methodName];
+                        }
+                    }
+
+                    if (this.validator.validate()) {
+                        if (url) {
+                            this.form.action = url;
+                        }
+                        this.form.submit();
+                    }
+                    Object.extend(Validation.methods, nv);
+                }
+            }.bind(productAddToCartForm);
+        //]]>
+        </script>
+    </div>
+    <?php echo $this->getChildHtml('upsell_products') ?>
+    <?php echo $this->getChildHtml('recently_viewed') ?>
+    <?php echo $this->getChildHtml('product_additional_data') ?>
+    <?php echo $this->getChildHtml('reviews') ?>
+</div>
+
+<?php // bling added treepodia ?>
+<script type="text/javascript">
+// Grab the product SKU / Code
+var trpdSKU = '<?php echo $this->htmlEscape($_product->getSku()) ?>';
+
+var video; var product;
+function initTreepodia() { product = Treepodia.getProduct('UA-BLINGJEWELRY1', trpdSKU); product.requestVideo(handleVideo); }
+function handleVideo(vid) { video = vid; if (vid.hasVideos()) { video.setPlayer("default"); video.setChromeless(true);} else { document.getElementById('video-btn').style.display = 'none'; } }
+</script>
+
+<script type="text/javascript">
+// Include Dialog Script
+document.write(unescape("%3Cscript src='" + document.location.protocol + "//dxa05szpct2ws.cloudfront.net/utils/trpdDialog/video-dialog.min.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript">
+// Include Treepodia main script
+document.write(unescape("%3Cscript src='" + document.location.protocol + "//dxa05szpct2ws.cloudfront.net/TreepodiaAsyncLoader.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+
+<?php // bling mmc sizing pop ?>
+<div class="modal fade" id="modal-sizing">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      <div class="modal-body">
+        <div class="product-sizing toggle-content tabs">
+            <dl id="sizing-tabs" class="sizing-tabs">
+                <dt class="tab ring"><span>Ring</span></dt>
+                <dd class="tab-container">
+                    <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('sizing_ring')->toHtml() ?>
+                </dd>
+                <dt class="tab necklace"><span>Necklace</span></dt>
+                <dd class="tab-container">
+                    <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('sizing_necklace')->toHtml() ?>
+                </dd>
+                <dt class="tab bracelet"><span>Bracelet</span></dt>
+                <dd class="tab-container">
+                    <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('sizing_bracelet')->toHtml() ?>
+                </dd>
+                <dt class="tab cz"><span>CZ</span></dt>
+                <dd class="tab-container">
+                    <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('sizing_cz')->toHtml() ?>
+                </dd>
+            </dl>
+        </div>
+      </div><!-- /.modal-body -->
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="modal-shipping">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      <div class="modal-body">
+
+        <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('pdp_shipping_pop')->toHtml() ?>
+
+      </div><!-- /.modal-body -->
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="modal-returns">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      <div class="modal-body">
+
+        <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('pdp_returns_pop')->toHtml() ?>
+
+      </div><!-- /.modal-body -->
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="modal-gift">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      <div class="modal-body">
+
+        <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('pdp_gift_box')->toHtml() ?>
+
+      </div><!-- /.modal-body -->
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<script type="text/javascript">
+<?php
+// mmc todo use pure js to grab the title, parse and set type
+if(stristr($subTitle,'ring')){ $_type = 'ring'; }
+if(stristr($subTitle,'necklace')){ $_type = 'necklace'; }
+if(stristr($subTitle,'pendant')){ $_type = 'necklace'; }
+if(stristr($subTitle,'chain')){ $_type = 'necklace'; }
+if(stristr($subTitle,'bracelet')){ $_type = 'bracelet';  }
+if(stristr($subTitle,'cz')){ $_type = 'cz'; }
+?>
+<?php if(isset($_type)){ ?>
+var ptitle = '<?php echo $_type?>';
+<?php } ?>
+$j(document).ready(function () {
+<?php if(isset($_type)){ ?>
+    $j('#modal-sizing').on('show.bs.modal', function(){ 
+         $j('.tab.' + ptitle).click();
+    });
+<?php } ?>
+    $j('.sizing a').on('click', function(){
+        $j('#modal-sizing').modal('show');
+    });
+    $j('.shipping a').on('click', function(){
+        $j('#modal-shipping').modal('show');
+    });
+    $j('.returns a').on('click', function(){
+        $j('#modal-returns').modal('show');
+    });
+    $j('.gift-box a').on('click', function(){
+        $j('#modal-gift').modal('show');
+    });
+
+});     
+
+//$j('.toggle-tabs .last').click();
+</script>

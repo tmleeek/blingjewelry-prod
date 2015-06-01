@@ -1,0 +1,11 @@
+Build x.x.17
+
+Release notes:
+
+•	Change in Analytics to work with AIWriter API
+
+Files updated:
+
+•	/app/code/local/Celebros/Salesperson/etc/config.xml
+•	/app/code/local/Celebros/Salesperson/Model/Observer.php
+•	/app/code/local/Celebros/Salesperson/controllers/ResultController.php

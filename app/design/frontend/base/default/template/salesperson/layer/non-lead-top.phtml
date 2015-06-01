@@ -1,0 +1,152 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2009 Irubin Consulting Inc. DBA Varien (http://www.varien.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Category layered navigation
+ *
+ * @see Mage_Catalog_Block_Layer_View
+ */
+?>
+<?php $_filters = $this->getFilters() ?>
+  <?php $moreAnswers=array();?>
+  <?php $moreQuestions=array();?>
+<?php if(count($_filters) >= 1 || $this->stateHasFilters()):?>
+<div class="block block-layered-nav block-salesperson-non-lead-top">
+    <div class="block-title">
+        <strong><span><?php echo $this->__('Browse By') ?></span></strong>
+    </div>
+    <div class="block-content salesperson-content-non-lead-top">
+        <?php echo $this->getStateHtml() ?>
+       	<?php if(count($_filters) >= 1):?>
+        <?php $q = 0;?>
+        <?php foreach ($_filters as $key=>$_filter): ?>
+            <?php if (!$this->canShowLeadQuestion()||$key >= 1):?>
+                 <?php if((int)$_filter->Answers->Count > 0||(int)$_filter->ExtraAnswers->Count > 0): ?>
+	              <?php if ($this->getMaxNonLeadQuestions() > $q):?>
+			    <dl id="narrow-by-list" class="salesperson-top-non-lead">
+	                    	<dt><a href="<?php echo $this->forceLeadQuestion($_filter->Id) ?>" ><?php echo $this->__($this->getFilterText($_filter, "nonlead")); ?></a></dt>
+                                    <dd class="salesperson-top-non-lead">
+	                    		<ol class="salesperson-top-non-lead">
+	                    		<?php $a = 0;?>
+					<?php if((int)$_filter->Answers->Count > 0):?>
+					<?php foreach ($_filter->Answers->Items as $answer): ?>
+                                            <?php if ($this->getMaxNonLeadAnswers() > $a):?>
+                                                <li>
+                                                    <a href="<?php echo $this->answerQuestionUrl($answer->Id) ?>"><?php echo $answer->Text ?></a>
+						    <?php if ($this->showProductCountInNonLeadAnswers()): echo '('.$answer->ProductCount.')'; endif; ?>
+						 </li>
+						 <?php $a++;?>
+                                              <?php else: $moreAnswers[]=$answer;//תוספת?>
+                                            <?php endif;?>
+					<?php endforeach ?>
+					<?php endif;?>
+					<?php if((int)$_filter->ExtraAnswers->Count > 0): ?>
+                                         <?php foreach ($_filter->ExtraAnswers->Items as $answer): ?>
+                                            <?php if ($this->getMaxNonLeadAnswers() > $a):?>
+                                                <li>
+                                                    <a href="<?php echo $this->answerQuestionUrl($answer->Id) ?>"><?php echo $answer->Text ?></a>
+						    <?php if ($this->showProductCountInNonLeadAnswers()): echo '('.$answer->ProductCount.')'; endif; ?>
+						 </li>
+						 <?php $a++;?>
+                                               <?php else: $moreAnswers[]=$answer;//תוספת?>
+                                            <?php endif;?>
+					<?php endforeach ?>
+					<?php endif;?>
+					<?php if ($_filter->Id == 'PriceQuestion'):?>
+                                            <li>
+                                                <?php echo $this->__('Custom Price Range')?>
+                                                <div>
+                                                    <form id="custom-price-form">
+                                                            <fieldset>
+                                                                    <label for="priceFrom"><?php echo $this->__('From')?></label><input name="priceFrom" type="text" class="validate-number required-entry" size="2"/>
+                                                                    <label for="priceTo"><?php echo $this->__('To')?></label><input name="priceTo" type="text" class="validate-number required-entry" size="2"/>
+                                                                    <a onclick="getCustomPrice()"><?php echo $this->__('Go') ?></a>
+                                                            </fieldset>
+                                                    </form>
+                                                    <script type="text/javascript">
+                                                            var priceForm =  new VarienForm('custom-price-form');
+                                                            function getCustomPrice(){
+                                                                    if(priceForm.validator.validate()){
+                                                                            var from = $$('input[name="priceFrom"]')[0].value;
+                                                                            var to = $$('input[name="priceTo"]')[0].value;
+                                                                            if (from != '' && to !=''){
+                                                                                    var answerId = '_P' + from + '_' + to;
+                                                                                    var url = "<?php echo $this->getCustomPriceAnswerUrl()?>";
+                                                                                    url += '&answerId=' + answerId;
+                                                                                    setLocation(url);
+                                                                            }
+                                                                    }
+                                                            }
+                                                    </script>
+                                                </div>
+                                            </li>
+					<?php endif;?>
+				</ol>
+                               <?php if(((int)$_filter->Answers->Count+(int)$_filter->ExtraAnswers->Count)>$this->getMaxNonLeadAnswers()):?>
+                                    <select id="answersList" onchange="setFirstAnswer(this.value)">
+                                        <option>More Answers</option>
+                                        <?php foreach ($moreAnswers as $answer):?>
+                                        <option value=<?php echo $this->answerQuestionUrl($answer->Id) ?>>
+                                           <?php echo $answer->Text;?>
+                                        </option>
+                                        <?php endforeach;?>
+                                    </select>
+									  <script type="text/javascript">
+										   function setFirstAnswer(value){
+										   setLocation(value)
+										  }
+									</script>									
+                                    <?php endif;?>
+	                    </dd>
+	                  </dl>
+	                  <?php $q++;//עבור לשאלה הבאה?>
+                          <?php else:?>
+                                <?php $moreQuestions[]=$_filter;?>
+	                 <?php endif;//האם אנידקס השאלה קטן ממקסימום השאלות?>
+                    <?php endif;//אם יש תשובות?>
+            	<?php endif;//הצגת שאלה ראשונה?>
+            <?php endforeach; //הצגת השאלות?>
+            <?php if(count($_filters)>$this->getMaxNonLeadQuestions()):?>
+                                <select id="questionsList" onchange="setFirstQuestion(this.value)">
+                                    <option>More Questions</option>
+                  <?php foreach ($moreQuestions as $question):?>
+                      <option value=<?php  echo $this->forceLeadQuestion($question->Id);?>>
+                         <?php echo $question->SideText;?>
+                      </option>
+                  <?php endforeach;?>
+              </select>
+              <script type="text/javascript">
+                  function setFirstQuestion(value){
+                   setLocation(value)
+                  }
+            </script>
+             <?php endif;?>
+            <script type="text/javascript">decorateDataList('narrow-by-list')</script>
+            <?php endif;?>
+    </div>
+</div>
+<?php endif;?>

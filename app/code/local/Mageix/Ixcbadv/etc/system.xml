@@ -1,0 +1,758 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+   <tabs>
+        <mageix translate="label" module="ixcbadv">
+            <label>Mageix&#174; Extensions</label>
+            <sort_order>100</sort_order>
+        </mageix>
+    </tabs>
+    <sections>
+        <ixcbadv translate="label" module="ixcbadv">
+            <label>Amazon Payments Settings</label>
+            <tab>mageix</tab>
+            <sort_order>1000</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <mageix_group translate="label" module="ixcbadv">
+                    <label>Advanced IXCBA&#174; Button</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1000</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <comment>
+						<![CDATA[<br />
+						<div class="custom-options">
+							<div class="box">
+								<p class="grand-total"><br /><b>Button Location</b></p>
+								<p>You may use this enable or disable the Amazon Payments Advanced button on the cart page to force all customers go through your one page ckeckout. Please note Amazon Payments Advanced will still be active and available at payment methods step. Use the Enabled switch in the General block to completely disable this payment method.</p>
+							</div>
+						</div>
+						]]>
+					</comment>
+                    <fields>
+                        <inline_ixcbadv_enabled translate="label">
+                            <label>Enable Cart Button</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<comment>You may use this enable or disable the Amazon Payments Advanced button on the cart page to require all customers go through your checkout flow.</comment>
+                        </inline_ixcbadv_enabled>
+					    <enable_disable_ixcbadv translate="label">
+                            <label>Enable Button on Payment Methods</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<comment>You may use this enable or disable the Amazon Payments Advanced button on payment methods page.</comment>
+                        </enable_disable_ixcbadv>
+					</fields>
+                </mageix_group>
+				<mageix_button translate="label" module="ixcbadv">
+                    <label>Advanced IXCBA&#174; Button Appearance</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1020</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <comment>
+						<![CDATA[<br />
+						<div class="custom-options">
+							<div class="box">
+								<p class="grand-total"><br /><b>Button Appearance Options</b></p>
+								<p>You may use this enable or disable the Pay with Amazon button on the cart page to force all customers go through your one page ckeckout. Please note Amazon Payments will still be active and available at payment methods step. Use the Enabled switch in the General block to completely disable this payment method.</p>
+							</div>
+						</div>
+						]]>
+					</comment>
+                    <fields>
+						<button_size_ixcbadv translate="label">
+                            <label>Button Size</label>
+                            <frontend_type>select</frontend_type>
+   							<source_model>Mageix_Ixcbadv_Model_Adminhtml_Source_Buttonsize</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<comment>You may use to set the size of the Amazon Payments Advanced button. Large is recommended. </comment>
+                        </button_size_ixcbadv>
+						<button_color_ixcbadv translate="label">
+                            <label>Button Color</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>Mageix_Ixcbadv_Model_Adminhtml_Source_Buttoncolor</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<comment>You may use this set the color of the Amazon Payments Advanced button. Orange is recommended. </comment>
+                        </button_color_ixcbadv>
+			<widgets_width_ixcbadv translate="label">
+                            <label>Widgets Width</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>Mageix_Ixcbadv_Model_Adminhtml_Source_Widgetswidth</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+			    <comment>You may use this set width of the Address and Wallet widgets. 400px is recommended.</comment>
+                        </widgets_width_ixcbadv>
+                        <widgets_height_ixcbadv translate="label">
+                            <label>Widgets Height</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>Mageix_Ixcbadv_Model_Adminhtml_Source_Widgetsheight</source_model>
+                            <sort_order>31</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+			    <comment>You may use this set height of the Address and Wallet widgets. 260px is recommended.</comment>
+                        </widgets_height_ixcbadv>
+                        
+					</fields>
+                </mageix_button>
+<mageix_payment translate="label" module="ixcbadv">
+                    <label>Advanced IXCBA&#174; Account Details</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1050</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+					<comment>
+						<![CDATA[<br />
+						<div class="custom-options">
+							<div class="box">
+								<p class="grand-total"><br /><b>Configure Your Amazon Payments Advanced Account Details</b></p>
+								<p>To configure Advanced IXCBA&#174; you will need to enter your Amazon Payments Advanced&trade; Merchant ID, MWS Access Key ID, and MWS Secret Access Key</p>
+								<p>If you do not already have a Amazon Payments Advanced&trade; account, click here to create one now. <a href="https://sellercentral.amazon.com/gp/on-board/workflow/Registration/login.html?passthrough%2Fsource=internal-landing-select&passthrough%2F*entries*=0&passthrough%2FmarketplaceID=AGWSWK15IEJJ7&passthrough%2FsuperSource=OAR&passthrough/ld=APRPMAGEIX&passthrough%2F*Version*=1&passthrough%2Faccount=pyop&passthrough%2FwaiveFee=1&passthrough%2FsimplifiedLogin=1" target="_blank">Sign-Up</a></p>
+								<p>To locate your Merchant ID, sign in to your Seller Central Amazon Payments Advanced&trade; account and click <b>Settings > Checkout Pipeline Settings.</b></p>
+								<p>To locate your MWS Access Key ID and MWS Secret Access Key, sign in to your Seller Central Amazon Payments Advanced&trade; account and click <b>Integration > MWS Key.</b> Click the link to read the Amazon Web Services Customer Agreement, and then click the check box, if you are setting up a new MWS Access Key ID.</p>
+								
+								<p>For additional information on setting up your Amazon Payments Advanced account, <a href="http://services.amazon.com/amazon-payments/payments-home.html?ld=APRPMAGEIX" target="_blank">Click Here - FAQ.</a></p>
+								<p><br /><a href="https://sellercentral.amazon.com/gp/on-board/workflow/Registration/login.html?passthrough%2Fsource=internal-landing-select&passthrough%2F*entries*=0&passthrough%2FmarketplaceID=AGWSWK15IEJJ7&passthrough%2FsuperSource=OAR&passthrough/ld=APRPMAGEIX&passthrough%2F*Version*=1&passthrough%2Faccount=pyop&passthrough%2FwaiveFee=1&passthrough%2FsimplifiedLogin=1" target="_blank">Signup for Amazon Payments Advanced</a><br /><br /></p>
+							</div>
+						</div>
+						]]>
+					</comment>
+                    <fields>
+			<active translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<config_path>payment/ixcbadv/active</config_path>
+							<comment>Use this to turn Advanced IXCBA module to completely ON/OFF.</comment>
+                        </active>
+						<title translate="label">
+                            <label>Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<config_path>payment/ixcbadv/title</config_path>
+                        </title>
+                        <country translate="label">
+                            <label>Marketplace</label>
+                            <frontend_type>select</frontend_type>
+   			    <source_model>Mageix_Ixcbadv_Model_Adminhtml_Source_Country</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+			    <config_path>payment/ixcbadv/country</config_path>
+                        </country>
+                        <merchantid translate="label">
+						  <label>Merchant ID</label>
+						  <frontend_type>obscure</frontend_type>
+						  <backend_model>adminhtml/system_config_backend_encrypted</backend_model>
+						  <sort_order>7</sort_order>
+						  <show_in_default>1</show_in_default>
+						  <show_in_website>1</show_in_website>
+						  <show_in_store>0</show_in_store>
+						  <config_path>payment/ixcbadv/merchantid</config_path>
+						  <comment>Seller Central -> Settings -> Checkout Pipeline Settings</comment>
+						</merchantid>
+						<sandbox_mode translate="label">
+                            <label>Sandbox Mode</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+							<config_path>payment/ixcbadv/sandbox_mode</config_path>
+							<comment>Make sure this is set to "No" for Production mode.</comment>
+                        </sandbox_mode>
+						<merchantname translate="label">
+						  <label>Merchant Name</label>
+						  <frontend_type>text</frontend_type>
+						  <sort_order>5</sort_order>
+						  <show_in_default>1</show_in_default>
+						  <show_in_website>1</show_in_website>
+						  <show_in_store>0</show_in_store>
+						  <config_path>payment/ixcbadv/merchantname</config_path>
+						</merchantname>
+						<mwssecretkeyid translate="label">
+						  <label>MWS Secret Key ID</label>
+						  <frontend_type>obscure</frontend_type>
+						  <backend_model>adminhtml/system_config_backend_encrypted</backend_model>
+						  <sort_order>80</sort_order>
+						  <show_in_default>1</show_in_default>
+						  <show_in_website>1</show_in_website>
+						  <show_in_store>0</show_in_store>
+						  <config_path>payment/ixcbadv/mwssecretkeyid</config_path>
+						  <comment>Seller Central -> Integration -> MWS Secret Key</comment>
+						</mwssecretkeyid>
+						<mwsaccesskeyid translate="label">
+						  <label>MWS Access Key ID</label>
+						  <frontend_type>obscure</frontend_type>
+						  <backend_model>adminhtml/system_config_backend_encrypted</backend_model>
+						  <sort_order>70</sort_order>
+						  <show_in_default>1</show_in_default>
+						  <show_in_website>1</show_in_website>
+						  <show_in_store>0</show_in_store>
+						  <config_path>payment/ixcbadv/mwsaccesskeyid</config_path>
+						  <comment>Seller Central -> Integration -> MWS Access Key</comment>
+						</mwsaccesskeyid>
+		
+                    </fields>
+</mageix_payment>
+				
+
+<amazon_login translate="label" module="ixcbadv">
+                    <label>Login with Amazon Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1090</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+					<comment>
+						<![CDATA[<br />
+						<div class="custom-options">
+							<div class="box">
+								<p class="grand-total"><br /><b>Login with Amazon Settings</b></p>
+								<p>Amazon Payments Advanced requires a Login with Amazon account to work. </p>
+								<p><br /><a href="https://sellercentral.amazon.com/gp/on-board/workflow/Registration/login.html?passthrough%2Fsource=internal-landing-select&passthrough%2F*entries*=0&passthrough%2FmarketplaceID=AGWSWK15IEJJ7&passthrough%2FsuperSource=OAR&passthrough/ld=APRPMAGEIX&passthrough%2F*Version*=1&passthrough%2Faccount=pyop&passthrough%2FwaiveFee=1&passthrough%2FsimplifiedLogin=1" target="_blank">You may get the Login with Amazon credentials from your Seller Central Account.</a><br /></p>
+								<p>Click "Register New Application" button on top right.</b> Enter your website domain such as <b> "mydomain.com"</b> in Application Name:.</p>
+								<p>Then go to  "Web Settings." </b> Enter your domain secure URL in <b>"Allowed JavaScript Origins"</b> such as "https://mageix.com".</p>
+								</br>								
+								<p>Once those steps are completed, you should see your App ID, Client ID and Client Secret.</b></p>
+							</div>
+						</div>
+						]]>
+					</comment>
+                    <fields>
+			
+
+						<app_id translate="label">
+						  <label>App ID</label>
+						  <frontend_type>obscure</frontend_type>
+						  <backend_model>adminhtml/system_config_backend_encrypted</backend_model>
+						  <sort_order>80</sort_order>
+						  <show_in_default>1</show_in_default>
+						  <show_in_website>1</show_in_website>
+						  <show_in_store>0</show_in_store>
+						  <config_path>login/ixcbadv/app_id</config_path>
+						  <comment>Seller Central -> Integration (Required) </comment>
+						</app_id>
+						<clientid translate="label">
+						  <label>Client ID</label>
+						  <frontend_type>obscure</frontend_type>
+						  <backend_model>adminhtml/system_config_backend_encrypted</backend_model>
+						  <sort_order>90</sort_order>
+						  <show_in_default>1</show_in_default>
+						  <show_in_website>1</show_in_website>
+						  <show_in_store>0</show_in_store>
+						  <config_path>login/ixcbadv/client_id</config_path>
+						  <comment>Seller Central -> Integration (Required)</comment>
+						</clientid>
+						<client_secret translate="label">
+						  <label>Client Secret</label>
+						  <frontend_type>obscure</frontend_type>
+						  <backend_model>adminhtml/system_config_backend_encrypted</backend_model>
+						  <sort_order>95</sort_order>
+						  <show_in_default>1</show_in_default>
+						  <show_in_website>1</show_in_website>
+						  <show_in_store>0</show_in_store>
+						  <config_path>login/ixcbadv/client_secret</config_path>
+						  <comment>Seller Central -> Settings (Required)</comment>
+						</client_secret>
+						
+                    </fields>
+                </amazon_login>
+
+
+
+
+
+				
+				
+<mageix_mws translate="label" module="ixcbadv">
+                    <label>Advanced IXCBA&#174; Miscellaneous Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1080</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+					<comment>
+						<![CDATA[<br />
+						<div class="custom-options">
+							<div class="box">
+								<p class="grand-total"><br /><b>Payment Action Description.</b></p>
+								
+								<br /><br />
+								
+								<p><b><font color = "red">How does SSL Certificate & IPN Setup affect Payment Action options.</b></br></font>All Payment Action options work best when IPN setup is working correctly. This means a valid SSL certificate (see list for SSL issuers accepted by Amazon:<a href="http://www.mageix.com/partners/id/5_3_tlid_61" target="_blank">Amazon Accepted SSL Certificates.</a> )<b> </b> </p>
+								
+								<br /><br />
+								
+								
+								
+								<p><b>Option 1. Sale (Instant Payment): </b>Authorize and Capture full amount immediately. Entire order is Invoiced automatically. <b>Recommended for normal Instant Payments. <font color = "red"> "Capture on Shipment" settings will be ignored if this is enabled.</font></b> </p>
+								
+								<p><br /><b>Option 2. Authorize (Capture when order is Invoiced - Single Invoicing):</b> This will Authorize the full order amount. You may then Capture the full authorized amount or lesser amount by invoicing the order.  </p><p><b>Recommended if you prefer or required to confirm or approve order first before collecting payment. Only 1 Invoice will be possible. Such orders MUST be invoiced within 7 days.<font color = "red">  If "Capture on Shipment is set to YES"; the entire order will be automatically captured on shipment, not on invoicing. </font></b><br /></p>
+								
+								<p><br /><b>Option 3. Deferred: (Authorize & Capture order is Invoiced - Multiple Invoicing) </b> This will neither Authorization nor Capture any amount. Instead, it simply confirms the order with Amazon. You may then collect payment by creating single invoice or multiple invoices within 30 days. Each invoice will Authorize & Capture an amount equal to the invoice amount.<b> <font color = "red">  If "Capture on Shipment is set to YES"; the entire order will be automatically captured on shipment, not on invoicing.</b></font></p><p><b> Recommended for Pre-Orders & Split Shipments. Single or Multiple Invoices possible. Such orders MUST be invoiced within 30 days.</b></p>
+								
+							</div>
+						</div>
+						]]>
+					</comment>
+                    <fields>
+                  
+						<order_note translate="label">
+							<label>Note To Buyer</label>
+							<frontend_type>Textarea</frontend_type>
+							<!--<source_model>adminhtml/system_config_source_yesno</source_model>-->
+							<sort_order>80</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<config_path>payment/ixcbadv/order_note</config_path>
+							<comment>Represents a description of the order that is displayed in emails from Amazon to the buyer.. Maximum: 1024 characters. (Optional) </comment>
+						</order_note>
+					
+						
+						<soft_descriptor translate="label">
+							<label>Name To Appear on Buyer Credit Card</label>
+							<frontend_type>Text</frontend_type>
+							<sort_order>75</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<config_path>payment/ixcbadv/soft_descriptor</config_path>
+							<comment>The description to be shown on the buyer’s credit card statement. Maximum: 16 characters.</comment>
+						</soft_descriptor>
+						
+						
+						<payment_action translate="label">
+							<label>Payment Action</label>
+							<frontend_type>select</frontend_type>
+   			                                <source_model>Mageix_Ixcbadv_Model_Adminhtml_Source_Paymentaction</source_model>
+							<sort_order>72</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<config_path>payment/ixcbadv/payment_action</config_path>
+					<comment>See notes above for details about this setting.</comment>
+							
+						</payment_action>
+						
+						
+						<ship_capture translate="label">
+							<label>Capture on Shipment</label>
+							<frontend_type>select</frontend_type>
+   			                                <source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>73</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<config_path>payment/ixcbadv/ship_capture</config_path>
+					<comment>Will be ignored if Sale (Instant Payment) payment actions is used. NOTE: Entire order total will be captured/invoiced regardless of the quantity shipped.</comment>
+							
+						</ship_capture>
+
+						
+						
+						
+						
+						<enable_comments translate="label">
+							<label>Enable Gift Information Section</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>90</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<config_path>payment/ixcbadv/enable_comments</config_path>
+							<comment>Enables or Disables gift section from frontend.</comment>
+						</enable_comments>
+						<enable_promotional_code translate="label">
+							<label>Enable Promotion Code Section</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>95</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<config_path>payment/ixcbadv/enable_promotional_code</config_path>
+							<comment>Enables or Disables promotional code section from frontend.</comment>
+						</enable_promotional_code>
+						<sort_order translate="label">
+                            <label>Sort Order</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<config_path>payment/ixcbadv/sort_order</config_path>
+							<comment>The sort order of the Amazon Payments button on cart page.</comment>
+                        </sort_order>
+						<!--<weight_unit translate="label">
+                            <label>Catalog Weight Unit</label>
+                            <frontend_type>select</frontend_type>
+   							<source_model>Mageix_Ixcbadv_Model_Adminhtml_Source_Unit</source_model>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<config_path>payment/ixcbadv/weight_unit</config_path>
+							<comment>Select the weight unit of products in cart sent to Amazon. This should be same unit used by your system catalog.</comment>
+                     </weight_unit>-->
+                        <enable_ga translate="label">
+							<label>Sync Orders with Google Analytics</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>120</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<config_path>payment/ixcbadv/enable_ga</config_path>
+							<comment>Enable Google Analytics from Google API first before enabling this switch.</comment>
+						</enable_ga>
+						<enable_save_xmls translate="label">
+							<label>Save Debug XML</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>130</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>0</show_in_store>
+							<config_path>payment/ixcbadv/enable_save_xmls</config_path>
+							<comment>Enable saving order XMLs for debugging purposes.</comment>
+						</enable_save_xmls>
+						<delete_xml_period translate="label">
+                            <label>Delete Debug XML Every</label>
+                            <frontend_type>select</frontend_type>
+   							<source_model>Mageix_Ixcbadv_Model_Adminhtml_Source_Deletexml</source_model>
+                            <sort_order>140</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+							<config_path>payment/ixcbadv/delete_xml_period</config_path>
+							<comment>Select period for debugging XMLs to be deleted.</comment>
+                        </delete_xml_period>
+						<!--<creating_order_cron translate="label">
+							<label>API-based Order Import</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>150</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>0</show_in_store>
+							<config_path>payment/ixcbadv/creating_order_cron</config_path>
+							<comment>You may use API-based Order Import mechanism simultaneously in case the default IOPN-based Import mechanism fails to import some orders or if you do NOT have SSL certificate installed. Enabling or Disabling this will NOT affect the default order import.</comment>
+						</creating_order_cron>-->
+					
+                    </fields>
+                </mageix_mws>
+				<mageix_themes translate="label" module="ixcbadv">
+                    <label>Advanced IXCBA&#174; Theme</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1100</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+					<comment>
+						<![CDATA[<br />
+						<div class="custom-options">
+						<div class="box">
+						<p class="grand-total"><br /><b>Frontend Customization</b></p>
+						<p>You may use this section to customize the style and colors of the paymnent page as to suit your theme.</p>
+						
+						</div>
+						</div>
+						]]>
+					</comment>
+                    <fields>
+						<css_theme_ixcbadv_section_inline translate="label">
+                            <label>Inline Section</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>124</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </css_theme_ixcbadv_section_inline>
+                        <!--<inline_content_width translate="label">
+							<label>Content Width</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>125</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Default: 887px</comment>
+						</inline_content_width>-->
+						<inline_bg_color translate="label">
+							<label>Background Color</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>126</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Default: #d9e5ee</comment>
+						</inline_bg_color>
+						<inline_font_style translate="label">
+							<label>Font Style</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>127</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Default: Arial, Helvetica, sans-serif</comment>
+						</inline_font_style>
+						<inline_font_color translate="label">
+							<label>Font Color</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>128</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Default: #000000</comment>
+						</inline_font_color>
+						<heading_font_size translate="label">
+							<label>Heading Font Size</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>129</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Default: 18px</comment>
+						</heading_font_size>
+						<subheading_font_size translate="label">
+							<label>Sub-heading Font Size</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>130</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Default: 15px</comment>
+						</subheading_font_size>
+						<text_font_size translate="label">
+							<label>Text Font Size</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>131</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Default: 12px</comment>
+						</text_font_size>
+						<smethods_font_size translate="label">
+							<label>Methods Font Size</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>132</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Default: 12px</comment>
+						</smethods_font_size>
+						<css_theme_ixcbadv_section_inline_message translate="label">
+                            <label>Inline Section Messages</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>135</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </css_theme_ixcbadv_section_inline_message>
+						<inline_message_bg_color translate="label">
+							<label>Background Color</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>136</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Default: #d9e5ee</comment>
+						</inline_message_bg_color>
+						<inline_message_font_style translate="label">
+							<label>Font Style</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>137</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Default: Arial, Helvetica, sans-serif</comment>
+						</inline_message_font_style>
+						<inline_message_font_color translate="label">
+							<label>Font Color</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>138</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Default: #000000</comment>
+						</inline_message_font_color>
+						<inline_message_font_size translate="label">
+							<label>Font Size</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>139</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Default: 15px</comment>
+						</inline_message_font_size>
+						<inline_message_border_color translate="label">
+							<label>Border Color</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>140</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Default: #CCCCCC</comment>
+						</inline_message_border_color>
+						<css_theme_ixcbadv_section_buttons translate="label">
+                            <label>Inline Section Buttons</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>170</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </css_theme_ixcbadv_section_buttons>
+						<buttons_bg_color translate="label">
+							<label>Background Color</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>175</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Default: #f18200</comment>
+						</buttons_bg_color>
+						<buttons_font_style translate="label">
+							<label>Font Style</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>176</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Default: Arial, Helvetica, sans-serif</comment>
+						</buttons_font_style>
+						<buttons_font_color translate="label">
+							<label>Font Color</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>177</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Default: #FFFFFF</comment>
+						</buttons_font_color>
+						<buttons_font_size translate="label">
+							<label>Font Size</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>178</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Default: 15px</comment>
+						</buttons_font_size>
+						<buttons_border_color translate="label">
+							<label>Border Color</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>179</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Default: #de5400</comment>
+						</buttons_border_color>
+						<css_theme_ixcbadv_section_header translate="label">
+                            <label>Ajax Header</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>200</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </css_theme_ixcbadv_section_header>
+						<header_bg_color translate="label">
+							<label>Background Color</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>205</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Default: #f18200</comment>
+						</header_bg_color>
+						<header_font_style translate="label">
+							<label>Font Style</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>206</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Default: Arial, Helvetica, sans-serif</comment>
+						</header_font_style>
+						<header_font_color translate="label">
+							<label>Font Color</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>207</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Default: #FFFFFF</comment>
+						</header_font_color>
+						<!--<ajaxheader_font_size translate="label">
+							<label>Font Size</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>208</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Default: 15px</comment>
+						</ajaxheader_font_size>-->
+						<header_border_color translate="label">
+							<label>Border Color</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>209</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Default: #CCCCCC</comment>
+						</header_border_color>
+						<css_theme_ixcbadv_agreement_popup translate="label">
+                            <label>Agreement Lightbox Width</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>250</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </css_theme_ixcbadv_agreement_popup>
+						<agreement_width translate="label">
+							<label>Width of Agreements Lightbox</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>251</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Enter in pixels. Minimum 500</comment>
+						</agreement_width>
+                    </fields>
+                </mageix_themes>
+            </groups>
+        </ixcbadv>
+    </sections>
+</config>

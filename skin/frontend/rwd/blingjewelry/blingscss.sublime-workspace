@@ -1,0 +1,474 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"f-s",
+				"f-stack-serif-special"
+			],
+			[
+				"modal",
+				"modal-body"
+			],
+			[
+				"c-mo",
+				"c-module-border"
+			],
+			[
+				"f-sta",
+				"f-stack-serif-special"
+			],
+			[
+				"add-to",
+				"add-to-links"
+			],
+			[
+				"f-stack-",
+				"f-stack-special"
+			],
+			[
+				"narry",
+				"narrow-by-list2"
+			],
+			[
+				"font",
+				"font-family"
+			],
+			[
+				"f-st",
+				"f-stack-special"
+			],
+			[
+				"c-text",
+				"c-text-gray"
+			],
+			[
+				"f-stack-seri",
+				"f-stack-serif-special"
+			],
+			[
+				"project",
+				"project-heading"
+			],
+			[
+				"font-",
+				"font-weight"
+			],
+			[
+				"border",
+				"border-bottom"
+			],
+			[
+				"navbar",
+				"navbar-nav"
+			],
+			[
+				"inl",
+				"inline-block"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "Packages/SASS Build/SASS - Compressed.sublime-build",
+	"command_palette":
+	{
+		"height": 347.0,
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: List Packages"
+			]
+		],
+		"width": 458.0
+	},
+	"console":
+	{
+		"height": 0.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/skin/frontend/rwd/blingjewelry/js/app.js",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/skin/frontend/rwd/blingjewelry/js/lib/enquire.js",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/skin/frontend/rwd/blingjewelry/js/app.bak.js",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/skin/frontend/rwd/blingjewelry/css/styles.css",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/design/frontend/rwd/blingjewelry/template/productreviewcaptcha/form.phtml",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/design/frontend/rwd/blingjewelry/template/catalog/product/view.phtml",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/design/frontend/rwd/blingjewelry/template/page/html/head.phtml",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/skin/frontend/rwd/blingjewelry/scss/core/_common.scss",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/skin/frontend/rwd/blingjewelry/scss/vendor/_carousel.scss",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/design/frontend/rwd/blingjewelry/template/page/html/footer.phtml",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/skin/frontend/rwd/blingjewelry/scss/module/_catalog-product.scss",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/skin/frontend/rwd/blingjewelry/scss/module/_blingcontent.scss",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/design/frontend/rwd/blingjewelry/layout/page.xml",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/design/frontend/rwd/blingjewelry/template/salesperson/product/list.phtml",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/design/frontend/rwd/blingjewelry/template/catalog/product/list.phtml",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/code/community/OlegKoval/ProductReviewCaptcha/controllers/ProductController.php",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/code/community/OlegKoval/ProductReviewCaptcha/Block/Form.php",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/design/frontend/rwd/blingjewelry/template/catalog/product/view/type/options/configurable.phtml",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/design/frontend/rwd/blingjewelry/template/catalog/product/view/options/type/select.phtml",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/design/frontend/base/default/template/catalog/product/view/options/type/default.phtml",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/design/frontend/rwd/blingjewelry/template/catalog/product/view/short-description.phtml",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/design/frontend/base/default/template/catalog/product/view/options/type/select.phtml",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/design/frontend/rwd/blingjewelry/template/bootstrap/modal-login.phtml",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/design/frontend/rwd/blingjewelry/layout/local.xml",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/design/frontend/rwd/blingjewelry/template/salesperson/1column.phtml",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/design/frontend/rwd/blingjewelry/template/salesperson/2columns-left.phtml",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/design/frontend/rwd/blingjewelry/layout/salesperson.xml",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/skin/frontend/rwd/blingjewelry/scss/layout/_header-nav.scss",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/skin/frontend/rwd/blingjewelry/scss/module/_product-list.scss",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/design/frontend/rwd/blingjewelry/template/catalog/product/widget/new/content/new_carousel.phtml",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/skin/frontend/rwd/blingjewelry/scss/core/_grid.scss",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/design/frontend/rwd/blingjewelry/layout/catalogsearch.xml",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/design/frontend/rwd/blingjewelry/layout/catalog.xml",
+		"/Applications/MAMP/htdocs/magento/shophaney.ce/skin/frontend/haney/haney_theme/js/global.js",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/design/frontend/rwd/blingjewelry/layout/amasty/amxnotif.xml",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/skin/frontend/rwd/blingjewelry/scss/layout/_footer.scss",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/design/frontend/rwd/blingjewelry/template/catalog/product/view/media.phtml",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/design/frontend/rwd/blingjewelry/locale/en_US/translate.csv",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/design/frontend/base/default/layout/amasty/amxnotif.xml",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/design/frontend/rwd/blingjewelry/template/amasty/amxnotif/product/view_email_simple.phtml",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/design/frontend/rwd/blingjewelry/template/amasty/amxnotif/product/view_email.phtml",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/skin/frontend/rwd/blingjewelry/js/social.js",
+		"/Applications/MAMP/htdocs/magento/shophaney.ce/app/design/frontend/haney/haney_theme/template/catalog/product/view.phtml",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/design/frontend/rwd/blingjewelry/layout/bootstrap/ajax.xml",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/design/frontend/rwd/blingjewelry/layout/bootstrap/inspiration.xml",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/design/frontend/rwd/blingjewelry/layout/bootstrap/hero.xml",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/design/frontend/rwd/blingjewelry/layout/review.xml",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/design/frontend/rwd/blingjewelry/layout/sociallogin.xml",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/design/frontend/rwd/blingjewelry/layout/onestepcheckout.xml",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/skin/frontend/rwd/blingjewelry/scss/module/_customer.scss",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/design/frontend/rwd/blingjewelry/template/productalert/product/view.phtml",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/js/amasty/amstockstatusxnotif/configurable.js",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/design/frontend/rwd/blingjewelry/template/checkout/success.phtml",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/code/local/Bootstrap/Customer/controllers/AccountController.php",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/code/core/Mage/Customer/controllers/AccountController.php",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/design/frontend/rwd/blingjewelry/template/customer/form/resetforgottenpassword.phtml",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/skin/frontend/rwd/blingjewelry/scss/vendor/_icons.scss",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/skin/frontend/rwd/blingjewelry/scss/module/_checkout-cart.scss",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/skin/frontend/rwd/blingjewelry/scss/mixin/_typography.scss",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/skin/frontend/rwd/blingjewelry/scss/_var.scss",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/design/frontend/rwd/blingjewelry/template/onestepcheckout/checkout.phtml",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/design/frontend/rwd/blingjewelry/template/checkout/cart/coupon.phtml",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/design/frontend/rwd/blingjewelry/template/tax/checkout/tax.phtml",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/skin/frontend/rwd/blingjewelry/scss/core/_table.scss",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/skin/frontend/rwd/blingjewelry/onestepcheckout/onestepcheckout_responsive.css",
+		"/Applications/MAMP/htdocs/bling/holiday-shipping.html",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/skin/frontend/rwd/blingjewelry/scss/core/_form.scss",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/skin/frontend/rwd/blingjewelry/scss/mixin/_toggle-content.scss",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/design/frontend/rwd/blingjewelry/template/catalog/product/view/addtocart.phtml",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/design/frontend/rwd/default/layout/catalog.xml",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/design/frontend/rwd/blingjewelry/template/catalog/product/price.phtml",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/design/frontend/rwd/blingjewelry/template/icart/product_options.phtml",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/design/frontend/default/default/template/icart/product_options.phtml",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/design/frontend/base/default/template/catalog/product/view/options/wrapper/bottom.phtml",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/design/frontend/base/default/template/catalog/product/view/options/wrapper.phtml",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/design/frontend/rwd/blingjewelry/template/review/helper/summary.phtml",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/design/frontend/rwd/blingjewelry/template/checkout/cart.phtml",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/design/frontend/rwd/blingjewelry/template/sociallogin/socialsharesuccess.phtml",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/design/frontend/rwd/blingjewelry/template/checkout/cart/minicart/items.phtml",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/skin/frontend/rwd/blingjewelry/scss/module/_checkout-success.scss",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/skin/frontend/rwd/blingjewelry/scss/module/_checkout-cart-minicart.scss",
+		"/Users/Mike/Documents/WORK/MikeCohenMedia/WeissAgency/logo/index.html",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/design/frontend/rwd/blingjewelry/template/page/html/header.phtml",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/skin/frontend/rwd/blingjewelry/css/theme.css",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/skin/frontend/rwd/blingjewelry/scss/mixin/_loading-overlay.scss",
+		"/Applications/MAMP/logs/php_error.log",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/skin/frontend/rwd/blingjewelry/scss/module/_home.scss",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/design/frontend/rwd/blingjewelry/template/catalog/product/widget/new/content/new_carousel_2col.phtml",
+		"/Users/Mike/Desktop/FileZilla.xml",
+		"/Applications/MAMP/htdocs/magento/_blingjewelry-current/app/code/local/Mage/Catalog/Block/Product/Fresh.php",
+		"/Applications/MAMP/htdocs/magento/_blingjewelry-current/app/code/local/Mage/Catalog/Block/Product/Widget/New.php",
+		"/Applications/MAMP/htdocs/magento/_blingjewelry-current/app/code/local/Mage/Catalog/Block/Product/New.php",
+		"/Applications/MAMP/htdocs/magento/_blingjewelry-current/app/code/local/Mage/Catalog/Block/Product/Special.php",
+		"/Applications/MAMP/htdocs/magento/_blingjewelry-current/app/code/local/Mage/Catalog/Block/Product/Outofstock.php",
+		"/Applications/MAMP/htdocs/magento/_blingjewelry-current/app/code/local/Mage/Catalog/Block/Product/Listmedia.php",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/design/frontend/rwd/blingjewelry/template/catalog/navigation/left.phtml",
+		"/Applications/MAMP/htdocs/blingclean.php",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/design/frontend/rwd/blingjewelry/template/checkout/cart/minicart/default.phtml",
+		"/Users/Mike/Documents/WORK/MikeCohenMedia/WeissAgency/web/index copy.php",
+		"/Users/Mike/Documents/WORK/MikeCohenMedia/WeissAgency/web/index.php",
+		"/Users/Mike/Documents/WORK/MikeCohenMedia/WeissAgency/web/header.php",
+		"/Users/Mike/Documents/WORK/MikeCohenMedia/WeissAgency/web/head.php",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/design/frontend/rwd/blingjewelry/template/catalogsearch/form.mini.phtml",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/design/frontend/rwd/blingjewelry/template/page/html/header_checkout.phtml",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/skin/frontend/rwd/blingjewelry/scss/layout/_header.scss",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/design/frontend/rwd/blingjewelry/template/catalog/layer/view.phtml",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/design/frontend/rwd/blingjewelry/template/catalog/category/view.phtml",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/design/frontend/rwd/default/layout/contacts.xml",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/design/frontend/rwd/blingjewelry/layout/cms.xml",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/design/frontend/rwd/default/layout/cms.xml",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/skin/frontend/rwd/blingjewelry/scss/module/_pricing_conditions.scss",
+		"/Applications/MAMP/htdocs/magento/blingjewelry.dev/app/design/frontend/rwd/blingjewelry/template/page/html/topmenu/renderer.phtml",
+		"/Applications/MAMP/htdocs/magento/nursejamie.dev/app/design/frontend/bootstrap/default/layout/local.xml",
+		"/Applications/MAMP/htdocs/magento/nursejamie.dev/app/design/frontend/bootstrap/default/template/catalog/product/list/toolbar.phtml",
+		"/Applications/MAMP/htdocs/magento/nursejamie.dev/app/design/frontend/bootstrap/default/template/page/html/pager.phtml",
+		"/Applications/MAMP/htdocs/magento/nursejamie.dev/skin/frontend/bootstrap/default/js/ajax/ajaxwishlist.js",
+		"/Applications/MAMP/htdocs/magento/nursejamie.dev/skin/frontend/base/default/js/ajax/ajaxwishlist.js",
+		"/Applications/MAMP/htdocs/magento/nursejamie.dev/app/code/local/Bootstrap/Ajax/controllers/WishlistController.php",
+		"/Applications/MAMP/htdocs/magento/nursejamie.dev/app/design/frontend/bootstrap/default/template/checkout/cart.phtml",
+		"/Applications/MAMP/htdocs/magento/nursejamie.dev/app/design/frontend/bootstrap/default/template/bootstrap/ajax/catalog/product/view/media.phtml",
+		"/Users/Mike/Documents/WORK/MikeCohenMedia/NurseJamie/Images/Before & After/index.html",
+		"/Applications/MAMP/htdocs/magento/nursejamie.dev/app/design/frontend/bootstrap/default/template/catalog/product/list/related.phtml",
+		"/Applications/MAMP/htdocs/magento/nursejamie.dev/app/design/frontend/bootstrap/default/template/page/html/header.phtml",
+		"/Applications/MAMP/htdocs/magento/nursejamie.dev/app/design/frontend/bootstrap/default/template/checkout/cart/sidebar.phtml",
+		"/Applications/MAMP/htdocs/magento/nursejamie.dev/app/design/frontend/bootstrap/default/template/bootstrap/ajax/catalog/product/view.phtml",
+		"/Applications/MAMP/htdocs/magento/nursejamie.dev/app/design/frontend/bootstrap/default/template/wishlist/item/column/remove.phtml",
+		"/Applications/MAMP/htdocs/magento/nursejamie.dev/app/design/frontend/bootstrap/default/template/wishlist/item/column/info.phtml",
+		"/Applications/MAMP/htdocs/magento/nursejamie.dev/app/design/frontend/bootstrap/default/template/wishlist/item/column/image.phtml"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			"",
+			"Bootstrap_Facebook"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"prev",
+			"_type",
+			"modal-sm",
+			"sizing",
+			"currentUrl",
+			"viewport",
+			"hover-image",
+			"b-loaded",
+			"hero-wrap",
+			"back-top",
+			"lazy",
+			"owl-prev",
+			"hero-wrap",
+			"lazy",
+			"owl",
+			"skip",
+			"related_products",
+			"product-sub-name",
+			"subTitle",
+			"mainTitle",
+			"category-wrap",
+			"carousel",
+			"print",
+			"product-name",
+			"product-info",
+			"mmc",
+			"product_list",
+			"transition",
+			"sidelinks",
+			"class=\"or",
+			"social-login",
+			"h2",
+			"box",
+			"h2:after",
+			"interfacecontainerdiv",
+			"social-login",
+			"sm-twitter",
+			"<p><span style=\"font-size: small;\"><br /> <br /></span></p>",
+			"font-family: palatino,arial,times new roman,times; ",
+			"silver",
+			" class=\"Normal1\"",
+			"<p> </p>",
+			"megamenu",
+			"modal",
+			":after",
+			"box",
+			"type=\"text\"",
+			"input-box",
+			"product-name",
+			"currenturl",
+			"skin",
+			"addJs",
+			"js",
+			"jQuery",
+			"pinterest",
+			"pinter",
+			"modal",
+			"box-collateral",
+			"related",
+			"product-shop",
+			"related",
+			"modal",
+			"free",
+			"logout",
+			"amstockstatus-stockalert",
+			"waitlist",
+			"sold out",
+			"account-create",
+			".customer-account-resetpassword",
+			"customer-account",
+			"amx",
+			"icons",
+			"main-container",
+			"btn-proceed-checkout",
+			"summary-collapse",
+			"39c",
+			"#discount-coupon-form",
+			"coupone",
+			"label",
+			"coupon code",
+			"sizing",
+			"#323234",
+			"zebra",
+			"data-table",
+			"bracelet",
+			"product-sizing",
+			"print-header",
+			"product-shop",
+			"product-img-box",
+			"product-",
+			"sizing",
+			"toggle",
+			"category-hero",
+			"mega",
+			"megamenu",
+			"mega",
+			"product-options",
+			"checkbox",
+			"video-btn",
+			"video",
+			"block-related",
+			"block-releted",
+			"rough",
+			".product-top",
+			"block-related",
+			"item-info",
+			"line-through",
+			"strike",
+			";\n",
+			"price-box",
+			"product-options-bottom",
+			"addto",
+			"addto.phtml",
+			"product_view",
+			"add",
+			"cover",
+			"rough",
+			"add-to-cart",
+			"collateral-tabs",
+			"$c-action",
+			".product-collateral",
+			"current",
+			"collateral-tabs",
+			"loginRadiusWrap",
+			"loginRad",
+			"link-wishlis",
+			"share-wrap",
+			"item-i"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"",
+			"input-text",
+			"$j",
+			"700",
+			"{{config path=\"web/unsecure/base_url\"}}",
+			"facebook",
+			"Bootstrap_Facebook",
+			"type",
+			"Type",
+			"client",
+			"Client",
+			"<template>bootstrap/ajax"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 100.0
+	},
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 216.0,
+	"status_bar_visible": true
+}

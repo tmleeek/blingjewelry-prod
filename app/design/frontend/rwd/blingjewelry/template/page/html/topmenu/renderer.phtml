@@ -1,0 +1,158 @@
+<?php
+$html = '';
+
+$children = $menuTree->getChildren();
+$parentLevel = $menuTree->getLevel();
+$childLevel = is_null($parentLevel) ? 0 : $parentLevel + 1;
+
+$counter = 1;
+$childrenCount = $children->count();
+
+$parentPositionClass = $menuTree->getPositionClass();
+$itemPositionClassPrefix = $parentPositionClass ? $parentPositionClass . '-' : 'nav-';
+
+
+// mmc added for top menu override
+$megamenu_mainmenu = Mage::getStoreConfig('bootstrapsettings/megamenu/mainmenu');
+$mainmenu_array = array();
+
+// if menu exists create array
+if(!empty($megamenu_mainmenu)){
+
+    $arr = explode("\n",$megamenu_mainmenu);
+    foreach($arr as $item){
+        $mainmenu_array[] = explode(",",$item);
+    }
+}
+
+// if mainmenu array has elements
+if(count($mainmenu_array) > 0){
+
+    // custom menu renderer using system setting
+    foreach ($mainmenu_array as $menu_item) {
+
+        $title = $menu_item[0];
+        $link = $menu_item[1];
+
+        $parentClass = '';
+        $firstClass = '';
+        $lastClass = '';
+
+        if($counter == 1){
+            $firstClass = ' first';
+        }
+        if($counter == count($mainmenu_array)){
+            $lastClass = ' last';
+        }
+        $positionClass = ' nav-' . $counter;
+        $outermostClassCode = 'level'. $childLevel;
+        $parentClass = ' parent';
+
+
+        // need to do this first to see if theres a megamenu to apply the has-children class
+        $megamenu_enabled = Mage::getStoreConfig('bootstrapsettings/megamenu/enabled');
+        $_hasMegaMenu = false;
+        if($megamenu_enabled && $childLevel == 0){
+            $megamenu_prefix = Mage::getStoreConfig('bootstrapsettings/megamenu/prefix');
+            if(!$megamenu_prefix){
+                $megamenu_prefix = "megamenu_";
+            }
+            $collection = Mage::getModel('cms/block')->getCollection();
+            $item = $collection->addFieldToFilter("identifier", $megamenu_prefix . strtolower($title));
+            if($item->count()){
+                if($item->getFirstItem()->getIsActive()){
+                    $_hasMegaMenu = true;
+                    //$html .= '<ul class="level'. 0 .' megamenu">';
+                    //$html .=     '<li class="level'. 1 .'">';
+                    //$megamenu = $item->getFirstItem()->getContent();
+                    $megamenu_Id = $item->getFirstItem()->getId();
+                    $megamenu = $this->getLayout()->createBlock('cms/block')->setBlockId($megamenu_Id)->toHtml();
+                    //$html .=     '</li>';
+                    //$html .= '</ul>';
+                }
+            }
+        }
+
+
+        $_hasChildren = ($_hasMegaMenu) ? 'has-children' : '';
+
+
+        $html .= '<li class="level0'. $positionClass . $parentClass .$firstClass . $lastClass .'">';
+
+        $html .= '<a href="'. $link .'" class="'. $outermostClassCode .' '. $_hasChildren .'"><span>'. $this->escapeHtml($title) .'</span></a>';
+
+        if($_hasMegaMenu){
+            $html .= $megamenu;
+        }
+
+        $html .= '</li>';
+
+        $counter++;
+    }
+
+
+}else{
+
+    // native renderer with megamenu override
+    foreach ($children as $child) {
+        $child->setLevel($childLevel);
+        $child->setIsFirst($counter == 1);
+        $child->setIsLast($counter == $childrenCount);
+        $child->setPositionClass($itemPositionClassPrefix . $counter);
+
+        $outermostClassCode = 'level'. $childLevel;
+        $_hasChildren = ($child->hasChildren()) ? 'has-children' : '';
+
+        $html .= '<li '. $this->_getRenderedMenuItemAttributes($child) .'>';
+
+        $html .= '<a href="'. $child->getUrl() .'" class="'. $outermostClassCode .' '. $_hasChildren .'"><span>'. $this->escapeHtml($this->__($child->getName())) .'</span></a>';
+
+        if (!empty($childrenWrapClass)) {
+            $html .= '<div class="'. $childrenWrapClass .'">';
+        }
+
+        $nextChildLevel = $childLevel + 1;
+        $megamenu_enabled = Mage::getStoreConfig('bootstrapsettings/megamenu/enabled');
+        $_hasMegaMenu = false;
+        if($megamenu_enabled && $childLevel == 0){
+            $megamenu_prefix = Mage::getStoreConfig('bootstrapsettings/megamenu/prefix');
+            if(!$megamenu_prefix){
+                $megamenu_prefix = "megamenu_";
+            }
+            $collection = Mage::getModel('cms/block')->getCollection();
+            $item = $collection->addFieldToFilter("identifier", $megamenu_prefix . strtolower($child->getName()));
+            if($item->count()){
+                if($item->getFirstItem()->getIsActive()){
+                    $_hasMegaMenu = true;
+                    //$html .= '<ul class="level'. 0 .' megamenu">';
+                    //$html .=     '<li class="level'. 1 .'">';
+                    $html .= $item->getFirstItem()->getContent();
+                    //$html .=     '</li>';
+                    //$html .= '</ul>';
+                }
+            }
+        }
+        if (!empty($_hasChildren) && !$_hasMegaMenu) {
+            $html .= '<ul class="level'. $childLevel .'">';
+            $html .=     '<li class="level'. $nextChildLevel .'">';
+            $html .=         '<a class="level'. $nextChildLevel .'" href="'. $child->getUrl() .'">';
+            $html .=             $this->__('View All ') . $this->escapeHtml($this->__($child->getName()));
+            $html .=         '</a>';
+            $html .=     '</li>';
+            $html .=     $this->render($child, $childrenWrapClass);
+            $html .= '</ul>';
+        }
+
+        if (!empty($childrenWrapClass)) {
+            $html .= '</div>';
+        }
+
+        $html .= '</li>';
+
+        $counter++;
+    }
+
+}
+
+
+return $html;

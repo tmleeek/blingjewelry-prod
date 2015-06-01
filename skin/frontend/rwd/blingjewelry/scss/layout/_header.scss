@@ -1,0 +1,625 @@
+
+/* ============================================ *
+ * Header
+ * ============================================ */
+
+// closed checkout header
+.page-header.checkout{
+    .page-header-container{
+        background: url('../images/bg-rough-line.png') repeat-x center bottom;
+        min-height:0;
+    }
+    .secure-checkout{
+        display:none;
+    }
+    .phone{
+        font-family:$f-stack-special;
+        font-weight:300;
+        font-size:$f-size-xs;
+        .serif{
+            font-family: $f-stack-serif;
+            font-style:italic;
+        }
+        strong{
+            text-transform:uppercase;
+            font-weight:700;
+        }
+        .checkout-phone-label{
+            display:none;
+        }
+        background:$c-module-background;
+        text-align:center;
+        padding:10px 0 10px 0;
+    }
+}
+@include bp(min-width,$bp-xsmall + 1){
+    .page-header.checkout{
+        .secure-checkout{
+            display:block;
+            position:absolute;
+            top:15px;
+            right:30px;
+            left:auto;
+            span{
+                font-family:$f-stack-special;
+                text-transform:uppercase;
+                font-size:13px;
+                font-weight:300;
+                color:$c-black;
+            }
+        }
+    }
+}
+@include bp(min-width,$bp-small + 1){
+    .page-header.checkout .phone .checkout-phone-label,
+    .page-header.checkout .phone .checkout-phone{
+        display:inline-block;
+        padding: 0 5px;
+    }
+}
+@include bp(min-width, $bp-medium + 1) {
+
+    .page-header {
+        max-width: $max-container-width;
+        margin: 0 auto;
+        padding: 0 $trim;
+    }
+
+    .page-header-container {
+        position: relative;
+        min-height:141px; // prevent jump when nav is affix
+    }
+    .page-header.checkout{
+        .secure-checkout{
+            left:0;
+            right:auto;
+            top:26px;
+            border:solid 1px $c-module-border;
+            padding:10px;
+            span{
+                font-size:13px;
+            }
+        }
+    }
+}
+
+@include bp(min-width, $bp-large + 1) {
+    // closed checkout header
+    .page-header.checkout{
+        .phone{
+            background:#fff;
+            display:block;
+            position:absolute;
+            top:30px;
+            padding:0;
+            right:0;
+            text-align:left;
+            .checkout-phone-label,
+            .checkout-phone{
+                display:block;
+                padding:0;
+            }
+        }
+        .secure-checkout{
+            span{
+                font-size:16px;
+            }
+        }
+    }
+}
+
+.page-header{
+    text-align:center;
+}
+
+/* ============================================ *
+ * Global notification  
+ * ============================================ */
+.global-notification{
+    margin-top:10px;
+}
+.global-notification.gray{
+    background:$c-module-background;
+    padding:5px 10px;
+}
+.global-notification.pink{
+    background:darken($c-action,5%);
+    color:#fff;
+    padding:5px 10px;
+}
+@include bp(max-width, $bp-medium) {
+    .global-notification,
+    .global-notification.gray,
+    .global-notification.pink{
+        margin-top:0;
+        padding-left:30px;
+        padding-right:30px;
+    }
+}
+
+/* ============================================ *
+ * Language switcher + welcome message
+ * ============================================ */
+
+.header-language-background {
+    padding: $gap;
+    background-color: $c-action;
+    text-transform: uppercase;
+
+    .header-language-container {
+        max-width: $max-content-width;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    &:after {
+        @include clearfix;
+    }
+
+    .form-language,
+    .currency-switcher {
+        float: left;
+        margin-right: $gap;
+    }
+
+    .welcome-msg {
+        float: right;
+    }
+}
+
+.page-header-container .store-language-container {
+    float: right;
+    max-width: 35%;
+    padding: 13px 15px 10px 10px;
+
+    label {
+        display: none;
+    }
+    select {
+        max-width: 100%;
+    }
+}
+
+@include bp(max-width, $bp-xsmall) {
+    .page-header-container .store-language-container {
+        padding-top: 8px;
+
+        select {
+            // Setting this font-size will causing zooming on iOs devices, but it keeps header more tidy
+            font-size: $f-size-xs;
+        }
+    }
+}
+
+.header-language-background,
+.header-language-background a {
+    color: $c-text-white;
+}
+
+@include bp(max-width, $bp-medium) {
+
+    .header-language-background {
+        display: none;
+    }
+
+}
+
+
+/* ============================================ *
+ * top bar
+ * ============================================ */
+ .page{
+    padding-top:28px;
+}
+.page.scrolled{
+    padding-top:68px;
+}
+// todo move to main file?
+.container {
+    max-width: $max-container-width;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 30px;
+    position:relative;
+}
+.header-top {
+    height:28px;
+    line-height:28px;
+    background-color: $c-black;
+    text-transform: uppercase;
+    font-size:12px;
+    color: $c-text-white;
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    z-index:1000;
+
+    font-family: $f-stack-special;
+    font-weight:300;
+    font-size: $f-size-xxs;
+
+    &:after {
+        @include clearfix;
+    }
+
+    .message {
+        float: left;
+        strong{
+            font-weight:700;
+        }
+    }
+    .phone{
+        float:right;
+        a{
+            color:#fff;
+            padding-right:10px;
+        }
+        padding-right:20px;
+        span{
+            color:$c-text-gray;
+        }
+    }
+
+    .links {
+        float: right;
+    }
+    .divider-double{
+        padding: 0 12px;
+        color: $c-pink;
+    }
+    .logo{
+        margin:0;
+        padding:0;
+    }
+}
+
+
+.header-top-logo{
+    position:absolute;
+    left:50%;
+    margin-left:-87px;
+    top:3px;
+}
+.header-top .phone,
+.header-top .message,
+.header-top.dim .header-top-logo{
+    opacity:1;
+    -webkit-transition: opacity .25s ease-out;
+    -moz-transition: opacity .25s ease-out;
+    -o-transition: opacity .25s ease-out;
+    transition: opacity .25s ease-out;
+
+}
+.header-top.dim .phone,
+.header-top.dim .message,
+.header-top .header-top-logo{
+    opacity:0;
+}
+.header-top-links{
+    float:right;
+    .skip-account,.header-minicart{
+        float:right;
+    }
+    a{
+        color:#fff;
+        &:hover{
+            color:#fff;
+            background:lighten($c-black,10%);
+        }
+    }
+    .skip-active{
+        background:lighten($c-black,10%);
+    }
+}
+.header-fixed-wrap{
+    position:fixed;
+    top:28px;
+    left:0;
+    right:0;
+    width:100%;
+    z-index: 200;
+}
+
+@include bp(max-width, $bp-xsmall) {
+
+}
+@include bp(max-width, $bp-large) {
+    .header-top{
+        .message{
+            display:none;
+        }
+        .phone{
+            float:left;
+        }
+    }
+}
+@include bp(max-width, $bp-medium) {
+
+    .header-top {
+        //display: none;
+        .message,.header-top-links{
+            display:none;
+        }
+        position:absolute;
+        top:0;
+        left:0;
+        z-index:1;
+        background:transparent;
+        .phone{
+            width:50%;
+            color:$c-text-gray;
+            float:right;
+            text-align:right;
+            padding:10px 0 0 0;
+            a{
+                color:$c-text-gray;
+                line-height:normal;
+                padding:0 0 0 15px;
+            }
+        }
+    }
+    .page,
+    .page.scrolled{
+        padding-top:0px;
+    }
+    .header-fixed-wrap{
+        position:static;
+        .container{
+            padding:0;
+        }
+    }
+    .page-header{
+        text-align:left;
+    }
+}
+@include bp(max-width, $bp-small) {
+
+    .header-top{
+        .phone{
+            padding:6px 0 0 0;
+            a{
+                display:block;
+                padding:2px 0;
+            }
+        }
+    }
+
+}
+@include bp(max-width, $bp-xsmall) {
+
+    .header-top{
+        display:none;
+    }
+
+}
+/* ============================================ *
+ * Logo
+ * ============================================ */
+
+.logo {
+    display: inline-block;
+    text-align: center;
+    margin: 15px auto;
+    padding: 10px;
+
+    .small {
+        display: block;
+    }
+    .large {
+        display: none;
+    }
+}
+
+@include bp(max-width, $bp-medium) {
+
+    .logo {
+        margin:0;
+        padding-left:30px;
+        position:relative;
+        z-index: 2;
+    }
+}
+@include bp(max-width, $bp-xsmall) {
+
+    .logo{
+        margin: 0 auto;
+    }
+    .page-header{
+        text-align:center;
+    }
+
+}
+
+// ---------------------------------------------
+
+@include bp(min-width, $bp-medium + 1) {
+
+    .logo {
+        .small {
+            display: none;
+        }
+        .large {
+            display: block;
+        }
+    }
+}
+
+
+
+/* ============================================ *
+ * Skip Links
+ * ============================================ */
+
+.skip-links {
+    clear: both;
+    overflow: hidden;
+}
+
+// ---------------------------------------------
+
+@include bp(min-width, $bp-medium + 1) {
+
+    .skip-links {
+        border: 0;
+        display:none;
+    }
+}
+
+/* -------------------------------------------- *
+ * Skip - Link
+ */
+
+.skip-link {
+    position: relative;
+    float: left;
+    width: 25%;
+    height: 28px;
+    /*background: #FFFFFF;*/
+    color: $c-text-white;
+    line-height: 28px;
+    text-align: center;
+    text-transform:uppercase;
+    font-family:$f-stack-special;
+    font-weight:300;
+    font-size:$f-size-xxs;
+}
+a.skip-link {
+    text-decoration: none;
+}
+
+.skip-link:not(.skip-active):hover {
+    opacity: 0.9;
+    color:$c-text-white;
+    .icon {
+        //background-position: -50+4px (-150px + ($toolbar-icon-padding-offset/2));
+        //background: url('../images/icon-search.png') no-repeat center;
+        opacity:0.6;
+    }
+}
+
+
+// ---------------------------------------------
+
+@include bp(max-width, $bp-medium) {
+
+    .skip-link {
+        border-right: 1px solid #666;
+        height: 40px;
+        line-height: 40px;
+        background:$c-black;
+        font-size:$f-size-xs;
+    }
+    //unset the border in _header_cart
+}
+
+/* -------------------------------------------- *
+ * Skip Link - Active
+ */
+@include bp(max-width, $bp-medium) {
+
+    .skip-link.skip-active {
+        background: $c-bg-gray;
+        color: $c-black;
+    }
+
+    .skip-link.skip-active span {
+        color: inherit;
+    }
+
+}
+
+/* -------------------------------------------- *
+ * Skip Link - Icon
+ */
+
+.skip-link .icon {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+    opacity: 1.0;
+}
+
+.skip-link.skip-nav .icon,
+.skip-link.skip-cart:not(.no-count) .icon {
+    margin-right: 3px;
+}
+
+@include bp(min-width, 500px) {
+
+    .skip-link .icon {
+        margin-right: 5px;
+    }
+
+}
+
+/* -------------------------------------------- *
+ * Skip Link - Label
+ */
+
+.skip-link .label {
+    display: none;
+}
+
+// ---------------------------------------------
+
+@include bp(min-width, 500px) {
+
+    .skip-link .label {
+        display: inline;
+    }
+
+}
+
+/* ============================================ *
+ * Skip Content
+ * ============================================ */
+
+.skip-content {
+    display: none;
+}
+
+.skip-content.skip-active {
+    display: block;
+    background: $c-bg-gray;
+}
+
+/* ============================================ *
+ * Global Header Navigation
+ * ============================================ */
+
+@include bp(max-width, $bp-medium) {
+    // ---------------------------------------------
+    // Link
+
+    #header-account li a,
+    .nav-primary a.level0 {
+        padding: 0 15px 0 25px;
+        //border-bottom: 1px solid $c-module-border;
+        text-align: left;
+        color: $c-text;
+        text-transform: uppercase;
+        line-height: 30px;
+    }
+    #header-account li,
+    .nav-primary li.level0 {
+        border-bottom: 1px solid $c-module-border;
+    } 
+    #header-account li:last-child,
+    .nav-primary li.level0:last-child {
+        border-bottom: 0;
+    }    
+/*
+    #header-account li:last-child a,
+    .nav-primary li.level0:last-child a.level0 {
+        border-bottom: 0;
+    }
+*/
+    .no-touch #header-account a:hover,
+    .no-touch .nav-primary a:hover {
+        background-color: $c-module-background;
+        text-decoration: none;
+    }
+
+}

@@ -1,0 +1,17 @@
+***************
+*** 85,91 ****
+          $sentry = Mage::getModel('bronto_common/keysentry');
+          $sentry->disableModules($this->getScope(), $this->getScopeId(), $includeCommon);
+  
+-         if (!Mage::helper('bronto_common')->isVersionMatch(Mage::getVersionInfo(), 1, array(array('edition' => 'Enterprise', 'major' => 9)))) {
+              $sentry->unlinkEmails(
+                  Mage::getModel('bronto_email/message')->getCollection(),
+                  $this->getScope(),
+--- 85,91 ----
+          $sentry = Mage::getModel('bronto_common/keysentry');
+          $sentry->disableModules($this->getScope(), $this->getScopeId(), $includeCommon);
+  
++         if (!Mage::helper('bronto_common')->isVersionMatch(Mage::getVersionInfo(), 1, array(array('edition' => 'Professional', 'major' => 9)))) {
+              $sentry->unlinkEmails(
+                  Mage::getModel('bronto_email/message')->getCollection(),
+                  $this->getScope(),

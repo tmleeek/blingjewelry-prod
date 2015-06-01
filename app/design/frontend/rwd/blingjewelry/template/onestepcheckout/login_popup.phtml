@@ -1,0 +1,79 @@
+<div class="modal fade" id="modal-login">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id="onestepcheckout-login-popup-contents-login">
+                <div>
+                    <div class="modal-header">
+                        <h3><?php echo $this->__('Login'); ?></h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="onestepcheckout-login-loading" style="display: none;" class="loading-ajax-login">&nbsp;</div>
+                        <div id="onestepcheckout-login-error" class="onestepcheckout-error" style="display: none;">&nbsp;</div>
+                        <div id="onestepcheckout-login-table">
+                        <form id="onestepcheckout-login-form">
+                            <label for="id_onestepcheckout_username"><?php echo $this->__('Email address'); ?></label>
+                            <input tabindex="100" type="text" class="input-text" name="onestepcheckout_username" id="id_onestepcheckout_username" />
+                            <label for="id_onestepcheckout_password"><?php echo $this->__('Password'); ?></label>
+                            <input type="password" tabindex="101" name="onestepcheckout_password" class="input-text" id="id_onestepcheckout_password" />
+                            <button tabindex="102" id="onestepcheckout-login-button" type="button"><?php echo $this->__('Login'); ?></button>
+                            <a href="javascript:void(0);" id="onestepcheckout-forgot-password-link"><?php echo $this->__('Forgot your password?'); ?></a>
+
+                            <div class="social-login">
+                                <h4>Login with</h4>
+                                <div class="interfacecontainerdiv"></div>
+                            </div>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="onestepcheckout-login-popup-contents-forgot" style="display: none;">
+                <div>
+                    <div class="modal-header">
+                        <h3><?php echo $this->__('Forgot Password')?></h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p><?php echo $this->__('Please enter your email address below. We will send you an email to confirm your password.')?></p>
+
+                        <div id="onestepcheckout-forgot-loading" style="display: none;" class="loading-ajax-login">&nbsp;</div>
+                        <div id="onestepcheckout-forgot-error" class="onestepcheckout-error" style="display: none;">&nbsp;</div>
+                        <div id="onestepcheckout-forgot-success" style="display: none;">
+                            <?php echo $this->__('We have now sent you a new password to your email address. Click the link below to return to login.'); ?>
+                        </div>
+                        <div id="onestepcheckout-forgot-table">
+                        <form id="onestepcheckout-forgot-form">
+
+                            <label for="id_onestepcheckout_email"><?php echo $this->__('Email address'); ?></label>
+                            <input type="text" class="input-text" name="onestepcheckout_email" id="id_onestepcheckout_email" />
+                            <button id="onestepcheckout-forgot-button" type="button"><?php echo $this->__('Send password'); ?></button>
+
+                        </form>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:void(0);" id="onestepcheckout-return-login-link"><?php echo $this->__('Return to login'); ?></a
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<script>
+var onestepcheckout_login_popup;
+var login_popup;
+Event.observe(window, 'load', function() {
+    var options = {
+        forgot_password_url: '<?php echo $this->getUrl('onestepcheckout/ajax/forgotPassword', array('_secure'=>true)); ?>',
+        login_url: '<?php echo $this->getUrl('onestepcheckout/ajax/login', array('_secure'=>true)); ?>',
+        translations: {
+            invalid_email: '<?php echo $this->__('Please enter a valid email address'); ?>',
+            email_not_found: '<?php echo $this->__('Please enter a registered email address.'); ?>'
+        }
+    };
+    onestepcheckout_login_popup = new OneStepCheckoutLoginPopup(options);
+    login_popup = onestepcheckout_login_popup;
+});
+</script>

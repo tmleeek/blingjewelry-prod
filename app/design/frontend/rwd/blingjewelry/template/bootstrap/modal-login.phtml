@@ -1,0 +1,342 @@
+<?php
+// forces redirect to exact current page
+$current_url = $this->helper('core/url')->getCurrentUrl(array('_secure'=>true));
+$current_session = Mage::getSingleton('customer/session');
+if(isset($current_session)) $current_session->setData("before_auth_url", $current_url);
+$email_value=$currenturl=$lb_message=$auth_url='';
+
+/* FACEBOOK LOGIN CODE
+======================================================== */
+if(Mage::helper('core')->isModuleEnabled('Bootstrap_Facebook')){
+	require_once('Facebook/src/facebook.php');
+	$fb_config = Mage::helper('facebook')->facebookConfig();
+	$facebook = new Facebook($fb_config);
+
+	//$after_url = strtok(Mage::helper('core/url')->getCurrentUrl(),'?');
+	$after_url 		= Mage::helper('core/url')->getCurrentUrl();
+	$redirect_url 	= $this->getUrl('facebook/index/connect') . '?after_url=' . $after_url;
+	$auth_url 		= Mage::helper('facebook')->getAuthUrl($redirect_url);
+}
+
+/* END FACEBOOK LOGIN CODE
+======================================================== */
+?>
+<div class="modal fade" id="modal-login">
+	<div class="modal-dialog">
+		<div class="modal-content">
+
+			<div class="loader">
+				<div class="spinner">
+					<i class="icon-spinner icon-large icon-spin"></i>
+					<div class="spinner-text"><em>loading...</em></div>
+				</div>
+			</div>
+
+			<div id="login-block">
+				<div class="success">
+					<div class="load-on-success">You're all set.</div>
+				</div>
+				<div>
+				<form method="post" id="lb-login" action="<?php echo $this->getUrl('customer/account/loginPost',array('_secure'=>true)).'referer/'.Mage::helper('core')->urlEncode($this->helper('core/url')->getCurrentUrl()); ?>" accept-charset="UTF-8">
+				    <?php echo $this->getBlockHtml('formkey'); ?>
+
+<?php // this field should contain the id of a product in the case that a product alert needs to be created, "hello" is a placeholder value that should not be changed ?>
+					<input type="hidden" value="hello" class="productalert_product" name="productalert_product">
+
+
+			  		<div class="modal-header">
+			  			<h3>Login</h3>
+			    		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			  		</div>
+			  		<div class="modal-body">
+						<?php if(Mage::helper('core')->isModuleEnabled('Bootstrap_Facebook')){ ?>
+						  		  	<div class="fb-wrap">
+									<a href="javascript:void(0);" class="fb-login fb-button share-button"><i class="fa fa-facebook fa-large"></i> Login with Facebook</a>
+									<div class="or"><span>or</span></div>
+									</div>
+						<?php } ?>
+
+						<div class="social-login">
+							<h4>Login with</h4>
+							<div class="interfacecontainerdiv"></div>
+						</div>
+
+						<div class="or"><span>or</span></div>
+
+						<div class="error"></div>
+						<!--<label for="login[username]">EMAIL</label>-->
+						<div class="input-box">
+							<input type="text" id="lb-userid" autocomplete="off" value="<?php echo $email_value;?>" name="login[username]" class="input-text required-entry validate-email" placeholder="Email Address">
+						</div>
+						<!--<label for="login[password]">PASSWORD</label>-->
+						<div class="input-box">
+							<input type="password" id="lb-password" name="login[password]" class="input-text required-entry validate-password" placeholder="Password">
+						</div>
+						<div class="login-submit-wrap">
+						<div class="input-box login-submit">
+							<input type="hidden" value="login" name="user[form_type]">
+							<input type="submit" value="Login" class="button" id="lb-req-submit">
+						</div>
+						<a href="javascript:void(0)" id="lb-forgot-pass">Forgot your password?</a>
+						</div>
+					</div>
+					<div class="modal-footer">
+						Not a member yet? <a href="javascript:void(0);" id="lb-register">Sign Up</a>
+					</div>
+				</form>
+				<script type="text/javascript">
+				//< ![CDATA[
+				  var myForm= new VarienForm('lb-login', true);
+				//]]>
+				</script>
+				</div>
+			</div>
+
+			<div id="reset-block" style="display: none;">
+				<div class="success">
+					<div class="load-on-success">Please check your email to reset your password</div>
+				</div>
+				<div>
+				<form id="lb-resetpw" action="<?php echo $this->getUrl('customer/account/forgotpasswordpost',array('_secure'=>true)); ?>" accept-charset="UTF-8" method="post">
+			  		<div class="modal-header">
+			  		    <h3>Forgot Password</h3>
+			    		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			  		</div>
+			  		<div class="modal-body">
+						<p>Please enter your email address below. We will send you an email to confirm your password.</p>
+						<div class="error"></div>
+						<input type="text" id="lb-reset-pw-email" autocomplete="off" value="<?php echo $email_value;?>" name="email" class="input-text required-entry validate-email" placeholder="Email address">
+						<input type="hidden" value="<?php echo rtrim(str_replace($this->getUrl('', array('_secure'=> Mage::app()->getStore()->isCurrentlySecure())),'', $currenturl),"/");?>" name="last_location">
+						<input type="submit" value="Submit" class="button">
+					</div>
+					<div class="modal-footer">
+						<a href="javascript:void(0);" class="re-login">Cancel</a>
+					</div>
+				</form>
+				<script type="text/javascript">
+				//< ![CDATA[
+			  	var myForm= new VarienForm('lb-resetpw', true);
+				//]]>
+				</script>
+				</div>
+			</div>
+
+			<div id="signup-block" style="display: none;">
+				<div class="success">
+					<div class="load-on-success">Please check your email to reset your password</div>
+				</div>
+				<div>
+			    <form action="<?php echo $this->getUrl('customer/account/createpost',array('_secure'=>true)); ?>" method="post" id="signup-form" enctype="multipart/form-data">
+
+
+<?php // this field should contain the id of a product in the case that a product alert needs to be created, "hello" is a placeholder value that should not be changed ?>
+					<input type="hidden" value="hello" class="productalert_product" name="productalert_product">
+
+
+			  		<div class="modal-header">
+				    	<h3>Sign Up</h3>
+			    		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			  		</div>
+			  		<div class="modal-body">
+						<?php if(Mage::helper('core')->isModuleEnabled('Bootstrap_Facebook')){ ?>
+			  			<div class="fb-wrap">
+							<a href="javascript:void(0);" class="fb-login fb-button share-button"><i class="fa fa-facebook fa-large"></i>Sign Up with Facebook</a>
+							<div class="or"><span>or</span></div>
+						</div>
+						<?php } ?>
+						
+						<div class="error"></div>
+						<div class="success">
+							<div class="load-on-success">Thanks for registering</div>
+						</div>
+						<?php if(isset($show_last_location)){?>
+							<input type="hidden" value="<?php echo $last_location;?>" name="last_location">
+						<?php } ?>
+
+			            <input type="hidden" name="success_url" value="<?php echo $this->helper('core/url')->getCurrentUrl(); ?>" />
+			            <input type="hidden" name="error_url" value="<?php echo $this->getUrl('customer/account/create',array('_secure'=>true)); ?>" />
+						<div class="reg1">
+							<div class="social-login">
+								<h4>Sign Up with</h4>
+								<div class="interfacecontainerdiv"></div>
+							</div>
+							<div class="or"><span>or</span></div>
+				        	<!--<label for="lb_email_address" class="required"><?php echo $this->__('Email Address') ?></label>-->
+				            <input type="text" name="email" id="lb_email_address" value="" title="<?php echo $this->__('Email Address') ?>" class="input-text validate-email required-entry" placeholder="Enter your email address" />
+							<a class="button reg-next">Next</a>
+						</div>
+						<div class="reg2" style="display:none">
+							<input type="hidden" name="is_subscribed" value="1" id="is_subscribed" />
+				        	<!--<label for="firstname" class="required"><?php echo $this->__('First name') ?></label>-->
+				            <input type="text" id="firstname" name="firstname" value="" title="First Name" maxlength="255" class="input-text required-entry" autocomplete="off" placeholder="First name">
+				        	<!--<label for="lastname" class="required"><?php echo $this->__('Last name') ?></label>-->
+							<input type="text" id="lastname" name="lastname" value="" title="Last Name" maxlength="255" class="input-text required-entry" autocomplete="off" placeholder="Last name">
+				        	<div class="line"></div>
+				        	<!--<label for="password" class="required"><?php echo $this->__('Password') ?></label>-->
+							<input type="password" name="password" id="password" title="<?php echo $this->__('Password') ?>" class="input-text required-entry validate-password" placeholder="Password" />
+							<!--<label for="confirmation" class="required"><?php echo $this->__('Confirm Password') ?></label>-->
+							<input type="password" name="confirmation" title="<?php echo $this->__('Confirm Password') ?>" id="confirmation" class="input-text required-entry validate-cpassword" placeholder="Password again" />
+							<button type="submit" class="button" title="<?php echo $this->__('Register') ?>"><?php echo $this->__('Register') ?></button>
+						</div>
+					</div>
+					<div class="modal-footer">
+						Already a member? <a href="javascript:void(0);" class="re-login">Login</a>
+					</div>
+				</form>
+				<?php /*
+				<script type="text/javascript">
+				//< ![CDATA[
+				  var myForm= new VarienForm('lb-signup', true);
+				//]]>
+				</script>
+				*/?>
+			    <script type="text/javascript">
+			    //<![CDATA[
+			       var dataForm = new VarienForm('signup-form', true);
+			        Form.getElements('signup-form').each(function(element) {
+			            element.setAttribute('autocomplete', 'off');
+			        });
+			    //]]>
+			    </script>
+				</div>
+			</div>
+
+    	</div><!-- /.modal-content -->
+  	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+var erroractive ='<?php echo $lb_message;?>';
+
+$j("document").ready(function() {
+
+	<?php
+	/*
+	Auto pops the lightbox on error - we are redirecting to loginlock now
+	instead of attempting to handle errors in the lightbox
+		<?php if($lb_message && $not_account_page){ ?>
+	    setTimeout(function() {
+		$j("#login").trigger('click');
+	    },10);
+	    <?php } ?>
+
+	*/?>
+
+	// todo - consider moving this code to app.js
+
+
+	$j('.register-link').click(function(){
+		$j('#modal-login').modal();
+		$j('#login-block,#reset-block,#login-spinner,.success,.error,.reg2').hide();
+		$j('#signup-block,.reg1,.fb-wrap').show();
+	});
+	$j('.login-link').click(function(){
+		$j('#modal-login').modal();
+		$j('#signup-block,#reset-block,#login-spinner,.success,.error').hide();
+		$j('#login-block').show();
+	});
+	$j(".fb-login").click(function () {
+	    window.open("<?php echo $auth_url; ?>", "fblogin", "height=320,width=640");
+	});
+
+
+	$j('.reg-next').click(function(){
+		var valid = Validation.validate(document.getElementById('lb_email_address'));
+		if(valid){
+			$j('.reg1,.fb-wrap').hide();
+			$j('.reg2').show();
+		}
+	});
+
+	$j("#lb-password").val("");
+
+	$j("#lb-register").click(function(e) {
+		e.preventDefault();
+		clearErrorMsgLB();
+	    if(!erroractive){
+	      $j("#lightbox-wrapper .error-bar").hide();
+	      erroractive = false;
+	    }
+	    $j("#login-block, #reset-block").hide();
+	    $j("#signup-block").show();
+	    //$j("#lb-userid").val("Email address");
+	    $j("#lb-password").val("");
+	    //$j("#lb-user-email").val("Email address");
+		$j('.reg2').hide();
+		$j('.reg1,.fb-wrap').show();
+	});
+
+	$j("#lb-forgot-pass").click(function(e) {
+		e.preventDefault();
+		clearErrorMsgLB();
+	    $j("#login-block, #signup-block").hide();
+		$j("#reset-block").show();
+		//$j("#lb-reset-pw-email").val("Email address");
+	    if(!erroractive){
+	      $j("#lightbox-wrapper .error-bar").hide();
+	      erroractive = false;
+	    }
+	});
+
+	$j(".re-login").click(function(e) {
+		e.preventDefault();
+		clearErrorMsgLB();
+	    $j("#reset-block, #signup-block").hide();
+		$j("#login-block").show();
+	    if(!erroractive){
+	      $j("#lightbox-wrapper .error-bar").hide();
+	      erroractive = false;
+	    }
+	});
+
+	$j("#lb-signup").submit(function() {
+		var useremail = $j.trim($j("#lb-user-email").val());
+		if (useremail == "" || useremail == "Email address") {
+		showErrorMsgLB("Please enter an email address.");
+		return false;
+		} else {
+		return true
+		}
+	});
+
+	$j("#lb-login").submit(function() {
+		//$j(".loader").show();
+	});
+
+	$j("#lb-resetpw").submit(function() {
+		var email_val = $j("#lb-reset-pw-email").val();
+		if (email_val == "" || email_val == "Email address") {
+		showErrorMsgLB("Please enter an email address.");
+		return false
+		} else {
+		return true
+		}
+	});
+
+
+}); // end doc ready
+
+function showErrorMsgLB(errMsg){
+	if (errMsg != "") {
+	$j("#lightbox-wrapper .error-bar").show();
+	$j("#lightbox-wrapper .error-message").html(errMsg).show();
+	return false
+	} else {
+	return true
+	}
+}
+
+function clearErrorMsgLB(){
+    $j("#lightbox-wrapper .error-bar").hide();
+    $j("#lightbox-wrapper .error-message").html();
+}
+</script>

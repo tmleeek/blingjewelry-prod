@@ -1,0 +1,59 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     rwd_default
+ * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<div class="block block-subscribe">
+    <div class="block-subscribe-wrap">
+        <div class="block-title">
+            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer_newsletter_text')->toHtml(); ?>
+        </div>
+<form action="//app.bronto.com/public/webform/process/" method="post" id="newsletter-validate-detail" onsubmit="_gaq.push(['_trackEvent','Form','Submitted','Welcome Email'])">
+ <input type="hidden" name="fid" value="k3zv84ptgddc8azmc9wq1324913v9">
+<input type="hidden" name="sid" value="7dedefd9cabbee54575f59e89030c2fa">
+<input type="hidden" name="delid" value="">
+<input type="hidden" name="subid" value="">
+<input type="hidden" name="td" value="">
+<input type="hidden" name="formtype" value="addcontact">
+            <div class="block-content">
+                <div class="form-subscribe-header">
+                    <label for="newsletter"><?php echo $this->__('Sign Up for Our Newsletter:') ?></label>
+                </div>
+                <div class="input-box">
+                    <input type="text" name="84585" id="newsletter" title="Sign up for our newsletter" class="input-text required-entry validate-email"  value='<?php echo $this->__('Your email') ?>' onfocus="if (this.value == '<?php echo $this->__('Your email') ?>') this.value = '';" onblur="if (this.value == '') this.value = '<?php echo $this->__('Your email') ?>';" autocapitalize="off" autocorrect="off" spellcheck="false" >
+                        <label for="newsletter"><?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer_newsletter_privacy')->toHtml(); ?></label>
+                </div>
+                <div class="actions">
+                    <button type="submit" title="<?php echo $this->__('Join') ?>" class="button"><span><span><?php echo $this->__('Join') ?></span></span></button>
+                </div>
+            </div>
+        </form>
+        <script type="text/javascript">
+        //<![CDATA[
+            var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail');
+        //]]>
+        </script>
+    </div>
+    <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer_links_sm')->toHtml(); ?>
+</div>

@@ -1,0 +1,52 @@
+<?php
+$bracelets = Mage::helper('grep_bracelet')->getBracelets();
+$helper = Mage::helper('grep_bracelet');
+$default_bracelet_id = Mage::getStoreConfig('grep_bracelet/settings/default_bracelet_id');
+$count = count($bracelets);
+$default_bracelet = false;
+$i = 0;
+?>
+
+<ul class="left">
+<?php foreach ($bracelets as $bracelet): ?>
+    <?php $bracelet = Mage::getModel('catalog/product')->load($bracelet->getId()); ?>
+    <?php if ($bracelet->getId() == $default_bracelet_id) { $default_bracelet = $bracelet; } ?>
+    <?php if ($i == ceil($count/2)): ?>
+</ul>
+<ul class="right">
+    <?php endif; ?>
+<?php $i++; ?>
+    <li
+        class="bracelet"
+        data-image="<?php echo $helper->getImage($bracelet, 'bracelet', 690, 50); ?>"
+        data-thumb="<?php echo $helper->getImage($bracelet, 'image', 50, 50); ?>"
+        data-product-id="<?php echo $bracelet->getId(); ?>"
+        data-price="<?php echo round($bracelet->getPrice(),2); ?>"
+        style="background-image: url(<?php echo $helper->getImage($bracelet, 'bracelet', 350, 25); ?>);"
+    >
+        <div class="description">
+            <span class="name"><?php echo $bracelet->getName(); ?></span>
+            <span class="price"><?php echo Mage::app()->getStore()->formatPrice($bracelet->getPrice(), false); ?></span>
+        </div>
+    </li>
+<?php endforeach; ?>
+</ul>
+
+<?php if (!$default_bracelet): ?>
+<?php $default_bracelet = $bracelet; ?>
+<?php endif; ?>
+
+<div
+    id="default_bracelet"
+    class="bracelet"
+    data-image="<?php echo $helper->getImage($default_bracelet, 'bracelet', 690, 50); ?>"
+    data-thumb="<?php echo $helper->getImage($default_bracelet, 'image', 50, 50); ?>"
+    data-product-id="<?php echo $default_bracelet->getId(); ?>"
+    data-price="<?php echo round($default_bracelet->getPrice(), 2); ?>"
+    style="display: none; background-image: url(<?php echo $helper->getImage($default_bracelet, 'bracelet', 350, 25); ?>);"
+    >
+    <div class="description">
+        <span class="name"><?php echo $default_bracelet->getName(); ?></span>
+        <span class="price"><?php echo Mage::app()->getStore()->formatPrice($default_bracelet->getPrice(), false); ?></span>
+    </div>
+</div>

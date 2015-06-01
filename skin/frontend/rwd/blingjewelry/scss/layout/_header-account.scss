@@ -1,0 +1,143 @@
+
+/* ============================================ *
+ * Header - Account
+ * ============================================ */
+
+/* -------------------------------------------- *
+ * Skip Link - Account
+ */
+
+.skip-account {
+
+/*
+    &:not(.skip-active):hover {
+        .icon {
+            //background-position: -50px+4px (-50px + ($toolbar-icon-padding-offset/2) + 2px);
+            //background: url('../images/icon-user.png') no-repeat center;
+            //opacity:0.6;
+        }
+    }
+*/
+
+    .icon {
+        //@extend .icon-sprite;
+        //background-position: -0px+4px (-50px + ($toolbar-icon-padding-offset/2) + 2px);
+        //background: url('../images/icon-user-gray.png') no-repeat center;
+        position:relative;
+        &:before { 
+            font-size:16px;
+            position:absolute;
+            top:0;
+            left:0;
+            content: '\e80c'; 
+            @include iconfont;
+        } /* '' */
+    }
+}
+
+.skip-account.skip-active{
+    .icon {
+        //background: url('../images/icon-user-dark.png') no-repeat center;
+        opacity:0.4;
+    } 
+}
+
+
+// ---------------------------------------------
+
+@include bp(min-width, $bp-medium + 1) {
+
+    .skip-account {
+       // position: fixed;
+        //top: 0px;
+        //right: 115px;
+        width: auto;
+        padding: 0 10px;
+        text-transform: uppercase;
+
+        .icon{
+            background:none;
+        }
+    }
+
+    .skip-account:hover {
+    }
+
+    #header-account.skip-active {
+
+        padding:5px 0;
+        /*
+        background:#666;
+        display: block;
+        position: fixed;
+        z-index: 200;
+        top: 28px;
+        right: 92px;
+        width: 140px;
+        */
+        //background:$c-module-background;
+        @include menu;
+        display: block;
+        position: absolute;
+        z-index: 200;
+        top: 0px;
+        right: 30px; // matches the container padding
+        width: 175px;
+        //background: white;
+
+        @include boxshadow(2px, 2px, 2px, 0, rgba(0,0,0,0.2));
+
+    }
+
+    #header-account a {
+        display: block;
+        padding: 2px 20px;
+        //color: $c-text-white;
+        //line-height: 2;
+    }
+
+    #header-account a:hover {
+        color: $c-black;
+    }
+
+    #header-account li.last {
+        border-top:solid 1px $c-divider-border;
+        padding-top:3px;
+        margin-top:3px;
+    } 
+
+}
+
+/* -------------------------------------------- *
+ * Account Links
+ */
+
+/*
+#header-account {
+    padding: 5px 0;
+}
+*/
+
+
+#header-account li { 
+    font-family: $f-stack-special;
+    text-transform:uppercase;
+    font-weight: 300;
+    font-size:$f-size-xxs;
+}
+
+#header-account a {
+    position: relative;
+    display: block;
+    padding: 2px 10px;
+    //line-height: 30px;
+    text-align: left;
+    span.count{
+        color:$c-action;
+    }
+}
+
+#header-account a:hover {
+    color: $c-action;
+}
+

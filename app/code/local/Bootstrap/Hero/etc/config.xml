@@ -1,0 +1,156 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+    	<Bootstrap_Hero>
+    		<version>0.3.0</version>
+    	</Bootstrap_Hero>
+  	</modules>
+	<frontend>
+    	<routers>
+      		<hero>
+        		<use>standard</use>
+          		<args>
+            		<module>Bootstrap_Hero</module>
+            		<frontName>hero</frontName>
+          		</args>
+      		</hero>
+    	</routers>
+		<layout>
+		  	<updates>
+				<hero>
+			  		<file>bootstrap/hero.xml</file>
+				</hero>
+		  	</updates>
+		</layout>
+	</frontend>
+  	<global>
+        <rewrite>
+            <bootstrap_hero_index_index>
+                <from><![CDATA[#^/hero/#]]></from>
+                <to>/hero/index/index/</to>
+                <complete>1</complete>
+            </bootstrap_hero_index_index>
+        </rewrite>
+    	<helpers>
+      		<hero>
+        		<class>Bootstrap_Hero_Helper</class>
+      		</hero>
+    	</helpers>
+		<blocks>
+	  		<hero>
+				<class>Bootstrap_Hero_Block</class>
+	  		</hero>
+		</blocks>
+		<models>
+	  		<hero>
+				<class>Bootstrap_Hero_Model</class>
+				<resourceModel>hero_mysql4</resourceModel>
+	  		</hero>
+	  		<hero_mysql4>
+				<class>Bootstrap_Hero_Model_Mysql4</class>
+					<entities>		  
+			  			<hero>
+							<table>bootstrap_hero</table>
+			  			</hero>
+        			</entities>
+	  		</hero_mysql4>
+		</models>
+		<resources>
+	  		<hero_setup>
+	  			
+				<setup>
+		  			<module>Bootstrap_Hero</module>
+		  			<!--this invokes custom function - without uses magento default setup
+		  			<class>Bootstrap_Hero_Model_Mysql4_Setup</class>-->
+				</setup>
+				<!-- default setup -->
+				<connection>
+		  			<use>core_setup</use>
+				</connection>
+	  		</hero_setup>
+	  		<hero_write>
+				<connection>
+		  			<use>core_write</use>
+				</connection>
+	  		</hero_write>
+	  		<hero_read>
+				<connection>
+		  			<use>core_read</use>
+				</connection>
+	  		</hero_read>
+		</resources>
+	</global>
+  	<admin>
+  	<!--
+        <routers>
+            <hero>
+                <use>admin</use>
+                <args>
+                    <module>Bootstrap_Hero</module>
+                    <frontName>hero</frontName>
+                </args>
+            </hero>
+        </routers>
+        -->
+        <!-- 
+        	
+        module is same as in controller with _Adminhtml 
+        	
+        -->
+  		<routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Bootstrap_Hero after="Mage_Adminhtml">Bootstrap_Hero_Adminhtml</Bootstrap_Hero>
+                    </modules>
+                </args>
+            </adminhtml>
+		</routers>
+  	</admin>
+  	<adminhtml>
+		<layout>
+	  		<updates>
+				<hero module="Bootstrap_Hero">
+		  			<file>bootstrap/hero.xml</file>
+				</hero>
+	  		</updates>
+		</layout>
+		<menu>
+        	<!-- 
+        	
+        	note the path does not contain adminhtml_hero just hero
+        	the controller definition in config.xml contains _Adminhtml
+        	see line 90 
+        	
+        	-->
+           <cms>
+                <children>
+                    <hero module="hero">
+                        <title>Hero</title>
+                        <sort_order>1000</sort_order>
+                        <action>adminhtml/hero/index</action>
+                    </hero>
+            	</children>
+        	</cms>
+		</menu>
+		<acl>
+	  		<resources>
+				<all>
+		  			<title>Allow Everything</title>
+				</all>
+				<admin>
+		  			<children>
+           				<cms>
+                			<children>
+                    			<hero translate="title" module="hero">
+                        			<title>Hero</title>
+                        			<sort_order>1000</sort_order>
+                    			</hero>
+            				</children>
+            			</cms>
+		  			</children>
+				</admin>
+	  		</resources>
+		</acl>
+	</adminhtml>
+</config> 

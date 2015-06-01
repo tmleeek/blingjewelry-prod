@@ -1,0 +1,241 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2009 Irubin Consulting Inc. DBA Varien (http://www.varien.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Category layered navigation
+ *
+ * @see Mage_Catalog_Block_Layer_View
+ */
+?>
+<?php
+	$_filters = $this->getFilters();
+	$_selections = $this->getFilterSelections();
+	$moreAnswers=array();
+	$moreQuestions=array();
+	$bMultiSelect=$this->isMultiSelect();
+
+if(isset($_selections) && $_selections && $_selections->Count > 0) {
+	?>
+<div class="block block-layered-nav" style="border-bottom:1px solid #E6E6E6; margin-bottom: 10px;">
+	<div class="block-title">
+		<strong><span><?php echo $this->__('Selections') ?></span></strong>
+		<br>
+		<div style="text-align:right"><a style="color:#e50e0c" href="<?php echo $this->clearAllSelections(); ?>">Clear all</a></div>
+	</div>
+	<div class="block-content">
+		<dl id="selection-list">
+		<dd><ol>
+		<?php
+	foreach($_selections->Items as $spe)
+	{
+		$ans = $spe->Answers->Items[$spe->AnswerIndex < $spe->Answers->Count && $spe->AnswerIndex > 0 && $spe->QuestionId != 'PriceQuestion' ? $spe->AnswerIndex : 0];
+		if(!$ans) continue;
+		printf('<li>%s<span style="float:right"><a href="%s">(x)</a></span><div style="clear:both;float:none"></div></li>', $ans->Text, $this->clearSelection($ans->Id));
+	}
+	?>
+		</ol></dd>
+		</dl>
+	</div>
+</div>
+	<?php
+}
+
+if(count($_filters) > 1 || $this->stateHasFilters()):
+?>
+<div class="block block-layered-nav">
+    <div class="block-title">
+        <strong><span><?php echo $this->__('Browse By') ?></span></strong>
+    </div>
+    <div class="block-content">
+        <?php echo $this->getStateHtml() ?>
+        <?php if(count($_filters) > 1):?>
+            <dl id="narrow-by-list">
+             <?php $q = 0;
+             foreach ($_filters as  $key=>$_filter)://filter=question
+                 /* var_dump($_filter->ExtraAnswers->Items);die;*/
+				 //if($_filter->Id == 'PriceQuestion') continue;
+            	if (!$this->canShowLeadQuestion()||$key >= 1):
+	                 if((int)$_filter->Answers->Count > 0||(int)$_filter->ExtraAnswers->Count > 0):
+                            if ($this->getMaxNonLeadQuestions() > $q):?>
+	                    	<dt><?php echo $this->__($this->getFilterText($_filter, "nonlead")); ?></dt>
+	                    	<dd>
+                                    <ol>
+	                    		<?php $a = 0;
+					if((int)$_filter->Answers->Count > 0):
+					 foreach ($_filter->Answers->Items as $answer):
+                                           if ($this->getMaxNonLeadAnswers() > $a):?>
+						<li>
+              <?php if($bMultiSelect && $_filter->DynamicProperties["IsHierarchical"]=="False"): ?>
+                  <?php $answerUrl =  $this->isAnsweredAnswer($_filter->Id, $answer->Id) ? $this->getStateRemoveUrl($answer->Id) : $this->answerQuestionUrl($answer->Id);?>
+                  <?php $strChecked =  $this->isAnsweredAnswer($_filter->Id, $answer->Id) ? 'checked="checked"' : "";?>
+                  <?php $strDisabled = ($answer->ProductCount == 0) ? 'disabled="disabled"' : ""; ?>
+            			<input type=checkbox
+            			<?php echo $strChecked;?>
+            			<?php echo $strDisabled;?>
+            			onclick="window.location='<?php echo $answerUrl ?>';"
+            			name="<?php echo $answer->Id ?>" id="<?php echo $answer->Id ?>" /> 
+            			<a rel="nofollow" href="<?php echo $answerUrl ?>"><?php echo $answer->Text ?></a>
+            			<?php if ($this->showProductCountInNonLeadAnswers()): echo '<span>('.$answer->ProductCount.')</span>'; endif;?>
+        			<?php else:?>
+            			<a rel="nofollow" href="<?php echo $this->answerQuestionUrl($answer->Id) ?>"><?php echo $answer->Text ?></a>
+            			<?php if ($this->showProductCountInNonLeadAnswers()): echo '<span>('.$answer->ProductCount.')</span>'; endif;?>
+        			<?php endif; ?>
+					<div style="clear:both;float:none;"></div>
+                                                </li>
+						<?php $a++;
+                                           else: $moreAnswers[]=$answer;//תוספת
+                                           endif;
+					 endforeach;?>
+					 <?php endif;?>
+					 <?php if((int)$_filter->ExtraAnswers->Count > 0):?>
+                                         <?php foreach ($_filter->ExtraAnswers->Items as $answer):
+                                            if ($this->getMaxNonLeadAnswers($_filter) > $a):?>
+						<li>
+      <?php if($bMultiSelect && $_filter->DynamicProperties["IsHierarchical"]=="False"): ?>
+          <?php $answerUrl =  $this->isAnsweredAnswer($_filter->Id, $answer->Id) ? $this->getStateRemoveUrl($answer->Id) : $this->answerQuestionUrl($answer->Id);?>
+          <?php $strChecked =  $this->isAnsweredAnswer($_filter->Id, $answer->Id) ? 'checked="checked"' : "";?>
+    			<input type=checkbox <?php echo $strChecked;?> onclick="window.location='<?php echo $answerUrl?>';" name="<?php echo $answer->Id ?>" id="<?php echo $answer->Id ?>" />
+    			<a rel="nofollow" href="<?php echo $answerUrl ?>"><?php echo $answer->Text ?></a>
+    			<?php if ($this->showProductCountInNonLeadAnswers()): echo '<span>('.$answer->ProductCount.')</span>'; endif; ?>    			
+			<?php else:?> 
+    			<a rel="nofollow" href="<?php echo $this->answerQuestionUrl($answer->Id) ?>"><?php echo $answer->Text ?></a>
+    			<?php if ($this->showProductCountInNonLeadAnswers()): echo '<span>('.$answer->ProductCount.')</span>'; endif; ?>
+			<?php endif;?> 
+						</li>
+						<?php $a++;
+                                            else: $moreAnswers[]=$answer;//תוספת
+                                            endif;
+					 endforeach ?>
+					 <?php endif;?>
+					<?php if ($_filter->Id == 'PriceQuestion'):?>
+                                            <li>
+                                                <?php echo $this->__('Custom Price Range')?>
+						<div>
+                                                    <form id="custom-price-form">
+                                                            <fieldset>
+                                                            <label for="priceFrom"><?php echo $this->__('From')?></label><input name="priceFrom" type="text" class="validate-number required-entry" size="2"/>
+                                                            <label for="priceTo"><?php echo $this->__('To')?></label><input name="priceTo" type="text" class="validate-number required-entry" size="2"/>
+                                                            <a href="#" onclick="getCustomPrice()"><?php echo $this->__('Go') ?></a>
+                                                            </fieldset>
+                                                    </form>
+                                                    <script type="text/javascript">
+                                                        var priceForm =  new VarienForm('custom-price-form');
+                                                        function getCustomPrice(){
+                                                        if(priceForm.validator.validate()){
+                                                        var from = $$('input[name="priceFrom"]')[0].value;
+                                                        var to = $$('input[name="priceTo"]')[0].value;
+                                                        if (from != '' && to !=''){
+                                                        var answerId = '_P' + from + '_' + to;
+                                                        var url = "<?php echo $this->getCustomPriceAnswerUrl()?>";
+                                                        url += '&answerId=' + answerId;
+                                                        setLocation(url);
+                                                        }
+                                                        }
+                                                        }
+                                                    </script>
+						</div>
+					</li>
+					<?php endif;?>
+				    </ol>
+                                    <?php if(((int)$_filter->Answers->Count+(int)$_filter->ExtraAnswers->Count)>$this->getMaxNonLeadAnswers($_filter)):?>
+           	<ol class="moreAnswers" id="moreAnswers<?php echo $_filter->Id; ?>" style="display:none">
+            	<?php foreach ($moreAnswers as $answer):?>
+						<li>
+      <?php if($bMultiSelect && $_filter->DynamicProperties["IsHierarchical"]=="False"): ?>
+          <?php $answerUrl =  $this->isAnsweredAnswer($_filter->Id, $answer->Id) ? $this->getStateRemoveUrl($answer->Id) : $this->answerQuestionUrl($answer->Id);?>
+          <?php $strChecked =  $this->isAnsweredAnswer($_filter->Id, $answer->Id) ? 'checked="checked"' : "";?>
+    			<input type=checkbox <?php echo $strChecked;?> onclick="window.location='<?php echo $answerUrl?>';" name="<?php echo $answer->Id ?>" id="<?php echo $answer->Id ?>" />
+    			<a rel="nofollow" href="<?php echo $answerUrl ?>"><?php echo $answer->Text ?></a>
+    			<?php if ($this->showProductCountInNonLeadAnswers()): echo '<span>('.$answer->ProductCount.')</span>'; endif; ?>    			
+			<?php else:?> 
+    			<a rel="nofollow" href="<?php echo $this->answerQuestionUrl($answer->Id) ?>"><?php echo $answer->Text ?></a>
+    			<?php if ($this->showProductCountInNonLeadAnswers()): echo '<span>('.$answer->ProductCount.')</span>'; endif; ?>
+			<?php endif;?> 
+					<div style="clear:both;float:none;"></div>
+						</li>
+						<?php $a++;
+        			endforeach;?>
+          	</ol> 
+			<div style="text-align:right">
+			<a style="color:#0E6216" rel="nofollow" href="javascript:void(0)" onclick="var obj=document.getElementById('moreAnswers<?php echo $_filter->Id; ?>');if(obj.style.display=='block'){obj.style.display='none';this.innerHTML='More...';}else{obj.style.display='block';this.innerHTML='Less...'}">More...</a>
+			</div>
+                                    <?php endif;?>
+                                </dd>
+                                <?php unset($moreAnswers)?>
+	                    	<?php $q++;//עבור לשאלה הבאה?>
+	                    <?php else:?>
+                                <?php $moreQuestions[]=$_filter;?>
+                               <?php endif;//אם המספר הסידור של השאלה קטן ממקסימום השאלות?>
+                              
+                    <?php endif;//אם לשאלה יש תשובות?>
+            	<?php endif;//הצגת שאלה ראשונה?>
+
+            <?php endforeach;//הצגת השאלות ?>
+            <?php if(count($_filters)>$this->getMaxNonLeadQuestions()):?>
+                                <select id="questionsList" onchange="setFirstQuestion(this.value)">
+                                    <option>More Questions</option>
+                  <?php foreach ($moreQuestions as $question):?>
+                      <option value=<?php  echo $this->forceLeadQuestion($question->Id);?>>
+                         <?php echo $question->SideText;?>
+                      </option>
+                  <?php endforeach;?>
+              </select>
+             <?php endif;?>
+           
+            </dl>
+            <script type="text/javascript">decorateDataList('narrow-by-list')</script>
+            <?php endif;?>
+    </div>
+</div>
+<script type="text/javascript">
+	function setFirstQuestion(value){
+		setLocation(value)
+	}
+	function setFirstAnswer(value){
+		setLocation(value)
+	}
+</script>
+<script type="text/javascript">
+(function($){
+$(document).ready(function() {
+	$(".cel_multiselect").each(function(){
+		var title = $(this).parents("dd").prev("dt").text();
+		if(title == null) title = "Answers";
+		var opts = {noneSelectedText:"More..."};
+		opts.header = "More " + title;
+		try {
+		$(this).multiselect(opts);
+		} catch(e) { alert(e); }
+	});
+	$(".cel_multiselect").bind("multiselectclick", function(event, ui){
+		setFirstAnswer(ui.value);
+	});
+});
+})(window.jQuery);
+</script>
+<?php endif;?>
+ 

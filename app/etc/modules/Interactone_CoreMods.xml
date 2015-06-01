@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <Interactone_CoreMods>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Mage_Adminhtml />
+                <Mage_ProductAlert />
+                <Mage_Shipping />
+            </depends>
+        </Interactone_CoreMods>
+    </modules>
+</config>

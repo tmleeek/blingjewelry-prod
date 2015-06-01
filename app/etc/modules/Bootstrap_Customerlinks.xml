@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <Bootstrap_Customerlinks>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Bootstrap_Customerlinks>
+    </modules>
+</config>

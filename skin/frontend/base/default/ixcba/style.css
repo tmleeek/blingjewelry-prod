@@ -1,0 +1,108 @@
+@charset "utf-8";
+/* CSS Document */
+ 
+.ixcba-inline img { border:none; }
+.ixcba-inline .cl { clear:both; }
+.ixcba-inline .fl { float:left; }
+.ixcba-inline .fr { float:right; }
+.ixcba-inline li { list-style:none; }
+.ixcba-inline p { text-align:justify;line-height:18px;margin-bottom:10px; }
+ 
+body .ixcba-inline { font:normal 12px Arial, Helvetica, sans-serif; background: #fff;}
+
+.ixcba-inline { width:887px;margin:0 auto;border:1px solid #e6e0c5;border-top:4px solid #e6e0c5; border-width: 4px 1px;padding:0 0 3px 0; }
+.ixcba-inline .content { float:left; width:662px;border-right:2px solid #e6e0c5;padding:0 !important; }
+.ixcba-inline .aside { float:right;width:218px; }
+.ixcba-inline .topbar { padding:4px 0px 3px 5px; height:24px; overflow:hidden; }
+ 
+.ixcba-inline .create-ac { font:11px Georgia, "Times New Roman", Times, serif;float:left;width:650px;padding-top:5px;position:absolute;}
+.ixcba-inline .create-ac span.or { font:bold 11px Georgia, "Times New Roman", Times, serif;padding:18px; }
+.ixcba-inline .create-ac span.or_name { font:bold 11px Georgia, "Times New Roman", Times, serif;padding:5px; }
+.ixcba-inline .checkout { font:bold 12px Arial, Helvetica, sans-serif;color:#777777; }
+.ixcba-inline .btn { text-decoration:none; text-transform:uppercase; background:#0088ff; color:#fff; font-size:14px;line-height:20px; font-weight:bold;padding:0px 15px;border:1px solid #3b5998; cursor:pointer; font-family:Georgia, "Times New Roman", Times, serif; }
+.ixcba-inline .btn2 {text-decoration:none; text-transform:uppercase; background:#0088ff; color:#fff; font-size:14px; line-height:20px; font-weight:bold; padding:0px 15px; border:1px solid #3b5998; cursor:pointer; font-family:Georgia, "Times New Roman", Times, serif; margin-top:-4px;}
+.ixcba-inline .title { text-transform:uppercase; font:normal 20px Georgia, "Times New Roman", Times, serif;line-height:40px;color:#000;background:#e6e0c5;padding:0 5px; }
+.ixcba-inline .edit-cart { text-align:center;padding:7px 0px 0px 6px;height:24px; }
+.ixcba-inline .edit-cart a { text-decoration:underline; }
+.ixcba-inline .hdn div { margin-bottom:5px;float:left; font:12px Georgia, "Times New Roman", Times, serif;padding:2px 3px;font-weight:bold; }
+.ixcba-inline .item { width:52px; }
+.ixcba-inline .qty { width:102px; }
+.ixcba-inline .name { margin-bottom:9px;color:#fc9432;font:bold 14px Georgia, "Times New Roman", Times, serif; }
+.ixcba-inline .qty-price { height:20px;color:#339900;text-align:right;padding-right:10px; }
+.ixcba-inline .product { padding-bottom:17px;margin-bottom:10px; border-bottom:1px solid #ccc; }
+.ixcba-inline .shipping-add { float:left;width:411px;border-right:2px solid #e6e0c5;padding-left:5px; padding:10px; }
+.ixcba-inline .pro img.fl { margin-right:15px; }
+.ixcba-inline .qty-price .txt { float:left;width:36px;height:16px;border:1px solid #bababa; border: 0 none; background:transparent; color:#000; font-weight:bold;padding-left:8px;}
+.ixcba-inline .qty-price  img { float:left; } 
+.ixcba-inline sup { font-size:9px; }
+.ixcba-inline .united { width:222px; padding-left:5px; float:right; height:278px; font-size:14px; line-height:23px; }
+.ixcba-inline .united-title { height:278px;font-size:14px ; font-weight:bold; } 
+.ixcba-inline .united input { margin-right:5px; } 
+.ixcba-inline .united-title2 { display:block;margin-top:25px;margin-bottom:5px; font:bold 15px Georgia, "Times New Roman", Times, serif; }
+.ixcba-inline .t2 { font-size:17px;font-weight:bold; margin: 0 3px; }
+.ixcba-inline .txt { height:28px;border:1px solid #bababa;margin-right:5px;width:175px; }
+.ixcba-inline .promo span { font:bold 16px Georgia, "Times New Roman", Times, serif; }
+.ixcba-inline .promo { padding:10px; }
+.ixcba-inline .gift { padding:10px; }
+.ixcba-inline .gift span { margin-right:10px ;font:15px Georgia, "Times New Roman", Times, serif; float:left;text-align:right; }
+.ixcba-inline .gift span input { margin-right:5px; }
+.ixcba-inline .area { width:340px;height:70px;border:1px solid #bababa;float:left; }
+.ixcba-inline .see-all { background:#e6e0c5;text-align:center;color:#0088ff; padding:12px 11px 11px 11px; float:left; font:14px Georgia, "Times New Roman", Times, serif; width:191px;}
+.ixcba-inline .payment { float:left;width:434px; }
+.ixcba-inline .cart-totals { float:right;width:226px; }
+.ixcba-inline .blnk { height:106px; }
+.ixcba-inline .t4 { margin-left: 3px; }
+.ixcba-inline .t3 { font-size:15px; margin-right: 3px; }
+.ixcba-inline .total { font-size:15px;background:#e6e0c5;padding:5px;margin:0 3px; }
+.ixcba-inline .price5 { float:right;text-align:right; }
+.ixcba-inline .total span { padding:2px 0;display:block;width:80px;float:left; }
+.ixcba-inline .total span.price { text-align:right; }
+.ixcba-inline table.totals-table { font-size:12px;width:100%; }
+.ixcba-inline table.totals-table tbody tr:last-child td {
+    padding:0px 0 7px 0 !important; 
+}
+.ixcba-inline .g-total td { border-top:1px solid #000;font-weight:bold;font-family: Georgia, "Times New Roman", Times, serif; padding:0px 0 3px 0 !important; }
+.ixcba-inline .g-total-place-order { text-align:center; }
+.ixcba-inline .total .btn { font-family:Arial, Helvetica, sans-serif; }
+.ixcba-inline .payment-mathod { margin:10px 10px 0; }
+.ixcba-inline .sh1 { width:432px; float:left; background:#e6e0c5; padding-left:5px; }
+.ixcba-inline .sh2 { width:223px; float:left; background:#e6e0c5; padding-left:2px; font-size:15px; }
+
+.ixcba-inline .content_success { float:left; width:100%; }
+.ixcba-inline .content_success .gift { padding:30px 15px 80px 15px; }
+.ixcba-inline .content_success .gift .thankyou { padding-bottom:8px; font-size:16px; }
+.ixcba-inline .content_success .gift .paragraph { font-size:17px; font-family:Georgia Sans MS; }
+.ixcba-inline .content_success .gift .btn { text-decoration:none; margin:30px 115px 30px 30px; float:right; }
+
+.ixcba-inline .payment_method_loading { text-align:center; height:100px; width:100%; background:#fff url(images/loading.gif) no-repeat center center; }
+.ixcba-inline .loading_next_step { text-align:center; height:50px; width:194px; background:url(images/loading.gif) no-repeat center center; }
+.ixcba-inline .before_selection_message_loading { border:1px solid #F0C36D; width:200px; padding:6px; color:#66666E; font-size:12px; text-align:justify; margin-top:6px; }
+
+.ixcba-inline #confirmAction { display:none; cursor:pointer; }
+.ixcba-inline .additionalfooter { float:left; width:97%; }
+.ixcba-inline .footer_grand_total { background-color:#e8e3c7; float:right; height:30px; padding:6px; }
+.ixcba-inline .before_selection_message { background-color:#F7EBBE; border:1px solid #F0C36D; width:195px; padding:5px; color:#66666E; font-size:12px; text-align:justify; margin-top:10px; }
+.ixcba-inline .big_center { margin:0 auto; margin-top:6px; width:290px; }
+.ixcba-inline .small_center { margin:0 auto; width:160px !important; }
+.ixcba-inline .success_selection_message { display:none; background-color:#F7EBBE; border:1px solid #F0C36D; width:195px; padding:5px; color:#66666E; font-size:12px; text-align:justify; margin-top:10px; }
+.ixcba-inline .before_selection_message h1 { text-transform:uppercase; font-size:14px; clear:both; margin-bottom:5px; color:#66666E; text-align:center; font-weight:bold; }
+.ixcba-inline .height_big { margin:0 auto; width:154px !important; margin-bottom:59px; }
+.ixcba-inline .validation-advice { background: url("images/validation_advice_bg.gif") no-repeat scroll 123px 0 transparent; clear: both; color: #EB340A; font-size: 11px; font-weight: bold; line-height: 13px; margin: 1px 0 0; min-height: 13px; position: absolute; padding-left:135px; }
+.ixcba-inline .msg_ixcba { font-size: 11px; font-weight: bold; margin: -1px; margin-bottom: 0; padding: 1px 6px; text-align:left; }
+.ixcba-inline .success_ixcba { color:green; border:1px solid green; }
+.ixcba-inline .error_ixcba { color:#ff0000; border:1px solid #ff0000; }
+.ixcba-inline #AmazonWalletWidget {margin:6px 10px; float:left; width:100%; height:230px; width:92%; }
+
+.ixcba-inline .powered-by { margin: -108px -18px 0 0;color: #00F;padding-left: 2px;font: 10px Georgia, "Times New Roman", Times, serif;float: right;position: relative; }
+
+.ixcba-inline .ixcba-agreement-p{margin: 0;padding: 5px 3px;font:13px/18px Tahoma normal;}
+.ixcba-inline .ixcba-agreement-back {background:none repeat scroll 0 0 black;height:100%;width:100%;left:0;top:0;position:fixed;z-index:999;}
+.ixcba-inline .ixcba-agreement-content { height: 100%; left: 0; position: fixed; top: 0; width: 100%; }
+.ixcba-inline .ixcba-agreement-content div.width { color: #6E6E6E; font: 12px/18px Tahoma normal; margin: 8% auto 0; padding: 30px; position: relative; width: 330px; z-index:9999;}
+.ixcba-inline .ixcba-agreement-content div.width h1 { font:24px/22px Tahoma normal; color:#5A5A5A; width:100%; clear:both; margin-bottom:15px }
+.ixcba-inline .ixcba-agreement-content-p { max-height:600px; overflow:auto; }
+.ixcba-inline .payment_cart_totals { float: left; height: 100%; width: 662px; }
+.ixcba-inline .height_100 { float:left; }
+.ixcba-inline .agreements_border { float:left; border: 1px dashed #1E7EC8; width:92%; margin:6px 10px; -moz-border-radius: 5px; -webkit-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; }
+
+.ixcba-agreement-content .validation-advice { background: url("images/validation_advice_bg.gif") no-repeat scroll 0px 0 transparent !important; position: relative !important; padding-left:13px !important; }

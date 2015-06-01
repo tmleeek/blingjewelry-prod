@@ -1,0 +1,156 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+    	<Bootstrap_Press>
+    		<version>0.4.0</version>
+    	</Bootstrap_Press>
+  	</modules>
+	<frontend>
+    	<routers>
+      		<press>
+        		<use>standard</use>
+          		<args>
+            		<module>Bootstrap_Press</module>
+            		<frontName>press</frontName>
+          		</args>
+      		</press>
+    	</routers>
+		<layout>
+		  	<updates>
+				<press>
+			  		<file>bootstrap/press.xml</file>
+				</press>
+		  	</updates>
+		</layout>
+	</frontend>
+  	<global>
+        <rewrite>
+            <bootstrap_press_index_index>
+                <from><![CDATA[#^/press/#]]></from>
+                <to>/press/index/index/</to>
+                <complete>1</complete>
+            </bootstrap_press_index_index>
+        </rewrite>
+    	<helpers>
+      		<press>
+        		<class>Bootstrap_Press_Helper</class>
+      		</press>
+    	</helpers>
+		<blocks>
+	  		<press>
+				<class>Bootstrap_Press_Block</class>
+	  		</press>
+		</blocks>
+		<models>
+	  		<press>
+				<class>Bootstrap_Press_Model</class>
+				<resourceModel>press_mysql4</resourceModel>
+	  		</press>
+	  		<press_mysql4>
+				<class>Bootstrap_Press_Model_Mysql4</class>
+					<entities>		  
+			  			<press>
+							<table>bootstrap_press</table>
+			  			</press>
+        			</entities>
+	  		</press_mysql4>
+		</models>
+		<resources>
+	  		<press_setup>
+	  			
+				<setup>
+		  			<module>Bootstrap_Press</module>
+		  			<!--this invokes custom function - without uses magento default setup
+		  			<class>Bootstrap_Press_Model_Mysql4_Setup</class>-->
+				</setup>
+				<!-- default setup -->
+				<connection>
+		  			<use>core_setup</use>
+				</connection>
+	  		</press_setup>
+	  		<press_write>
+				<connection>
+		  			<use>core_write</use>
+				</connection>
+	  		</press_write>
+	  		<press_read>
+				<connection>
+		  			<use>core_read</use>
+				</connection>
+	  		</press_read>
+		</resources>
+	</global>
+  	<admin>
+  	<!--
+        <routers>
+            <press>
+                <use>admin</use>
+                <args>
+                    <module>Bootstrap_Press</module>
+                    <frontName>press</frontName>
+                </args>
+            </press>
+        </routers>
+        -->
+        <!-- 
+        	
+        module is same as in controller with _Adminhtml 
+        	
+        -->
+  		<routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Bootstrap_Press after="Mage_Adminhtml">Bootstrap_Press_Adminhtml</Bootstrap_Press>
+                    </modules>
+                </args>
+            </adminhtml>
+		</routers>
+  	</admin>
+  	<adminhtml>
+		<layout>
+	  		<updates>
+				<press module="Bootstrap_Press">
+		  			<file>bootstrap/press.xml</file>
+				</press>
+	  		</updates>
+		</layout>
+		<menu>
+        	<!-- 
+        	
+        	note the path does not contain adminhtml_press just press
+        	the controller definition in config.xml contains _Adminhtml
+        	see line 90 
+        	
+        	-->
+           <cms>
+                <children>
+                    <press module="press">
+                        <title>Press</title>
+                        <sort_order>1000</sort_order>
+                        <action>adminhtml/press/index</action>
+                    </press>
+            	</children>
+        	</cms>
+		</menu>
+		<acl>
+	  		<resources>
+				<all>
+		  			<title>Allow Everything</title>
+				</all>
+				<admin>
+		  			<children>
+           				<cms>
+                			<children>
+                    			<press translate="title" module="press">
+                        			<title>Press</title>
+                        			<sort_order>1000</sort_order>
+                    			</press>
+            				</children>
+            			</cms>
+		  			</children>
+				</admin>
+	  		</resources>
+		</acl>
+	</adminhtml>
+</config> 

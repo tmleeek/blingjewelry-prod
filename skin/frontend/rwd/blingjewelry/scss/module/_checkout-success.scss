@@ -1,0 +1,39 @@
+
+/* ============================================ *
+ * Checkout - Success
+ * ============================================ */
+
+.checkout-onepage-success {
+    .col-main {
+        padding: 30px;
+        text-align: left;
+        max-width:$bp-medium + 1;
+        margin-left:auto;
+        margin-right:auto;
+        border:solid 1px $c-module-border;
+    }
+
+    .buttons-set {
+        margin: $gap 0;
+        text-align: left;
+
+        button {
+            float: none;
+            margin-left:0;
+        }
+    }
+    h2.sub-title{
+        font-family:$f-stack-serif-special;
+        font-style: italic;
+    }
+}
+@include bp(max-width, $bp-small) {
+    .checkout-onepage-success {
+        .col-main {
+            margin-left:0;
+            margin-right:0;
+            padding:0;
+            border:none;
+        }
+    }
+}

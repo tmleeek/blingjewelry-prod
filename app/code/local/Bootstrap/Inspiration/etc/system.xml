@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <bootstrapsettings translate="label" module="settings">
+            <groups>
+                <inspiration translate="label">
+                    <label>Inspiration Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <featured_cats translate="label">
+                            <label>Featured Categories</label>
+                            <comment>comma separated list of category names to feature</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </featured_cats>
+                    </fields>
+                </inspiration>
+            </groups>
+        </bootstrapsettings>
+    </sections>
+</config>

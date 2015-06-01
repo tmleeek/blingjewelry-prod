@@ -1,0 +1,134 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     rwd_default
+ * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+/**
+ * @var Mage_Page_Block_Html_Header $this
+ */
+?>
+<?php /*
+<div class="header-language-background">
+    <div class="header-language-container">
+        <div class="store-language-container">
+            <?php echo $this->getChildHtml('store_language') ?>
+        </div>
+
+        <?php echo $this->getChildHtml('currency_switcher') ?>
+
+        <p class="welcome-msg"><?php echo $this->getChildHtml('welcome') ?> <?php echo $this->getAdditionalHtml() ?></p>
+    </div>
+</div>
+
+*/?>
+<?php
+/*
+// for use with top notification bar - not needed - using xml todo remove
+$globalNotifyTopActive = Mage::getModel('cms/block')->load('global_notification')->getIsActive();
+$globalNotifyPageActive = Mage::getModel('cms/block')->load('global_notification_top')->getIsActive();
+$globalNotifyTopShowHome = Mage::getStoreConfig('bootstrapsettings/globalnotification/enabledtop');
+$globalNotifyPageShowHome = Mage::getStoreConfig('bootstrapsettings/globalnotification/enabledpage');
+ //echo $this->getLayout()->createBlock('cms/block')->setBlockId('global_notification')->toHtml(); 
+*/
+ ?>
+
+<div class="header-top">
+    <div class="container">
+        <div class="message">
+            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('header_message')->toHtml();?>
+            <?php // todo remove welcome in xml - can't use - replaces with name on login //echo $this->getChildHtml('welcome') ?>
+        </div>
+        <a class="logo" href="<?php echo $this->getUrl('') ?>"><img src="<?php echo $this->getSkinUrl('images/logo-tiny@2x.png') ?>" alt="<?php echo $this->getLogoAlt() ?>" class="header-top-logo" width="175" height="22" /></a>
+        <div class="header-top-links">
+            <div class="header-minicart">
+                <?php echo $this->getChildHtml('minicart_head'); ?>
+            </div>
+            <a href="#header-account" class="skip-link skip-account">
+                <span class="label"><?php echo $this->__('Account'); ?></span>
+            </a>
+        </div>
+        <?php if( Mage::getModel('cms/block')->load('header_phone')->getIsActive() ){ ?>
+        <div class="phone">
+            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('header_phone')->toHtml();?>
+        </div>
+        <?php } ?>
+    </div>
+</div>
+<header id="header" class="page-header">
+    <div class="page-header-container">
+        <a class="logo" href="<?php echo $this->getUrl('') ?>">
+            <img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" width="276" height="52" class="large" />
+            <img src="<?php echo $this->getLogoSrcSmall() ?>" alt="<?php echo $this->getLogoAlt() ?>" width="195" height="25" class="small" />
+        </a>
+        <?php // In order for the language switcher to display next to logo on smaller viewports, it will be moved here.
+              // See app.js for details 
+              //<div class="store-language-container"></div>
+        ?>
+        <!-- Skip Links -->
+        <div class="skip-links">
+            <a href="#header-nav" class="skip-link skip-nav">
+                <span class="icon"></span>
+                <span class="label"><?php echo $this->__('Menu'); ?></span>
+            </a>
+            <a href="#header-search" class="skip-link skip-search">
+                <span class="icon"></span>
+                <span class="label"><?php echo $this->__('Search'); ?></span>
+            </a>
+            <a href="#header-account" class="skip-link skip-account">
+                <span class="icon"></span>
+                <span class="label"><?php echo $this->__('Account'); ?></span>
+            </a>
+            <!-- Cart -->
+            <div class="header-minicart">
+                <?php echo $this->getChildHtml('minicart_head'); ?>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div id="header-nav" class="skip-content js-header-nav">
+            <?php echo $this->getChildHtml('topMenu') ?>
+        </div>
+
+        <!-- Search -->
+        <div id="header-search" class="skip-content">
+            <?php echo $this->getChildHtml('topSearch') ?>
+        </div>
+
+        <div class="header-fixed-wrap">
+            <div class="container">
+                <!-- Account -->
+                <div id="header-account" class="skip-content">
+                    <?php echo $this->getChildHtml('topLinks') ?>
+                </div>
+
+                <!-- Cart -->
+                <div id="header-cart" class="block block-cart skip-content header-minicart">
+                    <?php echo $this->getChildHtml('minicart_content');?>
+                </div>
+                <?php //echo $this->getChildHtml('minicart_head'); ?>
+            </div>
+        </div>
+
+    </div>
+</header>
+<?php echo $this->getChildHtml('topContainer'); ?>

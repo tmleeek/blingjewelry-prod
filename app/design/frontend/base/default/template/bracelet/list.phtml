@@ -1,0 +1,48 @@
+<?php $charms = Mage::helper('grep_bracelet')->getPendants(); ?>
+<?php $helper = Mage::helper('grep_bracelet'); ?>
+
+<?php if (!count($charms)): ?>
+<p>Sorry! No charms matching the selection were found.</p>
+<?php else: ?>
+
+<ul>
+<?php foreach ($charms as $charm): ?>
+    <?php $charm = Mage::getModel('catalog/product')->load($charm->getId()); ?>
+    <?php
+    $price = round($charm->getFinalPrice(), 2);
+    ?>
+    <li
+        class="charm"
+        data-image="<?php echo $helper->getImage($charm, 'bracelet', 40, 60); ?>"
+        data-thumb="<?php echo $helper->getImage($charm, 'image', 50, 50); ?>"
+        data-product-id="<?php echo $charm->getId(); ?>"
+        data-price="<?php echo $price; ?>"
+        style="background-image: url(<?php echo $helper->getImage($charm, 'bracelet', 40, 60); ?>);"
+    >
+        <div class="description">
+            <span class="name"><?php echo $charm->getName(); ?></span>
+            <span class="bottom">
+                <span class="price"><?php echo Mage::app()->getStore()->formatPrice($price, false); ?></span>
+                <span class="add">Add</span>
+                <span class="view">View</span>
+            </span>
+        </div>
+        <div class="charm_view" style="display: none">
+            <div class="charm_left">
+                <img src="<?php echo $helper->getImage($charm, 'image', 520, 440); ?>" />
+            </div>
+            <div class="charm_right">
+                <div class="charm_title"><?php echo $charm->getName(); ?></div>
+                <div class="price">Price: <span class="value"><?php echo Mage::app()->getStore()->formatPrice($price, false); ?></span></div>
+                <div class="description"><?php echo $charm->getShortDescription(); ?></div>
+                <div class="action">
+                    <span class="add">Add to bracelet</span>
+                    <a class="link" href="<?php echo $charm->getUrlModel()->getProductUrl($charm); ?>">View more details</a>
+                </div>
+            </div>
+        </div>
+    </li>
+<?php endforeach; ?>
+</ul>
+
+<?php endif; ?>

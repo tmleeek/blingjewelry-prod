@@ -1,0 +1,288 @@
+﻿<?xml version="1.0"?>
+<!--
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    Mage
+ * @package    Mage_AmazonPayments
+ * @copyright   Copyright (c) 2009 Irubin Consulting Inc. DBA Varien (http://www.varien.com)
+ * @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+/*
+The following code is Copyright 2011 Amazon Technologies, Inc. All Rights Reserved.
+
+Licensed under the Open Software License ("OSL"), version 3.0 (the “License”). 
+You may not use this file except in compliance with the License. A copy of the License is located at
+
+      http://opensource.org/licenses/osl-3.0.php  
+
+*/
+
+
+
+
+
+-->
+
+<config>
+    <modules>
+        <Mage_AmazonPayments>
+            <version>0.1.2</version>
+        </Mage_AmazonPayments>
+    </modules>
+    <global>
+        <models>
+            <amazonpayments>
+                <class>Mage_AmazonPayments_Model</class>
+                <resourceModel>amazonpayments_mysql4</resourceModel>
+            </amazonpayments>
+            <amazonpayments_mysql4>
+                <class>Mage_AmazonPayments_Model_Mysql4</class>
+                <entities>
+                    <api_debug><table>amazonpayments_api_debug</table></api_debug>
+                </entities>
+            </amazonpayments_mysql4>
+        </models>
+        <helpers>
+            <amazonpayments>
+                <class>Mage_AmazonPayments_Helper</class>
+            </amazonpayments>
+        </helpers>
+        <resources>
+            <amazonpayments_setup>
+                <setup>
+                    <module>Mage_AmazonPayments</module>
+                    <class>Mage_AmazonPayments_Model_Mysql4_Setup</class>
+                </setup>
+            </amazonpayments_setup>
+        </resources>
+        <blocks>
+            <amazonpayments><class>Mage_AmazonPayments_Block</class></amazonpayments>
+        </blocks>
+        <sales>
+            <order>
+                <statuses>
+                    <pending_amazon_asp translate="label"><label>Pending Amazon Simple Pay</label></pending_amazon_asp>
+                </statuses>
+                <states>
+                    <pending_payment>
+                        <statuses>
+                            <pending_amazon_asp/>
+                        </statuses>
+                    </pending_payment>
+                </states>
+
+            </order>
+        </sales>
+        <template>
+            <email>
+                <payment_amazonpayments_asp_email_template_notification_error translate="label" module="amazonpayments">
+                    <label>Amazon Simple Pay notification error</label>
+                    <file>amazonpayments_asp_notification_error.html</file>
+                    <type>html</type>
+                </payment_amazonpayments_asp_email_template_notification_error>
+            </email>
+        </template>
+    </global>
+<!--
+Something like this is to be added to resolve bug #4890
+<global>
+        <rewrite>
+            <amazonpayments>
+                <core>
+                <from>/^.*?amazonpayments\/api/</from>
+                <to>amazonpayments/api</to>
+            </amazonpayments>
+        </rewrite>
+</global>
+-->
+    <frontend>
+        <!--<secure_url>
+            <amazonpayments_redirect>/amazonpayments/redirect/</amazonpayments_redirect>
+            <amazonpayments_beacon>/amazonpayments/api/beacon/</amazonpayments_beacon>
+        </secure_url>-->
+        <translate>
+            <modules>
+                <Mage_AmazonPayments>
+                    <files>
+                        <default>Mage_AmazonPayments.csv</default>
+                    </files>
+                </Mage_AmazonPayments>
+            </modules>
+        </translate>
+        <routers>
+            <amazonpayments>
+                <use>standard</use>
+                <args>
+                    <module>Mage_AmazonPayments</module>
+                    <frontName>amazonpayments</frontName>
+                </args>
+            </amazonpayments>
+        </routers>
+        <layout>
+            <updates>
+                <amazonpayments>
+                    <file>amazonpayments.xml</file>
+                </amazonpayments>
+            </updates>
+        </layout>
+    </frontend>
+
+    <adminhtml>
+        <translate>
+            <modules>
+                <Mage_AmazonPayments>
+                    <files>
+                        <default>Mage_AmazonPayments.csv</default>
+                    </files>
+                </Mage_AmazonPayments>
+            </modules>
+        </translate>
+        <events>
+            <sales_order_shipment_save_after>
+                <observers>
+                    <amazonpayments>
+                        <type>model</type>
+                        <class>amazonpayments/observer</class>
+                        <method>confirmShipment</method>
+                    </amazonpayments>
+                </observers>
+            </sales_order_shipment_save_after>
+            <sales_order_shipment_track_save_after>
+                <observers>
+                    <amazonpayments>
+                        <type>model</type>
+                        <class>amazonpayments/observer</class>
+                        <method>salesOrderShipmentTrackSaveAfter</method>
+                    </amazonpayments>
+                </observers>
+            </sales_order_shipment_track_save_after>
+	    <!--sales_order_payment_cancel>
+                <observers>
+                    <amazonpayments>
+                        <type>model</type>
+                        <class>amazonpayments/cba</class>
+                        <method>cancel</method>
+                    </amazonpayments>
+                </observers>
+	    </sales_order_payment_cancel-->
+        </events>
+    </adminhtml>
+
+    <default>
+        <payment>
+
+            <amazonpayments_cba>
+                <active>0</active>
+                <model>amazonpayments/payment_cba</model>
+                <title>Checkout by Amazon</title>
+                <order_status>pending</order_status>
+                <allowspecific>0</allowspecific>
+                <payment_action>Authorization</payment_action>
+                <!-- Adding Country as the configuration parameter 
+                    Default Country As UK , and by default do not sign the carts-->
+                <country>UK</country>
+                <sign_xml_cart>1</sign_xml_cart>
+                <merchant_id></merchant_id>
+                <merchant_name></merchant_name>
+                <sandbox_flag>1</sandbox_flag>
+                <accesskey_id></accesskey_id>
+                <secretkey_id></secretkey_id>
+		<!--Added the Market place ids-->
+		<marketplace_id_US>AZ4B0ZS3LGLX</marketplace_id_US>
+                <marketplace_id_UK>A2WQPBGJ59HSXT</marketplace_id_UK>
+                <marketplace_id_DE>A1OCY9REWJOCW5</marketplace_id_DE>
+
+		<sandbox_marketplace_id_US>A2SMC08ZTYKXKX</sandbox_marketplace_id_US>
+                <sandbox_marketplace_id_UK>A1V3LO6WH786V3</sandbox_marketplace_id_UK>
+                <sandbox_marketplace_id_DE>AVWY87JS6QRCI</sandbox_marketplace_id_DE>
+
+		<!-- End of Market Place id-->
+		<!-- Javascript URLs for all locales Prod and Sandbox-->
+		<prod_javascript_url_US>https://payments.amazon.com/cba/js/PaymentWidgets.js</prod_javascript_url_US>
+		<prod_javascript_url_UK>https://payments.amazon.co.uk/cba/js/PaymentWidgets.js</prod_javascript_url_UK>
+		<prod_javascript_url_DE>https://payments.amazon.de/cba/js/PaymentWidgets.js</prod_javascript_url_DE>
+
+		<sandbox_javascript_url_US>https://payments-sandbox.amazon.com/cba/js/PaymentWidgets.js</sandbox_javascript_url_US>
+		<sandbox_javascript_url_UK>https://payments-sandbox.amazon.co.uk/cba/js/PaymentWidgets.js</sandbox_javascript_url_UK>
+		<sandbox_javascript_url_DE>https://payments-sandbox.amazon.de/cba/js/PaymentWidgets.js</sandbox_javascript_url_DE>
+		<!-- End of Java script URLs -->
+
+                <!--Adding option to modify pay service url for all 3 countries -->
+                <pay_service_url_US>https://payments.amazon.com/gp/cba/v2/ofp/</pay_service_url_US>
+                <pay_service_url_UK>https://payments.amazon.co.uk/gp/cba/v2/ofp/</pay_service_url_UK>
+                <pay_service_url_DE>https://payments.amazon.de/gp/cba/v2/ofp/</pay_service_url_DE>
+                <sandbox_pay_service_url_US>https://payments-sandbox.amazon.com/gp/cba/v2/ofp/</sandbox_pay_service_url_US>
+                <sandbox_pay_service_url_UK>https://payments-sandbox.amazon.co.uk/gp/cba/v2/ofp/</sandbox_pay_service_url_UK>
+                <sandbox_pay_service_url_DE>https://payments-sandbox.amazon.de/gp/cba/v2/ofp/</sandbox_pay_service_url_DE>
+
+<!--                <button_url_US>http://g-ecx.images-amazon.com/images/G/01/cba/images/buttons/btn_Chkout-orange-x-large.gif</button_url_US>
+                <button_url_UK>http://g-ecx.images-amazon.com/images/G/01/cba/images/buttons/btn_Chkout-orange-x-large.gif</button_url_UK>
+                <button_url_DE>https://images-na.ssl-images-amazon.com/images/G/03/cba/images/buttons_03_2010/btn_Chkout-orange-medium._V194511655_.gif</button_url_DE> -->
+            <!--    <button_url_DE>http://g-ecx.images-amazon.com/images/G/01/cba/images/buttons/btn_Chkout-orange-x-large.gif</button_url_DE> -->
+                <!--Adding the MWS URLs -->
+		<mws_service_url_US>https://mws.amazonservices.com</mws_service_url_US>
+                <mws_service_url_UK>https://mws.amazonservices.co.uk</mws_service_url_UK>
+                <mws_service_url_DE>https://mws.amazonservices.de</mws_service_url_DE>
+		<wsdl>https://merchant-api.amazon.com/gateway/merchant-interface-mime/</wsdl>
+                <use_callback_api>1</use_callback_api>
+                <use_oneclick>0</use_oneclick>
+            </amazonpayments_cba>
+
+            <amazonpayments_asp>
+
+                <model>amazonpayments/payment_asp</model>
+                <title>Amazon Simple Pay</title>
+                <active>0</active>
+
+                <is_sandbox>1</is_sandbox>
+                <access_key></access_key>
+                <secret_key></secret_key>
+
+                <pay_service_url>https://authorize.payments.amazon.com/pba/paypipeline</pay_service_url>
+                <pay_service_url_sandbox>https://authorize.payments-sandbox.amazon.com/pba/paypipeline</pay_service_url_sandbox>
+
+                <choice_method_description>Your billing address will be ignored and you will be redirected to Amazon Simple Pay website.</choice_method_description>
+                <redirect_message>You will be redirected to Amazon Simple Pay in a few seconds.</redirect_message>
+                <pay_description>MAGENTO ASP PAYMENT</pay_description>
+                <refund_description>MAGENTO ASP REFUND</refund_description>
+                <cancel_description>MAGENTO ASP CANCEL</cancel_description>
+
+                <pay_immediate_return>1</pay_immediate_return>
+                <pay_collect_shipping_address>0</pay_collect_shipping_address>
+
+                <pay_process_immediate>1</pay_process_immediate>
+
+                <fps_service_url>https://fps.amazonaws.com</fps_service_url>
+                <fps_service_url_sandbox>https://fps.sandbox.amazonaws.com/</fps_service_url_sandbox>
+
+                <email_sender_identity>general</email_sender_identity>
+                <email_template_notification_error>payment_amazonpayments_asp_email_template_notification_error</email_template_notification_error>
+                <report_error_to_email>0</report_error_to_email>
+
+                <error_log>0</error_log>
+                <debug_log>0</debug_log>
+
+            </amazonpayments_asp>
+
+        </payment>
+
+
+    </default>
+</config>

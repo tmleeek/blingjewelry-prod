@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Bootstrap_Wishlist>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Bootstrap_Wishlist>
+    </modules>
+</config> 

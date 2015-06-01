@@ -1,0 +1,130 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     rwd_default
+ * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+/**
+ * Category left navigation
+ *
+ * @see Mage_Catalog_Block_Navigation
+ */
+
+/**
+ * Please note layered navigation has been moved above main content
+ *
+ */
+?>
+<?php if (!Mage::registry('current_category')) return ?>
+
+<?php //$_categories = $this->getCurrentChildCategories() ?>
+
+<?php 
+   $currentCat = Mage::registry('current_category'); 
+
+   if ( $currentCat->getParentId() == Mage::app()->getStore()->getRootCategoryId() ) {
+       $categoryTitle  = $this->getCurrentCategory()->getName();
+       $loadCategory = $currentCat;
+       $_parent_id  = $currentCat->getId();
+   } else {
+        /*   changing this to not be linked under any condition
+       $categoryTitle = '<a href="'.$this->getCurrentCategory()->getParentCategory()->getURL().'">'.$this->getCurrentCategory()->getParentCategory()->getName().'</a>';
+       */
+       $categoryTitle  = $this->getCurrentCategory()->getParentCategory()->getName();
+       $loadCategory = Mage::getModel('catalog/category')->load($currentCat->getParentId());
+       $_parent_id = $currentCat->getParentId();
+   }
+
+   // get all active cats that are to be included in menu
+    $_categories = Mage::getResourceModel('catalog/category_collection')
+        ->addAttributeToSelect('*')
+        ->addAttributeToFilter('is_active', 1) //only active categories
+        ->addAttributeToFilter('include_in_menu', 1) //only categories not included in menu
+        ->addAttributeToFilter('parent_id', $_parent_id)//get only subcategories of the category with id 10
+        ->addAttributeToSort('position')//sort by position
+    ;
+?>
+
+
+<?php 
+// mmc adding for custom sidebars
+$catmenu = '';
+$catmenu_prefix = "catmenu_";
+$collection = Mage::getModel('cms/block')->getCollection();
+$block_id = preg_replace('/[^a-z0-9]+/', '_', strtolower($categoryTitle));
+$item = $collection->addFieldToFilter("identifier", $catmenu_prefix . $block_id );
+if($item->count()){
+  if($item->getFirstItem()->getIsActive()){
+    $catmenu = $item->getFirstItem()->getContent();
+    $catmenu_title = $item->getFirstItem()->getTitle();
+  }
+}
+if(!empty($catmenu)){ // output custom cat menu ?>
+
+<?php /* removing so menus can be used on cms pages and cat pages
+<div class="block block-layered-nav block-layered-nav--no-filters">
+    <div class="block-content toggle-content open">
+        <p class="block-subtitle block-subtitle--filter"><?php echo $this->__('Categories') ?></p>
+        <dl id="narrow-by-list2">
+            <dt><?php echo $catmenu_title; ?></dt>
+            <dd>
+*/?>
+            <?php echo $catmenu; ?>
+<?php /*
+            </dd>
+        </dl>
+        <script type="text/javascript">decorateDataList('narrow-by-list2')</script>
+    </div>
+</div>
+*/?>
+
+
+<?php }else{
+  // output normal cat menu
+$_count = is_array($_categories)?count($_categories):$_categories->count(); ?>
+<?php if($_count): ?>
+<div class="block block-layered-nav block-layered-nav--no-filters">
+    <div class="block-content toggle-content open">
+        <p class="block-subtitle block-subtitle--filter"><?php echo $this->__('Categories') ?></p>
+        <dl id="narrow-by-list2">
+            <dt><?php echo $categoryTitle; ?></dt>
+            <dd>
+                <ol>
+                <?php foreach ($_categories as $_category): ?>
+                    <?php if($_category->getIsActive()): ?>
+                    <li>
+                        <a href="<?php echo $this->getCategoryUrl($_category) ?>"<?php if ($this->isCategoryActive($_category)): ?> class="current"<?php endif; ?>>
+                            <?php echo $this->escapeHtml($_category->getName()) ?>
+                        </a>
+                    </li>
+                    <?php endif; ?>
+                <?php endforeach ?>
+                </ol>
+            </dd>
+        </dl>
+
+    </div>
+</div>
+<?php endif; ?>
+
+<?php } // endif catmenu ?>

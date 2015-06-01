@@ -1,0 +1,25 @@
+<layout>
+	<salesanalytics_index_index>
+        	<reference name="content">
+            <block type="terapeak_salesanalytics/adminhtml_tpsa_edit" name="terapeaksa" />
+		</reference>
+	</salesanalytics_index_index>
+	
+	<salesanalytics_index_showlogin>
+		<reference name="content">
+            		<block type="terapeak_salesanalytics/adminhtml_form_edit" name="loginpage"/>
+		</reference>
+	</salesanalytics_index_showlogin>
+
+	<salesanalytics_index_showcreateuser>
+		<reference name="content">
+			<block type="terapeak_salesanalytics/adminhtml_createuserform_edit" name="createuser"/>
+		</reference>
+	</salesanalytics_index_showcreateuser>
+    <salesanalytics_index_loadhistory>
+		<reference name="content">
+			<block type="terapeak_salesanalytics/adminhtml_tpsa_loadhistory" name="loadhistory"/>
+		</reference>
+	</salesanalytics_index_loadhistory>
+
+</layout>

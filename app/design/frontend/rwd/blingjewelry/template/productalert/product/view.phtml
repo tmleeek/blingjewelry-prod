@@ -1,0 +1,107 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php /* @var $this Mage_ProductAlert_Block_Product_View */?>
+<p class="<?php echo $this->getHtmlClass() ?>">
+    <a class="productalert" href="<?php echo $this->escapeHtml($this->getSignupUrl()) ?>" title="<?php echo $this->escapeHtml($this->__($this->getSignupLabel())); ?>">You need it, we'll get it! <i class="icon-mail"></i><?php // echo $this->escapeHtml($this->__($this->getSignupLabel())); ?></a>
+    <div class="productalert-message">Click to receive an alert when this item is back in stock</div>
+</p>
+
+<script type="text/javascript">
+//<![CDATA[
+
+$j( document ).ready(function() {
+
+    $j('.productalert').on('click', function(e){
+    var loader = '<span class="ajax-loader"><img src="<?php echo $this->getSkinUrl('images/ajax/ajax-loader-pink-light.gif') ?>"></span>';
+    $j('.productalert').prepend(loader);
+  });
+});
+//]]>
+</script>
+<?php /*
+<script type="text/javascript">
+//<![CDATA[
+
+$j( document ).ready(function() {
+
+$j('.productalert').on('click', function(e){
+
+	 e.preventDefault();
+   var loader = '<span class="ajax-loader"><img src="<?php echo $this->getSkinUrl('images/ajax/ajax-loader-pink-light.gif') ?>"></span>';
+
+   $j('.productalert').prepend(loader);
+
+    var url = $j(this).attr('href');
+    $j.ajax({
+      url: '/customer/ajax/isLoggedIn',
+        dataType: 'json',
+        type: 'post',
+        }).done(function(response) {
+
+            $j('.productalert .ajax-loader').fadeOut().remove();
+
+            if(response == 'false'){
+                // if customer is not logged in set hidden field with product id to create alert on login/register and display modal-login
+                var alert_product_id = url.split('product_id/')[1].split('/')[0];
+                jQuery('.productalert_product').val(alert_product_id);
+                $j('#modal-login').modal();
+                $j('#signup-block,#reset-block,#login-spinner,.success,.error').hide();
+                $j('#login-block .error').html('Please login or create an account').show();
+                $j('#login-block').show();
+
+            }else{
+                // if customer is logged in then use Mike's ajax code
+                var data = jQuery('#product_addtocart_form').serialize();
+
+                $j.ajax({
+                  url: url,
+                  dataType: 'json',
+                  type: 'post',
+                  data: data
+                }).done(function(response) {
+                  if(response.status == 'ERROR'){
+                    var html = '<ul class="messages"><li class="error-msg"><ul><li><span>' + response.message+ '</span></li></ul></li></ul>';
+                    $j('#messages_product_view').html(html);
+                  }else{
+                    //alert(response.message);
+                    var html = '<ul class="messages"><li class="success-msg"><ul><li><span>' + response.message+ '</span></li></ul></li></ul>';
+                    $j('#messages_product_view').html(html);
+                  }
+                })
+                .fail(function() {
+                    var html = '<ul class="messages"><li class="error-msg"><ul><li><span>There was an problem saving your product alert, please try again.</span></li></ul></li></ul>';
+                    $j('#messages_product_view').html(html);
+                });
+
+            }
+        });
+    });
+});
+//]]>
+</script>
+
+*/?>

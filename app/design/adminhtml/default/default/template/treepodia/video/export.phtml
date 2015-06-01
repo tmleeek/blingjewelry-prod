@@ -1,0 +1,56 @@
+<?php
+$messages = Mage::getSingleton('adminhtml/session')->getMessages(true);
+foreach($messages->getItems() as $message) :
+   $message->getText();
+endforeach;
+?>
+<div class="content-header"><h3 class="icon-head head-cms-page">Info &amp; Links</h3></div>
+<div id="magento_wrap">
+	<div id="magento_head" style="height:95px;background-color:#ffffff;padding:18px 0 0 30px;">
+		<img src="<?php echo $this->getSkinUrl('treepodia/images/magento_admin_treepodia_logo.png'); ?>" alt="Treepodia Logo" />
+	</div>
+	<div id="horizental-3-green" style="height:3px; background-color:#86aa3d;"></div>
+	<div id="magento_feat" style="height:84px;background-color:#0b0b0b;padding:28px 0 0 30px;">
+		<div style="float:left;">
+			<img src="<?php echo $this->getSkinUrl('treepodia/images/man.png'); ?>" alt="Treepodia Man" />
+		</div>
+		<div style="float:left;padding-left:21px;line-height: 27px;">
+			<span style="font-size:25px;color:#94c52f;font-family: helvetica;">Registration</span><br />
+			<span style="font-size:22px;color:#ffffff;font-family: helvetica;">If you do not already have an account with Treepodia <a style="color:#ffffff" target="_blank" href="http://www.treepodia.com/En/Home/Quick-Links/Editions-and-Pricing.html?sp=magento">register here</a></span>
+			
+		</div>
+	</div>
+	<div id="horizental-4-green" style="height:4px; background-color:#86aa3d;"></div>
+	<div style="background:#D4D4D4;">
+		<div id="magento_cont1" style="height:115px;background:url('<?php echo $this->getSkinUrl('treepodia/images/magento_admin_cont_bg.png'); ?>')repeat-y;padding:44px 0 0 30px">
+			<div>
+				<img src="<?php echo $this->getSkinUrl('treepodia/images/magento_admin_check.png'); ?>" style="margin-right: 13px; float: left;"><span style="font-size:22px;color:#0b0b0b;font-family: helvetica;">Products XML data feed export URL:</span>
+			</div>
+			<div style="padding-left: 38px; padding-top:5px;">
+				<input style="height:24px;border:1px solid black;font-size:16px;width:600px;" type="text" value="<?php echo $this->getDataFeedUrl(); ?>" readonly /><span style="margin-left:25px;font-size:22px;color:#38622e;font-family: helvetica;"><a style="color:#38622e;" href="<?php echo $this->getDataFeedUrl(); ?>">View Data Feed</a></span>
+			</div>
+			<br />
+			<p>* To split the XML into several files or limit the number of products, you may use the "<b>pageId</b>" and "<b>prodNum</b>" parameters.<br />
+			Example: <a href="<?php echo $this->getDataFeedUrl(); ?>?pageId=1&prodNum=1500"><?php echo $this->getDataFeedUrl(); ?>?pageId=1&prodNum=1500</a></p>
+		</div>
+		<div id="horizental-2-green" style="height:2px; background-color:#86aa3d;"></div>
+		<div id="magento_cont2" style="height:115px;background:url('<?php echo $this->getSkinUrl('treepodia/images/magento_admin_cont_bg.png'); ?>')repeat-y;padding:44px 0 0 30px;">
+			<div>
+				<img src="<?php echo $this->getSkinUrl('treepodia/images/magento_admin_check.png'); ?>" style="margin-right: 13px; float: left;"><span style="font-size:22px;color:#0b0b0b;font-family: helvetica;">Google & Bing Video Sitemap URL:</span>
+			</div>
+			<div style="padding-left: 38px; padding-top:5px;">
+				<input style="height:24px;border:1px solid black;font-size:16px;width:600px;" type="text" value="<?php echo $this->getVideoSitemapUrl(); ?>" readonly /><span style="margin-left:25px;font-size:22px;color:#38622e;font-family: helvetica;"><a style="color:#38622e;" href="<?php echo $this->getVideoSitemapUrl(); ?>">View Sitemap</a></span>
+			</div>
+		</div>
+	</div>
+	<div id="horizental-5-green" style="height:5px; background-color:#86aa3d;"></div>
+	<div id="magento_foot" style="height:99px;background-color:#ffffff;padding:29px 0 0 30px;">
+		<div style="float:left;">
+			<img src="<?php echo $this->getSkinUrl('treepodia/images/magento_admin_tv.png'); ?>" alt="Treepodia TV" />
+		</div>
+		<div style="float: left; margin-left: 20px; padding-top: 7px; line-height: 28px;">
+			<span style="font-size:20px;color:black;font-family: helvetica;">Treepodia allows you to turn all your products into high converting videos. For more <br />information on Treepodia please visit their site: <a href="http://www.treepodia.com/En/Home">http://www.treepodia.com/En/Home</a></span>
+			
+		</div>
+	</div>
+</div>

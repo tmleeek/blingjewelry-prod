@@ -1,0 +1,45 @@
+<div id="bracelet_chooser">
+    <div class="head">
+        <h1>Build your own bracelet</h1>
+    </div>
+    <div class="chooser_content">
+        <div class="main_section">
+            <div class="top">
+                <div class="selected_bracelet"><span class="title">Select a bracelet</span><span class="action">Select Bracelet or Necklace Type</span><span class="clear">Clear Bracelet</span></div>
+            </div>
+            <div class="active_bracelet">
+                <p class="filler">(Drop charms here)</p>
+            </div>
+            <div class="bracelets" style="display: none">
+                <?php echo $this->getChildHtml('bracelets'); ?>
+            </div>
+            <div class="charms">
+                <div class="title">
+                <?php echo $this->getChildHtml('charms'); ?>
+                </div>
+                <div class="charm-list">
+                <?php echo $this->getChildHtml('charm_list'); ?>
+                </div>
+            </div>
+			<div class="filters">
+                <?php echo $this->getChildHtml('filters'); ?>
+            </div>
+        </div>
+        <div class="selected">
+            <h3>Your Bracelet</h3>
+            <div class="addtocart"><span class="text">Add to Cart</span></div>
+            <div class="section">Bracelet</div>
+            <ul class="bracelet">
+                <li class="filler"></li>
+            </ul>
+            <div class="section">Charms</div>
+            <ul class="pendants">
+                <li class="filler"></li>
+            </ul>
+            <div class="subtotal"><span class="text">Subtotal:</span> <span class="price">$0</span></div>
+            <div class="addtocart"><span class="text">Add to Cart</span></div>
+        </div>
+    </div>
+    <div id="bracelet_addtocart_url" style="display:none"><?php echo Mage::getUrl('bracelet/index/addtocart'); ?></div>
+    <div id="bracelet_update_url" style="display:none"><?php echo Mage::getUrl('bracelet/index/pendants'); ?></div>
+</div>

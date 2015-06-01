@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<layout version="4.0.0">
+    <default>
+		<reference name="before_body_end">
+			<!-- mmc custom adding modal login to this template and removing modal-login from local.xml 
+            <block type="sociallogin/sociallogin" name="socialloginmodal" template="sociallogin/socialloginmodal.phtml" as="socialloginmodal" />
+            -->
+        </reference>
+	 	<reference name="head">
+            <block type="sociallogin/sociallogin" name="socialshare_head" template="sociallogin/socialshare_head.phtml" />
+        </reference>
+	</default>
+	<!-- mmc edited to place manually -->
+     <catalog_product_view>
+        <reference name="product.info">
+            <block type="sociallogin/sociallogin" name="socialshareproduct" template="sociallogin/socialshareproduct.phtml" as="socialshareproduct" />
+        </reference>
+    </catalog_product_view>
+	<customer_account_login>
+	  <reference name="content">
+			<block type="sociallogin/sociallogin" name="lrabovelogin" template="sociallogin/abovelogin.phtml" before="-" />
+			<block type="sociallogin/sociallogin" name="lrbelowlogin" template="sociallogin/belowlogin.phtml" />
+	  </reference>
+	</customer_account_login>
+	<customer_account_create>
+	  <reference name="content">
+			<block type="sociallogin/sociallogin" name="lrbelowregister" template="sociallogin/belowregister.phtml" />
+			<block type="sociallogin/sociallogin" name="lraboveregister" template="sociallogin/aboveregister.phtml" before="-" />
+	  </reference>
+	</customer_account_create>
+	<customer_account_index>
+        <reference name="content">
+            <block type="sociallogin/sociallogin" name="sociallinking" after="-" template="sociallogin/linking.phtml" />
+        </reference>
+	</customer_account_index>
+	<checkout_onepage_success>
+		<reference name="content">
+			<block type="sociallogin/sociallogin" name="checkoutsuccessshare" template="sociallogin/socialsharesuccess.phtml" after="-" />              
+		</reference>
+	</checkout_onepage_success>
+</layout> 

@@ -1,0 +1,36 @@
+.icart-btn-primary,.icart-btn-secondary{
+  width:48.5%;
+  padding: 8px 15px;
+  font-size: 14px;
+  line-height:normal;
+}
+.icart-btn-secondary{
+  float:left;
+  background:$c-gray;
+  &:hover{
+    background:lighten($c-gray,10%);
+  }
+}
+.icart-btn-primary{
+  float:right;
+}
+#MB_window{
+  .messages{
+    margin-bottom:20px;
+  }
+}
+#MB_caption{
+  font-family:$f-stack-special;
+}
+
+@include bp(max-width, $bp-medium) {
+  .icart-btn-primary,.icart-btn-secondary{
+    width:100%;
+    padding: 8px 15px;
+    font-size: 14px;
+    line-height:normal;
+  }
+  .icart-btn-secondary{
+    margin-bottom:10px;
+  }
+}

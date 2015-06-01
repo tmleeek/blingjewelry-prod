@@ -1,0 +1,5 @@
+<div class="minicart-container" style="display:none">
+    <div class="minicart-url"><?php echo Mage::getUrl('minicart', array('_secure' => Mage::app()->getStore()->isCurrentlySecure())); ?></div>
+    <div class="minicart-add-url"><?php echo Mage::getUrl('minicart/index/add', array('_secure' => Mage::app()->getStore()->isCurrentlySecure()))?></div>
+    <div class="minicart-max"><?php echo Mage::helper('grep_minicart')->getMax() ?></div>
+</div>

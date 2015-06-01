@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Bootstrap_Icartoverride>
+            <version>0.1.0</version>
+        </Bootstrap_Icartoverride>
+    </modules>
+    <frontend>
+        <routers>
+            <icart>
+                <args>
+                    <modules>
+                        <Bootstrap_Icartoverride before="MageWorx_InstantCart">Bootstrap_Icartoverride</Bootstrap_Icartoverride>
+                    </modules>
+                </args>
+            </icart>
+        </routers>
+    </frontend>    
+</config> 

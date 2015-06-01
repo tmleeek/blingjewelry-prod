@@ -1,0 +1,31 @@
+<?php
+    $_category  = Mage::registry('current_category');
+    $_helper    = Mage::helper('catalog/output');
+    $_imgHtml   = '';
+    if ($_imgUrl = $_category->getImageUrl()) {
+        $_imgHtml = '<div class="category-image-wrap"><div class="category-image"><img src="'.$_imgUrl.'" alt="'.$this->escapeHtml($_category->getName()).'" title="'.$this->escapeHtml($_category->getName()).'" /></div></div>';
+        $_imgHtml = $_helper->categoryAttribute($_category, $_imgHtml, 'image');
+    }
+?>
+<?php if($_imgUrl): ?>
+<div class="category-hero hidden-xs">
+	<div class="container">
+		<div class="row">
+    		<div class="col-sm-6"><?php echo $_imgHtml ?></div>
+    		<div class="col-sm-6">
+				<div class="category-description-wrap">
+					<div class="category-description">
+    					<h1><?php echo $_helper->categoryAttribute($_category, $_category->getName(), 'name') ?></h1>
+						<?php if($_category->getDescription()): ?>
+    					<div class="description">
+        					<?php echo $_helper->categoryAttribute($_category, $_category->getDescription(), 'description') ?>
+    					</div>
+    					<?php endif; ?> 
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+	</div>
+</div>
+<?php endif;?>
+category hereo

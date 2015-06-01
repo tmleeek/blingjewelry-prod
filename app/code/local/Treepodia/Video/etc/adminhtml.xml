@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<config>
+	<layout>
+		<updates>
+			<video>
+				<file>treepodia_video.xml</file>
+			</video>
+		</updates>
+	</layout>
+	<acl>
+		<resources>
+			<all>
+				<title>Allow Everything</title>
+			</all>
+			<admin>
+				<children>
+					<system>
+						<children>
+							<config>
+								<children>
+									<video translate="title">
+										<title>Treepodia - All</title>
+									</video>
+								</children>
+							</config>
+						</children>
+					</system>
+				</children>
+			</admin>
+		</resources>
+	</acl>
+</config>

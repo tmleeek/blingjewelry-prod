@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<layout version="4.0.0">
+    <default>
+		<reference name="head">
+        	<action method="addJs"><script>../skin/frontend/base/default/Loginradius/Sociallogin/js/jquery.js</script></action>
+			<action method="addJs"><script>../skin/frontend/base/default/Loginradius/Sociallogin/js/jquery.ui.sortable.min.js</script></action>
+			<action method="addJs"><script>../skin/frontend/base/default/Loginradius/Sociallogin/js/admin-ui.js</script></action>
+        	<action method="addCss"><script>../../../frontend/base/default/Loginradius/Sociallogin/css/admin-ui.css</script></action>
+		</reference>
+	</default>
+</layout> 

@@ -1,0 +1,19 @@
+<?php 
+if ( $this->loginEnable() == "1" && !$this->user_is_already_login() ) {
+    $aboveRegister = $this->getAboveRegister();
+    $apiKey = trim($this->getApikey());
+    $apiSecrete = trim($this->getApiSecret());
+    $loginRadiusTitle = trim( $this->getLoginRadiusTitle() );
+    $userAuth = $this->getApiResult($apiKey, $apiSecrete);
+    if ($aboveRegister == 1) {
+        echo '<div class="block" style="margin-top:15px"><div class="block-title"><strong><span>'.__('Social Login').'</span></strong></div><div class="block-content"><p class="empty">';
+        if ($apiKey == "" && $apiSecrete == "") {
+            echo '<p style ="color:red;">To activate your plugin, please log in to LoginRadius and get API Key & Secret. Web: <b><a href ="http://www.loginradius.com" target = "_blank">www.LoginRadius.com</a></b></p>';
+        } elseif ($userAuth == false) {
+            echo '<p style ="color:red;">Your LoginRadius API Key and Secret is not valid, please correct it or contact LoginRadius support at <b><a href ="http://www.loginradius.com" target = "_blank">www.LoginRadius.com</a></b></p>';
+        } else {
+            echo '<div style="margin:5px"><div style="margin-bottom:5px">'.__(Mage::helper('core')->htmlEscape($loginRadiusTitle)).'</div><div class="interfacecontainerdiv" ></div></div>';
+        }
+        echo '</p></div></div>';
+    }
+}

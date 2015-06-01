@@ -1,0 +1,383 @@
+#bracelet_chooser {
+    .head {
+        font-variant: small-caps;
+    }
+    
+    .selected {
+        width: 200px;
+        border: 1px solid #DDD;
+        float: right;
+        
+        h3 {
+            line-height: 40px;
+            padding-left: 10px;
+            font-size: 16px;
+            background-color: #ddd;
+            margin-bottom: 10px;
+        }
+        
+        ul li {
+            height: 50px;
+            background-repeat: no-repeat;
+            background-position: left;
+            position: relative;
+            
+            .price {
+                position: absolute;
+                right: 0px;
+                bottom: 18px;
+                font-weight: bold;
+            }
+            
+            .buttons {
+                position: absolute;
+                right: 0px;
+                bottom: 0px;
+                height: 15px;
+                
+                span {
+                    cursor: pointer;
+                    border: 1px solid #ddd;
+                    padding: 2px;
+                    width: 25px;
+                    color: #069;
+                }
+            }
+        }
+        
+        .section {
+            font-variant: small-caps;
+            background-color: #DEDEDE;
+            line-height: 20px;
+            padding-left: 10px;
+            margin-top: 10px;
+        }
+        
+        .filler {
+            height: 60px;
+        }
+        
+        .addtocart {
+            margin: auto;
+            background-image: url(../images/icon_addtocart.gif);
+            width: 129px;
+            height: 41px;
+            margin-bottom: 10px;
+            
+            .text {
+                display: none;
+            }
+        }
+        
+        .subtotal {
+            font-size: 13px;
+            margin-top: 15px;
+            border-top: 1px solid #EEE;
+            padding-top: 5px;
+            margin-bottom: 15px;
+            padding-right: 5px;
+            
+            .text {
+                text-transform: uppercase;
+            }
+            
+            .price {
+                font-weight: bold;
+            }
+            
+            text-align: right;
+        }
+    }
+    
+    .top, .active_bracelet,.main_section, .bracelets {
+        width: 690px;
+    }
+    
+    .top {
+        background-color: #fff;
+        border: 1px solid #DDD;
+        border-bottom: none;
+    }
+    
+    .selected_bracelet {
+        padding: 5px;
+        font-size: 18px;
+        font-variant: small-caps;
+        
+        .action, .clear {
+            font-size: 12px;
+            color: #333;
+            padding-left: 15px;
+            font-variant: normal;
+            cursor: pointer;
+        }
+        
+        .clear {
+            padding-left: 450px;
+        }
+    }
+    
+    .main_section {
+        float: left;
+        position: relative;
+    }
+    
+    .active_bracelet {
+        height: 200px;
+        background-color: #fff;
+        border: 1px solid #DDD;
+        border-top: none;
+        text-align: center;
+        position: relative;
+        padding-top: 30px;
+        
+        .filler {
+            padding: 35px;
+        }
+        
+        .bracelet_view {
+            height: 50px;
+        }
+        
+        .pendant {
+            position: absolute;
+            background-repeat: no-repeat;
+            width: 150px;
+            height: 150px;
+        }
+        
+        .too_many {
+            position: absolute;
+            width: 200px;
+            height: 85px;
+            left: 245px;
+            top: 100px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            z-index: 20;
+            
+            .head {
+                display: block;
+                font-size: 18px;
+                border-bottom: 1px solid #ddd;
+                padding-left: 5px;
+                padding-right: 5px;
+                
+                .title {
+                    display: inline;
+                    float: left;
+                    font-weight: bold;
+                }
+                
+                .close {
+                    display: inline;
+                    float: right;
+                    cursor: pointer;
+                }
+            }
+            
+            .message {
+                display: block;
+                clear: left;
+                font-size: 15px;
+            }
+        }
+    }
+    
+    .filters {
+        width: 685px;
+        padding-left: 5px;
+        background-color: #ECEDEF;
+        border: 1px solid #ECEDEF;
+        border-bottom: 1px solid #ddd;
+        
+        .title {
+            font-variant: small-caps;
+        }
+        
+        ul li {
+            width: 225px;
+            display: inline;
+            float: left;
+            padding-bottom:5px;
+        }
+        
+        .clearer {
+            clear: left;
+        }
+    }
+    
+    .bracelets {
+        position: absolute;
+        z-index: 100;
+        background-color: #fff;
+        border: 1px solid #DDD;
+        top: 35px;
+        height: auto;
+        
+        .bracelet {
+            width: 340px;
+            background-repeat: no-repeat;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            padding-right: 2px;
+            
+            cursor: pointer;
+        }
+        
+        .bracelet .description {
+            font-size: 18px;
+            padding-top: 22px;
+            text-align: center;
+            cursor: pointer;
+        }
+        
+        .bracelet .description .price {
+            font-weight: bold;
+            padding-left: 15px;
+            cursor: pointer;
+        }
+    }
+    
+    .charms {
+        padding-top: 10px;
+        .title h3 {
+            font-weight: normal;
+            float: left;
+        }
+        
+        .title .pages {
+            float: right;
+            
+            .next, .previous {
+                border: 1px solid #ddd;
+                color: #069;
+                cursor: pointer;
+                padding: 3px;
+            }
+        }
+        
+        .charm-list {
+            clear: left;
+        }
+        
+        .charm {
+            position: relative;
+            display: inline;
+            float: left;
+            width: 85px;
+            margin-left: 1px;
+            margin-bottom: 1px;
+            height: 85px;
+            background-repeat: no-repeat;
+            
+            .description {
+                display: none;
+                position: absolute;
+                right: -84px;
+                z-index: 100;
+                top: -1px;
+                width: 84px;
+                height: 83px;
+                background-color: #fff;
+                border: 1px solid #ddd;
+                border-left: none;
+                overflow: hidden;
+                font-size: 12px;
+                
+                .name {
+                    display:block;
+                    height: 52px;
+                    overflow: hidden;
+                }
+                
+                .bottom {
+                    font-size: 10px;
+                    .padding-bottom: 2px;
+                    height: 22px;
+                    
+                    .price {
+                        font-weight: bold;
+                        display: block;
+                    }
+                    
+                    .add, .view {
+                        clear: left;
+                        color: #069;
+                        text-align: right;
+                        cursor: pointer;
+                        padding-left: 2px;
+                        padding-right: 2px;
+                        margin-right: 8px;
+                        border: 1px solid #ddd;
+                    }
+                    
+                    display: block;
+                }
+            }
+        }
+        
+        li.active {
+            border: 1px solid #ddd;
+            height: 83px;
+            width: 84px;
+            border-right: none;
+        }
+    }
+    
+    .shadow {
+        background-color: #000;
+        opacity: 0.3;
+    }
+}
+
+.charm_left {
+    width: 520px;
+    padding: 20px;
+    float: left;
+}
+
+.charm_right {
+    padding: 20px;
+    width: 300px;
+    float: right;
+    font-size: 16px;
+    text-align: left;
+    
+    .charm_title {
+        padding-top: 50px;
+        font-variant: small-caps;
+        font-weight: bold;
+        font-size: 20px;
+        text-align: left;
+    }
+    
+    .price {
+        padding-top: 20px;
+        text-transform: uppercase;
+        
+        .value {
+            font-weight: bold;
+        }
+    }
+    
+    .description {
+        padding-top: 20px;
+    }
+    
+    .action {
+        padding-top: 20px;
+        color: #1E7EC8;
+        
+        .add {
+            text-decoration: underline;
+            cursor: pointer;
+            margin-right: 15px;
+        }
+        
+        .add:hover {
+            text-decoration: none;
+        }
+    }
+    
+}

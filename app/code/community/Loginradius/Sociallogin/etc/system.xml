@@ -1,0 +1,852 @@
+<?xml version="1.0"?>
+<config>
+	<tabs>
+		<socialconfig translate="label" module="sociallogin">
+            <label>Login Radius</label>
+            <sort_order>1</sort_order>
+        </socialconfig>
+    </tabs>
+    <sections>
+		<sociallogin_options translate="label" module="sociallogin">
+				<label>Social Login and Social Share</label>
+				<tab>socialconfig</tab>
+				<frontend_type>text</frontend_type>
+				<sort_order>1000</sort_order>
+				<show_in_default>1</show_in_default>
+				<show_in_website>1</show_in_website>
+				<show_in_store>1</show_in_store>    
+				<groups>
+					<info translate="label">
+						<frontend_model>Loginradius_Sociallogin_Model_System_Config_Info</frontend_model>
+						<comment><![CDATA[]]></comment>
+						<sort_order>0</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</info>
+					<messages translate="label">
+						<label>Social Login Basic Settings</label>
+						<frontend_type>text</frontend_type>
+						<sort_order>1</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store> 
+					 	<fields>
+								<loginEnable translate="label">
+									<label>Enable Social Login</label>
+									<frontend_type>select</frontend_type>
+									<source_model>adminhtml/system_config_source_yesno</source_model>
+									<sort_order>14</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</loginEnable>
+								<appid translate="label">
+									<label>LoginRadius API Key</label>
+									<frontend_type>text</frontend_type>
+									<comment><![CDATA[Paste LoginRadius API Key here. To get the API Key, login to <a href="http://www.loginradius.com" target="_blank">LoginRadius</a>]]>
+								</comment>
+									<sort_order>15</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</appid>
+								<appkey translate="label">
+									<label>LoginRadius API Secret</label>
+									<frontend_type>text</frontend_type>
+									<comment><![CDATA[Paste LoginRadius API Secret here. To get the API Secret, login to <a href="http://www.loginradius.com" target="_blank">LoginRadius</a>]]>
+									</comment>
+									<sort_order>16</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</appkey>
+								<loginradius_title translate="label">
+									<label>Title</label>
+									<frontend_type>text</frontend_type>
+									<comment><![CDATA[Text displayed above Social login Interface]]>
+									</comment>
+									<sort_order>17</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</loginradius_title>
+								<iconSize translate="label">
+									<label>Social Login icons size</label>
+									<frontend_type>radios</frontend_type>
+									<comment><![CDATA[Select the icon size to use in the Social Login interface.]]></comment>
+									<source_model>sociallogin/source_iconsize</source_model>
+									<sort_order>18</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</iconSize>
+								<iconsPerRow translate="label">
+									<label>Social Login icons per row</label>
+									<frontend_type>text</frontend_type>
+									<comment><![CDATA[How many social icons would you like to be displayed per row?]]></comment>
+									<sort_order>19</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</iconsPerRow>
+								<backgroundColor translate="label">
+									<label>Background Color</label>
+									<frontend_type>text</frontend_type>
+									<comment><![CDATA[What background color would you like to use for the Social Login interface? (Leave empty for transparent. You can enter hexa-decimal code of the color as well as name of the color.)]]></comment>
+									<sort_order>20</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</backgroundColor>
+								<showdefault translate="label">
+									<label>Show Social Login interface in right side panel</label>
+									<frontend_type>select</frontend_type>
+									<comment><![CDATA[Select No you don't want to display module in right panel. You can also set widget in pages or any area of your site. ]]>
+									</comment>
+									<source_model>adminhtml/system_config_source_yesno</source_model>
+									<sort_order>23</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</showdefault>
+								<aboveLogin translate="label">
+									<label>Show Social Login interface above login form</label>
+									<frontend_type>select</frontend_type>
+									<comment><![CDATA[Select 'Yes' to enable Social Login interface above login form.]]>
+									</comment>
+									<source_model>adminhtml/system_config_source_yesno</source_model>
+									<sort_order>24</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</aboveLogin>
+								<belowLogin translate="label">
+									<label>Show Social Login interface below login form</label>
+									<frontend_type>select</frontend_type>
+									<comment><![CDATA[Select 'Yes' to enable Social Login interface below login form.]]>
+									</comment>
+									<source_model>adminhtml/system_config_source_yesno</source_model>
+									<sort_order>25</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</belowLogin>
+								<aboveRegister translate="label">
+									<label>Show Social Login interface above registration form</label>
+									<frontend_type>select</frontend_type>
+									<comment><![CDATA[Select 'Yes' to enable Social Login interface above registration form.]]>
+									</comment>
+									<source_model>adminhtml/system_config_source_yesno</source_model>
+									<sort_order>26</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</aboveRegister>
+								<belowRegister translate="label">
+									<label>Show Social Login interface below registration form</label>
+									<frontend_type>select</frontend_type>
+									<comment><![CDATA[Select 'Yes' to enable Social Login interface below registration form.]]>
+									</comment>
+									<source_model>adminhtml/system_config_source_yesno</source_model>
+									<sort_order>27</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</belowRegister>
+								<socialLinking translate="label">
+									<label>Social Linking</label>
+									<frontend_type>select</frontend_type>
+									<comment><![CDATA[Link existing user accounts with Social Login.]]>
+								</comment>
+									<source_model>adminhtml/system_config_source_yesno</source_model>
+									<sort_order>29</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</socialLinking>
+								<redirect translate="label">
+									<label>Redirect After Login</label>
+									<frontend_type>radios</frontend_type>
+									<source_model>sociallogin/source_uihover</source_model>
+									<sort_order>34</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</redirect>
+								<call translate="label">
+									<label></label>
+									<frontend_type>text</frontend_type>
+									<sort_order>40</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</call>
+								<api translate="label">
+									<label>API Connection Method</label>
+									<frontend_type>select</frontend_type>
+									<comment><![CDATA[cURL require 'cURL support = enabled' in your php.ini settings, FSOCKOPEN require 'allow_url_fopen = On' and 'safemode = off' in your php.ini settings]]>
+								</comment>
+									<source_model>sociallogin/source_uihover2</source_model>
+									<sort_order>45</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</api>
+							 </fields>
+					</messages>
+					<email_settings>
+						<label>Social Login Advanced Settings</label>
+						<frontend_type>text</frontend_type>
+						<sort_order>19</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store> 
+					 	<fields>
+								<profileFieldsRequired translate="label">
+									<label>Profile Fields Required</label>
+									<frontend_type>select</frontend_type>
+									<comment><![CDATA[Ask the required Magento User Profile fields in a popup when user registers through Social Login.]]></comment>
+									<source_model>adminhtml/system_config_source_yesno</source_model>
+									<sort_order>20</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</profileFieldsRequired>
+								<updateProfileData translate="label">
+									<label>Update Profile Data</label>
+									<frontend_type>select</frontend_type>
+									<comment><![CDATA[Select yes to update user profile details in your Magento website, every time user logs into your website.]]></comment>
+									<source_model>adminhtml/system_config_source_yesno</source_model>
+									<sort_order>21</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</updateProfileData>
+								<emailrequired translate="label">
+									<label>Email Required</label>
+									<frontend_type>select</frontend_type>
+									<comment><![CDATA[A few ID providers do not provide user's Email ID. Select YES if you would like an email pop-up after login or select NO if you would like to auto-generate the email address.]]>
+								</comment>
+									<source_model>adminhtml/system_config_source_yesno</source_model>
+									<sort_order>22</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</emailrequired>
+								<verificationText translate="label">
+									<label>Email verification message</label>
+									<frontend_type>text</frontend_type>
+									<comment><![CDATA[This message will be used in verification email.]]>
+								</comment>
+									<sort_order>23</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</verificationText>
+								<popupText translate="label">
+									<label>"Email required" - Popup title</label>
+									<frontend_type>text</frontend_type>
+									<comment><![CDATA[This text will be displayed on "Email required" popup.]]>
+								</comment>
+									<sort_order>24</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</popupText>
+								<popupError translate="label">
+									<label>Error message</label>
+									<frontend_type>text</frontend_type>
+									<comment><![CDATA[This text will be displayed on the popup if the entered email is already registered or invalid.]]>
+								</comment>
+									<sort_order>25</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</popupError>
+								<notifyUser translate="label">
+									<label>Enable registration notification to user</label>
+									<frontend_type>select</frontend_type>
+									<comment><![CDATA[Send email to newly registered customer regarding login credentials.]]>
+								</comment>
+									<source_model>adminhtml/system_config_source_yesno</source_model>
+									<sort_order>26</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</notifyUser>
+								<notifyUserText translate="label">
+									<label>User notification email message</label>
+									<frontend_type>textarea</frontend_type>
+									<comment><![CDATA[This message will be sent to user in notification email along with login credentials. If left empty, default message will be sent.]]>
+								</comment>
+									<sort_order>27</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</notifyUserText>
+								<notifyAdmin translate="label">
+									<label>Enable registration notification to owner</label>
+									<frontend_type>select</frontend_type>
+									<comment><![CDATA[Send email to store owner on new customer registration regarding customer details.]]>
+								</comment>
+									<source_model>adminhtml/system_config_source_yesno</source_model>
+									<sort_order>28</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</notifyAdmin>
+								<notifyAdminText translate="label">
+									<label>Owner notification email message</label>
+									<frontend_type>textarea</frontend_type>
+									<comment><![CDATA[This message will be sent to admin in notification email.]]>
+								</comment>
+									<sort_order>29</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</notifyAdminText>
+							 </fields> 	               
+					</email_settings>
+					<horizontalSharing translate="label">
+						<label>Horizontal Social Sharing</label>
+						<frontend_type>text</frontend_type>
+						<sort_order>30</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store> 
+					 	<fields>
+								<horizontalShareEnable translate="label">
+									<label>Enable Horizontal Social Sharing</label>
+									<frontend_type>select</frontend_type>
+									<source_model>adminhtml/system_config_source_yesno</source_model>
+									<comment><![CDATA[Do you want to enable Horizontal Social Sharing for your website?]]>
+									</comment>
+									<sort_order>31</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</horizontalShareEnable>
+								<horizontalShareProduct translate="label">
+									<label>Show Social Sharing Interface at Product Pages</label>
+									<frontend_type>select</frontend_type>
+									<source_model>adminhtml/system_config_source_yesno</source_model>
+									<sort_order>32</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</horizontalShareProduct>
+								<horizontalShareSuccess translate="label">
+									<label>Enable Social Sharing at Checkout Success Page</label>
+									<frontend_type>select</frontend_type>
+									<source_model>adminhtml/system_config_source_yesno</source_model>
+									<sort_order>33</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</horizontalShareSuccess>
+								<sharingTitle translate="label">
+									<label>Sharing Title</label>
+									<frontend_type>text</frontend_type>
+									<comment><![CDATA[Enter the text that you wish to be displayed above the Social Sharing Interface. Leave the field blank if you don't want any text to be displayed.]]>
+								</comment>
+									<sort_order>34</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</sharingTitle>
+								<horizontalSharingTheme translate="label">
+									<label>Choose a theme</label>
+									<frontend_type>radios</frontend_type>
+									<source_model>sociallogin/source_HorizontalSharing</source_model>
+									<sort_order>36</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</horizontalSharingTheme>
+								<horizontalSharingProviders translate="label">
+									<label>Sharing Providers</label>
+									<frontend_type>checkboxes</frontend_type>
+									<comment><![CDATA[<div style="clear: both !important;"><p class="note"><span>Selected providers will be displayed in the Social Sharing widget</span></p></div>]]></comment>
+									<sort_order>40</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</horizontalSharingProviders>
+								<horizontalSharingProvidersHidden translate="label">
+									<label>Rearrange Icons</label>
+									<frontend_type>hidden</frontend_type>
+									<sort_order>41</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</horizontalSharingProvidersHidden>
+								<horizontalCounterProviders translate="label">
+									<label>Sharing Providers</label>
+									<frontend_type>checkboxes</frontend_type>
+									<comment><![CDATA[<div style="clear: both !important;"><p class="note"><span>Selected providers will be displayed in the Social Sharing widget</span></p></div>]]></comment>
+									<sort_order>40</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</horizontalCounterProviders>
+								<horizontalCounterProvidersHidden translate="label">
+									<label>Rearrange Icons</label>
+									<frontend_type>hidden</frontend_type>
+									<sort_order>41</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</horizontalCounterProvidersHidden>
+						</fields>
+					</horizontalSharing>
+					<verticalSharing translate="label">
+						<label>Vertical Social Sharing</label>
+						<frontend_type>text</frontend_type>
+						<sort_order>42</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store> 
+					 	<fields>
+								<verticalShareEnable translate="label">
+									<label>Enable Vertical Social Sharing</label>
+									<frontend_type>select</frontend_type>
+									<source_model>adminhtml/system_config_source_yesno</source_model>
+									<comment><![CDATA[Do you want to enable Social Counter for your website?]]>
+									</comment>
+									<sort_order>43</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</verticalShareEnable>
+								<verticalShareProduct translate="label">
+									<label>Show Social Sharing Interface at Product Pages</label>
+									<frontend_type>select</frontend_type>
+									<source_model>adminhtml/system_config_source_yesno</source_model>
+									<sort_order>44</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</verticalShareProduct>
+								<verticalShareSuccess translate="label">
+									<label>Enable Social Sharing at Checkout Success Page</label>
+									<frontend_type>select</frontend_type>
+									<source_model>adminhtml/system_config_source_yesno</source_model>
+									<sort_order>45</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</verticalShareSuccess>
+								<verticalSharingTheme translate="label">
+									<label>Choose a theme</label>
+									<frontend_type>radios</frontend_type>
+									<source_model>sociallogin/source_VerticalSharing</source_model>
+									<sort_order>48</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</verticalSharingTheme>
+								<verticalAlignment translate="label">
+									<label>Alignment</label>
+									<frontend_type>select</frontend_type>
+									<comment><![CDATA[Select the position of the Social Counter widget with respect to page]]></comment>
+									<source_model>sociallogin/source_SharingVerticalAlignment</source_model>
+									<sort_order>50</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</verticalAlignment>
+								<offset translate="label">
+									<label>Offset</label>
+									<frontend_type>text</frontend_type>
+									<comment><![CDATA[Specify distance of vertical counter interface from top (Leave empty for default behaviour) <a style="text-decoration:none" href="javascript:void(0)" title="Enter a number (For example - 200). It will set the 'top' CSS attribute of the interface to the value specified. Increase in the number pushes interface towards bottom.">(?)</a>]]></comment>
+									<sort_order>51</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</offset>
+								<verticalSharingProviders translate="label">
+									<label>Sharing Providers</label>
+									<frontend_type>checkboxes</frontend_type>
+									<comment><![CDATA[<div style="clear: both !important;"><p class="note"><span>Selected providers will be displayed in the Social Counter widget</span></p></div>]]></comment>
+									<sort_order>52</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</verticalSharingProviders>
+								<verticalSharingProvidersHidden translate="label">
+									<label>Rearrange Icons</label>
+									<frontend_type>hidden</frontend_type>
+									<sort_order>53</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</verticalSharingProvidersHidden>
+								<verticalCounterProviders translate="label">
+									<label>Sharing Providers</label>
+									<frontend_type>checkboxes</frontend_type>
+									<comment><![CDATA[<div style="clear: both !important;"><p class="note"><span>Selected providers will be displayed in the Social Sharing widget</span></p></div>]]></comment>
+									<sort_order>54</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</verticalCounterProviders>
+								<verticalCounterProvidersHidden translate="label">
+									<label>Rearrange Icons</label>
+									<frontend_type>hidden</frontend_type>
+									<sort_order>55</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</verticalCounterProvidersHidden>
+						</fields>
+					</verticalSharing>
+				</groups>                
+		</sociallogin_options>
+		<sociallogin_advanced translate="label" module="sociallogin">
+				<label>Advanced Settings (paid plans only)</label>
+				<tab>socialconfig</tab>
+				<frontend_type>text</frontend_type>
+				<sort_order>1001</sort_order>
+				<show_in_default>1</show_in_default>
+				<show_in_website>1</show_in_website>
+				<show_in_store>1</show_in_store>    
+				<groups>
+					<info translate="label">
+						<frontend_model>Loginradius_Sociallogin_Model_System_Config_InfoPremium</frontend_model>
+						<comment><![CDATA[]]></comment>
+						<sort_order>0</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</info>
+					<!-- Social Profile Data Options -->
+					<socialProfileData translate="label">
+						<label>Social Profile Data</label>
+						<frontend_type>text</frontend_type>
+						<sort_order>1</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store> 
+					 	<fields>
+								<profileDataCheckboxes translate="label">
+									<label>Social Profile Data</label>
+									<frontend_type>checkboxes</frontend_type>
+									<sort_order>14</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</profileDataCheckboxes>
+								<profileData translate="label">
+									<frontend_type>hidden</frontend_type>
+									<sort_order>16</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</profileData>
+						</fields>
+					</socialProfileData>
+					<!-- Social Profile Data Options end -->
+					<!-- Post Message Options -->
+					<postMessage translate="label">
+						<label>Post Message (Facebook, Twitter, LinkedIn)</label>
+						<frontend_type>text</frontend_type>
+						<sort_order>2</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store> 
+					 	<fields>
+								<!-- Facebook Post Update -->
+								<facebookEnable translate="label">
+									<label>Do you want to post on the Facebook wall of user?</label>
+									<frontend_type>select</frontend_type>
+									<source_model>adminhtml/system_config_source_yesno</source_model>
+									<sort_order>12</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</facebookEnable>
+								<facebookParamsUrl translate="label">
+									<label>Facebook Post Parameter : URL</label>
+									<frontend_type>text</frontend_type>
+									<comment><![CDATA[Link to which user will get redirected after clicking post (Optional)]]></comment>
+									<sort_order>15</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</facebookParamsUrl>
+								<facebookParamsTitle translate="label">
+									<label>Facebook Post Parameter : Title</label>
+									<frontend_type>text</frontend_type>
+									<comment><![CDATA[Title of the post (Optional)]]></comment>
+									<sort_order>17</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</facebookParamsTitle>
+								<facebookParamsDescription translate="label">
+									<label>Facebook Post Parameter : Description</label>
+									<frontend_type>textarea</frontend_type>
+									<comment><![CDATA[Description of the post (Optional)]]></comment>
+									<sort_order>20</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</facebookParamsDescription>
+								<facebookParamsMessage translate="label">
+									<label>Facebook Post Parameter : Message</label>
+									<frontend_type>textarea</frontend_type>
+									<comment><![CDATA[Post message (Required)]]></comment>
+									<sort_order>23</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</facebookParamsMessage>
+								<!-- Facebook Post Update options end -->
+								<!-- Twitter tweet update options -->
+								<twitterEnable translate="label">
+									<label>Do you want to tweet updates to the Twitter account of the user?</label>
+									<frontend_type>select</frontend_type>
+									<source_model>adminhtml/system_config_source_yesno</source_model>
+									<sort_order>25</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</twitterEnable>
+								<tweet translate="label">
+									<label>Tweet</label>
+									<frontend_type>textarea</frontend_type>
+									<comment><![CDATA[Specify the Tweet that you want to be posted. (Character Limit: 140 characters)]]></comment>
+									<sort_order>28</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</tweet>
+								<!-- Twitter tweet update options end -->
+								<!-- Linked post options -->
+								<linkedinEnable translate="label">
+									<label>Do you want to post a message on the LinkedIn profile of the user?</label>
+									<frontend_type>select</frontend_type>
+									<source_model>adminhtml/system_config_source_yesno</source_model>
+									<sort_order>31</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</linkedinEnable>
+								<linkedinParamsTitle translate="label">
+									<label>LinkedIn Post Parameter : Title</label>
+									<frontend_type>text</frontend_type>
+									<comment><![CDATA[Title of the post (Optional)]]></comment>
+									<sort_order>34</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</linkedinParamsTitle>
+								<linkedinParamsUrl translate="label">
+									<label>LinkedIn Post Parameter : URL</label>
+									<frontend_type>text</frontend_type>
+									<comment><![CDATA[Link to which user will get redirected after clicking post (Optional)]]></comment>
+									<sort_order>37</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</linkedinParamsUrl>
+								<linkedinParamsImgurl translate="label">
+									<label>LinkedIn Post Parameter : Image URL</label>
+									<frontend_type>text</frontend_type>
+									<comment><![CDATA[URL of the image to show in the post (Optional)]]></comment>
+									<sort_order>40</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</linkedinParamsImgurl>
+								<linkedinParamsMessage translate="label">
+									<label>LinkedIn Post Parameter : Message</label>
+									<frontend_type>textarea</frontend_type>
+									<comment><![CDATA[Post message (Required) (Character Limit: 500 characters)]]></comment>
+									<sort_order>43</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</linkedinParamsMessage>
+								<!-- Linked post options end -->
+						</fields>
+					</postMessage>
+					<!-- Post Message Options end -->
+					<!-- Send Message Options -->
+					<sendMessage translate="label">
+						<label>Send Message/Email (Twitter, LinkedIn, Gmail, Yahoo)</label>
+						<frontend_type>text</frontend_type>
+						<sort_order>4</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store> 
+					 	<fields>
+								<!-- Twitter DM options -->
+								<twitterEnable translate="label">
+									<label>Do you want to send Direct Message to the twitter followers of the user?</label>
+									<frontend_type>select</frontend_type>
+									<comment><![CDATA[The sender of the message will be the user logging in through Twitter]]></comment>
+									<source_model>adminhtml/system_config_source_yesno</source_model>
+									<sort_order>5</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</twitterEnable>
+								<twitterRecipients translate="label">
+									<label>Who do you want to receive your message?</label>
+									<frontend_type>radios</frontend_type>
+									<source_model>sociallogin/source_twitterRecipients</source_model>
+									<sort_order>8</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</twitterRecipients>
+								<twitterParamsMessage translate="label">
+									<label>Twitter Direct Message Parameter : Message</label>
+									<frontend_type>textarea</frontend_type>
+									<comment><![CDATA[Post message (Required)]]></comment>
+									<sort_order>11</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</twitterParamsMessage>
+								<!-- Twitter Direct Message options end -->
+								<!-- LinkedIn Direct Message options -->
+								<linkedinEnable translate="label">
+									<label>Do you want to send a direct message to the connections of user logging in using LinkedIn?</label>
+									<frontend_type>select</frontend_type>
+									<comment><![CDATA[The sender of the message will be the user logging in through LinkedIn]]></comment>
+									<source_model>adminhtml/system_config_source_yesno</source_model>
+									<sort_order>14</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</linkedinEnable>
+								<linkedinRecipients translate="label">
+									<label>Who do you want to receive your message?</label>
+									<frontend_type>radios</frontend_type>
+									<source_model>sociallogin/source_twitterRecipients</source_model>
+									<sort_order>17</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</linkedinRecipients>
+								<linkedinParamsSubject translate="label">
+									<label>LinkedIn Direct Message Parameter : Subject</label>
+									<frontend_type>text</frontend_type>
+									<comment><![CDATA[Subject of the message]]></comment>
+									<sort_order>20</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</linkedinParamsSubject>
+								<linkedinParamsMessage translate="label">
+									<label>LinkedIn Direct Message Parameter : Message</label>
+									<frontend_type>textarea</frontend_type>
+									<sort_order>23</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</linkedinParamsMessage>
+								<!-- LinkedIn Direct Message options end -->
+								<!-- Gmail email options -->
+								<gmailEnable translate="label">
+									<label>Do you want to send an email to the address book contacts of user logging in using Gmail?</label>
+									<frontend_type>select</frontend_type>
+									<comment><![CDATA[The sender of the message will be the user logging in through Gmail/Google]]></comment>
+									<source_model>adminhtml/system_config_source_yesno</source_model>
+									<sort_order>26</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</gmailEnable>
+								<gmailRecipients translate="label">
+									<label>Who do you want to receive your email?</label>
+									<frontend_type>radios</frontend_type>
+									<source_model>sociallogin/source_twitterRecipients</source_model>
+									<sort_order>29</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</gmailRecipients>
+								<gmailParamsSubject translate="label">
+									<label>Gmail Email Parameter : Subject</label>
+									<frontend_type>text</frontend_type>
+									<comment><![CDATA[Subject of the email]]></comment>
+									<sort_order>32</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</gmailParamsSubject>
+								<gmailParamsMessage translate="label">
+									<label>Gmail Email Parameter : Message</label>
+									<frontend_type>textarea</frontend_type>
+									<sort_order>35</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</gmailParamsMessage>
+								<!-- Gmail email options end -->
+								<!-- Yahoo email options -->
+								<yahooEnable translate="label">
+									<label>Do you want to send an email to the address book contacts of user logging in using Yahoo?</label>
+									<frontend_type>select</frontend_type>
+									<comment><![CDATA[The sender of the message will be the user logging in through Yahoo]]></comment>
+									<source_model>adminhtml/system_config_source_yesno</source_model>
+									<sort_order>38</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</yahooEnable>
+								<yahooRecipients translate="label">
+									<label>Who do you want to receive your email?</label>
+									<frontend_type>radios</frontend_type>
+									<source_model>sociallogin/source_twitterRecipients</source_model>
+									<sort_order>41</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</yahooRecipients>
+								<yahooParamsSubject translate="label">
+									<label>Yahoo Email Parameter : Subject</label>
+									<frontend_type>text</frontend_type>
+									<comment><![CDATA[Subject of the email]]></comment>
+									<sort_order>44</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</yahooParamsSubject>
+								<yahooParamsMessage translate="label">
+									<label>Yahoo Email Parameter : Message</label>
+									<frontend_type>textarea</frontend_type>
+									<sort_order>47</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+								</yahooParamsMessage>
+								<!-- Yahoo email options end -->
+						</fields>
+					</sendMessage>
+				</groups>
+		</sociallogin_advanced>
+		<sociallogin_profiledata translate="label" module="sociallogin">
+			<tab>socialconfig</tab>
+			<frontend_type>hidden</frontend_type>
+			<sort_order>1002</sort_order>
+			<show_in_default>1</show_in_default>
+			<show_in_website>1</show_in_website>
+			<show_in_store>1</show_in_store>
+			<groups>
+				<info translate="label">
+					<frontend_model>Loginradius_Sociallogin_Model_System_Config_ProfileData</frontend_model>
+					<comment><![CDATA[]]></comment>
+					<sort_order>0</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+				</info>
+			</groups>
+		</sociallogin_profiledata>
+	</sections>
+</config>

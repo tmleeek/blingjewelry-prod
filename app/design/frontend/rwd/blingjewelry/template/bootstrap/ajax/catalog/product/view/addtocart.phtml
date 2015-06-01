@@ -1,0 +1,19 @@
+<?php $_product = $this->getProduct(); ?>
+<?php $buttonTitle = $this->__('+ Add to Bag'); ?>
+<?php if($_product->isSaleable()): ?>
+    <div class="add-to-cart">
+        <?php if(!$_product->isGrouped()): ?>
+        <div class="qty-wrapper">
+            <label for="qty"><?php echo $this->__('Qty:') ?></label>
+            <input type="text" pattern="\d*" name="qty" id="qty" maxlength="12" value="<?php echo max($this->getProductDefaultQty() * 1, 1) ?>" title="<?php echo $this->__('Qty') ?>" class="input-text qty" />
+        </div>
+        <?php endif; ?>
+        <!-- ADD -->
+        <div class="add-to-cart-buttons">
+            <button type="button" title="<?php echo $buttonTitle ?>" class="button btn-cart" onclick="productAddToCartForm.submit(this)"><span><span><?php echo $buttonTitle ?></span></span></button>
+            <span id='ajax_loader' style='display:none' class="ajax-cart-loader"><img src='<?php echo $this->getSkinUrl('images/ajax/ajax-loader-pink.gif')?>'/></span>
+            <?php echo $this->getChildHtml('', true, true) ?>
+        </div>
+        <!-- END ADD -->
+    </div>
+<?php endif; ?>

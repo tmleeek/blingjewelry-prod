@@ -1,0 +1,42 @@
+
+[Nathan] I've installed and started Redis on the server. It is listening on 127.0.0.1 on port 6379. I will provide some sample configurations for sessions and cache
+[Nathan] For sessions:
+<session_save><![CDATA[db]]></session_save>
+<redis_session>
+<host>127.0.0.1</host>
+<port>6379</port>
+<password></password>
+<timeout>2.5</timeout>
+<persistent></persistent>
+<db>2</db>
+<compression_threshold>2048</compression_threshold>
+<compression_lib>gzip</compression_lib>
+<log_level>1</log_level>
+<max_concurrency>6</max_concurrency>
+<break_after_frontend>5</break_after_frontend>
+<break_after_adminhtml>30</break_after_adminhtml>
+<bot_lifetime>7200</bot_lifetime>
+</redis_session>
+[Nathan]
+For cache:
+
+<cache>
+<backend>Mage_Cache_Backend_Redis</backend>
+<backend_options>
+<server>127.0.0.1</server>
+<port>6379</port>
+<persistent></persistent>
+<database>1</database>
+<password></password>
+<force_standalone>0</force_standalone> 
+<connect_retries>3</connect_retries> 
+<read_timeout>10</read_timeout> 
+<automatic_cleaning_factor>0</automatic_cleaning_factor>
+<compress_data>1</compress_data>
+<compress_tags>1</compress_tags> 
+<compress_threshold>20480</compress_threshold> 
+<compression_lib>gzip</compression_lib>
+<use_lua>0</use_lua>
+</backend_options>
+</cache>
+

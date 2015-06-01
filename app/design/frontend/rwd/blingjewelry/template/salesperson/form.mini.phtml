@@ -1,0 +1,67 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2009 Irubin Consulting Inc. DBA Varien (http://www.varien.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+$helper = $this->helper('salesperson');
+?>
+
+<form id="search_mini_form" action="<?php echo $helper->getResultUrl() ?>" method="get">
+    <div class="form-search input-box">
+        <label for="search"><?php echo $this->__('Search:') ?></label>
+        <input id="search" type="text" autocomplete="off" name="<?php echo $helper->getQueryParamName() ?>" value="<?php echo $helper->getEscapedQueryText() ?>" placeholder="<?php echo $this->__('Search for Bling') ?>" class="input-text" />
+        <button type="submit" title="<?php echo $this->__('Search') ?>" class="button search-button"><span><span><?php echo $this->__('Search') ?></span></span></button>
+		<div id="search_autocomplete" class="search-autocomplete"></div>
+
+		<?php if($helper->isAutoComplete()) {?>
+			<script type="text/javascript" src="//<?php echo $helper->getACScriptServerAddress()?>/AutoComplete/Scripts/CelebrosAutoCompleteV2.js"></script>
+			<script type="text/javascript">
+			//<![CDATA[
+				window.CelebrosAutoComplete&&
+				CelebrosAutoComplete("<?php echo $helper->getSiteKey()?>", "search",  onSelect, "<?php echo $helper->getACFrontServerAddress()?>", "<?php echo $helper->getACScriptServerAddress()?>");
+				function onSelect(aParameter)
+				{ 
+					if ((aParameter["SelectedURL"]!="") &&(aParameter["IsAutoComplete"]))
+					{	
+						var sCmp = (aParameter["SelectedURL"].indexOf("?") == -1) ? "?" : "&";
+						window.location = aParameter["SelectedURL"] + sCmp + "cmp=cel";
+					}
+					else
+					{ 
+						window.location="<?php echo $this->getUrl('salesperson/result') ?>?<?php echo $helper->getQueryParamName() ?>="+escape(aParameter["SelectedQuery"]);	
+					}
+				}
+				var searchForm = new Varien.searchForm('search_mini_form', 'search', '<?php echo $this->__('Search for Bling') ?>');             
+			//]]>
+			</script>					
+		<?php } else {?>
+			<script type="text/javascript">
+			//<![CDATA[
+				var searchForm = new Varien.searchForm('search_mini_form', 'search', '<?php echo $this->__('Search for Bling') ?>');
+				searchForm.initAutocomplete('<?php echo Mage::helper('catalogsearch')->getSuggestUrl() ?>', 'search_autocomplete');
+			//]]>
+			</script>		
+		<?php } ?>
+		
+    </div>
+</form>

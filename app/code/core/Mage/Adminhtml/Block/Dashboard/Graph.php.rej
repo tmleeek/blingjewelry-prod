@@ -1,0 +1,11 @@
+--- app/code/core/Mage/Adminhtml/Block/Dashboard/Graph.php
++++ app/code/core/Mage/Adminhtml/Block/Dashboard/Graph.php
+@@ -444,7 +444,7 @@
+             }
+             return self::API_URL . '?' . implode('&', $p);
+         } else {
+-            $gaData = urlencode(base64_encode(serialize($params)));
++            $gaData = urlencode(base64_encode(json_encode($params)));
+             $gaHash = Mage::helper('adminhtml/dashboard_data')->getChartDataHash($gaData);
+             $params = array('ga' => $gaData, 'h' => $gaHash);
+             return $this->getUrl('*/*/tunnel', array('_query' => $params));

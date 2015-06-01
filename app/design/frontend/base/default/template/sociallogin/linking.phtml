@@ -1,0 +1,98 @@
+<?php
+if ( $this->loginEnable() == "1" ) {
+    ?>
+    <div class="dashboard">
+        <div class="box-account box-info">
+            <div class="box-head">
+                <h2>Login Radius</h2>
+            </div>
+            <div class="col2-set">
+                <div class="col-1">
+                    <div class="box">
+                        <div class="box-title">
+                            <h3><?php echo __('Linked Accounts') ?></h3>
+                        </div>
+                        <div class="box-content">
+    <?php
+    // account linking successful
+    if (isset($_GET['LoginRadiusLinked']) && trim($_GET['LoginRadiusLinked']) == 1) {
+        ?>
+        <div style="color:green; background-color: #eaffdc; border: 1px solid #84b47a; padding: 3px 5px; margin:10px 0">
+            <?php echo __('Account linked successfully.') ?>
+        </div>
+        <?php
+        // account from this provider is already linked
+    } elseif (isset($_GET['LoginRadiusLinked']) && trim($_GET['LoginRadiusLinked']) == 2) {
+        ?>
+        <div style="color:red; background-color: rgb(255, 235, 232); border: 1px solid rgb(204, 0, 0); padding: 3px 5px; margin:10px 0">
+            <?php echo __('Multiple accounts cannot be linked from the same Social ID Provider.') ?>
+        </div>
+        <?php
+        // account already mapped or exists
+    } elseif (isset($_GET['LoginRadiusLinked']) && trim($_GET['LoginRadiusLinked']) == 0) {
+        ?>
+        <div style="color:red; background-color: rgb(255, 235, 232); border: 1px solid rgb(204, 0, 0); padding: 3px 5px;; margin:10px 0">
+            <?php echo __('Account already exists or mapped.') ?>
+        </div>
+        <?php
+    }
+    // get logged in user's id
+    $loginRadiusUserId = Mage::getSingleton("customer/session")->getCustomer()->getId();
+    // unlink account
+    if (isset($_GET['LoginRadiusUnlink']) && trim($_GET['LoginRadiusUnlink']) != "") {
+        $loginRadiusConn = Mage::getSingleton('core/resource')
+                                ->getConnection('core_write');
+        try{
+            // delete query magento way
+            $loginRadiusConn->delete(
+               Mage::getSingleton('core/resource')->getTableName('sociallogin'), 
+               array('entity_id = ?' => $loginRadiusUserId,
+                      'sociallogin_id = ?' => trim($_GET['LoginRadiusUnlink']))
+            );
+        }catch(Exception $e) {
+        }
+        ?>
+        <div style="color:green; background-color: #eaffdc; border: 1px solid #84b47a; padding: 3px 5px;">
+            <?php echo __('Account removed successfully.') ?>
+        </div>
+        <?php
+    }
+    // list the linked accounts
+    $loginRadiusConn = Mage::getSingleton('core/resource')
+                            ->getConnection('core_read');
+    $loginRadiusQuery = "select sociallogin_id, entity_id, provider from ".Mage::getSingleton('core/resource')->getTableName('sociallogin')." where entity_id = ".$loginRadiusUserId;
+    $loginRadiusQueryHandle = $loginRadiusConn->query($loginRadiusQuery);
+    $loginRadiusResult = $loginRadiusQueryHandle->fetchAll();
+    if (count($loginRadiusResult) > 0) {
+        $loginRadiusSessionSocialId = Mage::getSingleton("customer/session")->getloginRadiusId();
+        foreach ($loginRadiusResult as $result) {
+            if ($result["provider"] != NULL || $result["provider"] != "") {
+                echo '<div style="float:left">';
+                if (Mage::getSingleton("customer/session")->getloginRadiusId() == $result["sociallogin_id"]) {
+                    echo '<span style="color:green">'.__('Currently').' </span>';
+                }
+                echo __('Connected with').' <img alt="'.ucfirst($result['provider']).'" title="'.ucfirst($result['provider']).'" src="'.Mage::getDesign()->getSkinUrl("Loginradius/Sociallogin/images/Linking/".$result["provider"].'.png', array('_area'=>'frontend')).'" />'.
+                '</div> <div style="float:right"><a href="'.Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_LINK).'customer/account/?LoginRadiusUnlink='.$result["sociallogin_id"].'" title="'.__('Unlink this ID from your account').'">'.__('Remove').'</a></div>'.
+                '<br />';
+            }
+        }
+    }
+    ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="box">
+                        <div class="box-title">
+                            <h3><?php echo __('Link Social IDs to your Magento Account') ?></h3>
+                        </div>
+                        <div class="box-content">
+                            <div class="interfacecontainerdiv" style="margin-left:10px"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php
+}

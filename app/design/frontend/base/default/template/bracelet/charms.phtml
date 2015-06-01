@@ -1,0 +1,30 @@
+<?php
+$charms = Mage::helper('grep_bracelet')->getPendants();
+$filters = Mage::helper('grep_bracelet')->getFilters();
+$current_page = Mage::app()->getRequest()->getParam('page');
+$max_page = Mage::helper('grep_bracelet')->getPageCount();
+
+if (!$current_page) {
+    $current_page = 1;
+}
+
+if ($current_page > $max_page) {
+    $current_page = 1;
+}
+?>
+
+    <div class="current_page" style="display: none"><?php echo $current_page; ?></div>
+    <div class="max_page" style="display: none"><?php echo $max_page; ?></div>
+    <h3>Results: <span class="count"><?php echo Mage::helper('grep_bracelet')->getCount(); ?> Items</span></h3>
+    <?php if (Mage::helper('grep_bracelet')->getPageCount() > 1): ?>
+    <span class="pages">
+        <span class="previous" style="display:none">Previous</span>
+        <select class="page-selector">
+            <?php foreach (range(1, Mage::helper('grep_bracelet')->getPageCount()) as $i): ?>
+            <option value="<?php echo Mage::getUrl('bracelet/index/pendants', array('_query' => array('page' => $i, 'filters' => $filters))); ?>" <?php if ($current_page == $i): ?> selected="selected" <?php endif; ?>><?php echo $i; ?></option>
+            <?php endforeach; ?>
+        </select>
+        <span class="next" style="display:none">Next</span>
+    </span>
+    
+    <?php endif; ?>

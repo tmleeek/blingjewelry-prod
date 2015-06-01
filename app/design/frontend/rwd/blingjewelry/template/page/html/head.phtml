@@ -1,0 +1,145 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<meta http-equiv="Content-Type" content="<?php echo $this->getContentType() ?>" />
+<title><?php echo ($this->getForcedTitle()) ? Mage::getStoreConfig('design/head/title_prefix').' '.$this->getForcedTitle().' '.Mage::getStoreConfig('design/head/title_suffix') : $this->getTitle() ?>
+</title>
+<meta name="description" content="<?php echo htmlspecialchars($this->getDescription()) ?>" />
+<meta name="keywords" content="<?php echo htmlspecialchars($this->getKeywords()) ?>" />
+<meta name="robots" content="<?php echo htmlspecialchars($this->getRobots()) ?>" />
+<?php /* mmc bling remove using realfavicongenerator */?>
+<link rel="icon" href="<?php echo $this->getFaviconFile(); ?>" type="image/x-icon" />
+<link rel="shortcut icon" href="<?php echo $this->getFaviconFile(); ?>" type="image/x-icon" />
+<link rel="apple-touch-icon" sizes="57x57" href="/media/favicon/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/media/favicon/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/media/favicon/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/media/favicon/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/media/favicon/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/media/favicon/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/media/favicon/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/media/favicon/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/media/favicon/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="/media/favicon/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/media/favicon/favicon-194x194.png" sizes="194x194">
+<link rel="icon" type="image/png" href="/media/favicon/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/media/favicon/android-chrome-192x192.png" sizes="192x192">
+<link rel="icon" type="image/png" href="/media/favicon/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="/manifest.json">
+<meta name="msapplication-TileColor" content="#9f00a7">
+<meta name="msapplication-TileImage" content="/mstile-144x144.png">
+<meta name="theme-color" content="#ffffff">
+
+<!--[if lt IE 7]>
+<script type="text/javascript">
+//<![CDATA[
+    var BLANK_URL = '<?php echo $this->helper('core/js')->getJsUrl('blank.html') ?>';
+    var BLANK_IMG = '<?php echo $this->helper('core/js')->getJsUrl('spacer.gif') ?>';
+//]]>
+</script>
+<![endif]-->
+<?php echo $this->getCssJsHtml() ?>
+<?php echo $this->getChildHtml() ?>
+<?php echo $this->helper('core/js')->getTranslatorScript() ?>
+<?php echo $this->getIncludes() ?>
+
+
+<?php // mmc adding bling scripts and customizations ?>
+
+<?php /* OG Tags */ ?>
+<?php if (Mage::registry('current_product')) :?> 
+<?php $currentproduct = Mage::registry('current_product');?>
+<meta property="og:site_name" content="BlingJewelry.com"/> 
+<meta property="og:title" content="<?php echo $currentproduct->getName();?> | Bling Jewelry"/> 
+<meta property="og:type" content="product"/> 
+<?php if($currentproduct->getSpecialPrice() != NULL){ 
+$product_pc = round($currentproduct->getSpecialPrice(),2);
+} else {
+$product_pc = round($currentproduct->getPrice(),2);
+} ?>
+<meta property="og:price:amount" content="<?php echo $product_pc; ?>" />
+<meta property="og:price:currency" content="USD" />
+<meta property="og:availability" content="instock" />
+<meta property="product:color" content="<?php echo $currentproduct->getAttributeText('color');?>" >
+<meta property="og:url" content="<?php echo Mage::helper('core/url')->getCurrentUrl() ?>"/> 
+<meta property="og:image" content="<?php echo Mage::helper('catalog/image')->init(Mage::registry('current_product'), 'small_image')->resize(200,200);?>"/>
+<meta property="og:description" content="<?php echo strip_tags($currentproduct->getShort_description()); ?>"/> 
+<?php else: ?>
+<meta property="og:site_name" content="BlingJewelry.com"/> 
+<meta property="og:title" content="Bling Jewelry"/> 
+<meta property="og:type" content="website"/> 
+<meta property="og:url" content="http://blingjewelry.com/"/> 
+<meta property="og:image" content="https://www.blingjewelry.com/skin/frontend/rwd/blingjewelry/images/logo.png"/> 
+<meta property="og:description" content="Bling Jewelry is your number one source for costume &amp; fashion jewelry. We have a huge selection of fine sterling silver jewelry &amp; cubic zirconia jewelry, and much more. With our low prices, best selection, free shipping &amp; free returns, there's no reason to wait - shop now!."/> 
+<?php endif;?>
+ 
+<?php 
+if (!in_array(Mage::app()->getFrontController()->getAction()->getFullActionName(), array('cms_index_noRoute', 'cms_index_defaultNoRoute'))) {
+    $currentUrl = Mage::helper('core/url')->getCurrentUrl();
+}?> 
+<?php if(isset($currentUrl)){ ?>
+<meta property="og:url" content="<?php echo $currentUrl ?>" />
+<?php } ?>
+ 
+<?php if (Mage::registry('current_product')) : ?>
+<?php if (Mage::registry('current_product')->getMetaTitle() == "") {
+  $ogTitle = Mage::registry('current_product')->getName();
+} else {
+  $ogTitle = Mage::registry('current_product')->getMetaTitle();
+}
+?>
+<meta property="og:type" content="product" />
+<meta property="og:title" content="<?php echo $ogTitle ?>" />  
+
+<meta property="og:image" content="<?php echo Mage::helper('catalog/image')->init(Mage::registry('current_product'), 'small_image')->resize(200,200);?>" />
+<?php endif;?>
+
+
+<?php /* CHANNEL ADVISOR */ ?>
+<!--channeladvisor-->
+<script type="text/javascript">
+	var _caq = _caq || [];
+	(function () {
+		var ca = document.createElement("script"); 
+		ca.type = "text/javascript"; 
+		ca.async = true;
+		ca.id = "_casrc"; 
+		ca.src = "//t.channeladvisor.com/v2/52000856.js";
+		var ca_script = document.getElementsByTagName("script")[0]; 
+		ca_script.parentNode.insertBefore(ca, ca_script);
+	})();
+</script>
+<!--channeladvisor-->
+
+<?php /* ZOPIM LIVE CHAT SCRIPT */ ?>
+<!--Start of Zopim Live Chat Script-->
+<script type="text/javascript">
+window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute('charset','utf-8');
+$.src='//v2.zopim.com/?2WvJbIYgu7EgD12OevghKiPpCnQBOqTv';z.t=+new Date;$.
+type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
+</script>
+<!--End of Zopim Live Chat Script-->

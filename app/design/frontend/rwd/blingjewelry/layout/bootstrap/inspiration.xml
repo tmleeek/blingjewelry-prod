@@ -1,0 +1,36 @@
+<?xml version="1.0"?>   
+<layout version="0.1.0"> 
+  <inspiration_index_index> 
+	<reference name="head"> 
+		<action method="setTitle"><title>Inspiration</title></action> 
+		<action method="setKeywords"><keywords></keywords></action> 
+		<action method="setDescription"><description></description></action> 
+    <!--
+    <action method="addItem">
+			<type>skin_js</type>
+			<name>js/jquery.isotope.min.js</name>
+		</action>
+  -->
+	</reference>  
+    <reference name="root">   
+      <action method="setTemplate"><template>page/1column.phtml</template></action>  
+    </reference>
+    <!--
+    <reference name="content">
+
+    </reference>
+    -->    
+    <reference name="content"> 
+<!--
+      <block type="cms/block" name="inspiration_header" before="-">
+          <action method="setBlockId"><block_id>inspiration_header</block_id></action>
+      </block>
+-->
+<!--
+      <block type="inspiration/menu" name="inspiration_block" template="bootstrap/inspiration/menu.phtml" />
+  -->
+      <block type="inspiration/index" name="inspiration_index" template="bootstrap/inspiration/index.phtml"/>
+
+    </reference>  
+  </inspiration_index_index>   
+</layout>   

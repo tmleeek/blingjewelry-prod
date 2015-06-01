@@ -1,0 +1,167 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <bootstrapsettings translate="label" module="settings">
+            <label>Custom Settings</label>
+            <sort_order>100</sort_order>
+        </bootstrapsettings>
+    </tabs> 
+    <sections>
+        <bootstrapsettings translate="label" module="settings">
+            <label>Settings</label>
+            <tab>bootstrapsettings</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>500</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store> 
+            <groups>
+                <home translate="label">
+                    <label>Home Page</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <featured_cats translate="label">
+                            <label>Featured Categories</label>
+                            <comment>comma separated list of category ids to feature</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </featured_cats>
+                        <featured_products_cat translate="label">
+                            <label>Featured Products Category</label>
+                            <comment>parent category of featured products</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </featured_products_cat>
+                    </fields>
+                </home>
+                <megamenu translate="label">
+                    <label>Mega Menu</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>2</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <backend_model>adminhtml/system_config_backend_store</backend_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </enabled>
+                        <prefix translate="label">
+                            <label>MegaMenu Block Prefix</label>
+                            <comment>Defaults to "megamenu_"</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </prefix>
+                        <mainmenu translate="label">
+                            <label>Main Menu Override</label>
+                            <comment>Override main menu top level Format: name, link linebreak</comment>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </mainmenu>
+                    </fields>
+                </megamenu>
+                <modallogin translate="label">
+                    <label>Modal Login</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>2</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <backend_model>adminhtml/system_config_backend_store</backend_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </enabled>
+                    </fields>
+                </modallogin>
+                <globalnotification translate="label">
+                    <label>Global Notifications</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>3</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabledtop translate="label">
+                            <label>Global Top Enable on Home</label>
+                            <comment>Show global_notification block on home</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <backend_model>adminhtml/system_config_backend_store</backend_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </enabledtop>
+                        <enabledpage translate="label">
+                            <label>Page Top Enable on Home</label>
+                            <comment>Show global_notification_page block on home</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <backend_model>adminhtml/system_config_backend_store</backend_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </enabledpage>
+                        <freeshipthreshold translate="label">
+                            <label>Free Shipping Threshold</label>
+                            <comment>order total to qualify for free shipping</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </freeshipthreshold>
+                        <freegiftthreshold translate="label">
+                            <label>Free Gift Threshold</label>
+                            <comment>order total to receive free gift</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </freegiftthreshold>
+                        <freegiftdiff translate="label">
+                            <label>Free Gift Difference</label>
+                            <comment>difference between threshold and cart total to show message</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </freegiftdiff>
+                    </fields>
+                </globalnotification>
+            </groups>
+        </bootstrapsettings>
+    </sections>
+</config>

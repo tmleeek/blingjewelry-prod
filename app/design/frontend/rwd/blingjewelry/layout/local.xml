@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout>
+    <default> 
+
+        <!-- things to remove globally, place items to remove in specific namespaces below -->
+        <!--Magento's Default Sidebar Blocks-->
+        <remove name="cart_sidebar"/>                 <!--Cart Sidebar-->
+        <!--<remove name="catalog.product.related"/>-->        <!--Related products sidebar-->
+        <remove name="wishlist_sidebar"/>               <!--Wishlist Sidebar-->
+        <remove name="catalog.compare.sidebar"/>        <!--Compare Items Sidebar-->
+        <remove name="right.permanent.callout"/>        <!--Right Callout Sample Data-->
+        <remove name="left.permanent.callout"/>         <!--Left Callout Sample Data-->
+        <remove name="right.reports.product.viewed"/>   <!--Viewed Products-->
+        <remove name="right.reports.product.compared"/> <!--Compared Products-->
+        <!--<remove name="catalog.leftnav"/>-->                <!--Layered Navigation-->
+        <remove name="left.newsletter"/>                <!--Sidebar Newsletter-->
+        <remove name="right.poll"/>                     <!--Poll-->
+        <remove name="tags_popular"/>                   <!--Popular Tags-->
+        <remove name="paypal.partner.right.logo"/>      <!--Paypal logo Sample Data-->
+        <!--<remove name="catalogsearch.leftnav"/>-->          <!--Layered navigation on search result page-->
+        <remove name="sale.reorder.sidebar"/>           <!--Reorder Sidebar When User Logged, in Dashboard-->
+        <!--<remove name="customer_account_navigation"/>-->    <!--Customer Navigation-->
+
+        <reference name="top.links">
+           <!-- <remove name="wishlist_link" /> -->
+            <remove name="checkout_cart_link"/>
+            <!-- Removes 'My Account' link - Default position: 10 -->
+            <action method="removeLinkByUrl"><url helper="customer/getAccountUrl"/></action>
+            <action method="removeLinkByUrl"><url helper="customer/getLoginUrl"/></action>
+            <action method="removeLinkByUrl"><url helper="customer/getRegisterUrl"/></action>
+        </reference>
+
+        <reference name="root">
+            <!-- create the category hero area -->
+            <block type="core/text_list" name="hero" as="hero"/>
+        </reference>
+
+        <reference name="hero">
+            <block type="core/template" name="hero.hero" template="bootstrap/category-hero.phtml" />
+        </reference>
+
+
+        <!-- adding global notification static block TOP of everything 
+        using childHtml to output in header.phtml file-->
+        <reference name="header">
+            <block type="cms/block" name="global_notification" before="-">
+                  <action method="setBlockId"><block_id>global_notification</block_id></action>
+            </block>
+        </reference>
+        <!-- adding global notification static block to content -->
+        <reference name="top.container">
+            <block type="cms/block" name="global_notification" before="-">
+                  <action method="setBlockId"><block_id>global_notification</block_id></action>
+            </block>
+        </reference>
+
+        <!-- remove paypal from top cart -->
+        <reference name="topCart.extra_actions">
+            <remove name="paypal.partner.top_cart.shortcut"/>
+        </reference>
+        <!-- remove from sidebar -->
+        <reference name="cart_sidebar.extra_actions">
+            <remove name="paypal.partner.cart_sidebar.shortcut"/>
+        </reference>
+        <reference name="before_body_end">
+            <block type="core/text" name="lazyload">
+                <action method="setText">
+                    <text><![CDATA[
+                    <script type="text/javascript">
+                        $j(document).ready(function() {
+                          var bLazy = new Blazy({ 
+                                selector: '.lazyload img',
+                                success: function(element){
+                                        var parent = element.parentNode;
+                                        parent.className = parent.className.replace(/\blazyloading\b/,'');
+                                } 
+                            });
+                        });
+                    </script>
+                    ]]></text>
+                </action>
+            </block>
+        </reference>
+        <reference name="after_body_start">
+            <block type="core/text" name="googleTagManager">
+                <action method="setText">
+                    <text><![CDATA[<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-54ZFV8"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-54ZFV8');</script>]]></text>
+                </action>
+            </block>
+        </reference>
+        <!--
+        <reference name="after_body_start">
+            <block type="core/text" name="lazyload">
+                <action method="setText">
+                    <text><![CDATA[
+                    <div id="fb-root"></div>
+                    <script>(function(d, s, id) {
+                      var js, fjs = d.getElementsByTagName(s)[0];
+                      if (d.getElementById(id)) return;
+                      js = d.createElement(s); js.id = id;
+                      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=1486198678266581&version=v2.0";
+                      fjs.parentNode.insertBefore(js, fjs);
+                    }(document, 'script', 'facebook-jssdk'));</script>
+                    ]]></text>
+                </action>
+            </block>
+        </reference>
+    -->
+    </default>
+
+
+    <cms_index_index> 
+        <!-- adding global notification static block TOP of everything 
+        using childHtml to output in header.phtml file-->
+        <reference name="header">
+            <block type="cms/block" name="global_notification" before="-">
+                  <action method="setBlockId" ifconfig="bootstrapsettings/globalnotification/enabledtop"><block_id>global_notification</block_id></action>
+            </block>
+        </reference>
+        <!-- adding global notification static block TOP of content area -->
+        <reference name="top.container">
+            <block type="cms/block" name="global_notification" before="-">
+                  <action method="setBlockId" ifconfig="bootstrapsettings/globalnotification/enabledpage"><block_id>global_notification</block_id></action>
+            </block>
+        </reference>
+    </cms_index_index>  
+
+
+    <customer_logged_out>
+        <reference name="root">
+             <remove name="wishlist_link"/>
+        </reference>
+        <reference name="top.links">
+            <action method="removeLinkByUrl"><url helper="customer/getLoginUrl"/></action>
+            <action method="addLink" translate="label title">
+                <label><![CDATA[Register]]></label>
+                <url>#</url>  <!-- can use full url also -->
+                <title>Register</title>
+                <prepare/> <!-- set true if adding base url param -->
+                <urlParams/>
+                <position>1</position>
+                <liParams/>
+                <aParams>class="register-link"</aParams>
+                <beforeText/>
+                <afterText/>
+            </action>
+            <action method="addLink" translate="label title">
+                <label><![CDATA[Login]]></label>
+                <url>#</url>  <!-- can use full url also -->
+                <title>Login</title>
+                <prepare/> <!-- set true if adding base url param -->
+                <urlParams/>
+                <position>1</position>
+                <liParams/>
+                <aParams>class="login-link"</aParams>
+                <beforeText/>
+                <afterText/>
+            </action>
+        </reference>
+        <!-- mmc removing since using loginradius -->
+		<reference name="before_body_end">
+    		<block type="core/template" name="modal_login" template="bootstrap/modal-login.phtml"></block>
+            <!--<block type="core/template" name="modal_subscribe" template="newsletter/modal-subscribe.phtml" after="-"></block>-->
+        </reference>    
+	</customer_logged_out>   
+    
+    <customer_logged_in>    
+        <reference name="top.links">
+            <action method="removeLinkByUrl"><url helper="customer/getLogoutUrl"/></action>
+            <action method="addLink" translate="label title">
+                <label><![CDATA[Profile]]></label>
+                <url>/customer/account/</url>  <!-- can use full url also -->
+                <title>Profile</title>
+                <prepare/> <!-- set true if adding base url param -->
+                <urlParams/>
+                <position>1</position>
+                <liParams/>
+                <aParams></aParams>
+                <beforeText/>
+                <afterText/>
+            </action>
+            <action method="addLink" translate="label title">
+                <label><![CDATA[Orders]]></label>
+                <url>/sales/order/history/</url>  <!-- can use full url also -->
+                <title>Orders</title>
+                <prepare/> <!-- set true if adding base url param -->
+                <urlParams/>
+                <position>99</position>
+                <liParams/>
+                <aParams></aParams>
+                <beforeText/>
+                <afterText/>
+            </action>
+            <action method="addLink" translate="label title">
+                <label><![CDATA[Logout]]></label>
+                <url helper="customer/getLogoutUrl"/> <!-- can use full url also -->
+                <title>Logout</title>
+                <prepare/> <!-- set true if adding base url param -->
+                <urlParams/>
+                <position>100</position>
+                <liParams>class="logout-link"</liParams>
+                <aParams></aParams>
+                <beforeText/>
+                <afterText/>
+            </action>
+            <!--
+                <action method="removeLinkByUrl"><url helper="customer/getLogoutUrl"/></action> 
+
+                <action method="addLink" translate="label title">
+                    <label><![CDATA[<span class="menu-label">My Account</span><span class="menu-icon"><i class="fa fa-user"></i></span>]]></label>
+                    <url>#</url>
+                    <title>My Account</title>
+                    <prepare/>
+                    <urlParams/>
+                    <position>1</position>
+                    <liParams>
+                        <class>dropdown</class>
+                    </liParams>
+                    <aParams>class="dropdown-toggle" data-toggle="dropdown"</aParams>
+                    <beforeText/>
+                    <afterText>
+                    <![CDATA[
+                    <ul class="dropdown-menu">
+                        <li><a href="/customer/account">Profile</a></li>
+                        <li><a href="/sales/order/history">My Orders</a></li>
+                        <li><a href="/wishlist">Wishlist</a></li>
+                        <li><a href="/customer/account/logout">Logout</a></li>
+                    </ul>
+                    ]]>
+                    </afterText>
+                </action>
+            -->
+        </reference>
+    </customer_logged_in> 
+
+    <!-- Remove Account Navigation Links -->
+    <customer_account>
+        <reference name="customer_account_navigation">
+            <action method="removeLinkByName"><name>OAuth Customer Tokens</name></action>
+            <action method="removeLinkByName"><name>recurring_profiles</name></action>
+            <action method="removeLinkByName"><name>billing_agreements</name></action>
+            <action method="removeLinkByName"><name>downloadable_products</name></action>
+        </reference>
+        <reference name="left"> 
+            <action method="unsetChild"><name>cart_sidebar</name></action> 
+        </reference> 
+    </customer_account>
+ 
+	<checkout_onepage_index>
+        <reference name="root">
+            <!-- mmc not using this technique because header/footer get cached  not consistent
+            <block type="page/html_header" name="header" as="header" template="page/html/header_checkout.phtml"/>
+            <block type="page/html_footer" name="footer" as="footer" template="page/html/footer_checkout.phtml"/>
+             -->
+            <action method="setTemplate"><template>page/1column-checkout.phtml</template></action>
+        </reference>
+	</checkout_onepage_index>
+    <onestepcheckout_index_index>
+        <reference name="root">
+            <!-- mmc not using this technique because header/footer get cached  not consistent 
+            <block type="page/html_header" name="header" as="header" template="page/html/header_checkout.phtml"/>
+            <block type="page/html_footer" name="footer" as="footer" template="page/html/footer_checkout.phtml"/>
+            -->
+            <action method="setTemplate"><template>page/1column-checkout.phtml</template></action>
+        </reference>
+    </onestepcheckout_index_index>
+
+   <catalog_category_default>
+        <reference name="root">
+            <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+        </reference>
+        <reference name="left_first">
+            <!-- removes layered from left -->
+            <action method="unsetChild"><name>catalog.leftnav</name></action>
+            <block type="catalog/navigation" name="catalog.leftnavcats" template="catalog/navigation/left.phtml" before="-"/>
+        </reference>
+        <reference name="product_list">
+            <!-- adds layered as a child element to product_list - and is explicitly output there 
+            removing so celebros is only thing being output
+            <action method="insert"><child>catalog.leftnav</child></action>
+            -->
+            <!-- mmc place celebros layered nav in product list page -->
+            <block type="salesperson/layer_view" name="salesperson.nonleadquestions.top" as="nonleadquestions_top" template="salesperson/layer/non-lead-top.phtml" />
+            <!-- end celebros -->
+        </reference>
+    </catalog_category_default>
+    
+    <catalog_category_layered>
+        <reference name="root">
+            <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+        </reference>
+        <reference name="left_first">
+            <!-- removes layered from left -->
+            <action method="unsetChild"><name>catalog.leftnav</name></action>
+            <block type="catalog/navigation" name="catalog.leftnavcats" template="catalog/navigation/left.phtml" before="-"/>
+        </reference>
+        <reference name="product_list">
+            <!-- adds layered as a child element to product_list - and is explicitly output there 
+            removing so celebros is only thing being output
+            <action method="insert"><child>catalog.leftnav</child></action>
+            -->
+            <!-- mmc place celebros layered nav in product list page -->
+            <block type="salesperson/layer_view" name="salesperson.nonleadquestions.top" as="nonleadquestions_top" template="salesperson/layer/non-lead-top.phtml" />
+            <!-- end celebros -->
+        </reference>
+    </catalog_category_layered>
+    <!-- Category -->
+    <catalog_product_view> 
+        <reference name="content"> 
+            <reference name="product.info">
+
+                <!-- mmc add product viewed and output in template -->
+                <block type="reports/product_viewed" name="left.reports.product.viewed" template="reports/product_viewed.phtml" as="recently_viewed" />
+
+                <!-- mmc add short product description to tab -->
+                <block type="catalog/product_view_description" name="product.short.description" as="short_description" template="catalog/product/view/short-description.phtml" before="-">
+                    <action method="addToParentGroup"><group>detailed_info</group></action>
+                    <action method="setTitle" translate="value"><value>Details</value></action>
+                </block>
+
+                <!-- mmc add shipping tab -->
+                <block type="cms/block" name="product.shipping" as="product_shipping" after="-">
+                    <action method="addToParentGroup"><group>detailed_info</group></action>
+                    <action method="setTitle" translate="value"><value>Shipping</value></action>
+                    <action method="setBlockId"><block_id>product_shipping</block_id></action>
+                </block>
+
+                <!-- mmc remove additional attributes tab -->
+                <action method="unsetChild"><name>additional</name></action>
+
+                <!-- mmc removed native sharing block -->
+                <reference name="product.info.options.wrapper.bottom">
+                    <action method="unsetChild"><name>product.info.sharing</name></action>
+                </reference>
+            </reference>
+
+            <!-- attempting to add treepodia video support to product detail page -->
+            <block type="video/view_dialog" name="video_view_dialog" template="treepodia/video/view/dialog.phtml" />
+
+           <!--<remove name="mybuys_recomendationzone"/>-->
+
+        </reference>
+    </catalog_product_view>
+
+
+    <catalogsearch_result_index>
+        <reference name="left_first">
+            <!-- removes layered from left -->
+            <action method="unsetChild"><name>catalogsearch.leftnav</name></action>
+        </reference>
+        <reference name="content">
+            <!-- adds layered as a child element to product_list - and is explicitly output there 
+            removing so celebros is only thing being output
+            <action method="insert"><child>catalogsearch.leftnav</child></action>
+            -->
+        </reference>
+    </catalogsearch_result_index>
+
+    <checkout_cart_index>
+        <remove name="checkout.cart.shipping" />
+        <remove name="global_notification" />
+    </checkout_cart_index>
+
+    
+    <contacts_index_index translate="label">
+        <reference name="left_first">
+            <block type="cms/block" name="menu_customersvc" >
+                <action method="setBlockId"><block_id>menu_customersvc</block_id></action>
+            </block>
+        </reference>
+    </contacts_index_index>
+
+
+    <wishlist_shared_index>
+        <reference name="head">
+            <action method="setForcedTitle"><title>Favorites</title></action>
+        </reference>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+    </wishlist_shared_index>
+
+</layout>

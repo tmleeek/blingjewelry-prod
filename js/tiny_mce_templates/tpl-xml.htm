@@ -1,0 +1,91 @@
+
+<h3>ADD BLOCK TO LEFT COLUMN (Menu or Banner)</h3>
+
+
+CMS Page: 				Design > Page Layout<br />
+Layout: 				2 Columns with left bar<br />
+Layout Update XML: 		Paste code below<br /><br />
+
+Category Page: 			Custom Design Tab<br />
+Layout: 				2 Columns with left bar<br />
+Custom Layout Update: 	Paste code below<br /><br />
+
+Replace {{BLOCK IDENTIFIER}} with the block identifier <br /> <br />
+
+Code to paste: <br />
+
+<!--
+
+<reference name="left_first">
+	<block type="cms/block" name="{{BLOCK IDENTIFIER}}" >
+		<action method="setBlockId"><block_id>{{BLOCK IDENTIFIER}}</block_id></action>
+	</block>
+</reference>
+
+-->
+
+<h3>ADD BLOCK TO Content</h3>
+
+CMS Page: 				Design > Page Layout <br />
+Layout: 				Any <br />
+Layout Update XML: 		Paste code below <br /> <br />
+
+Category Page: 			Custom Design Tab <br />
+Layout: 				Any <br />
+Custom Layout Update: 	Paste code below <br /> <br />
+
+Replace {{BLOCK IDENTIFIER}} with the block identifier <br /> <br />
+
+Code to paste:  <br />
+
+
+<!--
+
+<reference name="content">
+	<block type="cms/block" name="{{BLOCK IDENTIFIER}}" >
+		<action method="setBlockId"><block_id>{{BLOCK IDENTIFIER}}</block_id></action>
+	</block>
+</reference>
+
+-->
+
+
+<h3>PRODUCT LIST - Change display</h3>
+
+Category Page: 			Custom Design Tab <br />
+Layout: 				Any <br />
+Custom Layout Update: 	Paste code below <br /> <br />
+
+Template Path Options: <br />
+bootstrap/ajax/catalog/product/list-masonry.phtml <br /> <br />
+
+Code to paste:  <br />
+
+<!--
+
+<reference name='product_list'>
+	<action method='setTemplate'><template>{{ ADD TEMPLATE PATH HERE }}</template></action>
+</reference>
+
+-->
+
+
+<!-- 
+
+NOT USED
+ 
+PRODUCT LIST VIEW - Change top display
+
+Category Page: Custom Design Tab 
+Layout: Any 
+Custom Layout Update: Paste code below
+
+Template Path Options:
+catalog/product/view-narrow.phtml 
+
+
+<reference name='category.products'>
+	<action method='setTemplate'><template>{{ ADD TEMPLATE PATH HERE }}</template></action>
+</reference>
+
+-->

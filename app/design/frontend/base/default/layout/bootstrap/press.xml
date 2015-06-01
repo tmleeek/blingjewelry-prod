@@ -1,0 +1,25 @@
+<?xml version="1.0"?>   
+<layout version="0.1.0"> 
+  <press_index_index> 
+	<reference name="head"> 
+		<action method="setTitle"><title>Press</title></action> 
+		<action method="setKeywords"><keywords></keywords></action> 
+		<action method="setDescription"><description></description></action> 
+        <action method="addItem">
+			<type>skin_js</type>
+			<name>js/lib/jquery.isotope.min.js</name>
+		</action>
+	</reference>  
+    <reference name="root">   
+      <action method="setTemplate"><template>page/1column.phtml</template></action>  
+    </reference>
+    <!--
+    <reference name="content">
+	  <block type="press/menu" name="press_block" template="bootstrap/press/menu.phtml" />
+    </reference>
+    -->    
+    <reference name="content">   
+      <block type="press/index" name="press_index" template="bootstrap/press/index.phtml"/>
+    </reference>  
+  </press_index_index>   
+</layout>   

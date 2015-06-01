@@ -1,0 +1,285 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<div class="page-title">
+    <h1><?php echo $this->__('Your order has been received.') ?></h1>
+</div>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<h2 class="sub-title"><?php echo $this->__('Thank you for your purchase!') ?></h2>
+
+<?php if ($this->getOrderId()):?>
+<?php if ($this->getCanViewOrder()) :?>
+    <p><?php echo $this->__('Your order # is: %s.', sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getViewOrderUrl()), $this->escapeHtml($this->getOrderId()))) ?></p>
+<?php  else :?>
+    <p><?php echo $this->__('Your order # is: %s.', $this->escapeHtml($this->getOrderId())) ?></p>
+<?php endif;?>
+    <p><?php echo $this->__('You will receive an order confirmation email with details of your order and a link to track its progress.') ?></p>
+<?php if ($this->getCanViewOrder() && $this->getCanPrintOrder()) :?>
+    <p>
+        <?php echo $this->__('Click <a href="%s" onclick="this.target=\'_blank\'">here to print</a> a copy of your order confirmation.', $this->getPrintUrl()) ?>
+        <?php echo $this->getChildHtml() ?>
+    </p>
+<?php endif;?>
+<?php endif;?>
+
+<?php if ($this->getAgreementRefId()): ?>
+    <p><?php echo $this->__('Your billing agreement # is: %s.', sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getAgreementUrl()), $this->escapeHtml($this->getAgreementRefId())))?></p>
+<?php endif;?>
+
+<?php if ($profiles = $this->getRecurringProfiles()):?>
+<p><?php echo $this->__('Your recurring payment profiles:'); ?></p>
+<ul class="disc">
+<?php foreach($profiles as $profile):?>
+<?php $profileIdHtml = ($this->getCanViewProfiles() ? sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getProfileUrl($profile)), $this->escapeHtml($this->getObjectData($profile, 'reference_id'))) : $this->escapeHtml($this->getObjectData($profile, 'reference_id')));?>
+    <li><?php echo $this->__('Payment profile # %s: "%s".', $profileIdHtml, $this->escapeHtml($this->getObjectData($profile, 'schedule_description')))?></li>
+<?php endforeach;?>
+</ul>
+<?php endif;?>
+
+<div class="buttons-set">
+    <button type="button" class="button" title="<?php echo $this->__('Continue Shopping') ?>" onclick="window.location='<?php echo $this->getUrl() ?>'"><span><span><?php echo $this->__('Continue Shopping') ?></span></span></button>
+</div>
+
+
+<?php 
+/*$_customerId = Mage::getSingleton('customer/session')->getCustomerId(); 
+$lastOrderId = Mage::getSingleton('checkout/session')->getLastOrderId(); 
+$order = Mage::getSingleton('sales/order'); $order->load($lastOrderId); 
+$_totalData =$order->getData(); 
+$_sub = $_totalData['subtotal']; */
+$_customerId = Mage::getSingleton('customer/session')->getCustomerId();
+$customer = Mage::getSingleton('customer/session')->getCustomer();
+$lastOrderId = Mage::getSingleton('checkout/session')->getLastOrderId();
+$order = Mage::getModel('sales/order')->loadByIncrementId(Mage::getSingleton('checkout/session')->getLastRealOrderId());
+//$amount = number_format($order->getGrandTotal(),2);
+$_totalData =$order->getData(); 
+$_sub = $_totalData['subtotal'];
+$amount = number_format($_sub,2);
+$email = $_totalData['customer_email'];
+$shippingamount = number_format($_totalData['shipping_amount'],2);
+$discount = number_format($_totalData['discount_amount'],2);
+$name = $customer->getName();
+$taxvat = number_format($_totalData['tax_amount'],2);
+$netamount = number_format($amount - $discount,2);
+//echo $netamount;
+$_productData = $order->getAllItems();
+$_currency = $_totalData['order_currency_code'];
+$couponCode = $order->getCouponCode();  /** added coupon code variable **/
+?>
+
+<!-- Start SAS Affiliate Program - Sales Tracking --> 
+<img src="https://shareasale.com/sale.cfm?amount=<?php echo $amount; ?>&tracking=<?php echo $this->getOrderId()?>&transtype=sale&merchantID=22326" width="1" height="1">
+<!-- // End SAS Affiliate Program - Sales Tracking -->
+
+
+<!-- Google Code for Purchase tracking Conversion Page -->
+<script language="JavaScript" type="text/javascript">
+<!--
+var google_conversion_id = 1037959010;
+var google_conversion_language = "en_US";
+var google_conversion_format = "3";
+var google_conversion_color = "ffffff";
+var google_conversion_label = "MIhFCIz1cRDi_vfuAw";
+var google_conversion_value = <?php echo $amount; ?>;
+var google_remarketing_only = false;
+
+//-->
+</script>
+<script language="JavaScript" src="https://www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<img height="1" width="1" border="0" src="https://www.googleadservices.com/pagead/conversion/1037959010/?value=<?php echo $amount; ?>&amp;label=MIhFCIz1cRDi_vfuAw&amp;script=0"/>
+</noscript>
+<!-- Google Code for Purchase tracking Conversion Page -->
+<!-- FB converstion Page -->
+<script type="text/javascript">
+var fb_param = {};
+fb_param.pixel_id = '6006753830932';
+fb_param.value = '0.00';
+(function(){
+  var fpw = document.createElement('script');
+  fpw.async = true;
+  fpw.src = '//connect.facebook.net/en_US/fp.js';
+  var ref = document.getElementsByTagName('script')[0];
+  ref.parentNode.insertBefore(fpw, ref);
+})();
+</script>
+<noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/offsite_event.php?id=6006753830932&amp;value=0" /></noscript>
+<!-- end FB conversion page -->
+
+<img src="http://app.bronto.com/public/?q=stream_conversion&fn=Mail_Conversion&id=bdesvvzobdptplqinvhpmmfrkogqbkp&type=$&description=sale-<?php echo $this->getOrderId() ?>&money=<?php echo $_sub ?>" width="0" height="0" border="0" alt=/>
+
+<script type="text/javascript"> if (!window.mstag) mstag = {loadTag : function(){},time : (new Date()).getTime()};</script> <script id="mstag_tops" type="text/javascript" src="//flex.msn.com/mstag/site/1f43e89e-73c1-4736-9ba3-a39ba71fd233/mstag.js"></script> <script type="text/javascript"> mstag.loadTag("analytics", {dedup:"1",domainId:"2262149",type:"1",taxcost:"",shippingcost:"",nonadvertisingcost:"",revenue:"",actionid:"203357"})</script> <noscript> <iframe src="//flex.msn.com/mstag/tag/1f43e89e-73c1-4736-9ba3-a39ba71fd233/analytics.html?dedup=1&domainId=2262149&type=1&taxcost=&shippingcost=&nonadvertisingcost=&revenue=&actionid=203357" frameborder="0" scrolling="no" width="1" height="1" style="visibility:hidden;display:none"> </iframe> </noscript>
+
+<script language="javascript">
+<!--
+    /* Performance Tracking Data */
+    var mid            = '276154';
+    var cust_type      = '1';
+    var order_value    = '<?php echo $amount; ?>';
+    var order_id       = '<?php echo $this->getOrderId() ?>';
+    var units_ordered  = '1';
+//-->
+</script>
+<script language="javascript" src="https://www.shopzilla.com/css/roi_tracker.js"></script>
+
+
+<!-- Start Bizrate POS Code --> 
+<script language="JavaScript"> 
+// var passin_x ='50'; //comment out to default center or adjust horizontal position by pixel 
+// var passin_y ='50'; //comment out to default center or adjust vertical position by pixel 
+// var orderId='<?php echo $this->getOrderId() ?>'; 
+// var z_index =''; //default 1,000,000 
+// var cartTotal='<?php echo $amount; ?>'; 
+// var billingZipCode=''; 
+// Pass up to 5 products from customer shopping cart 
+var productsPurchased= 'URL=^SKU=^GTIN=^PRICE=|URL=^SKU=^GTIN=^PRICE=|URL=^SKU=^GTIN=^PRICE=|URL=^SKU=^GTIN=^PRICE=|URL=^SKU=^GTIN=^PRICE='; 
+</script> 
+<script type="text/javascript" src="//eval.bizrate.com/js/pos_276154.js"> 
+</script> 
+<!-- End Bizrate POS Code --> 
+
+
+
+<!-- Start ebay commerce/shopping.com Code -->
+<script type="text/javascript">
+var _roi = _roi || [];
+
+
+_roi.push(['_setMerchantId', '515597']); // required
+_roi.push(['_setOrderId', '<?php echo $this->getOrderId() ?>']); // unique customer order ID
+_roi.push(['_setOrderAmount', '<?php echo $amount; ?>']); // order total without tax and shipping
+_roi.push(['_setOrderNotes', '']); // notes on order, up to 50 characters
+
+
+_roi.push(['_addItem', 
+'', // Merchant sku
+'', // Product name
+'', // Category id
+'', // Category name
+'', // Unit price
+'' // Item quantity
+]);
+
+// Step 3: submit transaction to ECN ROI tracker
+
+_roi.push(['_trackTrans']);
+</script>
+<script type="text/javascript" src="https://stat.dealtime.com/ROI/ROI2.js"></script>
+<script type="text/javascript" language="JavaScript" src="https://www.shopping.com/xMSJ?pt=js&direct=1&mid=515597&lid=1"></script>
+<!-- End ebay commerce Code -->
+
+<!-- Google Code for Sale Conversion Page -->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1022918820;
+var google_conversion_language = "en";
+var google_conversion_format = "2";
+var google_conversion_color = "ffffff";
+var google_conversion_label = "RWYoCJaaqgEQpIHi5wM";
+var google_conversion_value = <?php echo $amount; ?>;
+var google_remarketing_only = false;
+/* ]]> */
+</script>
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/1022918820/?value=<?php echo $amount; ?>&amp;label=RWYoCJaaqgEQpIHi5wM&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
+
+
+<script type="text/javascript">
+    var _caq = _caq || [];
+    var products = [];
+    products.push({Sku: 'ProductID', UnitPrice: 'item price here', Quantity: 'quantity here'});
+    products.push({Sku: 'ProductID', UnitPrice: 'item price here', Quantity: 'quantity here'});
+    _caq.push(["Order", {OrderId: '<?php echo $this->getOrderId() ?>', Revenue: '<?php echo $amount; ?>', CurrencyCode: 'USD', Products: products}]);
+</script>
+<!-- Google Code for Sale Conversion Page -->
+
+
+
+
+<?php
+/*********Start Pepperjam Network Codes #1 ******/
+
+//$lastOrderId = Mage::getSingleton('checkout/session')->getLastOrderId();
+//$order = Mage::getSingleton('sales/order');
+//$order->load($lastOrderId);
+//$_totalData = $order->getData();
+
+
+$polyvoresku =''; //KP for polyvore
+$pixelDataItem = '';
+$pixelDataQty = '';
+$pixelDataAmount = '';
+$i = 1;
+foreach ($_productData as $item){
+    if ($item->getProductType() == 'configurable') continue;
+    
+if ($item->getParentItemId()) {
+    $_total = number_format($item->getParentItem()->getPrice(),2);
+    $_discount = number_format(($item->getParentItem()->getDiscountAmount() / $item->getParentItem()->getQtyOrdered()),2);
+} else {
+    $_total = number_format($item->getPrice(),2);
+    $_discount = number_format(($item->getDiscountAmount() / $item->getQtyOrdered()),2);
+}
+
+    $polyvoresku .= $item->getSku().','; //KP for polyvore
+    $pixelDataItem .= '&ITEM'.$i.'='.$item->getSku();
+    $pixelDataQty .= '&QTY'.$i.'='.(int)$item->getQtyOrdered();
+    $pixelDataAmount .= '&AMOUNT'.$i.'='.number_format($_total - $_discount,2);
+    $i++;
+}
+    $pixelData = '<iframe src="';
+    $pixelData .= 'https://t.pepperjamnetwork.com/track?';
+    $pixelData .="PID=7467";
+    $pixelData .="&INT=ITEMIZED";
+    $pixelData .=$pixelDataItem.$pixelDataQty.$pixelDataAmount;
+    $pixelData .= '&OID='.$this->getOrderId().'&CURRENCY='.$_currency.'" width="1" height="1" frameborder="0"></iframe>';
+
+echo $pixelData;
+
+/*********End Pepperjam Network Codes ******/
+?>
+
+<img width="1" height="1" src="https://www.polyvore.com/conversion/beacon.gif?adv=blingjewelry.com&amt=<?php echo $netamount; ?>&oid=<?php echo $this->getOrderId() ?>&skus=<?php echo $polyvoresku; ?>&cur=usd" />
+
+<?php /***** START bronto coupon tracking kp ****/ ?>
+
+<script type="text/javascript" src="https://cdn.bronto.com/coupon/js/bcm.js"></script>
+<script type="text/javascript">
+__bcm.redeemCoupon("781a76fe76ee53ed18d27e8bc916d4ecbf205028289adf64247dc67b32c9feaa", {
+	email: '<?php echo $email ?>',
+	coupon: '<?php echo $couponCode ?>',
+	orderId: '<?php echo $this->getOrderId() ?>',
+	orderSubtotal: '<?php echo $_sub ?>',
+	orderDiscount: '<?php echo $discount ?>'
+});
+</script>
+<?php /***** ENDS bronto coupon tracking kp ****/ ?>
